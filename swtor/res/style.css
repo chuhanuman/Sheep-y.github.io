@@ -1,0 +1,18 @@
+* {
+   box-sizing: border;
+   }
+
+body {
+   font-size: 24px;
+   }
+   article {
+      max-width: 800px;
+      margin: 0 auto;
+      }
+      article img {
+         max-width: 800px;
+         }
+
+.note li {
+   font-size: 20px;
+   }
