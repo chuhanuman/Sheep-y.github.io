@@ -6,13 +6,30 @@ body {
    font-size: 24px;
    }
    article {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       }
       article img {
-         max-width: 800px;
+         max-width: 900px;
          }
 
-.note li {
-   font-size: 20px;
+details[h] > summary {
+   font-weight: bold;
+   margin: 1em 0;
    }
+   details[h=h2] > summary {
+      font-size: 40px;
+      }
+   details[h=h3] > summary {
+      font-size: 34px;
+      }
+   details[h=h4] > summary {
+      font-size: 28px;
+      }
+
+ol, ul {
+   margin: 1ex 0;
+   }
+   .note li {
+      font-size: 20px;
+      }
