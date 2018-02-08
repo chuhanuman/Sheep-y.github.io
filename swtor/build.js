@@ -8,15 +8,15 @@ fs.readFile( 'ac4_sage_sorc/_Balance_Madness.html', 'utf8', (err, data) => {
 
    data = build( trimData( data ) );
 
-   fs.writeFile ( "ac4/Balance.html", data, ( err ) => {
+   fs.writeFile ( "ac4/balance.html", data, ( err ) => {
       if ( err ) throw err;
-      console.log( "Pub guide built" );
+      console.log( "Balance guide built" );
    } );
 
 
-   fs.writeFile ( "ac4/Madness.html", convertToImp( data ), ( err ) => {
+   fs.writeFile ( "ac4/madness.html", convertToImp( data ), ( err ) => {
       if ( err ) throw err;
-      console.log( "Imp guide built" );
+      console.log( "Madness guide built" );
    } );
 
 } );
@@ -40,10 +40,12 @@ function trimData( data ) {
 function build ( data ) {
 
    // Convert list to <details>
-   data = data.replace( /(<ul class="key)/g, '<details open>$1' );
-   data = data.replace( /(<ul class="use)/g, '<details open><summary>Usages</summary>$1' );
-   data = data.replace( /(<ul class="note)/g, '<details open><summary>Notes</summary>$1' );
+   data = data.replace( /(<[ou]l class="desc)/g, '<details open><summary>Description</summary>$1' );
+   data = data.replace( /(<[ou]l class="key)/g, '<details open><summary>Basics</summary>$1' );
+   data = data.replace( /(<[ou]l class="use)/g, '<details open><summary>Usages</summary>$1' );
+   data = data.replace( /(<[ou]l class="note)/g, '<details open><summary>Notes</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
+   data = data.replace( /<\/ol>/g, '</ol></details>' );
 
    // Scan ToC, before headers are converted
    let tag, header = /<h(\d)[^>]*>([^<]+)<\/h\1>/g, hlist = [];
