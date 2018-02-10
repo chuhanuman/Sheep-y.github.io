@@ -105,7 +105,21 @@ function build ( data ) {
 
 /* Turns pub side guide into imp side */
 function convertToImp ( data ) {
-   const map = [
+   const map = [];
+
+   // Class
+   map.push( 
+      "Republic", "Imperial",
+      "Jedi Consular", "Sith Inquisitor",
+         "Sage", "Sorcerer",
+            "Seer", "Corruption",
+            "Telekinetic", "Lightning",
+            "Balance", "Madness",
+            "Balance Sage", "Madness Sorcerer",
+   );
+
+   // Sage - Balance
+   map.push(
       // Attacks
       "Telekinetic Throw", "Force Lightning",
       "Vanquish", "Demolish",
@@ -120,9 +134,6 @@ function convertToImp ( data ) {
       "Force Lift", "Whirlwind",
       "Force Stun", "Electrocute",
       "Force Wave", "Overload",
-      "Lift", "Whirlwind",
-      "Stun", "Electrocute",
-      "Wave", "Overload",
       "Mind Snap", "Jolt",
       // Heals
       "Force Armor", "Static Barrier",
@@ -140,17 +151,34 @@ function convertToImp ( data ) {
       "Vindicate", "Consuming Darkness",
       "Force of Will", "Unbreakable Will",
       "Rescue", "Extrication",
-      // Class
-      "Jedi Consular", "Sith Inquisitor",
-      "Balance Sage", "Madness Sorcerer",
-      "Sage", "Sorcerer",
-      "Seer", "Corruption",
-      "Telekinetic", "Lightning",
-      "Balance", "Madness",
-      "Republic", "Imperial",
+      // Skillful
+      "Psychic Suffusion", "Force Suffusion",
+      "Jedi Resistance", "Sith Defiance",
+      "Tectonic Master", "Tempest Mastery",
+      "Pain Bearer", "Empty Body",
+      "Benevolent Haste", "Dark Speed",
+      // Masterful
+      "Blockout", "Supression",
+      "Mind Ward", "Corrupted Flest",
+      "Valiance", "Dark Resilience",
+      "Confound", "Conspiring Force",
+      "Telekinetic Defense", "Lightning Barrier",
+      "Staggering Stratagem", "Torturous Tactics",
+      // Heroic
+      "Egress", "Emersion",
+      "Mental Defense", "Shapeless Spirit",
+      "Metaphysical Alacrity", "Surging Speed",
+      "Kinetic Collapse", "Backlash",
+      "Containment", "Haunted Dreams",
+      "Force Wake", "Electric Bindings",
+      // Legendary
+      "Swift Rejuvenation", "Galvanizing Cleanse",
+      "Life Ward", "Corrupted Barrier",
+      "Valorous Spirit", "Unnatural Vigor",
+      "Ethereal Entity", "Shifting Silhouette",
+      "Impeding Slash", "Enfeebling Strike",
       // Short names
-      "skittles", "lightnings"
-   ];
+      "skittles", "lightnings" );
 
    const dict = new Map(), rev = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
