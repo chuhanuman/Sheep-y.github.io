@@ -114,6 +114,7 @@ function convertToImp ( data ) {
 
    // Class
    map.push( 
+      "Jedi", "Sith",
       "Republic", "Imperial",
       "Jedi Consular", "Sith Inquisitor",
          "Sage", "Sorcerer",

@@ -33,3 +33,18 @@ ol, ul {
    .note li {
       font-size: 20px;
       }
+
+/* Put ToC on left side on desktop */
+@media (min-width: 1500px) {
+   #toc {
+      left: 0;
+      max-height: 100vh;
+      overflow-y: scroll;
+      position: fixed;
+      top: 0;
+      width: 550px;
+      }
+   article {
+      margin: 0 0 0 600px;
+      }
+}
