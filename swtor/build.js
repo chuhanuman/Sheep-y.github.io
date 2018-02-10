@@ -6,23 +6,23 @@ var fs = require('fs');
 fs.readFile( 'ac4_sage_sorc/_Balance_Madness.html', 'utf8', (err, data) => {
    if ( err ) throw err;
 
-   data = build( trimData( data ) );
+   data = normalise( data );
 
-   fs.writeFile ( "ac4/balance.html", data, ( err ) => {
+   fs.writeFile ( "ac4/balance.html", build( data ), ( err ) => {
       if ( err ) throw err;
       console.log( "Balance guide built" );
    } );
 
 
-   fs.writeFile ( "ac4/madness.html", convertToImp( data ), ( err ) => {
+   fs.writeFile ( "ac4/madness.html", build( convertToImp( data ) ), ( err ) => {
       if ( err ) throw err;
       console.log( "Madness guide built" );
    } );
 
 } );
 
-/* Removes whitespaces and comments */
-function trimData( data ) {
+/* Removes whitespaces and comments, and convert list to details block */
+function normalise ( data ) {
    // Turns to one line
    data = data.replace( /\s*[\r\n]+\s*/g, '' );
    // Drop comments
@@ -32,13 +32,6 @@ function trimData( data ) {
    // Minor trims
    data = data.replace( /  +>/g, ' ' );
 
-   return data;
-}
-
-
-/* Adds ToC and expand list into details block */
-function build ( data ) {
-
    // Convert list to <details>
    data = data.replace( /(<[ou]l class="desc)/g, '<details open><summary>Description</summary>$1' );
    data = data.replace( /(<[ou]l class="key)/g, '<details open><summary>Basics</summary>$1' );
@@ -46,10 +39,31 @@ function build ( data ) {
    data = data.replace( /(<[ou]l class="note)/g, '<details open><summary>Notes</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
+   
+   return data;
+}
+
+
+/* Convert headers to details and build ToC */
+function build ( data ) {
 
    // Scan ToC, before headers are converted
    let tag, header = /<h(\d)[^>]*>([^<]+)<\/h\1>/g, hlist = [];
-   while ( tag = header.exec( data ) ) hlist.push( tag[0] );
+   const prop = / id="([^"]+)"/, text = />([^<]+)</;
+   while ( tag = header.exec( data ) )
+      if ( ! tag[0].startsWith( "<h1" ) )
+         hlist.push( tag[0] );
+
+   // Fill in id to all headers
+   hlist = hlist.map( e => {
+      let lv = ~~/\d/.exec( e )[0], id = prop.exec( e ), title = text.exec( e )[1].trim();
+      if ( ! id ) {
+         id = title.toLowerCase().replace( /\W+/g, '_' );
+         data = data.replace( e, `<h${lv} id="${id}">${title}</h${lv}>` );
+      } else
+         id = id[1];
+      return [ lv, id, title ];
+   } );
 
    // Convert each header to <details>
    let end = data.indexOf( "</article>" );
@@ -66,16 +80,7 @@ function build ( data ) {
 
    // Build ToC
    let level = 2, toc = '';
-   const prop = / id="([^"]+)"/, text = />([^<]+)</;
-   for ( let e of hlist ) {
-      if ( e.startsWith( "<h1" ) ) continue;
-      let lv = ~~/\d/.exec( e )[0], id = prop.exec( e ), title = text.exec( e )[1].trim();
-      if ( ! id ) {
-         id = title.toLowerCase().replace( /\W+/g, '_' );
-         data = data.replace( e, `<h${lv} id="${id}">${title}</h${lv}>` );
-      } else
-         id = id[1];
-
+   for ( let [ lv, id, title ] of hlist ) {
       if ( lv === level )
          toc += `</li><li><a href="#${id}">${title}</a>`;
       else if ( lv > level )
@@ -105,7 +110,22 @@ function build ( data ) {
 
 /* Turns pub side guide into imp side */
 function convertToImp ( data ) {
-   const map = [
+   const map = [];
+
+   // Class
+   map.push( 
+      "Jedi", "Sith",
+      "Republic", "Imperial",
+      "Jedi Consular", "Sith Inquisitor",
+         "Sage", "Sorcerer",
+            "Seer", "Corruption",
+            "Telekinetic", "Lightning",
+            "Balance", "Madness",
+            "Balance Sage", "Madness Sorcerer",
+   );
+
+   // Sage - Balance
+   map.push(
       // Attacks
       "Telekinetic Throw", "Force Lightning",
       "Vanquish", "Demolish",
@@ -120,9 +140,6 @@ function convertToImp ( data ) {
       "Force Lift", "Whirlwind",
       "Force Stun", "Electrocute",
       "Force Wave", "Overload",
-      "Lift", "Whirlwind",
-      "Stun", "Electrocute",
-      "Wave", "Overload",
       "Mind Snap", "Jolt",
       // Heals
       "Force Armor", "Static Barrier",
@@ -140,17 +157,34 @@ function convertToImp ( data ) {
       "Vindicate", "Consuming Darkness",
       "Force of Will", "Unbreakable Will",
       "Rescue", "Extrication",
-      // Class
-      "Jedi Consular", "Sith Inquisitor",
-      "Balance Sage", "Madness Sorcerer",
-      "Sage", "Sorcerer",
-      "Seer", "Corruption",
-      "Telekinetic", "Lightning",
-      "Balance", "Madness",
-      "Republic", "Imperial",
+      // Skillful
+      "Psychic Suffusion", "Force Suffusion",
+      "Jedi Resistance", "Sith Defiance",
+      "Tectonic Master", "Tempest Mastery",
+      "Pain Bearer", "Empty Body",
+      "Benevolent Haste", "Dark Speed",
+      // Masterful
+      "Blockout", "Supression",
+      "Mind Ward", "Corrupted Flest",
+      "Valiance", "Dark Resilience",
+      "Confound", "Conspiring Force",
+      "Telekinetic Defense", "Lightning Barrier",
+      "Staggering Stratagem", "Torturous Tactics",
+      // Heroic
+      "Egress", "Emersion",
+      "Mental Defense", "Shapeless Spirit",
+      "Metaphysical Alacrity", "Surging Speed",
+      "Kinetic Collapse", "Backlash",
+      "Containment", "Haunted Dreams",
+      "Force Wake", "Electric Bindings",
+      // Legendary
+      "Swift Rejuvenation", "Galvanizing Cleanse",
+      "Life Ward", "Corrupted Barrier",
+      "Valorous Spirit", "Unnatural Vigor",
+      "Ethereal Entity", "Shifting Silhouette",
+      "Impeding Slash", "Enfeebling Strike",
       // Short names
-      "skittles", "lightnings"
-   ];
+      "skittles", "lightnings" );
 
    const dict = new Map(), rev = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
