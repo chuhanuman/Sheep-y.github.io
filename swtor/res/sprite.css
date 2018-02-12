@@ -1,0 +1,33 @@
+details[data-sprite] > summary::before {
+   --sprit-size: 36px;
+   background-size: auto 36px;
+   content: "";
+   display: inline-block;
+   height: var(--sprit-size);
+   margin-right: 0.5ex;
+   width: var(--sprit-size);
+   vertical-align: bottom;
+   }
+
+details[data-sprite^="jc"] > summary::before { background-image: url( "../img/jc/abilities.png" ); }
+
+details[data-sprite$="-A0"] > summary::before { background-position: 0 0; }
+details[data-sprite$="-A1"] > summary::before { background-position: calc( -1 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A2"] > summary::before { background-position: calc( -2 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A3"] > summary::before { background-position: calc( -3 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A4"] > summary::before { background-position: calc( -4 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A5"] > summary::before { background-position: calc( -5 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A6"] > summary::before { background-position: calc( -6 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A7"] > summary::before { background-position: calc( -7 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A8"] > summary::before { background-position: calc( -8 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A9"] > summary::before { background-position: calc( -9 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A10"] > summary::before { background-position: calc( -10 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A11"] > summary::before { background-position: calc( -11 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A12"] > summary::before { background-position: calc( -12 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A13"] > summary::before { background-position: calc( -13 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A14"] > summary::before { background-position: calc( -14 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A15"] > summary::before { background-position: calc( -15 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A16"] > summary::before { background-position: calc( -16 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A17"] > summary::before { background-position: calc( -17 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A18"] > summary::before { background-position: calc( -18 * var(--sprit-size) ) 0; }
+details[data-sprite$="-A19"] > summary::before { background-position: calc( -19 * var(--sprit-size) ) 0; }

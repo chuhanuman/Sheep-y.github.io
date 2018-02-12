@@ -1,10 +1,11 @@
 <!DOCTYPE html><html><head><meta charset="utf-8" />
 <title> Balance Sage PvE Guide - Swtor </title>
 <link href="../res/style.css?20180210" rel="stylesheet" />
+<link href="../res/sprite.css?20180210" rel="stylesheet" />
 </head><body><article>
 
 <h1 id="top"> Balance Sage PvE Guide 5.7a </h1>
-<p class="subtitle"> A class guide for Star Wars: Knights of the Old Re<span>pub</span>lic (swtor). Updated <time class="BUILD"></time>. </p>
+<p class="subtitle"> A class guide for Star Wars: Knights of the Old Re<span>pub</span>lic (swtor). Updated <time class="BUILD"></time> (<a href="https://github.com/Sheep-y/Sheep-y.github.io/commits/master/swtor/ac4_sage_sorc">changelog</a>). </p>
 <!--/*--><h1 style="color:red">This is a template, NOT the published guide; <br> Here is the <a href="ac4/balance.html">pub guide</a> / <a href="ac4/madness.html">imp guide</a>.</h1><!--*/-->
 
 <section id="toc">
@@ -24,9 +25,10 @@
 <ul class="note">
    <li> Hardest Sage discipline, excels at kiting and long fights. </li>
    <li> Stable rotation, zero proc dependency, very reliable relic proc. </li>
+   <li> Self-heals give us great stamina in a long fight, but we have few ways to survive burst damage. </li>
    <li> Telekinetic is Sage's burst DPS spec, easier to play and shares same gear. </li>
    <li> Seer is Sage's heal spec, very versatile and efficient, but uses different gear. </li>
-   <li> Imperial counterpart: Madness Sorcerer. </li>
+   <li> Imperial counterpart: <a href="madness.html">Madness Sorcerer</a>. </li>
 </ul>
 
 
@@ -98,7 +100,7 @@
 
 <h2 id="utils"> Abilities </h2>
 
-<p><a href="../img/jc/sage_balance/abilities.svg"><img alt="Ability Chart" src="../img/jc/sage_balance/abilities.jpg" /></a></p>
+<p><a href="../img/jc/sage_balance/abilities.svg?20180211"><img alt="Ability Chart" src="../img/jc/sage_balance/abilities.jpg?20180211" /></a></p>
 
 
 
@@ -262,7 +264,7 @@
 </ul>
 
 
-<h4> Project </h4>
+<h4 data-sprite="jc-A3"> Project </h4>
 <ul class="key">
    <li> The initial ranged attack of Jedi Consular, still useful at high level. </li>
    <li> Moderate instant damage, quick cooldown, stuns standard and weak enemy 0.5s. </li>
@@ -278,7 +280,7 @@
 </ul>
 
 
-<h4> Saber Strike </h4>
+<h4 data-sprite="jc-A2"> Saber Strike </h4>
 <ul class="key">
    <li> Our first and only melee attack, we have outgrown it as a DPS. </li>
    <li> For practical purpose, just forget Saber Strike ever exists. </li>
@@ -296,7 +298,7 @@
    <li> We lack in interrupts, but have some of the best controls. </li>
 </ul>
 
-<h4> Force Lift </h4>
+<h4 data-sprite="jc-A6"> Force Lift </h4>
 <ul class="key">
    <li> The best soft crown control (mez) in game. </li>
    <li> Works on any controllable targets, including droids and turrets. </li>
@@ -318,7 +320,7 @@
 </ul>
 
 
-<h4> Force Wave </h4>
+<h4 data-sprite="jc-A4"> Force Wave </h4>
 <ul class="key">
    <li> On of the three pushes in game and arguably the best (when used correctly). </li>
    <li> Push all enemies in the 135° cone away from us, usually ahead, but adjacent ones may go backward or sideways. </li>
@@ -340,7 +342,7 @@
 </ul>
 
 
-<h4> Force Stun </h4>
+<h4 data-sprite="jc-A5"> Force Stun </h4>
 <ul class="key">
    <li> A hard stun that is not interrupted by damages. </li>
    <li> Use on the toughest enemy in a group, esp. when it casts or channels. </li>
@@ -353,32 +355,49 @@
 <ul class="note">
    <li> Watch teammate's stun.  Overlapped stuns is a waste. </li>
    <li> In a quick fight we usually don't need to stun. </li>
+   <li> Companion in damage role has a ranged stun with lower cooldown. (At least they don't have mez.) </li>
    <li> Sith Inquisitor counterpart: Electrocute. </li>
 </ul>
 
 
-<h4> Mind Snap </h4>
+<h4 data-sprite="jc-A10"> Mind Snap </h4>
 <ul class="key">
    <li> Our basic interrupt ability, stops the target's current cast or channel. </li>
+   <li> Mind Snap is off-GCD: use it when we see a slow cast or channel and immediately resume next attack. </li>
 </ul>
 <ol class="use">
-   <li> Use on big attacks of any interruptible champions and bosses.  Very important. </li>
+   <li> Use on big attacks of any interruptible champions and bosses.  The slower the deadlier. </li>
    <li> Also work great on trash mob healers (medics/repair bots).  </li>
 </ol>
 <ul class="note">
    <li> Non-controllable enemies may still be interruptible. </li>
-   <li> Lift, Stun, Wave, and Mind Snap also work as interrupts on controllable enemies. </li>
+   <li> Force Lift, Force Stun, Force Wave, and Kinetic Collapse also work as interrupts on controllable enemies. </li>
    <li> Sith Inquisitor counterpart: Jolt. </li>
 </ul>
 
+
+<h4 data-sprite="jc-A11"> Force Slow </h4>
+<ul class="key">
+   <li> There are few times when we want to slow a slowable enemy instead of using more efficient attacks. </li>
+   <li> Such as Telekinetic Throw, which also slow (or pin) the target while doing higher damage and buffs us. </li>
+   <li> Can be used on the move, unlike Telekinetic Throw. </li>
+</ul>
+<ol class="use">
+   <li> When we kite a slowable enemy, usually champions. <span class="pvp">And pvp.</span> </li>
+   <li> When we are running and other mobile attacks are on cooldown. </li>
+</ol>
+<ul class="note">
+   <li> Damage is on par with Saber Strike, which is among our lowest. </li>
+   <li> Overlaps with Confound to virtually pins the victim.  </li>
+</ul>
 
 
 <h3> Heals and Defenses </h3>
 
 <ul class="key">
    <li> Not our main job, unless there are kolto stations where we can stand by while we attack. </li>
-   <li> As ranged DoT DPS, run away and hide behind cover is a great damage control that we must get into habit of. </li>
-   <li> Force Mend is our main self heal and is free.  Force Serenity is our 2<sup>nd</sup> biggest attack <i>and</i> self heal.  Use them. </li>
+   <li> Run away and hide behind cover (LoS) is a damage control skill that we must get into habit of, as a ranged DoT DPS. </li>
+   <li> Force Mend is our main self heal and is free. Force Serenity is our 2<sup>nd</sup> biggest attack <i>and</i> self heal. Use them. </li>
    <li> Bubble is our most efficient "heal". Throw it out when a friend needs help. </li>
    <li> After combat, revive fallen mates and heal them.  We can revive in combat, but let healer do that. </li>
    <li> When necessary, don't forget Heroic Moment, Unity/Sacrifice (gets from Light/Dark V), Medpaks, and Shielding adrenal. </li>
@@ -530,7 +549,7 @@
 </ul>
 
 
-<h4> Force of Will </h4>
+<h4 data-sprite="jc-A8"> Force of Will </h4>
 <ul class="key">
    <li> Our basic stun breaker. Way too long cooldown. </li>
    <li> Removes all slows, pins, and stunning debuffs from ourself. </li>
@@ -540,10 +559,10 @@
    <li> I normally reserve it for "break or die" situations, because the cooldown is so long. </li>
 </ol>
 <ul class="note">
-   <li> Don't bother to break if the stun is minor, like slows or short stuns. </li>
+   <li> Don't bother to break if the stun is minor, like slows, push, or short stuns. </li>
    <li> Many PvE pins and stuns are avoidable or interruptible. </li>
    <li> Force Barrier, on an even longer cooldown, also serves as a stun breaker. </li>
-   <li> Stun breaker are off-gcd: we can and should act immediately on break. </li>
+   <li> Stun breakers are off-GCD:  act immediately on break. </li>
    <li> Sith Inquisitor counterpart: Unbreakable Will. </li>
 </ul>
 
@@ -566,7 +585,7 @@
 </ul>
 
 
-<h4> Meditation </h4>
+<h4 data-sprite="jc-A1"> Meditation </h4>
 <ul class="key">
    <li> Out of combat Health/Force recovery. </li>
    <li> Rejuvenate before rest to speed up hp recovery. </li>
@@ -587,7 +606,7 @@
 </ul>
 
 
-<h4> Force Speed </h4>
+<h4 data-sprite="jc-A9"> Force Speed </h4>
 <ul class="key">
    <li> Our mobile ability to chase enemy, kite, or flee. </li>
    <li> Arguably our most important survival power. </li>
@@ -647,7 +666,7 @@
 </ul>
 
 
-<h4> Force Potency </h4>
+<h4 data-sprite="jc-A7"> Force Potency </h4>
 <ul class="key">
    <li> First of our two basic buffs, grant next two direct hits or heals +60% crit chance. </li>
    <li> Yields big number when used with 1) Force Mend, 2) Force Serenity on weakened victim. </li>
@@ -655,11 +674,12 @@
 <ol class="use">
    <li> When we need that critical Force Mend, immediately. </li>
    <li> Before we put Force in Balance and Force Serenity on a tough single target. </li>
+   <li> Best used during Mental Alacrity because of reduced cooldown. </li>
 </ol>
 <ul class="note">
    <li> This power is why we should get 40% crit right after 110% accuracy.  It turns Force Potency into 100% crit, or super crit, where overflowed crit chance turns into bonus heal/damage. </li>
    <li> Don't waste it on Force Quake, Force Wave, Rejuvenate, Stun, and other small but direct heals/attacks. </li>
-   <li> Best used during Mental Alacrity because of reduced cooldown. </li>
+   <li> All other DPS disciplines has auto crit (guaranteed crit).  We don't; this is our only "auto-crit". </li>
    <li> The 6-set bonus adds 1 more charge for a total of 3. If we don't use Force Potency on CD, the set bonus is wasted! </li>
    <li> Sorcerer counterpart: Recklessness. </li>
 </ul>
@@ -702,7 +722,7 @@
    <li> Sorcerer counterpart: Unlimited Power. </li>
 </ul>
 
-<h4> Force Valor </h4>
+<h4 data-sprite="jc-A0"> Force Valor </h4>
 <ul class="key">
    <li> Our class buff. Have it on all teammates always. </li>
    <li> <b>Mandatory</b>: Finish chapter 2 of all base class pairs to get all 4 class buffs in one cast. </li>
@@ -739,9 +759,8 @@
 <h2> Utilities </h2>
 
 <ul class="key">
-   <li> We get first utilities at level 14, then every 8 levels for 8 total. </li>
+   <li> We get first utilities at level 14, then every 8 levels for 8 total. New rank open with every two picks. </li>
    <li> Can reset and repick anytime out of combat. </li>
-   <li> Has four ranks; each 2 selected utilities open a new rank. </li>
    <li> Don't be afraid to ask the team for time to change utils before boss fights. </li>
 </ul>
 <ul class="note">
@@ -785,7 +804,7 @@
    <li> <b class="nice">Recommended</b>.
         Almost as good as 5% damage reduction. </li>
    <li> Does not apply to drained life (e.g. Force Serenity). </li>
-   <li> Apply to Rejuvenate, Force Mend, etc. Pick it always. Period. </li>
+   <li> Apply to Rejuvenate, Force Mend, Life Ward (bubble heal) etc. Pick it always. Period. </li>
 </ul>
 
 <h4> Dizzying Force </h4>
@@ -836,8 +855,10 @@
 
 <h4> Confound </h4>
 <ul class="key">
-   <li> <b class="bad">Avoid</b>.
+   <li> <b class="bad">Very Situational</b>.
         Not that many foes that can be slowed need to be kite. </li>
+   <li> Weaken Mind does last long and is spreadable. </li>
+   <li> Best used solo to slow and/or LoS a group of melee trash. </li>
 </ul>
 
 <h4> Telekinetic Defense </h4>
@@ -856,14 +877,15 @@
    <li> I like it because I can stun trash mobs more often. </li>
 </ul>
 
+
+
 <h3> Heroic </h3>
 <ul class="key">
    <li> First at level 46, second at level 54. </li>
    <li> <b class="good">Recommended</b>: Mental Defense (+30% stunned &amp; AoE damage reduction) </li>
-   <li> <b class="good">Good</b>: Kinetic Collapse (Bubble blinds on pop), Containment (instant Force Lift) </li>
-   <li> <b class="maybe">Situational</b>: Egress (Force Speed purge movement debuffs) </li>
+   <li> <b class="good">Good</b>: Kinetic Collapse (Bubble blinds on pop) </li>
+   <li> <b class="maybe">Situational</b>: Containment (instant Force Lift), Egress (Force Speed purge movement debuffs) </li>
 </ul>
-
 
 <h4> Egress </h4>
 <ul class="key">
@@ -890,10 +912,10 @@
 
 <h4> Kinetic Collapse </h4>
 <ul class="key">
-   <li> <b class="good">Good</b>.
-        Give us a free and frequent crowd control. </li>
+   <li> <b class="good">Good/By Preference</b>.
+        Give us a free and frequent passive crowd control. </li>
    <li> Blind is like stun. Blinded characters stops what they are doing and can't act while blinded. </li>
-   <li> Radius is 5 meters. We must aggressively get close to enemies to make best use of the blind. </li>
+   <li> Radius is 5 meters. We must stay close to enemies to blind them, which runs counter to our usual stay back style. </li>
    <li class="pvp"> In PvP it can unintentionally fills up opponent's resolve. </li>
 </ul>
 
@@ -902,7 +924,7 @@
    <li> <b class="maybe">By Preference</b>.
         Essentially gives us two interrupts and/or stuns. </li>
    <li> Also make our Force Lift usable on the go and immune from pushback, which is when we need Force Lift most. </li>
-   <li> Useful on adds in boss fights. </li>
+   <li> Useful on adds in boss fights where they are spread wide and far. </li>
 </ul>
 
 <h4> Force Wake </h4>
@@ -912,6 +934,8 @@
    <li> <i>Maybe</i> useful when we want to push and flee, such as on a planet. </li>
    <li> Given the options we have at this point, there are few reasons to pick this. </li>
 </ul>
+
+
 
 <h3> Legendary </h3>
 <ul class="key">
@@ -934,6 +958,7 @@
    <li> <b class="bad">Very situational</b>.
         Pick this to "prime" Force Serenity, Force Lift, or (if necessary) Vanquish before combat or behind cover. </li>
    <li> Wasteful because of extra GCD, even when it can <i>somewhat</i> replace Force Mobility and Containment. </li>
+   <li> More useful as part of a team, where we let other go first and do our control and rotations later. </li>
    <li> Do not pick just because we may cleanse. Most lower rank utilities are better options. </li>
 </ul>
 
@@ -943,6 +968,7 @@
    <li> Best for between-combat recovery and in downtime rich boss fights, and helps when LoS or kiting. </li>
    <li> Also let us Force Barrier at very low hp and come out in a better shape. </li>
    <li> Bubble right before or right after Force Barrier for even more heal. </li>
+   <li> Remember, actual heals generate a tiny threat to every NPC! </li>
 </ul>
 
 <h4> Valorous Spirit </h4>
@@ -1056,24 +1082,26 @@
    <li> See <a href="https://torcommunity.com/guides/companions#influence-love">gift</a> <a href="http://dulfy.net/2015/10/21/swtor-fallen-empire-companion-influences-guide/#Companion_Gifts">guides</a> for which type to buy and how many. </li>
 </ul>
 
-<h3 id="solo"> Solo Tactic </h3>
+<h3 id="tactic"> Tactics </h3>
 <ul class="key">
+   <li> Never go first; we are ranged not melee.  Always let companion or teammate attack first. Exceptions: pure Sage group or companion dies too fast. </li>
+   <li> Combat Priority: mechanics / survival &gt; adds &gt; teammate rescue / control &gt; spending our main attacks &gt; self-heal &gt; rotation fillers</li>
    <li> Bubble and Rejuvenate self before fight starts. Optionally place a Phase Walk. Keep bubble up during the fight. </li>
    <li> When under fire, run behind cover to force the enemies to run around it for easy AoE. This is called LoS. </li>
-   <li> Start fight by lifting the furthest or strongest enemy. LoS the rest, spread DoT, Quake the weaks and normals, focus fire the rest one by one. Interrupt and stun champions. </li>
    <li> Stock up on med packs. Cheaper than dying. Use stim at (close to) max level. Use adrenal in tough fights. </li>
-   <li> Spread Damage over Time and Kite the enemies.  They each get their own section. </li>
-   <li> Force Wave can be used more or less liberally, but try to group the enemies for AoE. </li>
 </ul>
-
-<h3 id="team"> Team Tactic </h3>
-<ul class="key">
-   <li> Never go first in a group; we are ranged not melee.  Always let companion or teammate attack first. (Except pure Sage group. Rare, but happened to me.) </li>
+<ul summary="solo">
+   <li> Start fight by lifting the furthest or strongest enemy. LoS the rest, spread DoT, Quake the weaks and normals, focus fire the rest one by one. Interrupt and stun champions. </li>
+   <li> Spread <a href="#dot">Damage over Time</a> and <a href="kiting">Kite</a> the enemies. </li>
+   <li> Force Wave can be used more or less liberally, but try to group the enemies for AoE. </li>
+   <li> Buy and eat Peppered Bantha Steak and Chilled Corellian Cocktail to increase hp regen and companion effectiveness. Check the fleet's Cantina Vendor. </li>
+   <li> When we finish a fight with Telekinetic Throw, use the primed Vanquish to start next fight before it expire! </li>
+</ul>
+<ul summary="team">
    <li> Move last or second last (around/before healer).  Find and stay near cover before and during combat. </li>
    <li> The more we lift, the more our teammates are aware that we'll lift. </li>
-   <li> Do not Force Wave unless we are very confident it'll not make the melee unhappy. </li>
+   <li> Restrain on use of Force Wave and Rescue. They both change positioning, which is disruptive. </li>
    <li> Use Cloud Mind often, even when we are not under attack, to keep our threat low. </li>
-   <li> Most solo tactics also apply in a team setting. </li>
 </ul>
 
 
@@ -1101,27 +1129,52 @@
 <h3 id="kiting"> Kiting </h3>
 
 <ul class="key">
-   <li> Kiting is making opponent(s) run around chasing us but rarely or never catch us. </li>
+   <li> Kiting is making opponent(s) run after us, always chasing but rarely or never catch us, like a kite. </li>
    <li> While they are chasing us, our DoTs and/or friends are hurting them. </li>
    <li> Very low dps; kiting is a slow war of attrition used when we would otherwise die too fast to see it through. </li>
    <li> Sage DPSs can't facetank and depends on kiting to survive hard fights. </li>
-   <li> Run sideways when kiting, don't run forward or backward. This let us throws slows and DoTs and other instant attacks, but not too slow to escape. </li>
-   <li> Keep the action up even when moving.  DoTs, Project, Force in Balance, Slow, Stun, Bubble, Rejuvenate. Should rarely run out of things to do.  </li>
+   <li> Run sideways when kiting, don't run forward or backward. This let us throws DoTs and other  attacks, but not run slow like backsteping. </li>
+   <li> Keep the action up even when moving.  DoTs, Project, Force in Balance, Slow, Stun, Bubble, Rejuvenate. Revise utility to get even more. </li>
 </ul>
 <ul class="note">
    <li> Kiting is about damage control, about lowering dtps to a winnable level. </li>
-   <li> Mainly for solo<span class="pvp"> and PvP</span>. In a team we should let tankies go tank. </li>
+   <li> If the foe is not immune, Force Stun, Force Lift, and Kinetic Collapse should be used with and preferred over kiting as damage control. </li>
+   <li> Mainly for solo<span class="pvp"> and PvP</span>. In team PvE, let tankies go tank. </li>
    <li> Also applies when a boss is chasing us, because everyone else is down or mechanic reason. </li>
-   <li> Mandatory when soloing  master chapter bosses. Very few exceptions. </li>
+   <li> Kiting is not about not taking any damage.  We may take more damage than we deal.  As long as we can overcome the damage we take and our enemy can't, it is working. </li>
 </ul>
 
-<h4 id="kite_melee"> Kiting Melee </h4>
+<h4 id="kite_common"> General Kitings </h4>
+<ul summary="Melee Kiting">
+   <li> Run in circle around a cover, throw AoE before he clears the corners, deal DoTs and instant attacks when he poke out, then flee behind cover and self heal. Repeat until we win. </li>
+   <li> Melee enemies often move faster than us and can jump to us, called a gap close. </li>
+   <li> After being jumped, Force Speed to another cover to put some distance, and use the chance to Force Serenity or Telekinetic Throw. </li>
+   <li> Use Force Slow, Confound, and other crowd controls if the foe is not immune. </li>
+   <li> Ethereal Entity is our only way to be immune from gap close, and can buy us valuable time to pepper the enemy with casted and channeled attacks. </li>
+   <li> Either set companion to heal so that (s)he doesn't draw the enemy away, or let him/her die and kite alone. </li>
+</ul>
+<ul summary="Ranged Kiting">
+   <li> Common form is same as kiting melee, except ranged foes don't have gap closer but often have AoE. </li>
+   <li> Some ranged NPCs have casted attack; immediately run behind cover so that it fails, then poke out and attack. </li>
+   <li> Some encounters do not give us any place to hide. In this case kite at 30m range - get in range, deal DoTs, then flee and let the foe chase us. </li>
+   <li> The 30m kiting also works on melees without gap closers. </li>
+   <li> Preferably we run in a big circle on the map. When we can't, Force Speed from one end of the map to another like a pendulum. </li>
+</ul>
 
-<h4 id="kite_ranged"> Kiting Ranged </h4>
-
-<h4 id="kite_los"> Kiting LoS </h4>
-
-<h4 id="kite_facetank"> Facetank kiting </h4>
+<h4 id="kite_special"> Special Kitings </h4>
+<ul summary="LoS Kiting">
+   <li> A special form of kiting when there is a big steam of trashes or adds that keep coming and coming. </li>
+   <li> They always land at where the encounter is supposed to happen.  First step is to trigger the encounter, then run back far and behind a cover. </li>
+   <li> The NPCs will come chase us.  This takes time, time for us to take the wave down, heal up, and cooldown for next wave. </li>
+   <li> Use passive mode to stop  companion from chasing them. Ranged companions preferred. </li>
+</ul>
+<ul summary="Facetank Kiting">
+   <li> Sometimes nothing else works.  For me this is KotFE Chapter VIII's platform fight with the Zakuul captain, on master mode, where she jumps and beat me in two to three hits. </li>
+   <li> We must still kite. Apply DoTs, run, DCDs right before she catches up, facetank a few seconds, Phase Walk and self heal, refresh DoT when she comes again and Force Barrier. </li>
+   <li> DCDs: Unity (50% 15s), Advanced Polybiotic Shielding Adrenal (30% 15s), Blockout (30% 6s), Ethereal Entity (30% ?s), Valorous Spirit (15% 6s), Rejuvenate (5% 9s). </li>
+   <li> Note that Blockout may direct the enemy's attention to our companion, instead of serving as a DCD! </li>
+   <li> Also useful: Heroic Moment, Life Ward, Swift Rejuvenation. Medkits and stims assumed. </li>
+</ul>
 
 
 <h3 id="interface"> Interface and keybinds </h3>

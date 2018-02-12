@@ -37,6 +37,7 @@ function normalise ( data ) {
    data = data.replace( /(<[ou]l class="key)/g, '<details open><summary>Basics</summary>$1' );
    data = data.replace( /(<[ou]l class="use)/g, '<details open><summary>Usages</summary>$1' );
    data = data.replace( /(<[ou]l class="note)/g, '<details open><summary>Notes</summary>$1' );
+   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
    
@@ -46,23 +47,23 @@ function normalise ( data ) {
 
 /* Convert headers to details and build ToC */
 function build ( data ) {
+   const header = /<h(\d)([^>]*)>([^<]+)<\/h\1>/g, idProp = / id="([^"]+)"/;
 
    // Scan ToC, before headers are converted
-   let tag, header = /<h(\d)[^>]*>([^<]+)<\/h\1>/g, hlist = [];
-   const prop = / id="([^"]+)"/, text = />([^<]+)</;
+   let tag, hlist = [];
    while ( tag = header.exec( data ) )
-      if ( ! tag[0].startsWith( "<h1" ) )
-         hlist.push( tag[0] );
+      if ( tag[1] !== "1" )
+         hlist.push( tag );
 
    // Fill in id to all headers
-   hlist = hlist.map( e => {
-      let lv = ~~/\d/.exec( e )[0], id = prop.exec( e ), title = text.exec( e )[1].trim();
+   hlist = hlist.map( ([ header, lv, prop, title ]) => {
+      let id = idProp.exec( prop );
       if ( ! id ) {
-         id = title.toLowerCase().replace( /\W+/g, '_' );
-         data = data.replace( e, `<h${lv} id="${id}">${title}</h${lv}>` );
+         id = title.trim().toLowerCase().replace( /\W+/g, '_' );
+         data = data.replace( header, `<h${lv} id="${id}"${prop}>${title}</h${lv}>` );
       } else
          id = id[1];
-      return [ lv, id, title ];
+      return [ lv, id, prop, title ];
    } );
 
    // Convert each header to <details>
@@ -71,16 +72,18 @@ function build ( data ) {
       const hx = new RegExp( `<h${hlv}([^>]*)>(.*?)<\/h${hlv}>` ),
                next = new RegExp( "<(h[" + "654321".slice( 6-hlv ) + "]|/section|/article)" );
       while ( tag = hx.exec( data ) ) {
-         const { 0: txt, index: pos } = tag, endPos = pos + txt.length + next.exec( data.slice( pos + txt.length ) ).index;
+         const { 0: txt, 1: props, 2: title, index: pos } = tag,
+                  endPos = pos + txt.length + next.exec( data.slice( pos + txt.length ) ).index;
          //console.log( `${txt}: ${pos} to ${endPos} ${data.slice(pos,endPos)}` );
          data = data.slice( 0, endPos ) + "</details>" + data.slice( endPos );
-         data = data.slice( 0, pos ) + `<details h="h${hlv}"${tag[1]} open><summary>${tag[2].trim()}</summary>` + data.slice( pos + txt.length );
+         data = data.slice( 0, pos ) + `<details h="h${hlv}"${props} open><summary>${title.trim()}</summary>` + data.slice( pos + txt.length );
       }
    }
 
    // Build ToC
    let level = 2, toc = '';
-   for ( let [ lv, id, title ] of hlist ) {
+   for ( let [ lv, id, , title ] of hlist ) {
+      title = title.trim();
       if ( lv === level )
          toc += `</li><li><a href="#${id}">${title}</a>`;
       else if ( lv > level )
@@ -113,76 +116,53 @@ function convertToImp ( data ) {
    const map = [];
 
    // Class
-   map.push( 
+   map.push(
       "Jedi", "Sith",
       "Republic", "Imperial",
-      "Jedi Consular", "Sith Inquisitor",
-         "Sage", "Sorcerer",
+      "Jedi Consular", "Sith Inquisitor",          "sprite=\"jc-", "sprite=\"si-",
+         "Sage", "Sorcerer",                       "sprite=\"sage-", "sprite=\"sorc-",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
-            "Balance", "Madness",
-            "Balance Sage", "Madness Sorcerer",
+            "Balance", "Madness",                  "Balance Sage", "Madness Sorcerer", "madness.html", "balance.html",
    );
 
    // Sage - Balance
    map.push(
       // Attacks
-      "Telekinetic Throw", "Force Lightning",
-      "Vanquish", "Demolish",
-      "Sever Force", "Creeping Terror",
-      "Weaken Mind", "Affliction",
-      "Force in Balance", "Death Field",
-      "Force Serenity", "Force Leach",
-      "Disturbance", "Lightning Strike",
-      "Project", "Shock",
+      "Telekinetic Throw", "Force Lightning",      "Vanquish", "Demolish",
+      "Sever Force", "Creeping Terror",            "Weaken Mind", "Affliction",
+      "Force in Balance", "Death Field",           "Force Serenity", "Force Leach",
+      "Disturbance", "Lightning Strike",           "Project", "Shock",
       "Force Quake", "Force Storm",
       // Controls
-      "Force Lift", "Whirlwind",
-      "Force Stun", "Electrocute",
-      "Force Wave", "Overload",
-      "Mind Snap", "Jolt",
+      "Force Lift", "Whirlwind",                   "Force Stun", "Electrocute",
+      "Force Wave", "Overload",                    "Mind Snap", "Jolt",
       // Heals
-      "Force Armor", "Static Barrier",
-      "Force Mend", "Unnatural Preservation",
-      "Rejuvenate", "Resurgense",
-      "Benevolence", "Dark Heal",
-      "Restoration", "Expunge",
-      "Revival", "Reanimation",
+      "Force Armor", "Static Barrier",             "Force Mend", "Unnatural Preservation",
+      "Rejuvenate", "Resurgense",                  "Benevolence", "Dark Heal",
+      "Restoration", "Expunge",                    "Revival", "Reanimation",
       "Meditation", "Seethe",
       // Buff & Utils
-      "Force Valor", "Mark of Power",
-      "Mental Alacrity", "Polarity Shift",
-      "Force Potency", "Recklessness",
-      "Force Empowerment", "Unlimited Power",
-      "Vindicate", "Consuming Darkness",
-      "Force of Will", "Unbreakable Will",
+      "Force Valor", "Mark of Power",              "Mental Alacrity", "Polarity Shift",
+      "Force Potency", "Recklessness",             "Force Empowerment", "Unlimited Power",
+      "Vindicate", "Consuming Darkness",           "Force of Will", "Unbreakable Will",
       "Rescue", "Extrication",
       // Skillful
-      "Psychic Suffusion", "Force Suffusion",
-      "Jedi Resistance", "Sith Defiance",
-      "Tectonic Master", "Tempest Mastery",
-      "Pain Bearer", "Empty Body",
-      "Benevolent Haste", "Dark Speed",
+      "Psychic Suffusion", "Force Suffusion",      "Jedi Resistance", "Sith Defiance",
+      "Tectonic Master", "Tempest Mastery",        "Pain Bearer", "Empty Body",
+                                                   "Benevolent Haste", "Dark Speed",
       // Masterful
-      "Blockout", "Supression",
-      "Mind Ward", "Corrupted Flest",
-      "Valiance", "Dark Resilience",
-      "Confound", "Conspiring Force",
-      "Telekinetic Defense", "Lightning Barrier",
-      "Staggering Stratagem", "Torturous Tactics",
+      "Blockout", "Supression",                    "Mind Ward", "Corrupted Flest",
+      "Valiance", "Dark Resilience",               "Confound", "Conspiring Force",
+      "Telekinetic Defense", "Lightning Barrier",  "Staggering Stratagem", "Torturous Tactics",
       // Heroic
-      "Egress", "Emersion",
-      "Mental Defense", "Shapeless Spirit",
-      "Metaphysical Alacrity", "Surging Speed",
-      "Kinetic Collapse", "Backlash",
-      "Containment", "Haunted Dreams",
-      "Force Wake", "Electric Bindings",
+      "Egress", "Emersion",                        "Mental Defense", "Shapeless Spirit",
+      "Metaphysical Alacrity", "Surging Speed",    "Kinetic Collapse", "Backlash",
+      "Containment", "Haunted Dreams",             "Force Wake", "Electric Bindings",
       // Legendary
-      "Swift Rejuvenation", "Galvanizing Cleanse",
-      "Life Ward", "Corrupted Barrier",
-      "Valorous Spirit", "Unnatural Vigor",
-      "Ethereal Entity", "Shifting Silhouette",
-      "Impeding Slash", "Enfeebling Strike",
+                                                   "Swift Rejuvenation", "Galvanizing Cleanse",
+      "Life Ward", "Corrupted Barrier",            "Valorous Spirit", "Unnatural Vigor",
+      "Ethereal Entity", "Shifting Silhouette",    "Impeding Slash", "Enfeebling Strike",
       // Short names
       "skittles", "lightnings" );
 
@@ -202,12 +182,10 @@ function convertToImp ( data ) {
       data = data.replace( regx, dict.get( e ) );
    }
    
-   let counter = /[A-Za-z ]+ counterpart: [A-Za-z ]+/g, part, parts = new Set();
-   while ( part = counter.exec( data ) ) parts.add( part[0].trim() );
-   for ( let e of parts ) {
-      part = e.split( " counterpart: " );
-      data = data.replace( new RegExp( e, 'g' ), rev.get( part[0] ) + " counterpart: " + rev.get( part[1] ) );
-   }
+   let counter = /([A-Za-z ]+)( counterpart: (?:<a[^>]+>)?)([A-Za-z ]+)</g, part, parts = new Set();
+   while ( part = counter.exec( data ) ) parts.add( part );
+   for ( let [ whole, side, join, counter, close ] of parts )
+      data = data.replace( new RegExp( whole.trim(), 'g' ), rev.get( side.trim() ) + join + rev.get( counter.trim() ) + "<" );
 
    return data;
 }
