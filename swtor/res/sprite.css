@@ -10,8 +10,9 @@ details[data-sprite] > summary::before {
    vertical-align: bottom;
    }
 
-details[data-sprite^="jc"] > summary::before { background-image: url( "../img/jc/abilities.jpg" ); }
-details[data-sprite^="sage"] > summary::before { background-image: url( "../img/jc/abilities_sage.jpg" ); }
+details[data-sprite^="jc-"] > summary::before { background-image: url( "../img/jc/abilities.jpg" ); }
+details[data-sprite^="sage-"] > summary::before { background-image: url( "../img/jc/sage/abilities.jpg" ); }
+details[data-sprite^="sage_u-"] > summary::before { background-image: url( "../img/jc/sage/utilities.jpg" ); }
 
 details[data-sprite$="-0" ] > summary::before { background-position: 0 0; }
 details[data-sprite$="-1" ] > summary::before { background-position: calc( -1  * var(--sprit-w) ) 0; }
