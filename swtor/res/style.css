@@ -1,5 +1,5 @@
 * {
-   box-sizing: border;
+   box-sizing: border-box;
    }
 
 body {
@@ -35,16 +35,16 @@ ol, ul {
       }
 
 /* Put ToC on left side on desktop */
-@media (min-width: 1500px) {
+@media (min-width: 1340px) {
    #toc {
       left: 0;
       max-height: 100vh;
       overflow-y: scroll;
       position: fixed;
       top: 0;
-      width: 550px;
+      width: 400px;
       }
    article {
-      margin: 0 0 0 600px;
+      margin: 0 0 0 440px;
       }
 }
