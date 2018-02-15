@@ -32,6 +32,9 @@ function normalise ( data ) {
    // Minor trims
    data = data.replace( /  +>/g, ' ' );
 
+   // Fix multiline sentences
+   data = data.replace( /\.(?=[A-Z])/g, '. ' );
+
    // Convert list to <details>
    data = data.replace( /(<[ou]l class="desc)/g, '<details open><summary>Description</summary>$1' );
    data = data.replace( /(<[ou]l class="key)/g, '<details open><summary>Basics</summary>$1' );
@@ -120,7 +123,7 @@ function convertToImp ( data ) {
       "Jedi", "Sith",
       "Republic", "Imperial",
       "Jedi Consular", "Sith Inquisitor",          "sprite=\"jc-", "sprite=\"si-",
-         "Sage", "Sorcerer",                       "sprite=\"sage-", "sprite=\"sorc-",
+         "Sage", "Sorcerer",                       "sprite=\"sage", "sprite=\"sorc",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
             "Balance", "Madness",                  "Balance Sage", "Madness Sorcerer", "madness.html", "balance.html",
