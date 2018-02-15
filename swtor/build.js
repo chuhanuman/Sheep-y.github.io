@@ -61,8 +61,9 @@ function build ( data ) {
    // Fill in id to all headers
    hlist = hlist.map( ([ header, lv, prop, title ]) => {
       let id = idProp.exec( prop );
+      title = title.trim();
       if ( ! id ) {
-         id = title.trim().toLowerCase().replace( /\W+/g, '_' );
+         id = title.toLowerCase().replace( /\W+/g, '_' );
          data = data.replace( header, `<h${lv} id="${id}"${prop}>${title}</h${lv}>` );
       } else
          id = id[1];
@@ -83,23 +84,30 @@ function build ( data ) {
       }
    }
 
-   // Build ToC
-   let level = 2, toc = '';
-   for ( let [ lv, id, , title ] of hlist ) {
-      title = title.trim();
-      if ( lv === level )
-         toc += `</li><li><a href="#${id}">${title}</a>`;
-      else if ( lv > level )
-         toc += `<ul><li><a href="#${id}">${title}</a>`;
-      else if ( lv < level ) {
-         toc += "</li>";
-         while ( level-- > lv ) toc += "</ul></li>";
-         toc += `<li><a href="#${id}">${title}</a>`;
+   // Put headers into tree structure
+   let level = 2, current = [], hstack = [];
+   for ( let [ lv, id, prop, title ] of hlist ) {
+      if ( lv > level ) {
+         hstack.push( current );
+         current = current[ current.length - 1 ].subs = [];
+      } else if ( lv < level ) {
+         while ( level-- > lv ) current = hstack.pop();
       }
+      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, subs: null } );
       level = lv;
    }
-   toc = '<ul class="toc">' + toc.substr( 5 );
-   while ( level-- >= 2 ) toc += "</li></ul>";
+   while ( level-- > 2 ) current = hstack.pop();
+
+   // Build ToC from tree
+   function buildToC( item ) {
+      if ( item.subs ) {
+         let html = `<li><details open><summary>${item.h}</summary><ul>`;
+         for ( const e of item.subs ) html += buildToC(e);
+         return html + "</ul></details></li>";
+      } else
+         return `<li>${item.h}</li>`;
+   }
+   const toc = "<ul>" + current.map( buildToC ).join('') + "</ul>";
 
    // Tag replace
    data = data.replace( '<p class="TOC"></p>', toc );

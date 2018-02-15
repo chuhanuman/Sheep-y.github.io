@@ -13,6 +13,21 @@ body {
          max-width: 900px;
          }
 
+ol, ul {
+   margin: 1ex 0;
+   }
+   .note li {
+      font-size: 20px;
+      }
+
+#toc ul {
+   list-style-type: none;
+   padding-left: 20px;
+   }
+   #toc ol, #toc ul {
+      margin: 0;
+      }
+
 details[h] > summary {
    font-weight: bold;
    margin: 1em 0;
@@ -25,13 +40,6 @@ details[h] > summary {
       }
    details[h=h4] > summary {
       font-size: 28px;
-      }
-
-ol, ul {
-   margin: 1ex 0;
-   }
-   .note li {
-      font-size: 20px;
       }
 
 /* Put ToC on left side on desktop */
