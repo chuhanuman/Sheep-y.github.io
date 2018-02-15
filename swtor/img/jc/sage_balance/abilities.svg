@@ -1044,23 +1044,28 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5.00000007%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         x="111.98201"
-         y="215.07452"
+         x="111.9486"
+         y="212.57907"
          id="text4859-9"
          inkscape:label="Force Speed CD"><tspan
            sodipodi:role="line"
            id="tspan4853-16"
-           x="111.98201"
-           y="215.07452"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5.00000007%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px">20s</tspan><tspan
+           x="111.9486"
+           y="212.57907"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5.00000007%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px">20s fixed</tspan><tspan
            sodipodi:role="line"
-           x="111.98201"
-           y="217.74503"
+           x="111.9486"
+           y="215.24957"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5.00000007%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px"
            id="tspan1226">(15s)</tspan><tspan
            sodipodi:role="line"
-           x="111.98201"
-           y="220.41551"
+           x="111.9486"
+           y="217.92006"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5.00000007%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan501">Off GCD</tspan><tspan
+           sodipodi:role="line"
+           x="111.9486"
+           y="220.59056"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5.00000007%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px"
            id="tspan4857-18">Free</tspan></text>
       <text
@@ -2995,7 +3000,7 @@
          y="126.57077"
          x="8.000288"
          sodipodi:role="line"
-         id="tspan447">Last update 2018-02-11</tspan><tspan
+         id="tspan447">Last update 2018-02-15</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:30.00000119%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;fill:#505050;fill-opacity:1;stroke-width:0.26458332px"
          y="130.77585"
          x="8.000288"
