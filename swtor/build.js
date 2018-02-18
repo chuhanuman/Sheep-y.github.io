@@ -8,7 +8,7 @@ fs.readFile( 'ac4_sage_sorc/_Balance_Madness.html', 'utf8', (err, data) => {
 
    data = normalise( data );
 
-   fs.writeFile ( "ac4/balance.html", build( data ), ( err ) => {
+   fs.writeFile ( "ac4/balance.html", build( convertToPub( data ) ), ( err ) => {
       if ( err ) throw err;
       console.log( "Balance guide built" );
    } );
@@ -122,8 +122,16 @@ function build ( data ) {
    return data;
 }
 
-/* Turns pub side guide into imp side */
+/* Turns pub side template into final form */
+function convertToPub ( data ) {
+   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/, '' );
+   return data;
+}
+
+/* Turns pub side template into imp form */
 function convertToImp ( data ) {
+   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/, '' );
+
    const map = [];
 
    // Class
