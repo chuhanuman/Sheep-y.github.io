@@ -1,36 +1,52 @@
 'use strict';
 // Run this script with Node JS to generate ready to publish guides
 
-var fs = require('fs');
+const fs = require('fs'),
+      flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
+                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
+               ],
+      [ dict, termList ] = buildMap();
 
-fs.readFile( 'ac4_sage_sorc/_Balance_Madness.html', 'utf8', (err, data) => {
-   if ( err ) throw err;
-
-   data = normalise( data );
-
-   fs.writeFile ( "ac4/balance.html", build( data ), ( err ) => {
+for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
+   fs.readFile( flist[i], 'utf8', ( err, data ) => {
       if ( err ) throw err;
-      console.log( "Balance guide built" );
+      data = normalise( data );
+      fs.writeFile ( flist[i+1], build( convertToPub( data ) ), ( err ) => {
+         if ( err ) throw err;
+         console.log( `Built: ${flist[i+1]}` );
+      } );
+      fs.writeFile ( flist[i+2], build( convertToImp( data ) ), ( err ) => {
+         if ( err ) throw err;
+         console.log( `Built: ${flist[i+2]}` );
+      } );
    } );
+}
 
+/* Turn text into id */
+function idify ( text ) {
+   return text.trim().toLowerCase().replace( /\W+/g, '_' );
+}
 
-   fs.writeFile ( "ac4/madness.html", build( convertToImp( data ) ), ( err ) => {
-      if ( err ) throw err;
-      console.log( "Madness guide built" );
-   } );
-
-} );
 
 /* Removes whitespaces and comments, and convert list to details block */
 function normalise ( data ) {
+   // Remove inkscape props
+   data = data.replace( /(inkscape|sodipodi):\w+=\"[^"]*\"/g, '' );
+   // Fix svg links
+   data = data.replace( /xlink:href/g, 'href' );
+
    // Turns to one line
-   data = data.replace( /\s*[\r\n]+\s*/g, '' );
+   data = data.replace( /\s*[\r\n]+\s*/g, ' ' );
    // Drop comments
    data = data.replace( /\/\*.*?\*\//g, '' ).replace( /<!--.*?-->/g, '' );
    // Drop spaces between and within tags
    data = data.replace( />\s+</g, '><' ).replace( / \/>/g, '/>' );
    // Minor trims
    data = data.replace( /  +>/g, ' ' );
+
+   // Set build time
+   data = data.replace( '$DATE_BUILD', new Date().toISOString().split( /T/ )[0] );
+   if ( ! data.includes( '<p>' ) ) return data;
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );
@@ -43,13 +59,14 @@ function normalise ( data ) {
    data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
-   
+
    return data;
 }
 
-
 /* Convert headers to details and build ToC */
 function build ( data ) {
+   if ( ! data.includes( '<p>' ) ) return data;
+
    const header = /<h(\d)([^>]*)>([^<]+)<\/h\1>/g, idProp = / id="([^"]+)"/;
 
    // Scan ToC, before headers are converted
@@ -61,8 +78,9 @@ function build ( data ) {
    // Fill in id to all headers
    hlist = hlist.map( ([ header, lv, prop, title ]) => {
       let id = idProp.exec( prop );
+      title = title.trim();
       if ( ! id ) {
-         id = title.trim().toLowerCase().replace( /\W+/g, '_' );
+         id = idify( title );
          data = data.replace( header, `<h${lv} id="${id}"${prop}>${title}</h${lv}>` );
       } else
          id = id[1];
@@ -83,27 +101,33 @@ function build ( data ) {
       }
    }
 
-   // Build ToC
-   let level = 2, toc = '';
-   for ( let [ lv, id, , title ] of hlist ) {
-      title = title.trim();
-      if ( lv === level )
-         toc += `</li><li><a href="#${id}">${title}</a>`;
-      else if ( lv > level )
-         toc += `<ul><li><a href="#${id}">${title}</a>`;
-      else if ( lv < level ) {
-         toc += "</li>";
-         while ( level-- > lv ) toc += "</ul></li>";
-         toc += `<li><a href="#${id}">${title}</a>`;
+   // Put headers into tree structure
+   let level = 2, current = [], hstack = [];
+   for ( let [ lv, id, prop, title ] of hlist ) {
+      if ( lv > level ) {
+         hstack.push( current );
+         current = current[ current.length - 1 ].subs = [];
+      } else if ( lv < level ) {
+         while ( level-- > lv ) current = hstack.pop();
       }
+      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, subs: null } );
       level = lv;
    }
-   toc = '<ul class="toc">' + toc.substr( 5 );
-   while ( level-- >= 2 ) toc += "</li></ul>";
+   while ( level-- > 2 ) current = hstack.pop();
 
-   // Tag replace
+   // Build ToC from tree
+   function buildToC( item ) {
+      if ( item.subs ) {
+         let html = `<li><details open><summary>${item.h}</summary><ul>`;
+         for ( const e of item.subs ) html += buildToC(e);
+         return html + "</ul></details></li>";
+      } else
+         return `<li>${item.h}</li>`;
+   }
+   const toc = "<ul>" + current.map( buildToC ).join('') + "</ul>";
+
+   // ToC replace
    data = data.replace( '<p class="TOC"></p>', toc );
-   data = data.replace( '<time class="BUILD"><\/time>', '<time>' + new Date().toISOString().split( /T/ )[0] + '</time>' );
 
    // Count open and close tags
    const open = /<(\w+)(?![^>]*\/>)/g, close = /<\/(\w+)/g, tags = new Map();
@@ -114,19 +138,51 @@ function build ( data ) {
    return data;
 }
 
-/* Turns pub side guide into imp side */
+/* Turns pub side template into final form */
+function convertToPub ( data ) {
+   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, '' );
+   return data;
+}
+
+/* Turns pub side template into imp form */
 function convertToImp ( data ) {
+   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, '' );
+   let result = '', pos = 0;
+   while ( true ) {
+      const match = data.slice( pos ).match( /<(\w+) class="imp"/ );
+      let end = match ? pos + match.index : data.length;
+      // Translate non-imp part
+      let part = data.slice( pos, end );
+      for ( const e of termList ) {
+         const [ from, to ] = dict.get( e );
+         part = part.replace( from, to );
+      }
+      result += part;
+      if ( end >= data.length ) break;
+      // Copy imp part
+      pos = end;
+      end = data.slice( pos ).indexOf( '</' + match[1] );
+      end = end > 0 ? end + pos : data.length;
+      result += data.slice( pos, end );
+      // Move forward
+      pos = end;
+   }
+   return result;
+}
+
+/* Build translation map and list */
+function buildMap () {
    const map = [];
 
    // Class
    map.push(
       "Jedi", "Sith",
       "Republic", "Imperial",
-      "Jedi Consular", "Sith Inquisitor",          "sprite=\"jc-", "sprite=\"si-",
-         "Sage", "Sorcerer",                       "sprite=\"sage", "sprite=\"sorc",
+      "Jedi Consular", "Sith Inquisitor",          "jc", "si",
+         "Sage", "Sorcerer",                       "sage", "sorc",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
-            "Balance", "Madness",                  "Balance Sage", "Madness Sorcerer", "madness.html", "balance.html",
+            "Balance", "Madness",
    );
 
    // Sage - Balance
@@ -169,26 +225,17 @@ function convertToImp ( data ) {
       // Short names
       "skittles", "lightnings" );
 
-   const dict = new Map(), rev = new Map(), list = [];
+   const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
-      dict.set( map[i], map[i+1] );
-      rev.set( map[i+1], map[i] );
-      list.push( map[i] );
+      const p = map[i], e = map[i+1], pid = '#'+idify(p), eid = '#'+idify(e);
+      dict.set( p  , [ new RegExp( `\\b${p}\\b`  , 'g' ), e   ] );
+      dict.set( pid, [ new RegExp( `\\b${pid}\\b`, 'g' ), eid ] );
+      list.push( p, pid );
    }
    list.sort( (a,b) => {
       const al = a.length, bl = b.length;
       if ( al != bl ) return bl - al;
       return a > b ? 1 : ( a === b ? 0 : -1 );
    } );
-   for ( let e of list ) {
-      const regx = new RegExp( "\\b" + e + "\\b", 'g' );
-      data = data.replace( regx, dict.get( e ) );
-   }
-   
-   let counter = /([A-Za-z ]+)( counterpart: (?:<a[^>]+>)?)([A-Za-z ]+)</g, part, parts = new Set();
-   while ( part = counter.exec( data ) ) parts.add( part );
-   for ( let [ whole, side, join, counter, close ] of parts )
-      data = data.replace( new RegExp( whole.trim(), 'g' ), rev.get( side.trim() ) + join + rev.get( counter.trim() ) + "<" );
-
-   return data;
+   return [ dict, list ];
 }
