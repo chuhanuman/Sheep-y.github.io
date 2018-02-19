@@ -2,7 +2,7 @@
 // Run this script with Node JS to generate ready to publish guides
 
 const fs = require('fs'),
-      flist = [ 'ac4_sage_sorc/_Balance_Madness.html', 'ac4/balance.html', 'ac4/madness.html',
+      flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
                 'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
                ];
 
@@ -12,11 +12,11 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
       data = normalise( data );
       fs.writeFile ( flist[i+1], build( convertToPub( data ) ), ( err ) => {
          if ( err ) throw err;
-         console.log( `${flist[i+1]}  built` );
+         console.log( `Built: ${flist[i+1]}` );
       } );
       fs.writeFile ( flist[i+2], build( convertToImp( data ) ), ( err ) => {
          if ( err ) throw err;
-         console.log( `${flist[i+2]} built` );
+         console.log( `Built: ${flist[i+2]}` );
       } );
    } );
 }
@@ -138,15 +138,15 @@ function build ( data ) {
 
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
-   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/, '' );
-   data = data.replace( /<(\w+) class="pub"[^>]*>(.*?)<\/\1>/, '$2' );
+   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, '' );
+   //data = data.replace( /<(\w+) class="pub"[^>]*>(.*?)<\/\1>/g, '$2' );
    return data;
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
-   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/, '' );
-   data = data.replace( /<(\w+) class="imp"[^>]*>(.*?)<\/\1>/, '$2' );
+   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, '' );
+   //data = data.replace( /<(\w+) class="imp"[^>]*>(.*?)<\/\1>/g, '$2' );
 
    const map = [];
 
