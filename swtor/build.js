@@ -1,36 +1,46 @@
 'use strict';
 // Run this script with Node JS to generate ready to publish guides
 
-var fs = require('fs');
+const fs = require('fs'),
+      flist = [ 'ac4_sage_sorc/_Balance_Madness.html', 'ac4/balance.html', 'ac4/madness.html',
+                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
+               ];
 
-fs.readFile( 'ac4_sage_sorc/_Balance_Madness.html', 'utf8', (err, data) => {
-   if ( err ) throw err;
-
-   data = normalise( data );
-
-   fs.writeFile ( "ac4/balance.html", build( convertToPub( data ) ), ( err ) => {
+for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
+   fs.readFile( flist[i], 'utf8', ( err, data ) => {
       if ( err ) throw err;
-      console.log( "Balance guide built" );
+      data = normalise( data );
+      fs.writeFile ( flist[i+1], build( convertToPub( data ) ), ( err ) => {
+         if ( err ) throw err;
+         console.log( `${flist[i+1]}  built` );
+      } );
+      fs.writeFile ( flist[i+2], build( convertToImp( data ) ), ( err ) => {
+         if ( err ) throw err;
+         console.log( `${flist[i+2]} built` );
+      } );
    } );
+}
 
-
-   fs.writeFile ( "ac4/madness.html", build( convertToImp( data ) ), ( err ) => {
-      if ( err ) throw err;
-      console.log( "Madness guide built" );
-   } );
-
-} );
 
 /* Removes whitespaces and comments, and convert list to details block */
 function normalise ( data ) {
+   // Remove inkscape props
+   data = data.replace( /(inkscape|sodipodi):\w+=\"[^"]*\"/g, '' );
+   // Fix svg links
+   data = data.replace( /xlink:href/g, 'href' );
+
    // Turns to one line
-   data = data.replace( /\s*[\r\n]+\s*/g, '' );
+   data = data.replace( /\s*[\r\n]+\s*/g, ' ' );
    // Drop comments
    data = data.replace( /\/\*.*?\*\//g, '' ).replace( /<!--.*?-->/g, '' );
    // Drop spaces between and within tags
    data = data.replace( />\s+</g, '><' ).replace( / \/>/g, '/>' );
    // Minor trims
    data = data.replace( /  +>/g, ' ' );
+
+   // Set build time
+   data = data.replace( '$DATE_BUILD', new Date().toISOString().split( /T/ )[0] );
+   if ( ! data.includes( '<p>' ) ) return data;
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );
@@ -47,9 +57,14 @@ function normalise ( data ) {
    return data;
 }
 
+function idify ( text ) {
+   return text.toLowerCase().replace( /\W+/g, '_' );
+}
 
 /* Convert headers to details and build ToC */
 function build ( data ) {
+   if ( ! data.includes( '<p>' ) ) return data;
+
    const header = /<h(\d)([^>]*)>([^<]+)<\/h\1>/g, idProp = / id="([^"]+)"/;
 
    // Scan ToC, before headers are converted
@@ -63,7 +78,7 @@ function build ( data ) {
       let id = idProp.exec( prop );
       title = title.trim();
       if ( ! id ) {
-         id = title.toLowerCase().replace( /\W+/g, '_' );
+         id = idify( title );
          data = data.replace( header, `<h${lv} id="${id}"${prop}>${title}</h${lv}>` );
       } else
          id = id[1];
@@ -109,9 +124,8 @@ function build ( data ) {
    }
    const toc = "<ul>" + current.map( buildToC ).join('') + "</ul>";
 
-   // Tag replace
+   // ToC replace
    data = data.replace( '<p class="TOC"></p>', toc );
-   data = data.replace( '<time class="BUILD"><\/time>', '<time>' + new Date().toISOString().split( /T/ )[0] + '</time>' );
 
    // Count open and close tags
    const open = /<(\w+)(?![^>]*\/>)/g, close = /<\/(\w+)/g, tags = new Map();
@@ -125,12 +139,14 @@ function build ( data ) {
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
    data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/, '' );
+   data = data.replace( /<(\w+) class="pub"[^>]*>(.*?)<\/\1>/, '$2' );
    return data;
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
    data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/, '' );
+   data = data.replace( /<(\w+) class="imp"[^>]*>(.*?)<\/\1>/, '$2' );
 
    const map = [];
 
@@ -138,11 +154,11 @@ function convertToImp ( data ) {
    map.push(
       "Jedi", "Sith",
       "Republic", "Imperial",
-      "Jedi Consular", "Sith Inquisitor",          "sprite=\"jc-", "sprite=\"si-",
-         "Sage", "Sorcerer",                       "sprite=\"sage", "sprite=\"sorc",
+      "Jedi Consular", "Sith Inquisitor",          "jc", "si",
+         "Sage", "Sorcerer",                       "sage", "sorc",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
-            "Balance", "Madness",                  "Balance Sage", "Madness Sorcerer", "madness.html", "balance.html",
+            "Balance", "Madness",
    );
 
    // Sage - Balance
@@ -185,11 +201,12 @@ function convertToImp ( data ) {
       // Short names
       "skittles", "lightnings" );
 
-   const dict = new Map(), rev = new Map(), list = [];
+   const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
-      dict.set( map[i], map[i+1] );
-      rev.set( map[i+1], map[i] );
-      list.push( map[i] );
+      const p = map[i], e = map[i+1], pid = '#'-idify(p), eid = '#'-idify(e);
+      dict.set( p, e );
+      dict.set( pid, eid );
+      list.push( p, pid );
    }
    list.sort( (a,b) => {
       const al = a.length, bl = b.length;
@@ -200,11 +217,6 @@ function convertToImp ( data ) {
       const regx = new RegExp( "\\b" + e + "\\b", 'g' );
       data = data.replace( regx, dict.get( e ) );
    }
-   
-   let counter = /([A-Za-z ]+)( counterpart: (?:<a[^>]+>)?)([A-Za-z ]+)</g, part, parts = new Set();
-   while ( part = counter.exec( data ) ) parts.add( part );
-   for ( let [ whole, side, join, counter, close ] of parts )
-      data = data.replace( new RegExp( whole.trim(), 'g' ), rev.get( side.trim() ) + join + rev.get( counter.trim() ) + "<" );
 
    return data;
 }
