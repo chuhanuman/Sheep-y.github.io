@@ -4,7 +4,8 @@
 const fs = require('fs'),
       flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
                 'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
-               ];
+               ],
+      [ dict, termList ] = buildMap();
 
 for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
    fs.readFile( flist[i], 'utf8', ( err, data ) => {
@@ -19,6 +20,11 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
          console.log( `Built: ${flist[i+2]}` );
       } );
    } );
+}
+
+/* Turn text into id */
+function idify ( text ) {
+   return text.toLowerCase().replace( /\W+/g, '_' );
 }
 
 
@@ -55,10 +61,6 @@ function normalise ( data ) {
    data = data.replace( /<\/ol>/g, '</ol></details>' );
    
    return data;
-}
-
-function idify ( text ) {
-   return text.toLowerCase().replace( /\W+/g, '_' );
 }
 
 /* Convert headers to details and build ToC */
@@ -139,15 +141,21 @@ function build ( data ) {
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
    data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, '' );
-   //data = data.replace( /<(\w+) class="pub"[^>]*>(.*?)<\/\1>/g, '$2' );
    return data;
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
    data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, '' );
-   //data = data.replace( /<(\w+) class="imp"[^>]*>(.*?)<\/\1>/g, '$2' );
+   for ( const e of termList ) {
+      const regx = new RegExp( "\\b" + e + "\\b", 'g' );
+      data = data.replace( regx, dict.get( e ) );
+   }
+   return data;
+}
 
+/* Build translation map and list */
+function buildMap () {
    const map = [];
 
    // Class
@@ -203,7 +211,7 @@ function convertToImp ( data ) {
 
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
-      const p = map[i], e = map[i+1], pid = '#'-idify(p), eid = '#'-idify(e);
+      const p = map[i], e = map[i+1], pid = '#'+idify(p), eid = '#'+idify(e);
       dict.set( p, e );
       dict.set( pid, eid );
       list.push( p, pid );
@@ -213,10 +221,5 @@ function convertToImp ( data ) {
       if ( al != bl ) return bl - al;
       return a > b ? 1 : ( a === b ? 0 : -1 );
    } );
-   for ( let e of list ) {
-      const regx = new RegExp( "\\b" + e + "\\b", 'g' );
-      data = data.replace( regx, dict.get( e ) );
-   }
-
-   return data;
+   return [ dict, list ];
 }
