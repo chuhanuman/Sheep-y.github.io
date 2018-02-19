@@ -24,7 +24,7 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
 
 /* Turn text into id */
 function idify ( text ) {
-   return text.toLowerCase().replace( /\W+/g, '_' );
+   return text.trim().toLowerCase().replace( /\W+/g, '_' );
 }
 
 
