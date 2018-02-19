@@ -3,7 +3,7 @@
 
 const fs = require('fs'),
       flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
-                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
+//                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
                ],
       [ dict, termList ] = buildMap();
 
@@ -59,7 +59,7 @@ function normalise ( data ) {
    data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
-   
+
    return data;
 }
 
@@ -147,11 +147,27 @@ function convertToPub ( data ) {
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
    data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, '' );
-   for ( const e of termList ) {
-      const regx = new RegExp( "\\b" + e + "\\b", 'g' );
-      data = data.replace( regx, dict.get( e ) );
+   let result = '', pos = 0;
+   while ( true ) {
+      const match = data.slice( pos ).match( /<(\w+) class="imp"/ );
+      let end = match ? pos + match.index : data.length;
+      // Translate non-imp part
+      let part = data.slice( pos, end );
+      for ( const e of termList ) {
+         const [ from, to ] = dict.get( e );
+         part = part.replace( from, to );
+      }
+      result += part;
+      if ( end >= data.length ) break;
+      // Copy imp part
+      pos = end;
+      end = data.slice( pos ).indexOf( '</' + match[1] );
+      end = end > 0 ? end + pos : data.length;
+      result += data.slice( pos, end );
+      // Move forward
+      pos = end;
    }
-   return data;
+   return result;
 }
 
 /* Build translation map and list */
@@ -212,8 +228,8 @@ function buildMap () {
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
       const p = map[i], e = map[i+1], pid = '#'+idify(p), eid = '#'+idify(e);
-      dict.set( p, e );
-      dict.set( pid, eid );
+      dict.set( p  , [ new RegExp( `\\b${p}\\b`  , 'g' ), e   ] );
+      dict.set( pid, [ new RegExp( `\\b${pid}\\b`, 'g' ), eid ] );
       list.push( p, pid );
    }
    list.sort( (a,b) => {
