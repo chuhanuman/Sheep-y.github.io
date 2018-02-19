@@ -3,7 +3,7 @@
 
 const fs = require('fs'),
       flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
-//                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
+                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
                ],
       [ dict, termList ] = buildMap();
 
