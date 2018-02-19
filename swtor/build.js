@@ -110,7 +110,7 @@ function build ( data ) {
       } else if ( lv < level ) {
          while ( level-- > lv ) current = hstack.pop();
       }
-      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, subs: null } );
+      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, lv: lv, subs: null } );
       level = lv;
    }
    while ( level-- > 2 ) current = hstack.pop();
@@ -118,7 +118,9 @@ function build ( data ) {
    // Build ToC from tree
    function buildToC( item ) {
       if ( item.subs ) {
-         let html = `<li><details open><summary>${item.h}</summary><ul>`;
+         let html = '<li><details';
+         if ( item.lv == 2 ) html += ' open';
+         html += `><summary>${item.h}</summary><ul>`;
          for ( const e of item.subs ) html += buildToC(e);
          return html + "</ul></details></li>";
       } else
