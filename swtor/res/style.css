@@ -45,9 +45,11 @@ details[h] > summary {
 /* Put ToC on left side on desktop */
 @media (min-width: 1340px) {
    #toc {
+      box-shadow: 3px 0 5px 0 #888;
       left: 0;
       max-height: 100vh;
-      overflow-y: scroll;
+      min-height: 100vh;
+      overflow-y: auto;
       position: fixed;
       top: 0;
       width: 400px;

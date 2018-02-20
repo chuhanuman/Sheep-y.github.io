@@ -45,18 +45,18 @@ function normalise ( data ) {
    data = data.replace( /  +>/g, ' ' );
 
    // Set build time
-   data = data.replace( '$DATE_BUILD', new Date().toISOString().split( /T/ )[0] );
+   data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
    if ( ! data.includes( '<p>' ) ) return data;
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );
 
    // Convert list to <details>
-   data = data.replace( /(<[ou]l class="desc)/g, '<details open><summary>Description</summary>$1' );
-   data = data.replace( /(<[ou]l class="key)/g, '<details open><summary>Basics</summary>$1' );
-   data = data.replace( /(<[ou]l class="use)/g, '<details open><summary>Usages</summary>$1' );
-   data = data.replace( /(<[ou]l class="note)/g, '<details open><summary>Notes</summary>$1' );
-   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open><summary>$2</summary>$1' );
+   data = data.replace( /(<[ou]l class="desc)/g, '<details open="open"><summary>Description</summary>$1' );
+   data = data.replace( /(<[ou]l class="key)/g, '<details open="open"><summary>Basics</summary>$1' );
+   data = data.replace( /(<[ou]l class="use)/g, '<details open="open"><summary>Usages</summary>$1' );
+   data = data.replace( /(<[ou]l class="note)/g, '<details open="open"><summary>Notes</summary>$1' );
+   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open"><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
 
@@ -97,7 +97,7 @@ function build ( data ) {
                   endPos = pos + txt.length + next.exec( data.slice( pos + txt.length ) ).index;
          //console.log( `${txt}: ${pos} to ${endPos} ${data.slice(pos,endPos)}` );
          data = data.slice( 0, endPos ) + "</details>" + data.slice( endPos );
-         data = data.slice( 0, pos ) + `<details h="h${hlv}"${props} open><summary>${title.trim()}</summary>` + data.slice( pos + txt.length );
+         data = data.slice( 0, pos ) + `<details h="h${hlv}"${props} open="open"><summary>${title.trim()}</summary>` + data.slice( pos + txt.length );
       }
    }
 
@@ -110,7 +110,8 @@ function build ( data ) {
       } else if ( lv < level ) {
          while ( level-- > lv ) current = hstack.pop();
       }
-      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, subs: null } );
+      if ( prop ) prop = prop.replace( / ?id=['"][^'"]*['"]/, '' );
+      current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, lv: lv, subs: null } );
       level = lv;
    }
    while ( level-- > 2 ) current = hstack.pop();
@@ -118,7 +119,9 @@ function build ( data ) {
    // Build ToC from tree
    function buildToC( item ) {
       if ( item.subs ) {
-         let html = `<li><details open><summary>${item.h}</summary><ul>`;
+         let html = '<li><details';
+         if ( item.lv == 2 ) html += ' open="open"';
+         html += `><summary>${item.h}</summary><ul>`;
          for ( const e of item.subs ) html += buildToC(e);
          return html + "</ul></details></li>";
       } else
