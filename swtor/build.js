@@ -24,7 +24,7 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
 
 /* Turn text into id */
 function idify ( text ) {
-   return text.trim().toLowerCase().replace( /\W+/g, '_' );
+   return text.replace( /\([^)]+\)/, '' ).trim().toLowerCase().replace( /\W+/g, '_' );
 }
 
 
@@ -45,7 +45,7 @@ function normalise ( data ) {
    data = data.replace( /  +>/g, ' ' );
 
    // Set build time
-   data = data.replace( /$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
+   data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
    if ( ! data.includes( '<p>' ) ) return data;
 
    // Fix multiline sentences
