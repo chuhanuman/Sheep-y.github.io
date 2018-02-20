@@ -110,6 +110,7 @@ function build ( data ) {
       } else if ( lv < level ) {
          while ( level-- > lv ) current = hstack.pop();
       }
+      if ( prop ) prop = prop.replace( / ?id=['"][^'"]*['"]/, '' );
       current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, lv: lv, subs: null } );
       level = lv;
    }
