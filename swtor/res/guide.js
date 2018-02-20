@@ -12,11 +12,12 @@
       const counterparts = findAll( req.response, '#abilities details[h="h4"] > summary, #utilities details[h="h4"] > summary' )
 
       iterElem( '#abilities details[h="h4"], #utilities details[h="h4"]' ).forEach( ( section, i ) => {
-         let mirrorText = advClassMirror, mirrorName = norm( counterparts[i].textContent ), id = idify( mirrorName );
+         let mirror = advClassMirrorAbbr, mirrorText = advClassMirror, mirrorName = norm( counterparts[i].textContent ), id = idify( mirrorName );
          if ( mirrorName === norm( find( section, 'summary' ).textContent ) ) return; // Skip if same name
          if ( section.dataset.sprite.startsWith( baseClassAbbr ) )
-            mirrorText = baseClassMirror;
-         section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li>${mirrorText} counterpart: <a href="${htmlMirror}#${id}">${mirrorName}</a></li>` );
+            [ mirror, mirrorText ] = [ baseClassMirrorAbbr, baseClassMirror ];
+         const link = `<a href="${htmlMirror}#${id}" data-sprite="${mirror}${section.dataset.sprite.slice(mirror.length)}">`;
+         section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li>${mirrorText} counterpart: ${link}${mirrorName}</a></li>` );
       } );
    } );
 
