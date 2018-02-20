@@ -1,7 +1,8 @@
+#toc a[data-sprite]::before,
 details[data-sprite] > summary::before {
    --sprit-w: 36px;
    --sprit-h: 36px;
-   background-size: auto 36px;
+   background-size: auto var(--sprit-h);
    content: "";
    display: inline-block;
    height: var(--sprit-h);
@@ -9,41 +10,46 @@ details[data-sprite] > summary::before {
    width: var(--sprit-w);
    vertical-align: bottom;
    }
+#toc a[data-sprite]::before {
+   --sprit-w: 24px;
+   --sprit-h: 24px;
+}
 
-details[data-sprite^="jc-"] > summary::before { background-image: url( "../img/jc/abilities.jpg" ); }
-details[data-sprite^="sage-"] > summary::before { background-image: url( "../img/jc/sage/abilities.jpg" ); }
-details[data-sprite^="sage-u-"] > summary::before { background-image: url( "../img/jc/sage/utilities.jpg" ); }
-details[data-sprite^="si-"] > summary::before { background-image: url( "../img/si/abilities.jpg" ); }
-details[data-sprite^="sorc-"] > summary::before { background-image: url( "../img/si/sorc/abilities.jpg" ); }
-details[data-sprite^="sorc-u-"] > summary::before { background-image: url( "../img/si/sorc/utilities.jpg" ); }
+a[data-sprite^="jc-"]::before    , details[data-sprite^="jc-"]     > summary::before { background-image: url( "../img/jc/abilities.jpg" ); }
+a[data-sprite^="sage-"]::before  , details[data-sprite^="sage-"]   > summary::before { background-image: url( "../img/jc/sage/abilities.jpg" ); }
+a[data-sprite^="sage-u-"]::before, details[data-sprite^="sage-u-"] > summary::before { background-image: url( "../img/jc/sage/utilities.jpg" ); }
 
-details[data-sprite$="-0" ] > summary::before { background-position: 0 0; }
-details[data-sprite$="-1" ] > summary::before { background-position: calc( -1  * var(--sprit-w) ) 0; }
-details[data-sprite$="-2" ] > summary::before { background-position: calc( -2  * var(--sprit-w) ) 0; }
-details[data-sprite$="-3" ] > summary::before { background-position: calc( -3  * var(--sprit-w) ) 0; }
-details[data-sprite$="-4" ] > summary::before { background-position: calc( -4  * var(--sprit-w) ) 0; }
-details[data-sprite$="-5" ] > summary::before { background-position: calc( -5  * var(--sprit-w) ) 0; }
-details[data-sprite$="-6" ] > summary::before { background-position: calc( -6  * var(--sprit-w) ) 0; }
-details[data-sprite$="-7" ] > summary::before { background-position: calc( -7  * var(--sprit-w) ) 0; }
-details[data-sprite$="-8" ] > summary::before { background-position: calc( -8  * var(--sprit-w) ) 0; }
-details[data-sprite$="-9" ] > summary::before { background-position: calc( -9  * var(--sprit-w) ) 0; }
-details[data-sprite$="-10"] > summary::before { background-position: calc( -10 * var(--sprit-w) ) 0; }
-details[data-sprite$="-11"] > summary::before { background-position: calc( -11 * var(--sprit-w) ) 0; }
-details[data-sprite$="-12"] > summary::before { background-position: calc( -12 * var(--sprit-w) ) 0; }
-details[data-sprite$="-13"] > summary::before { background-position: calc( -13 * var(--sprit-w) ) 0; }
-details[data-sprite$="-14"] > summary::before { background-position: calc( -14 * var(--sprit-w) ) 0; }
-details[data-sprite$="-15"] > summary::before { background-position: calc( -15 * var(--sprit-w) ) 0; }
-details[data-sprite$="-16"] > summary::before { background-position: calc( -16 * var(--sprit-w) ) 0; }
-details[data-sprite$="-17"] > summary::before { background-position: calc( -17 * var(--sprit-w) ) 0; }
-details[data-sprite$="-18"] > summary::before { background-position: calc( -18 * var(--sprit-w) ) 0; }
-details[data-sprite$="-19"] > summary::before { background-position: calc( -19 * var(--sprit-w) ) 0; }
-details[data-sprite$="-20"] > summary::before { background-position: calc( -20 * var(--sprit-w) ) 0; }
-details[data-sprite$="-21"] > summary::before { background-position: calc( -21 * var(--sprit-w) ) 0; }
-details[data-sprite$="-22"] > summary::before { background-position: calc( -22 * var(--sprit-w) ) 0; }
-details[data-sprite$="-23"] > summary::before { background-position: calc( -23 * var(--sprit-w) ) 0; }
-details[data-sprite$="-24"] > summary::before { background-position: calc( -24 * var(--sprit-w) ) 0; }
-details[data-sprite$="-25"] > summary::before { background-position: calc( -25 * var(--sprit-w) ) 0; }
-details[data-sprite$="-26"] > summary::before { background-position: calc( -26 * var(--sprit-w) ) 0; }
-details[data-sprite$="-27"] > summary::before { background-position: calc( -27 * var(--sprit-w) ) 0; }
-details[data-sprite$="-28"] > summary::before { background-position: calc( -28 * var(--sprit-w) ) 0; }
-details[data-sprite$="-29"] > summary::before { background-position: calc( -29 * var(--sprit-w) ) 0; }
+a[data-sprite^="si-"]::before    , details[data-sprite^="si-"]     > summary::before { background-image: url( "../img/si/abilities.jpg" ); }
+a[data-sprite^="sorc-"]::before  , details[data-sprite^="sorc-"]   > summary::before { background-image: url( "../img/si/sorc/abilities.jpg" ); }
+a[data-sprite^="sorc-u-"]::before, details[data-sprite^="sorc-u-"] > summary::before { background-image: url( "../img/si/sorc/utilities.jpg" ); }
+
+a[data-sprite$="-0" ]::before, details[data-sprite$="-0" ] > summary::before { background-position: 0 0; }
+a[data-sprite$="-1" ]::before, details[data-sprite$="-1" ] > summary::before { background-position: calc( -1  * var(--sprit-w) ) 0; }
+a[data-sprite$="-2" ]::before, details[data-sprite$="-2" ] > summary::before { background-position: calc( -2  * var(--sprit-w) ) 0; }
+a[data-sprite$="-3" ]::before, details[data-sprite$="-3" ] > summary::before { background-position: calc( -3  * var(--sprit-w) ) 0; }
+a[data-sprite$="-4" ]::before, details[data-sprite$="-4" ] > summary::before { background-position: calc( -4  * var(--sprit-w) ) 0; }
+a[data-sprite$="-5" ]::before, details[data-sprite$="-5" ] > summary::before { background-position: calc( -5  * var(--sprit-w) ) 0; }
+a[data-sprite$="-6" ]::before, details[data-sprite$="-6" ] > summary::before { background-position: calc( -6  * var(--sprit-w) ) 0; }
+a[data-sprite$="-7" ]::before, details[data-sprite$="-7" ] > summary::before { background-position: calc( -7  * var(--sprit-w) ) 0; }
+a[data-sprite$="-8" ]::before, details[data-sprite$="-8" ] > summary::before { background-position: calc( -8  * var(--sprit-w) ) 0; }
+a[data-sprite$="-9" ]::before, details[data-sprite$="-9" ] > summary::before { background-position: calc( -9  * var(--sprit-w) ) 0; }
+a[data-sprite$="-10"]::before, details[data-sprite$="-10"] > summary::before { background-position: calc( -10 * var(--sprit-w) ) 0; }
+a[data-sprite$="-11"]::before, details[data-sprite$="-11"] > summary::before { background-position: calc( -11 * var(--sprit-w) ) 0; }
+a[data-sprite$="-12"]::before, details[data-sprite$="-12"] > summary::before { background-position: calc( -12 * var(--sprit-w) ) 0; }
+a[data-sprite$="-13"]::before, details[data-sprite$="-13"] > summary::before { background-position: calc( -13 * var(--sprit-w) ) 0; }
+a[data-sprite$="-14"]::before, details[data-sprite$="-14"] > summary::before { background-position: calc( -14 * var(--sprit-w) ) 0; }
+a[data-sprite$="-15"]::before, details[data-sprite$="-15"] > summary::before { background-position: calc( -15 * var(--sprit-w) ) 0; }
+a[data-sprite$="-16"]::before, details[data-sprite$="-16"] > summary::before { background-position: calc( -16 * var(--sprit-w) ) 0; }
+a[data-sprite$="-17"]::before, details[data-sprite$="-17"] > summary::before { background-position: calc( -17 * var(--sprit-w) ) 0; }
+a[data-sprite$="-18"]::before, details[data-sprite$="-18"] > summary::before { background-position: calc( -18 * var(--sprit-w) ) 0; }
+a[data-sprite$="-19"]::before, details[data-sprite$="-19"] > summary::before { background-position: calc( -19 * var(--sprit-w) ) 0; }
+a[data-sprite$="-20"]::before, details[data-sprite$="-20"] > summary::before { background-position: calc( -20 * var(--sprit-w) ) 0; }
+a[data-sprite$="-21"]::before, details[data-sprite$="-21"] > summary::before { background-position: calc( -21 * var(--sprit-w) ) 0; }
+a[data-sprite$="-22"]::before, details[data-sprite$="-22"] > summary::before { background-position: calc( -22 * var(--sprit-w) ) 0; }
+a[data-sprite$="-23"]::before, details[data-sprite$="-23"] > summary::before { background-position: calc( -23 * var(--sprit-w) ) 0; }
+a[data-sprite$="-24"]::before, details[data-sprite$="-24"] > summary::before { background-position: calc( -24 * var(--sprit-w) ) 0; }
+a[data-sprite$="-25"]::before, details[data-sprite$="-25"] > summary::before { background-position: calc( -25 * var(--sprit-w) ) 0; }
+a[data-sprite$="-26"]::before, details[data-sprite$="-26"] > summary::before { background-position: calc( -26 * var(--sprit-w) ) 0; }
+a[data-sprite$="-27"]::before, details[data-sprite$="-27"] > summary::before { background-position: calc( -27 * var(--sprit-w) ) 0; }
+a[data-sprite$="-28"]::before, details[data-sprite$="-28"] > summary::before { background-position: calc( -28 * var(--sprit-w) ) 0; }
+a[data-sprite$="-29"]::before, details[data-sprite$="-29"] > summary::before { background-position: calc( -29 * var(--sprit-w) ) 0; }
