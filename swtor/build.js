@@ -187,11 +187,21 @@ function buildMap () {
    map.push(
       "Jedi", "Sith",
       "Republic", "Imperial",
+      "Jedi Knight", "Sith Warrior",
+         "Guardian", "Juggernaut",
+         "Sentinel", "Marauder",
       "Jedi Consular", "Sith Inquisitor",          "jc", "si",
-         "Sage", "Sorcerer",                       "sage", "sorc",
+         "Shadow", "Assassin",
+         "Sage", "Sorcerer",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
             "Balance", "Madness",
+      "Smuggler", "Imperial Agent",
+         "Gunslinger", "Sniper",
+         "Scoundrel", "Operative",
+      "Trooper", "Bounty Hunter",
+         "Vanguard", "Power Tech",
+         "Commando", "Mercenary",
    );
 
    // Sage - Balance
