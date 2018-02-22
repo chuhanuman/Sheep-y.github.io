@@ -50,27 +50,33 @@
 
    // Link to abilities, utilities, and glossaries
    try {
-      const links = [], tail = "\\b(?![^<>]*>)";
+      const links = [];
       for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
-         const id = e.id,  sprite = e.dataset.sprite,  title = find( e, 'summary' ).textContent.trim();
-         links.push( [ id, new RegExp( title + tail, 'g' ), `<a class="auto" href="#${id}" data-sprite="${sprite}">${title}</a>` ] );
+         const id = e.id,  sprite = e.dataset.sprite,  title = find( e, "summary" ).textContent.trim().replace( /\)/g, '' ).replace( /\s*\(/g, '|' );
+         links.push( [ id, title, `<a class="auto" href="#${id}" data-sprite="${sprite}">` ] );
       }
       for ( const e of iterElem( "#glossary dt" ) ) {
          e.id = idify( e.textContent );
          let pattern = e.dataset.regexp || e.textContent.trim();
          if ( pattern.match( /^[A-Z][a-z]+$/ ) ) pattern = "[" + pattern[0] + pattern[0].toLowerCase() + "]" + pattern.slice( 1 );
-         links.push( [ e.id, new RegExp( `\\b(${pattern})${tail}`, 'g' ), `<a class="glossary" href="#${e.id}">$1</a>` ] );
+         links.push( [ e.id, pattern, `<a class="glossary" href="#${e.id}">` ] );
       }
-      links.sort( revLenSort );
+      links.sort( (a,b) => {
+         const al = a[0].length, bl = b[0].length;
+         if ( al != bl ) return bl - al;
+         return a[0] > b[0] ? 1 : ( a[0] === b[0] ? 0 : -1 );
+      } );
       // Convert text to link
+      const pattern = new RegExp( "\\b(?:" + links.map( (e) => `(${e[1]})` ).join( '|' ) + ")\\b(?:'\\w*)?(?![^<>]*(?:>|</a>))", "g" );
       for ( const e of iterElem( "#toc ~ * ul, ol, dd" ) ) {
-         let html = e.innerHTML,  changed = '';
-         let ignore = e.tagName == 'DD' ? e.previousElementSibling.id : e.parentElement.parentElement.id;
-         for ( const [ id, from, to ] of links ) {
-            if ( id === ignore || ! html.match( from ) ) continue;
-            changed = html = html.replace( from, to );
+         let html = e.innerHTML,  match, matches = [], ignore = e.tagName == 'DD' ? e.previousElementSibling.id : e.parentElement.parentElement.id;
+         while ( match = pattern.exec( html ) ) matches.push( matchPos( match ) );
+         if ( ! matches.length ) continue;
+         for ( let i = matches.length - 1 ; i >= 0 ; i-- ) {
+            const [ index, text, pos ] = matches[ i ],  [ id,, openTag ] = links[ index ];
+            if ( id === ignore ) continue;
+            html = html.slice( 0, pos ) + openTag + text + '</a>' + html.slice( pos + text.length );
          }
-         if ( ! changed ) continue;
          e.innerHTML = html;
       }
    } catch ( err ) {
@@ -106,10 +112,12 @@
       return norm( text ).toLowerCase().replace( /\W+/g, "_" );
    }
 
-   function revLenSort (a,b) {
-      const al = a.length, bl = b.length;
-      if ( al != bl ) return bl - al;
-      return a > b ? 1 : ( a === b ? 0 : -1 );
+   function matchPos( match ) {
+      for ( let i = match.length - 1 ; i >= 1 ; i-- ) {
+         if ( match[i] )
+            return [ i-1, match[0], match.index ];
+      }
+      throw "No matching group found";
    }
 
 })();

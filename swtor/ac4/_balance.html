@@ -1254,8 +1254,8 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt data-regexp="[Cc]hapters?"> Chapters </dt>
    <dd> Although the class stories and early expansions are split into chapters, endgame chapter specifically means KotFE/KotET chapters which can be replayed again and again in various difficulties. </dd>
 
-   <dt data-regexp="[Cc]leanses?"> Cleanse </dt>
-   <dd> Healie's ability to remove up to two debuffs. Sages can clear Mental/Force debuffs and the other two can clear Physical/Tech. Healers can additionlly clear both Physical and Mental. </dd>
+   <dt data-regexp="[Cc]leans(?:es?|ing)"> Cleanse </dt>
+   <dd> Healie's ability to remove up to two debuffs. Sage can clear Mental/Force debuffs and Scoundrel/Commando can clear Physical/Tech. Healers can additionlly clear both Physical and Mental. </dd>
 
    <dt data-regexp="(?:[Cc]ooldown|CD)"> Cooldown (CD) </dt>
    <dd> Most abilities has a coodown period of a few seconds to a few minutes during which it cannot be used again. Note that some abilities like Revival and med kits can only be used once per fight. Most cooldowns are non-fixed and can be reduced by Alacrity. </dd>
@@ -1269,17 +1269,17 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt> DoT </dt>
    <dd> Damage over Time. DoTs attacks "stick" on the target for their durations and deals damage at regular interval without requiring further actions. Each damage is called a "tick". </dd>
 
-   <dt data-regexp="(?:dps|DPSs?)"> DPS </dt>
-   <dd> Has two meanings; in this guide, all caps "DPS" means characters in the damage role, and lowercase "dps" mean Damage Per Second, a key performance metric for these DPSs. High dps means high damage output. See http://ixparse.com/rating/ for endgame dps distribution in operations. </dd>
+   <dt data-regexp="(?:dps|[rm]?DPSs?)"> DPS </dt>
+   <dd> Has two meanings; in this guide, all caps "DPS" means characters in the damage role (rDPS = ranged, mDPS = melee), and lowercase "dps" mean Damage Per Second, a key performance metric for these DPSs. High dps means high damage output. All classes can be DPS; StarParse collects operation <a href="http://ixparse.com/rating/">dps stats</a>. </dd>
 
    <dt data-regexp="dtps"> DTPS </dt>
-   <dd> Damage taken over Time. NPC damage is fixed, but when we use kiting to delay and scatter these damages, DTPS falls, giving us time to heal and our DoTs time to work. </dd>
+   <dd> Damage taken over Time. NPC attacks do fixed damage, but when we use kiting to delay and scatter these damages, DTPS falls, giving us time to heal and our DoTs time to work. </dd>
 
    <dt> Endgame </dt>
    <dd> The part of the game that happens at close to max level, where gearing and skill improvement replaces rapid level and ability growth. Mainly PvP, master mode flashpoints/uprisings/chapters, a few high level planets, and operation in all modes. </dd>
 
    <dt data-regexp="e?hps"> (E)HPS </dt>
-   <dd> (Effective) Heal Per Second, a key performance metric for healers. High (e)hps means high healing. Overheal is counted into hps but not ehps. See http://ixparse.com/rating/ for endgame hps distribution in operations. </dd>
+   <dd> (Effective) Heal Per Second, a key performance metric for healers. High (e)hps means high healing. Overheal is counted into hps but not ehps. StarParse collects operation <a href="http://ixparse.com/rating/">ehps stats</a>. </dd>
 
    <dt data-regexp="[Ff]lashpoints?"> Flashpoints (fp) </dt>
    <dd> Sometime called Dungeons, flashpoints are side-story team PvE activities for up to four players that take roughly half an hour to complete.  A quick way to level up, meet new friends, and get social points. Story mode is for solo, Veteran mode is for learning, and master mode is a challenge. </dd>
@@ -1290,8 +1290,8 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt data-regexp="(?:off-)GCDs?"> GCD </dt>
    <dd> Global Cooldown. Most abilities put us on a short 1.5s cooldown during which we cannot use next ability. Alacrity can shorten GCD and thus increase action speed. </dd>
 
-   <dt> Heal </dt>
-   <dd> The act or role of healing, cleansing, and reviving teammates. Responsible for saving team from mistakes, critical in sustained fights. </dd>
+   <dt data-regexp="[Hh]eal(?:er)?s?"> Heal </dt>
+   <dd> The act or role of healing, cleansing, and reviving fallen teammates. Responsible for saving team from mistakes, critical in sustained fights. Effective heals generate threat on all NPCs, so DPSs and tanks must keep them off the healers. </dd>
 
    <dt data-regexp="[Hh]ealies?"> Healie </dt>
    <dd> Advanced classes that can spec into heal and have some healings even as DPS. The republic has Sage, Smuggler, and Commando. Of these, smuggler is melee but can heal at range. </dd>
