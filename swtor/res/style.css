@@ -7,6 +7,9 @@
       a:hover {
          text-decoration: underline;
          }
+   a[href^="#"] {
+      color: #008;
+      }
 
 body {
    font-size: 24px;

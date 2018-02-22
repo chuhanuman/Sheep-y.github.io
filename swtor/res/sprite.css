@@ -1,22 +1,22 @@
 a[data-sprite]::before,
 details[data-sprite] > summary::before {
-   --sprit-w: 20px;
-   --sprit-h: 20px;
+   --sprit-w: 24px;
+   --sprit-h: 24px;
    background-size: auto var(--sprit-h);
    content: "";
    display: inline-block;
    height: var(--sprit-h);
    margin-right: 0.5ex;
    width: var(--sprit-w);
-   vertical-align: bottom;
+   vertical-align: sub;
    }
    details[data-sprite] > summary::before {
       --sprit-w: 36px;
       --sprit-h: 36px;
       }
-   #toc a[data-sprite]::before {
-      --sprit-w: 24px;
-      --sprit-h: 24px;
+   .note li a[data-sprite]::before {
+      --sprit-w: 20px;
+      --sprit-h: 20px;
       }
 
 a[data-sprite^="jc-"]::before    , details[data-sprite^="jc-"]     > summary::before { background-image: url( "../img/jc/abilities.jpg" ); }
@@ -26,6 +26,13 @@ a[data-sprite^="sage-u-"]::before, details[data-sprite^="sage-u-"] > summary::be
 a[data-sprite^="si-"]::before    , details[data-sprite^="si-"]     > summary::before { background-image: url( "../img/si/abilities.jpg" ); }
 a[data-sprite^="sorc-"]::before  , details[data-sprite^="sorc-"]   > summary::before { background-image: url( "../img/si/sorc/abilities.jpg" ); }
 a[data-sprite^="sorc-u-"]::before, details[data-sprite^="sorc-u-"] > summary::before { background-image: url( "../img/si/sorc/utilities.jpg" ); }
+
+a[data-sprite].auto::before { 
+   display: none;
+   }
+   #rotation a[data-sprite].auto::before {
+      display: inline-block;
+      }
 
 a[data-sprite$="-0" ]::before, details[data-sprite$="-0" ] > summary::before { background-position: 0 0; }
 a[data-sprite$="-1" ]::before, details[data-sprite$="-1" ] > summary::before { background-position: calc( -1  * var(--sprit-w) ) 0; }

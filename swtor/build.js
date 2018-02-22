@@ -27,6 +27,12 @@ function idify ( text ) {
    return text.replace( /\([^)]+\)/, '' ).trim().toLowerCase().replace( /\W+/g, '_' );
 }
 
+/* Sort string by length, longest first */
+function revLenSort (a,b) {
+   const al = a.length, bl = b.length;
+   if ( al != bl ) return bl - al;
+   return a > b ? 1 : ( a === b ? 0 : -1 );
+}
 
 /* Removes whitespaces and comments, and convert list to details block */
 function normalise ( data ) {
@@ -235,10 +241,6 @@ function buildMap () {
       dict.set( pid, [ new RegExp( `\\b${pid}\\b`, 'g' ), eid ] );
       list.push( p, pid );
    }
-   list.sort( (a,b) => {
-      const al = a.length, bl = b.length;
-      if ( al != bl ) return bl - al;
-      return a > b ? 1 : ( a === b ? 0 : -1 );
-   } );
+   list.sort( revLenSort );
    return [ dict, list ];
 }

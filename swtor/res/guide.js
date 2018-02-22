@@ -10,7 +10,7 @@
       for ( const e of iterElem( "#toc ~ details, #toc ~ * details" ) ) {
          if ( ! e.id ) {
             const new_id = e.closest( "[id]" ).id + "-" + idify( find( e, "summary" ).textContent );
-            if ( find( `#${new_id}` ) ) {
+            if ( document.getElementById( new_id ) ) {
                console.warn( `Conflicting id: #${new_id}` );
                continue;
             }
@@ -25,10 +25,8 @@
          for ( const id in state )
             if ( ! dMap.has( id ) ) 
                delete state[ id ];
-         for ( const [ id, e ] of dMap.entries() ) {
-            console.log( e, id, id in state );
+         for ( const [ id, e ] of dMap.entries() )
             e.open = !( id in state );
-         }
       } else {
          for ( const [ id, e ] of dMap.entries() )
             if ( ! e.open )
@@ -48,6 +46,35 @@
       }, { capture: true, passive: true } );
    } catch ( err ) {
       console.warn( "Cannot load open/close state.", err );
+   }
+
+   // Link to abilities, utilities, and glossaries
+   try {
+      const links = [], tail = "\\b(?![^<>]*>)";
+      for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
+         const id = e.id,  sprite = e.dataset.sprite,  title = find( e, 'summary' ).textContent.trim();
+         links.push( [ id, new RegExp( title + tail, 'g' ), `<a class="auto" href="#${id}" data-sprite="${sprite}">${title}</a>` ] );
+      }
+      for ( const e of iterElem( "#glossary dt" ) ) {
+         e.id = idify( e.textContent );
+         let pattern = e.dataset.regexp || e.textContent.trim();
+         if ( pattern.match( /^[A-Z][a-z]+$/ ) ) pattern = "[" + pattern[0] + pattern[0].toLowerCase() + "]" + pattern.slice( 1 );
+         links.push( [ e.id, new RegExp( `\\b(${pattern})${tail}`, 'g' ), `<a class="glossary" href="#${e.id}">$1</a>` ] );
+      }
+      links.sort( revLenSort );
+      // Convert text to link
+      for ( const e of iterElem( "#toc ~ * ul, ol, dd" ) ) {
+         let html = e.innerHTML,  changed = '';
+         let ignore = e.tagName == 'DD' ? e.previousElementSibling.id : e.parentElement.parentElement.id;
+         for ( const [ id, from, to ] of links ) {
+            if ( id === ignore || ! html.match( from ) ) continue;
+            changed = html = html.replace( from, to );
+         }
+         if ( ! changed ) continue;
+         e.innerHTML = html;
+      }
+   } catch ( err ) {
+      console.warn( "Cannot create intra-links.", err );
    }
 
    // Build counterparts
@@ -77,6 +104,12 @@
 
    function idify ( text ) {
       return norm( text ).toLowerCase().replace( /\W+/g, "_" );
+   }
+
+   function revLenSort (a,b) {
+      const al = a.length, bl = b.length;
+      if ( al != bl ) return bl - al;
+      return a > b ? 1 : ( a === b ? 0 : -1 );
    }
 
 })();

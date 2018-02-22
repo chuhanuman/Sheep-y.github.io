@@ -1087,7 +1087,7 @@
 </ul>
 <ul summary="solo">
    <li> Start fight by lifting the furthest or strongest enemy. LoS the rest, spread DoT, Quake the weaks and normals, focus fire the rest one by one. Interrupt and stun champions. </li>
-   <li> Spread <a href="#dot">Damage over Time</a> and <a href="kiting">Kite</a> the enemies. </li>
+   <li> Spread <a href="#damage_over_time">Damage over Time</a> and <a href="kiting">Kite</a> the enemies. </li>
    <li> Force Wave can be used more or less liberally, but try to group the enemies for AoE. </li>
    <li> Buy and eat Peppered Bantha Steak and Chilled Corellian Cocktail to increase hp regen and companion effectiveness. Check the fleet's Cantina Vendor. </li>
    <li> When we finish a fight with Telekinetic Throw, use the primed Vanquish to start next fight before it expire! </li>
@@ -1109,7 +1109,7 @@
 </ul>
 
 
-<h3 id="dot"> Damage over Time (DoT) </h3>
+<h3 id="damage_over_time"> Damage over Time (DoT) </h3>
 
 <ul class="key">
    <li> Our DoTs are heavy, often but not always our main damage output. </li>
@@ -1241,52 +1241,55 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt> AoE </dt>
    <dd> Area of Effect, abilities that act on the desginated area instead of specific target(s). Usually the more the target the merrier. Some AoEs are continuous and need the target to stay inside (e.g. Force Quake), but most are not. AoE are always circle or cone. </dd>
 
-   <dt> Cast </dt>
+   <dt data-regexp="[Cc]ast(?:ed)?"> Cast </dt>
    <dd> Casted abilities require us to stand still for a while to finish casting and take effect. They can be interrupted by crowd controls, and pressing Esc, moving, or using another ability also abort the casting. Damage we take during cast will pushback the cast bar, thus increasing total cast time. Force Serenity and Benevolence are casted. Alacrity shorten most cast times, and passive/utilities may allow a casted ability to be used while on the move. </dd>
 
-   <dt> Channel </dt>
+   <dt data-regexp="[Cc]hannel(?:ed)?"> Channel </dt>
    <dd> Channelled abilities require us to stand still to use and deliver its effect in stages.  They can be interrupted by crowd controls, and pressing Esc, moving, or using another ability also ends them early.  Telekinetic Throw and Force Quake are channelled. Alacrity shorten most channel times, quickening their effects. </dd>
 
-   <dt> Cleanse </dt>
+   <dt data-regexp="[Cc]hapters?"> Chapters </dt>
+   <dd> Although the class stories and early expansions are split into chapters, endgame chapter specifically means KotFE/KotET chapters which can be replayed again and again in various difficulties. </dd>
+
+   <dt data-regexp="[Cc]leanses?"> Cleanse </dt>
    <dd> Healie's ability to remove up to two debuffs. Sages can clear Mental/Force debuffs and the other two can clear Physical/Tech. Healers can additionlly clear both Physical and Mental. </dd>
 
-   <dt> Cooldown (CD) </dt>
+   <dt data-regexp="(?:[Cc]ooldown|CD)"> Cooldown (CD) </dt>
    <dd> Most abilities has a coodown period of a few seconds to a few minutes during which it cannot be used again. Note that some abilities like Revival and med kits can only be used once per fight. Most cooldowns are non-fixed and can be reduced by Alacrity. </dd>
 
    <dt> DCD </dt>
    <dd> Defensive Cooldown. Powerful defensive abilities with a fixed cooldown. Sages' are Force Barrier, and Force Mend/Cloud Mind/Phase Walk with utilities. Rejuvenate and bubble can be always on, and are not normally considered DCD. </dd>
 
-   <dt> Debuff </dt>
+   <dt data-regexp="[Dd]ebuffs?"> Debuff </dt>
    <dd> Harmful effects applied to self, including as DoT, slow, damage vulnerability, and other bad status. Some debuffs can be removed by cleanse abilities, and almost all can be removed by purge. </dd>
 
    <dt> DoT </dt>
    <dd> Damage over Time. DoTs attacks "stick" on the target for their durations and deals damage at regular interval without requiring further actions. Each damage is called a "tick". </dd>
 
-   <dt> DPS </dt>
+   <dt data-regexp="(?:dps|DPSs?)"> DPS </dt>
    <dd> Has two meanings; in this guide, all caps "DPS" means characters in the damage role, and lowercase "dps" mean Damage Per Second, a key performance metric for these DPSs. High dps means high damage output. See http://ixparse.com/rating/ for endgame dps distribution in operations. </dd>
 
-   <dt> DTPS </dt>
+   <dt data-regexp="dtps"> DTPS </dt>
    <dd> Damage taken over Time. NPC damage is fixed, but when we use kiting to delay and scatter these damages, DTPS falls, giving us time to heal and our DoTs time to work. </dd>
 
    <dt> Endgame </dt>
    <dd> The part of the game that happens at close to max level, where gearing and skill improvement replaces rapid level and ability growth. Mainly PvP, master mode flashpoints/uprisings/chapters, a few high level planets, and operation in all modes. </dd>
 
-   <dt> (E)HPS </dt>
+   <dt data-regexp="e?hps"> (E)HPS </dt>
    <dd> (Effective) Heal Per Second, a key performance metric for healers. High (e)hps means high healing. Overheal is counted into hps but not ehps. See http://ixparse.com/rating/ for endgame hps distribution in operations. </dd>
 
-   <dt> Flashpoint (fp) </dt>
+   <dt data-regexp="[Ff]lashpoints?"> Flashpoints (fp) </dt>
    <dd> Sometime called Dungeons, flashpoints are side-story team PvE activities for up to four players that take roughly half an hour to complete.  A quick way to level up, meet new friends, and get social points. Story mode is for solo, Veteran mode is for learning, and master mode is a challenge. </dd>
 
-   <dt> Crowd Control (CC) </dt>
+   <dt data-regexp="[Cc]rowd [Cc]ontrols?"> Crowd Control (CC) </dt>
    <dd> Abilities that disable enemies such as stun, mez, sap, and push (over cliffs).  The literal definition, uncommon in the game, includes general pull, push, interrupts, LoS, and perhaps AoEs. </dd>
 
-   <dt> GCD </dt>
+   <dt data-regexp="(?:off-)GCDs?"> GCD </dt>
    <dd> Global Cooldown. Most abilities put us on a short 1.5s cooldown during which we cannot use next ability. Alacrity can shorten GCD and thus increase action speed. </dd>
 
-   <dt pattern="[Hh]eal(er| spec| can)"> Heal </dt>
+   <dt> Heal </dt>
    <dd> The act or role of healing, cleansing, and reviving teammates. Responsible for saving team from mistakes, critical in sustained fights. </dd>
 
-   <dt> Healie </dt>
+   <dt data-regexp="[Hh]ealies?"> Healie </dt>
    <dd> Advanced classes that can spec into heal and have some healings even as DPS. The republic has Sage, Smuggler, and Commando. Of these, smuggler is melee but can heal at range. </dd>
 
    <dt> HoT </dt>
@@ -1298,17 +1301,17 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt> Mez </dt>
    <dd> Short of mesmerize. Commonly known as soft CC, a kind of Crowd Control that disables the target for a long duration or until they take <i>any</i> damage.  Some AoEs ignore mez and can be safely used, but ours are passive so we must take care when we AoE. </dd>
 
-   <dt> Off-Heal </dt>
+   <dt data-regexp="[Oo]ff-[Hh]eal"> Off-Heal </dt>
    <dd> Healie classes in DPS specs who can heal a bit. That means us. Off-heals lack lacks proper healing abilities and can only help a bit. </dd>
 
-   <dt> Off-Tank </dt>
+   <dt data-regexp="[Oo]ff-[Tt]ank"> Off-Tank </dt>
    <dd> Often used in an operation to refer to the non-main tank. Tanky classes are usually called off-tank too, but non-tank specs lack proper tanking abilities and can only help a bit. </dd>
 
-   <dt> Operation (op) </dt>
+   <dt data-regexp="[Oo]perations?"> Operations (op) </dt>
    <dd> Also called Raid, operations are ultimate endgame PvE contents normally done in 8 or 16 person group, and require decent to very high skill and gear to complete. </dd>
 
-   <dt> Passives </dt>
-   <dd> Passive abilities that we get as we level up, such as Rejuvenate's defense bonus (lv. 12), Force in Balance's DoT spread (lv. 28), or faster Telekinetic Throw (lv. 56). </dd>
+   <dt data-regexp="[Pp]assives?"> Passives </dt>
+   <dd> Passive abilities constantly enhances or upgrades our stats or abilities, and cannot be "activated" alone like active abilities. </dd>
 
    <dt> Pin </dt>
    <dd> Immobilise effects - effects that prevents the victim from moving.  Unless it is a hindering effect, pins won't prevent escape by pull, jump, or teleportation. </dd>
@@ -1316,7 +1319,7 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt> Proc </dt>
    <dd> Randomly triggered events, or the triggering of these events.  Commonly seen on relics, but every class has some proc passives.  Sometimes loosely used to describe all activated effects (random or not), such as saying Telekinetic Throw procs Vanquish. </dd>
 
-   <dt> Purge </dt>
+   <dt data-regexp="[Pp]urges?"> Purge </dt>
    <dd> An ability that removes all debuffs from self.  For Sages it is Force Barrier. </dd>
 
    <dt> PvE </dt>
@@ -1340,21 +1343,21 @@ Some tips for setting up swtor interface for best Balance Sage experience.
    <dt> Tank </dt>
    <dd> The act or role of taking point and taunting enemies to draw their fire away from teammates. Tanks has many DCDs and usually stack defensive stats to endure the damage. The most heroic role in any team. </dd>
 
-   <dt> Tanky </dt>
+   <dt data-regexp="[Tt]ank(?:y|ies)"> Tanky </dt>
    <dd> Advanced classes that can spec into tank and have some taunts even as DPS. The republic has Guardian, Shadow, and Vanguard. All tankies are melee. </dd>
 
    <dt> Threat </dt>
    <dd> In PvE combat, every time we attack or heal we are threatening the NPCs, represented by creating a numeric threat. Each NPC keep a list of who is threatening it, a threat table, and will attack (aggro) the one who made the most threat. <br/> There is no threat in PvP; players decide who to attack. </dd>
 
-   <dt> Tick </dt>
+   <dt data-regexp="[Tt]icks?"> Tick </dt>
    <dd> Each stage of channelled abilities, DoTs, and HoTs is a tick. Force Quakes has 4 ticks, 3 of which deals damage. </dd>
 
-   <dt> Trash Mobs </dt>
-   <dd> Non-boss fight NPC enemies. Usually a small group of low difficulty NPCs standing there waiting to be defeated.
-        In map design terms they make moving between boss fights less boring, and make the boss fight more dramatic in comparison. 
-        Note that some (very rare) encounters have so much mobs that they are essentially boss fights, e.g. Landing Party Uprising's Zakuulan Ambush. </dd>
+   <dt data-regexp="[Tt]rash(?: [Mm]obs?)"> Trash Mobs </dt>
+   <dd> Non-boss fight NPC enemies. Usually a small group of low difficulty NPCs standing on the way waiting to be defeated.
+        In map design terms they make moving between boss fights less boring, and make the boss fight more dramatic in comparison.
+        Note that some (very rare) encounters have so much trashes that they are essentially boss fights, e.g. Landing Party uprising's Zakuulan Ambush. </dd>
 
-   <dt> Uprising </dt>
+   <dt data-regexp="[Uu]prisings?"> Uprisings </dt>
    <dd> No-dialogue team PvE activities for up to four players, like a short flashpoint.  No less deadly but drop a lot less rewards so few players run them. </dd>
 </dl>
 
