@@ -54,7 +54,7 @@ function normalise ( data ) {
 
    // Set build time
    data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
-   if ( ! data.includes( '<p>' ) ) return data;
+   if ( ! data.includes( '<p>' ) ) return data.replace( /font-(stretch|style|variant|weight):normal;/g, '' );
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );
