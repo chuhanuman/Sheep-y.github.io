@@ -3,10 +3,17 @@
    }
    a {
       text-decoration: none;
+      color: #00F;
       }
       a:hover {
          text-decoration: underline;
          }
+      a:visited {
+         color: #00F;
+         }
+   a[href^="#"], a[href^="#"]:visited {
+      color: #008;
+      }
 
 body {
    font-size: 24px;
@@ -25,7 +32,16 @@ ol, ul {
    .note li {
       font-size: 20px;
       }
+dt {
+   font-weight: bold;
+   margin-top: 1ex;
+   }
+   dd {
+      margin-left: 0;
+      padding-left: 2em;
+      }
 
+/* Generic ToC styles */
 #toc ul {
    list-style-type: none;
    padding-left: 26px;
@@ -34,6 +50,7 @@ ol, ul {
       margin: 0;
       }
 
+/* Header styles */
 details[h] > summary {
    font-weight: bold;
    margin: 1em 0;
@@ -47,6 +64,14 @@ details[h] > summary {
    details[h=h4] > summary {
       font-size: 28px;
       }
+
+/* Highlight hash target */
+details:target {
+   border-left: 2px solid blue;
+   }
+dt:target, dt:target + dd {
+   border-left: 2px solid blue;
+   }
 
 /* Put ToC on left side on desktop */
 @media (min-width: 1340px) {

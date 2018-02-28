@@ -10,7 +10,7 @@
       for ( const e of iterElem( "#toc ~ details, #toc ~ * details" ) ) {
          if ( ! e.id ) {
             const new_id = e.closest( "[id]" ).id + "-" + idify( find( e, "summary" ).textContent );
-            if ( find( `#${new_id}` ) ) {
+            if ( document.getElementById( new_id ) ) {
                console.warn( `Conflicting id: #${new_id}` );
                continue;
             }
@@ -25,10 +25,8 @@
          for ( const id in state )
             if ( ! dMap.has( id ) ) 
                delete state[ id ];
-         for ( const [ id, e ] of dMap.entries() ) {
-            console.log( e, id, id in state );
+         for ( const [ id, e ] of dMap.entries() )
             e.open = !( id in state );
-         }
       } else {
          for ( const [ id, e ] of dMap.entries() )
             if ( ! e.open )
@@ -48,6 +46,41 @@
       }, { capture: true, passive: true } );
    } catch ( err ) {
       console.warn( "Cannot load open/close state.", err );
+   }
+
+   // Link to abilities, utilities, and glossaries
+   try {
+      const links = [];
+      for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
+         const id = e.id,  sprite = e.dataset.sprite,  title = find( e, "summary" ).textContent.trim().replace( /\)/g, '' ).replace( /\s*\(/g, '|' );
+         links.push( [ id, title, `<a class="auto" href="#${id}" data-sprite="${sprite}">` ] );
+      }
+      for ( const e of iterElem( "#glossary dt" ) ) {
+         e.id = idify( e.textContent );
+         let pattern = e.dataset.regexp || e.textContent.trim();
+         if ( pattern.match( /^[A-Z][a-z]+$/ ) ) pattern = "[" + pattern[0] + pattern[0].toLowerCase() + "]" + pattern.slice( 1 );
+         links.push( [ e.id, pattern, `<a class="glossary" href="#${e.id}">` ] );
+      }
+      links.sort( (a,b) => {
+         const al = a[0].length, bl = b[0].length;
+         if ( al != bl ) return bl - al;
+         return a[0] > b[0] ? 1 : ( a[0] === b[0] ? 0 : -1 );
+      } );
+      // Convert text to link
+      const pattern = new RegExp( "\\b(?:" + links.map( (e) => `(${e[1]})` ).join( '|' ) + ")\\b(?:'\\w*)?(?![^<>]*(?:>|</a>))", "g" );
+      for ( const e of iterElem( "#toc ~ * ul, ol, dd" ) ) {
+         let html = e.innerHTML,  match, matches = [], ignore = e.tagName == 'DD' ? e.previousElementSibling.id : e.parentElement.parentElement.id;
+         while ( match = pattern.exec( html ) ) matches.push( matchPos( match ) );
+         if ( ! matches.length ) continue;
+         for ( let i = matches.length - 1 ; i >= 0 ; i-- ) {
+            const [ index, text, pos ] = matches[ i ],  [ id,, openTag ] = links[ index ];
+            if ( id === ignore ) continue;
+            html = html.slice( 0, pos ) + openTag + text + '</a>' + html.slice( pos + text.length );
+         }
+         e.innerHTML = html;
+      }
+   } catch ( err ) {
+      console.warn( "Cannot create intra-links.", err );
    }
 
    // Build counterparts
@@ -77,6 +110,14 @@
 
    function idify ( text ) {
       return norm( text ).toLowerCase().replace( /\W+/g, "_" );
+   }
+
+   function matchPos( match ) {
+      for ( let i = match.length - 1 ; i >= 1 ; i-- ) {
+         if ( match[i] )
+            return [ i-1, match[0], match.index ];
+      }
+      throw "No matching group found";
    }
 
 })();

@@ -3,7 +3,9 @@
 
 const fs = require('fs'),
       flist = [ 'ac4/_balance.html', 'ac4/balance.html', 'ac4/madness.html',
-                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg' 
+                'img/jc/sage/_balance_abilities.svg', 'img/jc/sage/balance_abilities.svg', 'img/si/sorc/madness_abilities.svg',
+                'img/jc/sage/_balance_rotation_lite.svg', 'img/jc/sage/balance_rotation_lite.svg', 'img/si/sorc/madness_rotation_lite.svg',
+                'img/jc/sage/_balance_rotation_full.svg', 'img/jc/sage/balance_rotation_full.svg', 'img/si/sorc/madness_rotation_full.svg',
                ],
       [ dict, termList ] = buildMap();
 
@@ -27,6 +29,12 @@ function idify ( text ) {
    return text.replace( /\([^)]+\)/, '' ).trim().toLowerCase().replace( /\W+/g, '_' );
 }
 
+/* Sort string by length, longest first */
+function revLenSort (a,b) {
+   const al = a.length, bl = b.length;
+   if ( al != bl ) return bl - al;
+   return a > b ? 1 : ( a === b ? 0 : -1 );
+}
 
 /* Removes whitespaces and comments, and convert list to details block */
 function normalise ( data ) {
@@ -46,7 +54,7 @@ function normalise ( data ) {
 
    // Set build time
    data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
-   if ( ! data.includes( '<p>' ) ) return data;
+   if ( ! data.includes( '<p>' ) ) return data.replace( /font-(stretch|style|variant|weight):normal;/g, '' );
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );
@@ -181,11 +189,21 @@ function buildMap () {
    map.push(
       "Jedi", "Sith",
       "Republic", "Imperial",
+      "Jedi Knight", "Sith Warrior",
+         "Guardian", "Juggernaut",
+         "Sentinel", "Marauder",
       "Jedi Consular", "Sith Inquisitor",          "jc", "si",
-         "Sage", "Sorcerer",                       "sage", "sorc",
+         "Shadow", "Assassin",
+         "Sage", "Sorcerer",
             "Seer", "Corruption",
             "Telekinetic", "Lightning",
             "Balance", "Madness",
+      "Smuggler", "Imperial Agent",
+         "Gunslinger", "Sniper",
+         "Scoundrel", "Operative",
+      "Trooper", "Bounty Hunter",
+         "Vanguard", "Power Tech",
+         "Commando", "Mercenary",
    );
 
    // Sage - Balance
@@ -235,10 +253,6 @@ function buildMap () {
       dict.set( pid, [ new RegExp( `\\b${pid}\\b`, 'g' ), eid ] );
       list.push( p, pid );
    }
-   list.sort( (a,b) => {
-      const al = a.length, bl = b.length;
-      if ( al != bl ) return bl - al;
-      return a > b ? 1 : ( a === b ? 0 : -1 );
-   } );
+   list.sort( revLenSort );
    return [ dict, list ];
 }
