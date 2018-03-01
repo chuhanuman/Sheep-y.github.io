@@ -23,12 +23,16 @@ body {
    article {
       max-width: 900px;
       margin: 0 auto;
+      padding: 0 10px;
       }
       article img,
       article object {
          width: 80%;
          margin: 0 auto;
          }
+         details {
+            padding: 0 10px;
+            }
 
 h1 {
    margin: 0;
@@ -62,7 +66,7 @@ dt {
 /* Header styles */
 details[h] > summary {
    font-weight: bold;
-   margin: 1em 0;
+   margin: 1em 0 1ex;
    }
    details[h=h2] > summary {
       font-size: 40px;
@@ -76,10 +80,10 @@ details[h] > summary {
 
 /* Highlight hash target */
 details:target {
-   border-left: 2px solid blue;
+   border-left: 3px solid blue;
    }
 dt:target, dt:target + dd {
-   border-left: 2px solid blue;
+   border-left: 3px solid blue;
    }
 
 /* Put ToC on left side on desktop */
@@ -97,6 +101,6 @@ dt:target, dt:target + dd {
    article {
       margin-left: 400px;
       margin-right: 0;
-      padding-left: 40px;
+      padding-left: 20px;
       }
 }
