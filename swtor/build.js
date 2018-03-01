@@ -54,7 +54,12 @@ function normalise ( data ) {
 
    // Set build time
    data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
-   if ( ! data.includes( '<p>' ) ) return data.replace( /font-(stretch|style|variant|weight):normal;/g, '' );
+   if ( ! data.includes( '<p>' ) ) {
+      data = data.replace( /font-(stretch|style|variant|weight):normal;/g, '' );
+      data = data.replace( /<sodipodi:namedview\b.*?<\/sodipodi:namedview>/g, '' );
+      data = data.replace( /<metadata\b.*?<\/metadata>/g, '' );
+      return data;
+   }
 
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, '. ' );

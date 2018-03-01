@@ -17,14 +17,23 @@
 
 body {
    font-size: 24px;
+   margin: 0;
+   padding: 0;
    }
    article {
       max-width: 900px;
       margin: 0 auto;
       }
-      article img {
-         max-width: 900px;
+      article img,
+      article object {
+         width: 80%;
+         margin: 0 auto;
          }
+
+h1 {
+   margin: 0;
+   padding: 1ex 0;
+   }
 
 ol, ul {
    margin: 1ex 0;
@@ -86,6 +95,8 @@ dt:target, dt:target + dd {
       width: 400px;
       }
    article {
-      margin: 0 0 0 440px;
+      margin-left: 400px;
+      margin-right: 0;
+      padding-left: 40px;
       }
 }
