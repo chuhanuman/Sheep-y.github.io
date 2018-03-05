@@ -48,8 +48,8 @@
       console.warn( "Cannot load open/close state.", err );
    }
 
-   // Link to abilities, utilities, and glossaries
    try {
+      // Link to abilities, utilities, and glossaries
       const links = [];
       for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
          const id = e.id,  sprite = e.dataset.sprite,  title = find( e, "summary" ).textContent.trim().replace( /\)/g, '' ).replace( /\s*\(/g, '|' );
@@ -59,7 +59,7 @@
          e.id = idify( e.textContent );
          let pattern = e.dataset.regexp || e.textContent.trim();
          if ( pattern.match( /^[A-Z][a-z]+$/ ) ) pattern = "[" + pattern[0] + pattern[0].toLowerCase() + "]" + pattern.slice( 1 );
-         links.push( [ e.id, pattern, `<a class="glossary" href="#${e.id}">` ] );
+         links.push( [ e.id, pattern, `<a class="auto glossary" href="#${e.id}">` ] );
       }
       links.sort( (a,b) => {
          const al = a[0].length, bl = b[0].length;
@@ -79,6 +79,60 @@
          }
          e.innerHTML = html;
       }
+
+      // Add click handler
+      document.body.insertAdjacentHTML( "beforeend", "<aside id='lookup'></aside>" );
+      const lookupPopup = find( "#lookup" );
+      document.body.addEventListener( "click", ( evt ) => {
+         // Hide lookup and stop if we shouldn't continue
+         const { target, detail, button, ctrlKey } = evt;
+         if ( button !== 0 || ! target || target.tagName !== "A" || ! target.classList.contains( "auto" ) ) {
+            lookupPopup.style.display = "hidden";
+            lookupPopup.innerHTML = "";
+            return;
+         }
+         if ( detail >= 2 || ctrlKey )
+            return;
+
+         // Load target and conditionally reset lookup states
+         const href = target.getAttribute( "href" ), id = href.substr( 1 ), e = find( href ), rect = target.getBoundingClientRect();
+         if ( ! e ) return console.warn( `Cannot find ${href}` );
+         evt.preventDefault();
+         if ( target.closest( "#lookup" ) == null ) {
+            lookupPopup.innerHTML = "";
+            lookupPopup.style.display = "block";
+            lookupPopup.style.top = scrollY + rect.bottom + "px";
+            lookupPopup.style.left = minMax( 0, scrollX + rect.left, innerWidth - lookupPopup.clientWidth ) + "px";
+         }
+         let curr = find( lookup, ".active" ), body;
+         if ( curr )
+            curr.classList.remove( "active" );
+         if ( curr = find( lookup, `[data-id=${id}]` ) ) {
+            curr.classList.add( "active" );
+            curr.scrollIntoView({ block: "nearest", inline: "nearest" });
+            return;
+         }
+
+         // Add new lookup to popup
+         if ( e.tagName === "DT" ) {
+            body = e.nextElementSibling.innerHTML;
+         } else {
+            body = find( e, "li" ).innerHTML;
+         }
+         lookupPopup.innerHTML += `<p class="active" data-id="${id}"><button>x</button><b><a href="${href}">${target.textContent}</a></b><br>${body}</p>`;
+         find( lookupPopup, "p:last-child" ).scrollIntoView({ block: "nearest", inline: "nearest" });
+      } );
+      // Delete lookup from popup
+      lookupPopup.addEventListener( "click", ( evt ) => {
+         const { target } = evt;
+         if ( ! target || target.tagName !== "BUTTON" )
+            return;
+         target.parentNode.remove();
+         if ( lookupPopup.textContent == "" )
+            lookupPopup.style.display = "hidden";
+         evt.preventDefault();
+      } );
+
    } catch ( err ) {
       console.warn( "Cannot create intra-links.", err );
    }
@@ -103,6 +157,10 @@
    }
 
    find( 'body' ).classList.add( 'js' ); // Mark document as supporting js
+
+   function minMax ( min, val, max ) {
+      return Math.max( min, Math.min( val, max ) );
+   }
 
    function norm ( text ) {
       return text.replace( /\([^)]+\)/, '' ).trim();
