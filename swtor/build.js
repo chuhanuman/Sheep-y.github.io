@@ -217,7 +217,7 @@ function buildMap () {
          "Commando", "Mercenary",
    );
 
-   // Sage - Balance
+   // Sage / Sorcerer
    map.push(
       // Attacks
       "Telekinetic Throw", "Force Lightning",      "Vanquish", "Demolish",
@@ -256,6 +256,11 @@ function buildMap () {
       "Ethereal Entity", "Shifting Silhouette",    "Impeding Slash", "Enfeebling Strike",
       // Short names
       "skittles", "lightnings" );
+
+   // Vanguard / Powertech
+   map.push(
+      "Transpose", "Translocate"
+      );
 
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
