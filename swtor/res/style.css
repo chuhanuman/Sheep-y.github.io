@@ -78,6 +78,13 @@ details[h] > summary {
       font-size: 28px;
       }
 
+.vgood, .good {
+   color: #080;
+   }
+   .bad {
+      color: #008;
+      }
+
 /* Highlight hash target */
 details:target {
    border-left: 3px solid blue;
@@ -86,6 +93,7 @@ dt:target, dt:target + dd {
    border-left: 3px solid blue;
    }
 
+/* Quick lookup */
 #lookup {
    background: rgba( 255, 255, 255, 0.8 );
    border: 2px solid blue;

@@ -117,7 +117,8 @@
          if ( e.tagName === "DT" ) {
             body = e.nextElementSibling.innerHTML;
          } else {
-            body = find( e, "li" ).innerHTML;
+            let desc = find( e, ".desc > * > li" );
+            body = desc ? desc.innerHTML : "(Missing Description.)";
          }
          lookupPopup.innerHTML += `<p class="active" data-id="${id}"><button>x</button><b><a href="${href}">${target.textContent}</a></b><br>${body}</p>`;
          find( lookupPopup, "p:last-child" ).scrollIntoView({ block: "nearest", inline: "nearest" });
