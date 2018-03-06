@@ -82,12 +82,12 @@
 
       // Add click handler
       document.body.insertAdjacentHTML( "beforeend", "<aside id='lookup'></aside>" );
-      const lookupPopup = find( "#lookup" );
+      const lookupPopup = find( "#lookup" ), popStyle = lookupPopup.style;
       document.body.addEventListener( "click", ( evt ) => {
          // Hide lookup and stop if we shouldn't continue
          const { target, detail, button, ctrlKey } = evt;
          if ( button !== 0 || ! target || target.tagName !== "A" || ! target.classList.contains( "auto" ) ) {
-            lookupPopup.style.display = "hidden";
+            popStyle.display = "none";
             lookupPopup.innerHTML = "";
             return;
          }
@@ -100,9 +100,9 @@
          evt.preventDefault();
          if ( target.closest( "#lookup" ) == null ) {
             lookupPopup.innerHTML = "";
-            lookupPopup.style.display = "block";
-            lookupPopup.style.top = scrollY + rect.bottom + "px";
-            lookupPopup.style.left = minMax( 0, scrollX + rect.left, innerWidth - lookupPopup.clientWidth ) + "px";
+            popStyle.display = "block";
+            popStyle.top = scrollY + rect.bottom + "px";
+            popStyle.left = minMax( 0, scrollX + rect.left, innerWidth - lookupPopup.clientWidth ) + "px";
          }
          let curr = find( lookup, ".active" ), body;
          if ( curr )
@@ -125,12 +125,12 @@
       } );
       // Delete lookup from popup
       lookupPopup.addEventListener( "click", ( evt ) => {
-         const { target } = evt;
-         if ( ! target || target.tagName !== "BUTTON" )
+         const { target } = evt, { tagName, parentNode } = target || {};
+         if ( ! target || tagName !== "BUTTON" )
             return;
-         target.parentNode.remove();
+         parentNode.remove();
          if ( lookupPopup.textContent == "" )
-            lookupPopup.style.display = "hidden";
+            popStyle.display = "none";
          evt.preventDefault();
       } );
 

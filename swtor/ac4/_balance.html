@@ -4,6 +4,9 @@
 <link href="../res/sprite.css?$DATE_BUILD" rel="stylesheet" />
 </head><body><article>
 
+<blockquote class="pub"> There is serenity in balance, and no one knows this better than the Balance Sage. Able to assail multiple targets at once while at the same time absorbing their vitality, the Balance Sage is a formidable presence in long-range engagements. </blockquote>
+<blockquote class="imp"> Delving ever deeper into the dark side of the Force can lead to madness, but it can also lead to immense power. Attacking multiple enemies simultaneously and instilling terror in their hearts, all while sapping their very life essence from afar, the Madness Sorcerer is a dark threat unlike any other. </blockquote>
+
 <h1 id="top"> Balance Sage PvE Guide 5.7a </h1>
 <p class="subtitle"> A class guide for Star Wars: Knights of the Old Re<span>pub</span>lic. Updated <a href="https://github.com/Sheep-y/Sheep-y.github.io/commits/master/swtor/ac4"><time>$DATE_BUILD</time></a>. </p>
 <!--/*--><h1 style="color:red">This is a template, NOT the published guide; <br/> Here are the live <a href="http://sheep-y.github.io/swtor/ac4/balance.html">pub guide</a> / <a href="http://sheep-y.github.io/swtor/ac4/madness.html">imp guide</a>.</h1><!--*/-->
@@ -135,6 +138,10 @@
 </ul>
 
 <h4 data-sprite="sage-1"> Telekinetic Throw </h4>
+<ul class="desc">
+   <li> Level 2: Deals 9k kinetic damage and regain 12 Force over 2.1 sec. channel. During channel it immobilizes weak and standard target, otherwise slows target's movement speed by 50% instead. </li>
+   <li> 2.1 sec. channel (four ticks), 15 sec. cooldown, range 30m, 27 Force. </li>
+</ul>
 <ul class="key">
    <li> Zero-cooldown basic attack, good damage and give us force, but can't use on move. </li>
    <li> 4 hits (a full channel) make next Vanquish and Disturbance instant cast and do higher damage at less force (last 15s). </li>
@@ -146,13 +153,16 @@
 </ol>
 <ul class="note">
    <li> Ticks immediately and then twice per second, 4 ticks total. </li>
-   <li> Immune to pushback. </li>
    <li> Hits does not need to be continuous for the buffs; can run, hit twice, run, hit twice. </li>
-   <li> Each tick will consumes a Force Potency, which is <i>very</i> wasteful. </li>
    <li> At level 40, each tick has 20% chance to trigger Rippling Force which immediately deals around half tick damage and can crit. </li>
 </ul>
 
-<h4 data-sprite="sage-29"> Vanquish </h4>
+<h4 data-sprite="sage-29"> Vanquish (Mind Crush) </h4>
+<ul class="desc">
+   <li> Level 58: Casts and deals 5k kinetic damage, plus 15k kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. The target is Vulnerable for 45 seconds, taking 5% more damage from Force attacks. Replaces Mind Crush. </li>
+   <li> Level 14 Mind Crush: Casts and deals XXX kinetic damage, plus XXX kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. </li>
+   <li> 2s casted, 15s cooldown, range 30m, 27 Force. </li>
+</ul>
 <ul class="key">
    <li> Our biggest attack, good upfront (burst) damage, heaviest and quickest tick. (tick per 1s) </li>
    <li> Always use after primed by Throw. 25% damage on our biggest attack. </li>
@@ -168,6 +178,10 @@
 </ul>
 
 <h4 data-sprite="sage-27"> Sever Force </h4>
+<ul class="desc">
+   <li> Level 26: Immobilizes the target for 2 sec. (once per 9 sec.), plus deals 10k internal damage over 18 sec. and redistribute 10% of the damage to heal you. </li>
+   <li> Instant, no cooldown, range 30m, 18 Force. </li>
+</ul>
 <ul class="key">
    <li> Long lasting DoT, spreadable by Force in Balance. </li>
    <li> Pin victim on a hidden cooldown of 9 seconds. </li>
@@ -187,6 +201,11 @@
 
 
 <h4 data-sprite="sage-7"> Weaken Mind </h4>
+<ul class="desc">
+   <li> Level 16: Deals 10k internal damage over 18 sec., and redistribute 10% of the damage to heal you. </li>
+   <li> Instant, no cooldown, range 30m, 32 Force. </li>
+   <li> Utilities: Confound </li>
+</ul>
 <ul class="key">
    <li> Long lasting DoT, spreadable by Force in Balance. </li>
    <li> Does not pin target, sometimes good for DoT spread. </li>
@@ -207,6 +226,10 @@
 
 
 <h4 data-sprite="sage-26"> Force in Balance </h4>
+<ul class="desc">
+   <li> Level 10: Deals 7k internal damage to up to 8 targets in a 5m radius AoE, and redistribute 20% of the total damage to heal you. </li>
+   <li> Instant (0.2 sec delay), 15 sec. cooldown, range 30m, 45 Force. </li>
+</ul>
 <ul class="key">
    <li> Biggest and instant AoE. Spread Sever Force and Weaken Mind. </li>
    <li> Put counted debuff on victims that boost DoT damage and refund Force. </li>
@@ -215,14 +238,14 @@
 <ol class="use">
    <li> Spread Sever Force and/or Weaken Mind to every target if <i>any</i> target have them. </li>
    <li> Spread both DoTs if possible, but if the target is flimsy and will die before that, DoT(s) a different target or just fire Force in Balance as burst AoE (without any DoT). </li>
-   <li> Use on cooldown.  Group, Single, Bursting, Kiting, just cast it on CD. </li>
+   <li> Use on cooldown. Group, Single, Bursting, Kiting, just cast it on CD. </li>
    <li> Except when a close group of adds are expected soon, in which case reserve this for them. </li>
 </ol>
 <ul class="note">
    <li> Newly spread DoTs will have full duration, but existing DoTs won't be refreshed. </li>
    <li> Newly spread DoTs will immediately tick, adding to burst damage. </li>
-   <li> Consumes multiple Force Potency when used on multiple targets.  Not optimal but acceptable. </li>
-   <li> Heals us 20% of total damage dealt. (10% before lv. 52) </li>
+   <li> Has time delay between activation and effect, around 0.2 seconds, must manually aim and adjust for enemies' movements. </li>
+   <li> Consumes multiple Force Potency when used on multiple targets. Not optimal but acceptable. </li>
    <li> Deals internal (yellow) damage, which bypass many defences. </li>
    <li> At level 68, Resonant Pulse has 50% proc on <i>each</i> target, damaging itself and <i>all</i> enemies in its 5 meters. </li>
    <li> The pulse will not hit Lift and other mez, but the main attack will. </li>
@@ -230,6 +253,11 @@
 
 
 <h4 data-sprite="sage-28"> Force Serenity </h4>
+<ul class="desc">
+   <li> Level 42: Casts and deals 7k internal damage, and redistribute 100% of the damage to heal you. </li>
+   <li> 1.5 sec. cast, 12 sec. cooldown, range 30m, 45 Force. </li>
+   <li> Utilities: Force Mobility </li>
+</ul>
 <ul class="key">
    <li> Biggest burst attack, also our main self-heal. </li>
    <li> 30% more damage (and heal) against weakened target. </li>
@@ -250,6 +278,11 @@
 
 
 <h4 data-sprite="sage-2"> Force Quake </h4>
+<ul class="desc">
+   <li> Level 4: Deals 8k kinetic damage over 3 sec. channel to up to 8 targets in a 8m radius AoE. 33% chance to stuns each standard and weak target every second. </li><!-- TEST STUN DURATION -->
+   <li> 3 sec. channel, no cooldown, range 30m, 54 Force. </li><!-- TEST FORCE REDUCTION -->
+   <li> Utilities: Tectonic Master </li>
+</ul>
 <ul class="key">
    <li> Primary weapon of mass destruction against flimsy enemies. </li>
    <li> 33% chance to stun each standard and weak target per tick.  </li>
@@ -267,6 +300,10 @@
 
 
 <h4 data-sprite="sage-0"> Disturbance </h4>
+<ul class="desc">
+   <li> Level 1: Casts and deals 6k kinetic damage. </li>
+   <li> 1.5 sec. cast, no cooldown, range 30m, 36 Force. </li><!-- TEST COOLDOWN -->
+</ul>
 <ul class="key">
    <li> Situational rotation filler. Primed by Telekinetic Throw like Vanquish. </li>
    <li> Low damage and take time to cast when unprimed, worse than Project. </li>
@@ -281,6 +318,10 @@
 
 
 <h4 data-sprite="jc-3"> Project </h4>
+<ul class="desc">
+   <li> Level 1: Deals 6k kinetic damage, and stuns standard and weak target for 3 sec. </li>
+   <li> Instant, 6 sec. cooldown, range 30m, 36 Force. </li>
+</ul>
 <ul class="key">
    <li> The initial ranged attack of Jedi Consular, still useful at high level. </li>
    <li> Moderate instant damage, quick cooldown, stuns standard and weak enemy 0.5s. </li>
@@ -296,10 +337,15 @@
 
 
 <h4 data-sprite="jc-2"> Saber Strike </h4>
-<ul>
+<ul class="desc">
+   <li> Level 1: Deals 4k weapon damage, spread across 3 melee attacks. </li>
+   <li> Instant, no cooldown, range 4m, no force cost. </li>
+   <li> Utilities: Impeding Slash </li>
+</ul>
+<ul class="key">
    <li> Our first and only melee attack, we have outgrown it as a DPS. </li>
    <li> For practical purpose, just forget Saber Strike ever exists. </li>
-</ul >
+</ul>
 
 
 
@@ -313,11 +359,16 @@
 </ul>
 
 <h4 data-sprite="jc-6"> Force Lift </h4>
+<ul class="desc">
+   <li> Level 7: Prevents target from acting for 60 sec. or until damaged. Non-player, non-standard and non-weak targets heal rapidly while lifted. </li>
+   <li> 2 sec. cast, 60 sec. cooldown, range 30m, 9 Force. </li>
+   <li> Utilities: Dizzying Force, Containment </li>
+</ul>
 <ul class="key">
    <li> The best soft crown control (mez) in game. </li>
    <li> Works on any controllable targets, including droids and turrets. </li>
-   <li> Breaks on <i>any</i> damage, including DoT or passive proc damage. </li>
-   <li> Very, very powerful with utilities. </li>
+   <li> Breaks on <i>any</i> damage, including DoT. </li>
+   <li> Very powerful when augmented by utilities. </li>
 </ul>
 <ol class="use">
    <li> Take tough target(s) out of action while dealing with its more fragile friends. </li>
@@ -334,6 +385,11 @@
 
 
 <h4 data-sprite="jc-4"> Force Wave </h4>
+<ul class="desc">
+   <li> Level 3: Deals 2k kinetic damage and knocks back up to 8 enemies in a 15m frontal cone. Also knocks down (stun) standard and weak enemies for 3 seconds. </li>
+   <li> Instant, 20 sec. cooldown, range 15m, 9 Force. </li>
+   <li> Utilities: Psychic Suffusion, Force Wake. </li>
+</ul>
 <ul class="key">
    <li> On of the three pushes in game and arguably the best (when used correctly). </li>
    <li> Push all enemies in the 135° cone away from us, usually ahead, but adjacent ones may go backward or sideways. </li>
@@ -355,6 +411,11 @@
 
 
 <h4 data-sprite="jc-5"> Force Stun </h4>
+<ul class="desc">
+   <li> Level 5: Deals 3k kinetic damage and stuns the target for 4 sec. </li>
+   <li> Instant, 60 sec. cooldown, range 10m, 9 Force. </li>
+   <li> Utilities: Staggering Stratagem </li>
+</ul>
 <ul class="key">
    <li> A hard stun that is not interrupted by damages. </li>
    <li> Use on the toughest enemy in a group, esp. when it casts or channels. </li>
@@ -372,6 +433,10 @@
 
 
 <h4 data-sprite="jc-10"> Mind Snap </h4>
+<ul class="desc">
+   <li> Level 18: Interrupts the target's current action and prevents that ability from being used for 4 sec. </li>
+   <li> Instant (Off-GCD), 18 sec. fixed cooldown, range 30m, no Force cost. </li>
+</ul>
 <ul class="key">
    <li> Our basic interrupt ability, stops the target's current cast or channel. </li>
    <li> Mind Snap is off-GCD: use it when we see a slow cast or channel and immediately resume next attack. </li>
@@ -387,6 +452,11 @@
 
 
 <h4 data-sprite="jc-11"> Force Slow </h4>
+<ul class="desc">
+   <li> Level 22: Deals 4k kinetic damage and slows the target's movement speed by 50% for 6 sec. </li>
+   <li> Instant, 12 sec. cooldown, range 30m, 9 Force. </li>
+   <li> Utilities: Metaphysical Alacrity </li>
+</ul>
 <ul class="key">
    <li> There are few times when we want to slow a slowable enemy instead of using more efficient attacks. </li>
    <li> Such as Telekinetic Throw, which also slow (or pin) the target while doing higher damage and buffs us. </li>
@@ -422,6 +492,11 @@
 
 
 <h4 data-sprite="sage-15"> Force Barrier </h4>
+<ul class="desc">
+   <li> Level 51: Channel a Force Barrier for 8 sec. and be immune to all control, damage, and negative effects. Does not respect global cooldown, can be used while stunned. Force Barrier charges will build up and grant Enduring Bastion when Force Barrier ends, a shield that absorbs fixed damage per charge and grants immunity to interrupts for up to 5 sec. </li>
+   <li> 8s channel (Off-GCD), self only, 3 min. fixed cooldown, no Force cost. </li>
+   <li> Utilities: Metaphysical Alacrity, Life Ward </li>
+</ul>
 <ul class="key">
    <li> The most powerful panic button in swtor. </li>
    <li> Purge and immune to <i>all</i> removable negative effects. </li>
@@ -441,11 +516,15 @@
 
 
 <h4 data-sprite="sage-5"> Force Armor (Bubble) </h4>
+<ul class="desc">
+   <li> Level 14: Wrap the target in a Force shield that absorbs 12k damage for up to 30 sec. The target cannot benefit from Force Armor again for 20 sec. </li>
+   <li> Instant, no cast cooldown, 20 sec. individual cooldown, range 30m, 41 Force. </li>
+   <li> Utilities: Telekinetic Defense, Kinetic Collapse, Life Ward </li>
+</ul>
 <ul class="key">
    <li> Our best damage control, absorbs about 10% hp. </li>
    <li> More than all our heals except Force Mend. </li>
    <li> Can be placed on self and all friend(s). </li>
-   <li> Comes with Force Imbanaced debuff which prevent re-bubble within 20 seconds. </li>
 </ul>
 <ol class="use">
    <li> Keep it on ourselves always, except: </li>
@@ -458,11 +537,16 @@
    <li> When placed on teammate, absorbed damage is their threat, not our threat. </li>
    <li> Bubble utilities only apply to own bubble, and will be visually different. </li>
    <li> When we see these special bubble on an ally, do <i>not</i> bubble him/her. </li>
-   <li> Alacrity does not affect bubble or lockout duration. </li>
+   <li> Alacrity does not affect bubble duration or lockout duration. </li>
 </ul>
 
 
 <h4 data-sprite="sage-8"> Force Mend </h4>
+<ul class="desc">
+   <li> Level 18: Immediately restores 13k health to you. </li>
+   <li> Instant (Off-GCD), 30 sec. fixed cooldown, self only, no Force cost. </li>
+   <li> Utilities: Pain Bearer, Valiance, Valorous Spirit </li>
+</ul>
 <ul class="key">
    <li> Our biggest heal, free and off GCD, heals only ourselves. </li>
    <li> Heals slightly more than bubble right out of box. </li>
@@ -480,6 +564,11 @@
 
 
 <h4 data-sprite="sage-4"> Rejuvenate </h4>
+<ul class="desc">
+   <li> Level 12: Immediately heals a target for 4k health, plus 3k health over 9 sec. </li>
+   <li> Instant, 6 sec. cooldown, range 30m, 45 Force. </li>
+   <li> Utilities: Pain Bearer </li>
+</ul>
 <ul class="key">
    <li> Our basic heal, low cooldown and cost efficient. </li>
    <li> Heals about 5% over 9s, slightly above half a bubble. </li>
@@ -502,6 +591,11 @@
 
 
 <h4 data-sprite="sage-3"> Benevolence </h4>
+<ul class="desc">
+   <li> Level 6: Casts and heals a target for 8k health. </li>
+   <li> 1.5 sec. cast, no cooldown, range 30m, 63 Force. </li>
+   <li> Utilities: Pain Bearer, Benevolent Haste </li>
+</ul>
 <ul class="key">
    <li> Our "burst" heal, can be spammed but can't move and pretty expensive. </li>
    <li> Roughly double the initial heal of Rejuvenate, but still less than bubble. </li>
@@ -519,6 +613,11 @@
 
 
 <h4 data-sprite="sage-12"> Cloud Mind </h4>
+<ul class="desc">
+   <li> Level 30: Instantly lower your threat by one-quarter. </li>
+   <li> Instant (Off-GCD), 45 sec. fixed cooldown, self only, no Force cost. </li>
+   <li> Utilities: Blockout </li>
+</ul>
 <ul class="key">
    <li> Threat dump. Lower our threat and hopefully divert NPC's attention to our teammates. </li>
    <li> Useful even when solo. Let our companion share the burden! </li>
@@ -538,6 +637,11 @@
 
 
 <h4 data-sprite="sage-10"> Restoration </h4>
+<ul class="desc">
+   <li> Level 24: Removes up to 2 mental or Force debuffs from target. </li>
+   <li> Instant, 12 sec. cooldown, range 30m, 14 Force. </li>
+   <li> Utilities: Swift Rejuvenation </li>
+</ul>
 <ul class="key">
    <li> Our main cleanse, removes up to two debuffs from self or friend. </li>
    <li> Can cleanse all force-based debuffs and some non-force debuffs. </li>
@@ -557,6 +661,10 @@
 
 
 <h4 data-sprite="jc-8"> Force of Will </h4>
+<ul class="desc">
+   <li> Level 9: Removes all incapacitating and movement-impairing effects from you. </li>
+   <li> Instant (Off-GCD), 2 min. fixed cooldown, self only, no Force cost. </li>
+</ul>
 <ul class="key">
    <li> Our basic stun breaker. Way too long cooldown. </li>
    <li> Removes all slows, pins, and stunning debuffs from ourself. </li>
@@ -574,6 +682,10 @@
 
 
 <h4 data-sprite="sage-14"> Revival </h4>
+<ul class="desc">
+   <li> Level 50: Cast and revives an incapacitated ally while in combat. All group members can neither use nor be the target of an in-combat revival for 5 minutes. </li>
+   <li> 1.5 sec. cast (no pushback), 5 min. cooldown (essentially fixed), range 30m, 27 Force. </li>
+</ul>
 <ul class="key">
    <li> In-combat revive, limited to Sage, Scoundrel, and Commando. </li>
    <li> Can revive fallen teammate or companion (own or teammate's). </li>
@@ -587,11 +699,16 @@
 </ol>
 <ul class="note">
    <li> In a long combat it is possible to do multiple revival, since the cooldown and debuff are both 5 minutes. </li>
-   <li> Our out of combat revive has no cooldown, and we should help revive after combat. </li>
+   <li> Alacrity lowers ability cooldown but not debuff time, so the cooldown is effectively fixed, except after a group wipe. </li>
+   <li> Our out of combat revive has no cooldown, and we should revive fallen comrades after combat. </li>
 </ul>
 
 
 <h4 data-sprite="jc-1"> Meditation </h4>
+<ul class="desc">
+   <li> Level 1: Restore your health and Force. Cannot be used during combat. </li>
+   <li> 15 sec. channel, self only. </li><!-- TEST REGEN RATE -->
+</ul>
 <ul class="key">
    <li> Out of combat Health/Force recovery. </li>
    <li> Rejuvenate before rest to speed up hp recovery. </li>
@@ -613,6 +730,11 @@
 
 
 <h4 data-sprite="jc-9"> Force Speed </h4>
+<ul class="desc">
+   <li> Level 16: Increases movement speed by 150% for 2 sec. </li>
+   <li> Instant (Off-GCD), 20 sec. fixed cooldown, self only, no Force cost. </li>
+   <li> Utilities: Egress, Metaphysical Alacrity </li>
+</ul>
 <ul class="key">
    <li> Our mobile ability to chase enemy, kite, or flee. </li>
    <li> Arguably our most important survival power. </li>
@@ -630,6 +752,12 @@
 
 
 <h4 data-sprite="sage-17"> Phase Walk </h4>
+<ul class="desc">
+   <li> Level 59: Marks your current location for 600 sec. Activate this ability again to instantly return to the marked location, if it is within 60m. </li>
+   <li> Mark: 0.5 sec. cast, 1.5 sec. cooldown, self only, no Force cost. </li>
+   <li> Teleport: Instant (Off-GCD), 60 sec. fixed cooldown, self only, no Force cost. </li>
+   <li> Utilities: Ethereal Entity </li>
+</ul>
 <ul class="key">
    <li> First use: Set mark at current position (0.5 casted). Second use: Teleport back to mark. </li>
    <li> Right click phase walk buff to remove placed mark. </li>
@@ -650,6 +778,11 @@
 
 
 <h4 data-sprite="sage-13"> Rescue </h4>
+<ul class="desc">
+   <li> Level 30: Lowers the target's threat by one quarter and, if the target is a group member, pulls the target to you. </li>
+   <li> Instant, 60 sec. cooldown, range 30m, 27 Force. </li>
+   <li> Utilities: Valiance </li>
+</ul>
 <ul class="key">
    <li> The no.1 trolling ability in swtor. </li>
    <li> Pulls a teammate to our location and lower his/her threat instantly. </li>
@@ -674,6 +807,10 @@
 
 
 <h4 data-sprite="jc-7"> Force Potency </h4>
+<ul class="desc">
+   <li> Level 8: Grants 2 charges of Force Potency, which increases the Force critical chance of your direct attacks and heals by 60%. Each time a direct Force ability critically hits or each time a channeled Force ability is activated, 1 charge is consumed. Lasts 20 secs. </li>
+   <li> Instant (Off-GCD), 90 sec. fixed cooldown, self only, no Force cost. </li>
+</ul>
 <ul class="key">
    <li> First of our two basic buffs, grant next two direct hits or heals +60% crit chance. </li>
    <li> Yields big number when used with 1) Force Mend, 2) Force Serenity on weakened victim. </li>
@@ -692,15 +829,19 @@
 
 
 <h4 data-sprite="sage-11"> Mental Alacrity </h4>
+<ul class="desc">
+   <li> Level 28: Grants 20% alacrity and immunity to interrupts for 10 sec. </li>
+   <li> Instant (Off-GCD), 2 min. fixed cooldown, self only, no Force cost. </li>
+   <li> Utilities: Metaphysical Alacrity </li>
+</ul>
 <ul class="key">
    <li> Second of our two basic buffs, boost action speed and hasten DoTs applied in buff duration. </li>
    <li> Faster cast/channel and quicker ability cooldowns when used in the buff duration. </li>
    <li> Also increase Force regen, but too little to make a difference. </li>
 </ul>
 <ol class="use">
-   <li> Speed up rotation and rotation cycle to increase dps. </li>
-   <li> When things go south and we need to kill adds fast or bubble everyone fast. </li>
-   <li> When impatient.  The cooldown is short enough to be used every combat or two, and multiple times in longer boss fights. </li>
+   <li> Use on cooldown, unless we consistently steal aggro from tank in which case we can tone down and save it for burst. </li>
+   <li> The cooldown is short enough to be used every combat or two, and multiple times in longer boss fights. </li>
 </ol>
 <ul class="note">
    <li> Hastened DoTs won't slow down after buff expires. </li>
@@ -710,6 +851,10 @@
 
 
 <h4 data-sprite="sage-16"> Force Empowerment </h4>
+<ul class="desc">
+   <li> Level 56: Increases Mastery, Endurance, and Presence by 10% for you and your group members within 40m. Lasts 10 sec. </li>
+   <li> Instant (Off-GCD), 5 min. fixed cooldown, self only, no Force cost. </li>
+</ul>
 <ul class="key">
    <li> Raid buff.  One of the best in game. </li>
    <li> Apply to the whole team in 40m, and prevent further Force Empowerment for 5 mins. </li>
@@ -729,30 +874,40 @@
 </ul>
 
 <h4 data-sprite="jc-0"> Force Valor </h4>
+<ul class="desc">
+   <li> Level 1: Increases the target's Mastery by 5% and internal and elemental damage reduction by 10% for 60 min. If used on a group member, apply to the whole group. </li>
+   <li> Instant, 6 sec. fixed cooldown, range 30m, no Force cost. </li>
+</ul>
 <ul class="key">
-   <li> Our class buff. Have it on all teammates always. </li>
-   <li> <b>Mandatory</b>: Finish chapter 2 of all base class pairs to get all 4 class buffs in one cast. </li>
+   <li> Our class buff. Have it on ourselves and all teammates always. </li>
+   <li> <b>Mandatory</b>: Finish chapter 2 of all 4 base class sets to unlock and combine all class buffs. </li>
 </ul>
 <ol class="use">
    <li> When we, our companion, or any teammate do not have the class buffs. </li>
-   <li> Such as right after revive, whether in combat or out of combat. </li>
+   <li> Typically right after self or teammate revive, whether in combat or out of combat. </li>
+   <li> Casted on same-faction players who don't have this class buff to give them a boost, for example on starter planets and fleet.  </li>
 </ol>
 <ul class="note">
    <li> One of the few abilities that grant internal/elemental resistance. </li>
    <li> With Trooper/Bounty Hunter class buff, reapplying class buffs would cause a small drop in hp cap, so don't do it unnecessary. </li>
+   <li> Applying the buffs to a newly revived teammate is still worth the team hp drop. </li>
    <li> The mastery/endurance bonus have no effect on most planets because of level sync, but will be effective in flashpoints, uprisings, and operations. </li>
    <li class="pvp"> In a cross faction pvp we may get the Imperial buff set instead. Leave them be. </li>
 </ul>
 
 <h4 data-sprite="sage-9"> Vindicate </h4>
+<ul class="desc">
+   <li> Level 20: Immediately restors 40 Force, but reduces Force regeneration rate by 2 for 10 seconds. This effect can stack up to 4 times. </li>
+   <li> Instant, no cooldown, self only, net gain 20 Force. </li>
+</ul>
 <ul class="key">
    <li> Spend a GCD to sacrifice force regen for instant force. </li>
    <li> Telekinetic Throw is almost always a better choice. </li>
 </ul>
 <ol class="use">
-   <li> Don't use this power. Forget it exists. </li>
+   <li> When and only when we are hiding or running and have no one to attack and nothing else to do. </li>
+   <li> One of the worse to spend time, but still better than not doing anything. </li>
    <li> If often run out of force, revise rotation habit; Balance Sage depends on synergies to save Force. </li>
-   <li> Ok, may be when we are hiding and have no one to attack. </li>
 </ol>
 <ul class="note">
    <li> Each use has a net gain of 20 Force, but we are wasting that GCD. </li>
@@ -784,7 +939,7 @@
 
 <h4 data-sprite="sage-u-0"> Psychic Suffusion </h4>
 <ul class="desc">
-   <li> Force Wave heals you and up to 7 affected allies for XXX. </li>
+   <li> Skillful: Force Wave heals you and up to 7 affected allies for XXX. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Avoid</b>.
@@ -794,7 +949,7 @@
 
 <h4 data-sprite="sage-u-1"> Jedi Resistance </h4>
 <ul class="desc">
-   <li> Increases damage reduction by 3%. </li>
+   <li> Skillful: Increases damage reduction by 3%. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good</b>.
@@ -804,7 +959,7 @@
 
 <h4 data-sprite="sage-u-2"> Tectonic Master </h4>
 <ul class="desc">
-   <li> Force Quake deals 25% more damage. </li>
+   <li> Skillful: Force Quake deals 25% more damage. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational</b>.
@@ -816,7 +971,7 @@
 
 <h4 data-sprite="sage-u-3"> Pain Bearer </h4>
 <ul class="desc">
-   <li> Increases received healing by 5%, except redistributed life. </li>
+   <li> Skillful: Increases received healing by 5%, except redistributed life. </li>
 </ul>
 <ul class="vgood">
    <li> <b class="vgood">Recommended</b>.
@@ -827,7 +982,7 @@
 
 <h4 data-sprite="sage-u-4"> Dizzying Force </h4>
 <ul class="desc">
-   <li> Force Lift affects up to 2 more standard or weak enemies within 8 meters of the target.  When Force Lift ends, reduces target's accuracy by 20% for 8 seconds. </li>
+   <li> Skillful: Force Lift affects up to 2 more standard or weak enemies within 8 meters of the target.  When Force Lift ends, reduces target's accuracy by 20% for 8 seconds. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational</b>.
@@ -840,7 +995,7 @@
 
 <h4 data-sprite="sage-u-5"> Benevolent Haste </h4>
 <ul class="desc">
-   <li> Benevolence boosts target's movement speed by 50% for 6 seconds, once every 12 seconds. </li>
+   <li> Skillful: Benevolence boosts target's movement speed by 50% for 6 seconds, once every 12 seconds. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Avoid</b>.
@@ -859,7 +1014,7 @@
 
 <h4 data-sprite="sage-u-6"> Blockout </h4>
 <ul class="desc">
-   <li> Cloud Mind increases damage reduction by 25% for 6 seconds. </li>
+   <li> Masterful: Cloud Mind increases damage reduction by 25% for 6 seconds. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Very Situational</b>.
@@ -870,7 +1025,7 @@
 
 <h4 data-sprite="sage-u-7"> Mind Ward </h4>
 <ul class="desc">
-   <li> Reduces the damage taken by all periodic effects by 15%. </li>
+   <li> Masterful: Reduces the damage taken by all periodic effects by 15%. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational</b>.
@@ -881,7 +1036,7 @@
 
 <h4 data-sprite="sage-u-8"> Valiance </h4>
 <ul class="desc">
-   <li> Force Mend heals 30% more. Rescue increase target's damage reduction by 25% for 6 seconds. </li>
+   <li> Masterful: Force Mend heals 30% more. Rescue increase target's damage reduction by 25% for 6 seconds. </li>
 </ul>
 <ul class="vgood">
    <li> <b class="vgood">Recommended</b>.
@@ -891,7 +1046,7 @@
 
 <h4 data-sprite="sage-u-9"> Confound </h4>
 <ul class="desc">
-   <li> Targets affected by your Weaken Mind are slowed by 30% for its duration. </li>
+   <li> Masterful: Targets affected by your Weaken Mind are slowed by 30% for its duration. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Very Situational</b>.
@@ -902,7 +1057,7 @@
 
 <h4 data-sprite="sage-u-10"> Telekinetic Defense </h4>
 <ul class="desc">
-   <li> When Force Armor absorbs direct damage, it blasts attackers for XXX kinetic damage. Does not apply to Force Armors placed on allies and limited to once per second. </li>
+   <li> Masterful: When Force Armor absorbs direct damage, it blasts attackers for XXX kinetic damage. Does not apply to Force Armor placed on allies and limited to once per second. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good</b>.
@@ -915,7 +1070,7 @@
 
 <h4 data-sprite="sage-u-11"> Staggering Stratagem </h4>
 <ul class="desc">
-   <li> Reduces Force Stun cooldown by 10 seconds. When Force Stun wears off, the target deals 25% less damage for 10 seconds. </li>
+   <li> Masterful: Reduces Force Stun cooldown by 10 seconds. When Force Stun wears off, the target deals 25% less damage for 10 seconds. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational/By Preference</b>.
@@ -935,7 +1090,7 @@
 
 <h4 data-sprite="sage-u-12"> Egress </h4>
 <ul class="desc">
-   <li> Force Speed purges all movement-impairing effects and granting immunity to them for the duration. </li>
+   <li> Heroic: Force Speed purges all movement-impairing effects and granting immunity to them for the duration. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational</b>.
@@ -946,7 +1101,7 @@
 
 <h4 data-sprite="sage-u-13"> Mental Defense </h4>
 <ul class="desc">
-   <li> Reduces damage taken while stunned and damage taken from area effects by 30%. </li>
+   <li> Heroic: Reduces damage taken while stunned and damage taken from area effects by 30%. </li>
 </ul>
 <ul class="vgood">
    <li> <b class="vgood">Recommended</b>.
@@ -956,7 +1111,7 @@
 
 <h4 data-sprite="sage-u-14"> Metaphysical Alacrity </h4>
 <ul class="desc">
-   <li> Reduces cooldowns of Force Speed by 5 seconds, Force Slow by 3 seconds, and Force Barrier by 30 seconds. Force Speed lasts 0.5 seconds longer. Mental Alacrity increases movement speed by 100% (up from 50%) while active. Force Speed finish cooldown when Force Barrier ends. </li>
+   <li> Heroic: Reduces cooldowns of Force Speed by 5 seconds, Force Slow by 3 seconds, and Force Barrier by 30 seconds. Force Speed lasts 0.5 seconds longer. Mental Alacrity increases movement speed by 100% (up from 50%) while active. Force Speed finish cooldown when Force Barrier ends. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational/By Preference</b>.
@@ -968,7 +1123,7 @@
 
 <h4 data-sprite="sage-u-15"> Kinetic Collapse </h4>
 <ul class="desc">
-   <li> When the Force Armors you place on yourself ends, it blinds up to 8 enemies in 5 meters for 3 seconds or until they take direct damage. </li>
+   <li> Heroic: When the Force Armor you place on yourself ends, it blinds up to 8 enemies in 5 meters for 3 seconds or until they take direct damage. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good/By Preference</b>.
@@ -981,7 +1136,7 @@
 
 <h4 data-sprite="sage-u-16"> Containment </h4>
 <ul class="desc">
-   <li> Force Lift activates instantly. If your Force Lift breaks early from damage, the target is stunned for 2 seconds. </li>
+   <li> Heroic: Force Lift activates instantly. If your Force Lift breaks early from damage, the target is stunned for 2 seconds. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">By Preference</b>.
@@ -992,7 +1147,7 @@
 
 <h4 data-sprite="sage-u-17"> Force Wake </h4>
 <ul class="desc">
-   <li> Force Wave immobilizes its targets for 5 seconds. Direct damage dealt after 2 seconds breaks the effect. </li>
+   <li> Heroic: Force Wave immobilizes its targets for 5 seconds. Direct damage dealt after 2 seconds breaks the effect. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Avoid</b>.
@@ -1013,7 +1168,7 @@
 
 <h4 data-sprite="sage-u-18"> Force Mobility </h4>
 <ul class="desc">
-   <li> Force Serenity can be casted while moving. </li>
+   <li> Legendary: Force Serenity can be casted while moving. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good/By Preference</b>.
@@ -1025,23 +1180,25 @@
 
 <h4 data-sprite="sage-u-19"> Swift Rejuvenation </h4>
 <ul class="desc">
-   <li> Restoration activate instantly your next casted ability. Last up to 15 seconds and limited to once per 30 seconds. </li>
+   <li> Legendary: Restoration activate instantly your next casted ability. Last up to 15 seconds and limited to once per 30 seconds. </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Very situational</b>.
         Pick this to "prime" Force Serenity, Force Lift, or (if necessary) Vanquish before combat or behind cover. </li>
    <li> Wasteful because of extra GCD, even when it can <i>somewhat</i> replace Force Mobility and Containment. </li>
    <li> More useful as part of a team, where we let other go first and do our control and rotations later. </li>
+   <li> Once upon a time all casted abilities light up when this triggers, making it easier to use. </li>
    <li> Do not pick just because we may cleanse. Most lower rank utilities are better options. </li>
 </ul>
 
 <h4 data-sprite="sage-u-20"> Life Ward </h4>
 <ul class="desc">
-   <li> Force Armor, Force Barrier, and <a class="auto" href="#force_barrier" data-sprite="sage-15">Enduring Bastion</a> heal 1% hp every second. This healing scales up to 4% with the charges for <a class="auto" href="#force_barrier" data-sprite="sage-15">Enduring Bastion</a>. </li>
+   <li> Legendary: Force Armor, Force Barrier, and Enduring Bastion heal 1% hp every second. This healing scales up to 4% with the charges for <a class="auto" href="#force_barrier" data-sprite="sage-15">Enduring Bastion</a>. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good default</b>.
         Think a Rejuvenate tick every second. </li>
+   <li> Enduring Bastion is the 5 second shield left after Force Barrier ends. </li>
    <li> Best for between-combat recovery and downtime rich boss fights, and helps when LoS or kiting. </li>
    <li> Fantastic heal when the boss is the kind that focus on the tank and leave us alone. </li>
    <li> Let Force Barrier heals us up to 28% hp. Bubble right before or right after Force Barrier for even more heal. </li>
@@ -1052,7 +1209,7 @@
 
 <h4 data-sprite="sage-u-21"> Valorous Spirit </h4>
 <ul class="desc">
-   <li> Reduces Force Mend cooldown by 5 seconds. Force Mend increases damage reduction by 15% for 6 seconds. </li>
+   <li> Legendary: Reduces Force Mend cooldown by 5 seconds. Force Mend increases damage reduction by 15% for 6 seconds. </li>
 </ul>
 <ul class="vgood">
    <li> <b class="vgood">Recommended</b>.
@@ -1062,7 +1219,7 @@
 
 <h4 data-sprite="sage-u-22"> Ethereal Entity </h4>
 <ul class="desc">
-   <li> Reduce Phase Walk cooldown by 15 seconds. Phase Walk teleportation grants Ethereal Entity, increase defenses by 30% and grant immunity to leaps, pulls, interrupts, and pushbacks for 10 seconds. </li>
+   <li> Legendary: Reduce Phase Walk cooldown by 15 seconds. Phase Walk teleportation grants Ethereal Entity, increase defenses by 30% and grant immunity to leaps, pulls, interrupts, and pushbacks for 10 seconds. </li>
 </ul>
 <ul class="maybe">
    <li> <b class="maybe">Situational</b>.
@@ -1073,7 +1230,7 @@
 
 <h4 data-sprite="sage-u-23"> Impeding Slash </h4>
 <ul class="desc">
-   <li> Replace Saber Strike. Cooldown 15s. Lash the target with your lightsaber, dealing XXX weapon damage and immobilize it for 3 seconds, then slow it by 50% for 6 seconds. </li>
+   <li> Legendary: Replace Saber Strike. Cooldown 15s. Lash the target with your lightsaber, dealing XXX weapon damage and immobilize it for 3 seconds, then slow it by 50% for 6 seconds. </li>
 </ul>
 <ul class="bad">
    <li> <b class="warn">Avoid</b>.

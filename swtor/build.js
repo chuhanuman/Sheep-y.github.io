@@ -71,9 +71,9 @@ function normalise ( data ) {
    data = data.replace( /(<[ou]l class="note)/g, '<details open="open"><summary>Notes</summary>$1' );
    
    data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open"><summary class="vgood">Recommended</summary>$1' );
-   data = data.replace( /(<[ou]l class="good)/g, '<details open="open"><summary class="good">Good</summary>$1' );
+   data = data.replace( /(<[ou]l class="good)/g,  '<details open="open"><summary class="good">Good</summary>$1' );
    data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open"><summary class="maybe">Situational</summary>$1' );
-   data = data.replace( /(<[ou]l class="bad)/g, '<details open="open"><summary class="bad">Bad</summary>$1' );
+   data = data.replace( /(<[ou]l class="bad)/g,   '<details open="open"><summary class="bad">Bad</summary>$1' );
    
    data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open"><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
