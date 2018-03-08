@@ -150,7 +150,7 @@
             if ( section.dataset.sprite.startsWith( baseClassAbbr ) )
                [ mirror, mirrorText ] = [ baseClassMirrorAbbr, baseClassMirror ];
             const link = `<a href="${specMirror}.html#${id}" data-sprite="${mirror}${section.dataset.sprite.slice(mirror.length)}">`;
-            section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li>${mirrorText} counterpart: ${link}${mirrorName}</a></li>` );
+            section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li class="inline_icon">${mirrorText} counterpart: ${link}${mirrorName}</a></li>` );
          } );
       } );
    } catch ( err ) {

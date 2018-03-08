@@ -34,6 +34,12 @@ body {
             padding: 0 10px;
             }
 
+blockquote {
+   margin: 0 1em;
+   font-size: smaller;
+   font-style: italic;
+   }
+
 h1 {
    margin: 0;
    padding: 1ex 0;
@@ -57,10 +63,17 @@ dt {
 /* Generic ToC styles */
 #toc ul {
    list-style-type: none;
-   padding-left: 26px;
+   padding-left: 48px;
+   }
+#toc > ul {
+   padding-left: 36px;
    }
    #toc ol, #toc ul {
       margin: 0;
+      }
+   #toc details {
+      padding: 0;
+      margin-left: -26px;
       }
 
 /* Header styles */
