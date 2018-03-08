@@ -80,8 +80,8 @@
    <li> Vanquish / Mind Crush (Pre-cast/instant) </li>
    <li> Sever Force </li>
    <li> Weaken Mind </li>
-   <li> (Off) Force Potency </li>
    <li> Force in Balance (Spread DoTs at lv. 28+)</li>
+   <li> (Off) Force Potency </li>
    <li> (Off) Force Mend</li>
    <li> Force Serenity (Project before lv. 40) </li>
    <li> Telekinetic Throw (Full cast) </li>
@@ -139,8 +139,9 @@
 
 <h4 data-sprite="sage-1"> Telekinetic Throw </h4>
 <ul class="desc">
-   <li> Level 2: Deals 9k kinetic damage and regain 12 Force over 2.1 sec. channel. During channel it immobilizes weak and standard target, otherwise slows target's movement speed by 50% instead. </li>
+   <li> Level 2: Deals 9000 kinetic damage and regain 12 Force over 2.1 sec. channel. During channel it immobilizes weak and standard target, otherwise slows target's movement speed by 50% instead. </li>
    <li> 2.1 sec. channel (four ticks), 15 sec. cooldown, range 30m, 27 Force. </li>
+   <li> 4-pieces Force-Master set bonus: Reduces cost of Telekinetic Throw by 2 and reduces the cooldown of Polarity Shift or Mental Alacrity by 15 seconds. </li>
 </ul>
 <ul class="key">
    <li> Zero-cooldown basic attack, good damage and give us force, but can't use on move. </li>
@@ -154,12 +155,13 @@
 <ul class="note">
    <li> Ticks immediately and then twice per second, 4 ticks total. </li>
    <li> Hits does not need to be continuous for the buffs; can run, hit twice, run, hit twice. </li>
+   <li> A Force Potency is consumed on cast, and apply to all four ticks. Among the best use of Force Potency on a single target. </li>
    <li> At level 40, each tick has 20% chance to trigger Rippling Force which immediately deals around half tick damage and can crit. </li>
 </ul>
 
 <h4 data-sprite="sage-29"> Vanquish (Mind Crush) </h4>
 <ul class="desc">
-   <li> Level 58: Casts and deals 5k kinetic damage, plus 15k kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. The target is Vulnerable for 45 seconds, taking 5% more damage from Force attacks. Replaces Mind Crush. </li>
+   <li> Level 58: Casts and deals 5300 (±150) kinetic damage, plus 16300 kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. The target is Vulnerable for 45 seconds, taking 5% more damage from Force attacks. Replaces Mind Crush. </li>
    <li> Level 14 Mind Crush: Casts and deals XXX kinetic damage, plus XXX kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. </li>
    <li> 2s casted, 15s cooldown, range 30m, 27 Force. </li>
 </ul>
@@ -179,7 +181,7 @@
 
 <h4 data-sprite="sage-27"> Sever Force </h4>
 <ul class="desc">
-   <li> Level 26: Immobilizes the target for 2 sec. (once per 9 sec.), plus deals 10k internal damage over 18 sec. and redistribute 10% of the damage to heal you. </li>
+   <li> Level 26: Immobilizes the target for 2 sec. (once per 9 sec.), plus deals 11050 internal damage over 18 sec. and redistribute 10% of the damage to heal you. </li>
    <li> Instant, no cooldown, range 30m, 18 Force. </li>
 </ul>
 <ul class="key">
@@ -202,7 +204,7 @@
 
 <h4 data-sprite="sage-7"> Weaken Mind </h4>
 <ul class="desc">
-   <li> Level 16: Deals 10k internal damage over 18 sec., and redistribute 10% of the damage to heal you. </li>
+   <li> Level 16: Deals 10350 internal damage over 18 sec., and redistribute 10% of the damage to heal you. </li>
    <li> Instant, no cooldown, range 30m, 32 Force. </li>
    <li class="inline_icon"> Utility: Confound </li>
 </ul>
@@ -227,7 +229,7 @@
 
 <h4 data-sprite="sage-26"> Force in Balance </h4>
 <ul class="desc">
-   <li> Level 10: Deals 7k internal damage to up to 8 targets in a 5m radius AoE, and redistribute 20% of the total damage to heal you. </li>
+   <li> Level 10: Deals 7350 (±150) internal damage to up to 8 targets in a 5m radius AoE, and redistribute 20% of the total damage to heal you. </li>
    <li> Instant (0.2 sec delay), 15 sec. cooldown, range 30m, 45 Force. </li>
 </ul>
 <ul class="key">
@@ -254,8 +256,9 @@
 
 <h4 data-sprite="sage-28"> Force Serenity </h4>
 <ul class="desc">
-   <li> Level 42: Casts and deals 7k internal damage, and redistribute 100% of the damage to heal you. </li>
+   <li> Level 42: Casts and deals 7250 (±150) internal damage, and redistribute 100% of the damage to heal you. </li>
    <li> 1.5 sec. cast, 12 sec. cooldown, range 30m, 45 Force. </li>
+   <li> 2-pieces Force-Master set bonus: Force Serenity increase damage dealt by 2% for 15 seconds. Cannot occur more than once every 30 seconds. </li>
    <li class="inline_icon"> Utility: Force Mobility </li>
 </ul>
 <ul class="key">
@@ -279,8 +282,8 @@
 
 <h4 data-sprite="sage-2"> Force Quake </h4>
 <ul class="desc">
-   <li> Level 4: Deals 8k kinetic damage over 3 sec. channel to up to 8 targets in a 8m radius AoE. 33% chance to stuns each standard and weak target every second. </li><!-- TEST STUN DURATION -->
-   <li> 3 sec. channel, no cooldown, range 30m, 54 Force. </li><!-- TEST FORCE REDUCTION -->
+   <li> Level 4: Deals 8450 kinetic damage over 3 sec. channel to up to 8 targets in a 8m radius AoE. 33% chance to stuns each standard and weak target every sec. for 3 sec. </li>
+   <li> 3 sec. channel, no cooldown, range 30m, 60 Force. </li>
    <li class="inline_icon"> Utility: Tectonic Master </li>
 </ul>
 <ul class="key">
@@ -295,14 +298,16 @@
 </ol>
 <ul class="note">
    <li> 3 seconds channel, ticks once per second. </li>
+   <li> Force cost is not reduced by the 10% Force cost reduction because it is channeled. </li><!-- TODO find name of passive -->
    <li> Roughly equals to saber striking every target, at a high Force cost. </li>
+   <li> A Force Potency is consumed on first cast, and apply to every targets over the whole channel. Very big damage potential here. </li>
 </ul>
 
 
 <h4 data-sprite="sage-0"> Disturbance </h4>
 <ul class="desc">
-   <li> Level 1: Casts and deals 6k kinetic damage. </li>
-   <li> 1.5 sec. cast, no cooldown, range 30m, 36 Force. </li><!-- TEST COOLDOWN -->
+   <li> Level 1: Casts and deals 6150 (±150) kinetic damage. </li>
+   <li> 1.5 sec. cast, no cooldown, range 30m, 36 Force. </li>
 </ul>
 <ul class="key">
    <li> Situational rotation filler. Primed by Telekinetic Throw like Vanquish. </li>
@@ -319,7 +324,7 @@
 
 <h4 data-sprite="jc-3"> Project </h4>
 <ul class="desc">
-   <li> Level 1: Deals 6k kinetic damage, and stuns standard and weak target for 3 sec. </li>
+   <li> Level 1: Deals 6150 (±150) kinetic damage, and stuns standard and weak target for 3 sec. </li>
    <li> Instant, 6 sec. cooldown, range 30m, 36 Force. </li>
 </ul>
 <ul class="key">
@@ -329,7 +334,6 @@
 <ol class="use">
    <li> When we are running and want to attack, and other attacks are on cooldown. </li>
    <li> Quickly stun a standard or weak enemy to interrupt its channel/cast or just give it a pause. </li>
-   <li> To spend last Force Potency on, when Force in Balance and Force Serenity are both on cooldown. </li>
 </ol>
 <ul class="note">
    <li> Telekinetic Throw is often a better choice, even when kiting, because of Throw's buffs and zero CD. One primed Vanquish is worth 4 Projects. </li>
@@ -338,13 +342,14 @@
 
 <h4 data-sprite="jc-2"> Saber Strike </h4>
 <ul class="desc">
-   <li> Level 1: Deals 4k weapon damage, spread across 3 melee attacks. </li>
+   <li> Level 1: Deals 3925 (±300) weapon damage, spread across 3 melee attacks. </li>
    <li> Instant, no cooldown, range 4m, no force cost. </li>
    <li class="inline_icon"> Utility: Impeding Slash </li>
 </ul>
 <ul class="key">
    <li> Our first and only melee attack, we have outgrown it as a DPS. </li>
    <li> For practical purpose, just forget Saber Strike ever exists. </li>
+   <li> Saber Strike also has greatest damage variation among our attacks. </li>
 </ul>
 
 
@@ -386,7 +391,7 @@
 
 <h4 data-sprite="jc-4"> Force Wave </h4>
 <ul class="desc">
-   <li> Level 3: Deals 2k kinetic damage and knocks back up to 8 enemies in a 15m frontal cone. Also knocks down (stun) standard and weak enemies for 3 seconds. </li>
+   <li> Level 3: Deals 2400 (±150) kinetic damage and knocks back up to 8 enemies in a 15m frontal cone. Also knocks down (stun) standard and weak enemies for 3 seconds. </li>
    <li> Instant, 20 sec. cooldown, range 15m, 9 Force. </li>
    <li class="inline_icon"> Utilities: Psychic Suffusion, Force Wake. </li>
 </ul>
@@ -412,7 +417,7 @@
 
 <h4 data-sprite="jc-5"> Force Stun </h4>
 <ul class="desc">
-   <li> Level 5: Deals 3k kinetic damage and stuns the target for 4 sec. </li>
+   <li> Level 5: Deals 3000 (±150) kinetic damage and stuns the target for 4 sec. </li>
    <li> Instant, 60 sec. cooldown, range 10m, 9 Force. </li>
    <li class="inline_icon"> Utility: Staggering Stratagem </li>
 </ul>
@@ -453,7 +458,7 @@
 
 <h4 data-sprite="jc-11"> Force Slow </h4>
 <ul class="desc">
-   <li> Level 22: Deals 4k kinetic damage and slows the target's movement speed by 50% for 6 sec. </li>
+   <li> Level 22: Deals 4375 (±150) 4k kinetic damage and slows the target's movement speed by 50% for 6 sec. </li>
    <li> Instant, 12 sec. cooldown, range 30m, 9 Force. </li>
    <li class="inline_icon"> Utility: Metaphysical Alacrity </li>
 </ul>
@@ -493,7 +498,7 @@
 
 <h4 data-sprite="sage-15"> Force Barrier </h4>
 <ul class="desc">
-   <li> Level 51: Channel a Force Barrier for 8 sec. and be immune to all control, damage, and negative effects. Does not respect global cooldown, can be used while stunned. Force Barrier charges will build up and grant Enduring Bastion when Force Barrier ends, a shield that absorbs fixed damage per charge and grants immunity to interrupts for up to 5 sec. </li>
+   <li> Level 51: Channel a Force Barrier for 8 sec. and be immune to all control, damage, and negative effects. Does not respect global cooldown, can be used while stunned. Force Barrier charges will build up and grant Enduring Bastion when Force Barrier ends, a shield that absorbs 12k to 15k damage per charge and grants immunity to interrupts for up to 5 sec. </li>
    <li> 8s channel (Off-GCD), self only, 3 min. fixed cooldown, no Force cost. </li>
    <li class="inline_icon"> Utilities: Metaphysical Alacrity, Life Ward </li>
 </ul>
@@ -509,15 +514,16 @@
    <li> Break early when the danger has passed. </li>
 </ol>
 <ul class="note">
-   <li> Can't stop instant death attacks and mechanics. </li>
-   <li> Post effect shield absorbs 15k per stack (max 4) and last 5 seconds. </li>
-   <!-- <li> (Test tick rate and alacrity) </li> TEST -->
+   <li> Can't stop instant death attacks and mechanics. Some forced movement mechanics ignore and would disrupt Force Barrier. </li>
+   <li> Start with 1 stack and ticks at 2.1 sec., for a max of 4 stacks at 6.3 sec into channel. Tick speed is unaffected by Alacrity. </li>
+   <li> Enduring Bastion seems to absorb 12k at 1 stack, 26k at 2 stacks, 39k at 3 stacks, and 60k at 4 stacks. </li>
+   <li> Unlike Bubble which would absorb partial attack before collapsing, Enduring Bastion seems to always fully absorb the last attack (making it difficult to get accurate numbers). </li>
 </ul>
 
 
 <h4 data-sprite="sage-5"> Force Armor (Bubble) </h4>
 <ul class="desc">
-   <li> Level 14: Wrap the target in a Force shield that absorbs 12k damage for up to 30 sec. The target cannot benefit from Force Armor again for 20 sec. </li>
+   <li> Level 14: Wrap the target in a Force shield that absorbs 13000 damage for up to 30 sec. The target cannot benefit from Force Armor again for 20 sec. </li>
    <li> Instant, no cast cooldown, 20 sec. individual cooldown, range 30m, 41 Force. </li>
    <li class="inline_icon"> Utilities: Telekinetic Defense, Kinetic Collapse, Life Ward </li>
 </ul>
@@ -543,29 +549,28 @@
 
 <h4 data-sprite="sage-8"> Force Mend </h4>
 <ul class="desc">
-   <li> Level 18: Immediately restores 13k health to you. </li>
+   <li> Level 18: Immediately restores 13500 (±800) health to you. </li>
    <li> Instant (Off-GCD), 30 sec. fixed cooldown, self only, no Force cost. </li>
    <li class="inline_icon"> Utilities: Pain Bearer, Valiance, Valorous Spirit </li>
 </ul>
 <ul class="key">
    <li> Our biggest heal, free and off GCD, heals only ourselves. </li>
    <li> Heals slightly more than bubble right out of box. </li>
-   <li> With utilities, heals around ¼ hp on crit. </li>
+   <li> With utilities, heals up to one-third hp on crit. </li>
 </ul>
 <ol class="use">
-   <li> Whenever hp is lower than ¾. </li>
+   <li> Whenever hp is lower than three quarters. </li>
    <li> Force Mend is off GCD, we can use it between other actions without slowing down. </li>
    <li> Often used with Force Potency to make sure it crit. </li>
 </ol>
 <ul class="note">
-   <li> Cooldown not shortened by alacrity, but a utility exists. </li>
    <li> Generate a big, instant threat. </li>
 </ul>
 
 
 <h4 data-sprite="sage-4"> Rejuvenate </h4>
 <ul class="desc">
-   <li> Level 12: Immediately heals a target for 4k health, plus 3k health over 9 sec. </li>
+   <li> Level 12: Immediately heals a target for 4340 (±400) health, plus 3330 health over 9 sec. </li>
    <li> Instant, 6 sec. cooldown, range 30m, 45 Force. </li>
    <li class="inline_icon"> Utility: Pain Bearer </li>
 </ul>
@@ -592,7 +597,7 @@
 
 <h4 data-sprite="sage-3"> Benevolence </h4>
 <ul class="desc">
-   <li> Level 6: Casts and heals a target for 8k health. </li>
+   <li> Level 6: Casts and heals a target for 8130 (±800) health. </li>
    <li> 1.5 sec. cast, no cooldown, range 30m, 63 Force. </li>
    <li class="inline_icon"> Utilities: Pain Bearer, Benevolent Haste </li>
 </ul>
@@ -614,7 +619,7 @@
 
 <h4 data-sprite="sage-12"> Cloud Mind </h4>
 <ul class="desc">
-   <li> Level 30: Instantly lower your threat by one-quarter. </li>
+   <li> Level 30: Instantly lower your threat by one quarter. </li>
    <li> Instant (Off-GCD), 45 sec. fixed cooldown, self only, no Force cost. </li>
    <li class="inline_icon"> Utility: Blockout </li>
 </ul>
@@ -707,7 +712,7 @@
 <h4 data-sprite="jc-1"> Meditation </h4>
 <ul class="desc">
    <li> Level 1: Restore your health and Force. Cannot be used during combat. </li>
-   <li> 15 sec. channel, self only. </li><!-- TEST REGEN RATE -->
+   <li> 15 sec. channel, self only. It takes only half the duration to fully recover. </li>
 </ul>
 <ul class="key">
    <li> Out of combat Health/Force recovery. </li>
@@ -715,6 +720,8 @@
    <li> Heal wounded friends when we don't need to rest. </li>
 </ul>
 <ul class="note">
+   <li> Tick once per second for 15 ticks. Each ticks restore 13.3% of our hp and Force. </li>
+   <li> Some DoT or time delayed attacks may kill us after combat, if our hp is low enough.  Immediate Meditation may restore our hp in time to save us. </li>
    <li> Try to rest as few and as short as possible when in a group. </li>
    <li> Buy Bantha Steak from cantina vendors to boost out of combat hp regen. </li>
 </ul>
@@ -810,14 +817,15 @@
 <ul class="desc">
    <li> Level 8: Grants 2 charges of Force Potency, which increases the Force critical chance of your direct attacks and heals by 60%. Each time a direct Force ability critically hits or each time a channeled Force ability is activated, 1 charge is consumed. Lasts 20 secs. </li>
    <li> Instant (Off-GCD), 90 sec. fixed cooldown, self only, no Force cost. </li>
+   <li> 6-pieces Force-Master set bonus: Increases Force Potency charges by 1. </li>
 </ul>
 <ul class="key">
    <li> First of our two basic buffs, grant next two direct hits or heals +60% crit chance. </li>
-   <li> Yields big number when used with 1) Force Mend, 2) Force Serenity on weakened victim. </li>
+   <li> Yields big number when used with 1) Force Mend, 2) Force Serenity on weakened victim, 3) Force Quake on multiple foes. </li>
 </ul>
 <ol class="use">
    <li> When we need that critical Force Mend, immediately. </li>
-   <li> Before we put Force in Balance and Force Serenity on a tough single target. </li>
+   <li> Before we put Force Serenity and Telekinetic Throw on a tough single target. </li>
    <li> Best used during Mental Alacrity because of reduced cooldown. </li>
 </ol>
 <ul class="note">
@@ -832,6 +840,7 @@
 <ul class="desc">
    <li> Level 28: Grants 20% alacrity and immunity to interrupts for 10 sec. </li>
    <li> Instant (Off-GCD), 2 min. fixed cooldown, self only, no Force cost. </li>
+   <li> 4-pieces Force-Master set bonus: Reduces the cooldown of Polarity Shift or Mental Alacrity by 15 seconds and the cost of Telekinetic Throw by 2. </li>
    <li class="inline_icon"> Utility: Metaphysical Alacrity </li>
 </ul>
 <ul class="key">
@@ -897,7 +906,7 @@
 
 <h4 data-sprite="sage-9"> Vindicate </h4>
 <ul class="desc">
-   <li> Level 20: Immediately restors 40 Force, but reduces Force regeneration rate by 2 for 10 seconds. This effect can stack up to 4 times. </li>
+   <li> Level 20: Immediately restors 40 Force, but reduces Force regeneration rate by 2 for 10 seconds. </li>
    <li> Instant, no cooldown, self only, net gain 20 Force. </li>
 </ul>
 <ul class="key">
@@ -912,6 +921,8 @@
 <ul class="note">
    <li> Each use has a net gain of 20 Force, but we are wasting that GCD. </li>
    <li> A full Telekinetic Throw regens 28+ Force (36+ with 4-set bonus), while dealing damage and priming Vanquish/Disturbance. </li>
+   <li> The debuff reduces our base Force regen rate before Alacrity multiplication; at 4 stacks it reduce our regen to zero and so Alacrity bonus also drops to zero. </li>
+   <li> After 4 stacks we can keep using Vindicate, for a net gain of around 30 Force. </li>
    <li> Vindicate is the main Force regen ability of Seers. When we respec we need it on the bar and easy to click. </li>
 </ul>
 
@@ -939,7 +950,7 @@
 
 <h4 data-sprite="sage-u-0"> Psychic Suffusion </h4>
 <ul class="desc">
-   <li> Skillful: Force Wave heals you and up to 7 affected allies for XXX. </li>
+   <li> Skillful: Force Wave heals you and up to 7 affected allies for 2630 (±300). </li>
 </ul>
 <ul class="bad">
    <li> <b class="bad">Avoid</b>.
@@ -989,7 +1000,7 @@
         Taking 3 enemies out in one go is amazing, but obviously not applicable when all NPCs are starred. </li>
    <li> The main target can and should still be starred. </li>
    <li> The lift is not shared; take them one by one at our leisure. </li>
-   <li> Enemies who are immune to lift are also immune to the accuracy debuff. </li><!-- TEST -->
+   <li> Enemies who are immune to lift are also immune to the accuracy debuff. </li>
    <li> Best picked with Containment which make Force Lift instant. </li>
 </ul>
 
@@ -1000,7 +1011,7 @@
 <ul class="bad">
    <li> <b class="bad">Avoid</b>.
         May be nice if Benevolence is useful in combat. </li>
-   <li> The frequency limit is timed on us, so we can't Benevolence multiple targets to grant multiple boosts. </li><!-- TEST -->
+   <li> The frequency limit is timed on us, so we can't Benevolence multiple targets to grant multiple boosts. </li>
 </ul>
 
 
@@ -1057,7 +1068,7 @@
 
 <h4 data-sprite="sage-u-10"> Telekinetic Defense </h4>
 <ul class="desc">
-   <li> Masterful: When Force Armor absorbs direct damage, it blasts attackers for XXX kinetic damage. Does not apply to Force Armor placed on allies and limited to once per second. </li>
+   <li> Masterful: When Force Armor absorbs direct damage, it blasts attackers for 6500 kinetic damage. Does not apply to Force Armor placed on allies and limited to once per second. </li>
 </ul>
 <ul class="good">
    <li> <b class="good">Good</b>.
@@ -1075,6 +1086,7 @@
 <ul class="maybe">
    <li> <b class="maybe">Situational/By Preference</b>.
         Lower stun CD and damage debuff is nice when fighting champions. </li>
+   <li> Enemies who are immune to stuns are also immune to the damage debuff. </li>
    <li> I like it because I can stun more often. </li>
 </ul>
 
@@ -1230,7 +1242,7 @@
 
 <h4 data-sprite="sage-u-23"> Impeding Slash </h4>
 <ul class="desc">
-   <li> Legendary: Replace Saber Strike. Cooldown 15s. Lash the target with your lightsaber, dealing XXX weapon damage and immobilize it for 3 seconds, then slow it by 50% for 6 seconds. </li>
+   <li> Legendary: Replace Saber Strike. Cooldown 15s. Lash the target with your lightsaber, dealing 5050 (±240) weapon damage and immobilize it for 3 seconds, then slow it by 50% for 6 seconds. </li>
 </ul>
 <ul class="bad">
    <li> <b class="warn">Avoid</b>.
@@ -1304,7 +1316,7 @@
    <li> Accuracy/crit stim is a easy way to fill the stat budget, but I prefer mastery/power stim since I won't be dependent on it. </li>
    <li> Sever Force and Weaken Mind last a little bit longer than the <a href="#rotation">rotation</a> at all alacrity cutoff points, but the difference of cutting it, waiting it, or optimising for it is around 1%. So I just keep it simple. </li>
    <li> I haven't had time to test it, but <a href="https://www.reddit.com/r/swtor/comments/7upvqu/calculations_for_the_point_of_diminishing_returns/">some says</a> Critical's diminishing return is <a href="https://www.reddit.com/r/swtor/comments/7z945a/lightning_spec_gearing_alacrity_crit_and_power/duorlx6/">around 2250</a> for us. Note that exact point varies from toon to toon. </li>
-   <li> Set bonus - 2-set: Force Serenity gives +2% buff to damage; 4-set: Increase Telekinetic Throw's Force regen, reduce Mental Alacrity CD; 6-set: Add 1 charge to Force Potency. </li>
+   <li> Set bonus - 2-set: Force Serenity buffs damage by 2%; 4-set: Increase Telekinetic Throw's Force regen, reduce Mental Alacrity CD; 6-set: Add 1 charge to Force Potency. </li>
    <li> Set bonus does not affect rotation, except perhaps when to use Force Potency. </li>
    <li class="pvp"> PvP needs only 105% accuracy; I switch earpiece out for Alacrity, part of my healer gear. </li>
 </ul>
@@ -1476,8 +1488,9 @@ Some tips for setting up swtor interface for best Balance Sage experience.
 
 <h2 id="about"> About Me and this Guide </h2>
 <ul>
+   <li> Damage and heal numbers taken from my optimised 248 gear (128600 hp) and reasonably rounded, without stim/proc/utils, and are provided for reference purpose. </li>
    <li> This guide is written in point form to stop me from going on and on. It is long enough in point form. </li>
-   <li> I'm Elleé on the Satelle Shan server's Republic side. (é=Alt-130) I am usually F2P, and I hail from Hong Kong, a vibrant and interesting ex-colony. </li>
+   <li> I'm Elleé (é=Alt-130) on the Satelle Shan server's Republic side. I am usually F2P, and I hail from Hong Kong, a vibrant and interesting ex-colony. </li>
    <li> I need Charged Matter Transubstantiator! Sponsor welcomed! </li>
    <li> If you ever teamed with a white haired lady in a white and green Elegant Dress on Harbinger/Satelle Shan, you may know me as a healer who literally spam bubbles. </li>
    <li> Well we need a Balance PvE guide, and I learn to DPS better when I make this guide. It works. </li>
