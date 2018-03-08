@@ -10,16 +10,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="297mm"
+   width="242mm"
    height="210mm"
-   viewBox="0 0 297 210"
+   viewBox="0 0 242 210"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="Sage Balance.svg"
-   inkscape:export-filename="G:\Movie\Star Wars The Old Republic\Class Guide\Sage Balance.png"
-   inkscape:export-xdpi="600"
-   inkscape:export-ydpi="600">
+   sodipodi:docname="_balance_abilities.svg">
   <defs
      id="defs2">
     <marker
@@ -778,7 +775,7 @@
            x="155.10754"
            y="80.671089"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
-           id="tspan4596">5k + 15k over 9s, 2s cast</tspan></text>
+           id="tspan4596">5k + 16k over 9s, 2s cast</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -904,7 +901,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
            y="80.671089"
            x="79.778709"
-           sodipodi:role="line">10k over 18s</tspan></text>
+           sodipodi:role="line">11k over 18s</tspan></text>
       <rect
          style="opacity:1;fill:none;fill-opacity:1;stroke:#c4c400;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1, 0.5;stroke-dashoffset:0;stroke-opacity:1"
          id="rect15814"
@@ -1073,7 +1070,7 @@
            x="129.24805"
            y="220.4879"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:start;text-anchor:start;stroke-width:0.26458332px"
-           id="tspan4857-8-9-8">30F</tspan></text>
+           id="tspan4857-8-9-8">27F</tspan></text>
       <text
          inkscape:label="Revival Lv"
          id="text431-2-93-7-8-96"
@@ -1262,7 +1259,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
            y="205.8568"
            x="151.18323"
-           sodipodi:role="line">Heal 4k + 3k over 9s</tspan></text>
+           sodipodi:role="line">Heal 4.5k + 3.3k over 9s</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1599,7 +1596,7 @@
            x="33.414829"
            y="133.32318"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
-           id="tspan4718">8k AoE 8m over 3s channel</tspan></text>
+           id="tspan4718">8.5k AoE 8m over 3s channel</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1663,7 +1660,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
            y="181.51512"
            x="43.403381"
-           sodipodi:role="line">2k, 135° 15m cone push</tspan></text>
+           sodipodi:role="line">2.5k, 135° 15m cone push</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2507,7 +2504,7 @@
            y="215.8938"
            x="87.955338"
            sodipodi:role="line"
-           id="tspan1270">4x15k</tspan><tspan
+           id="tspan1270">12-60k</tspan><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:5%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:end;text-anchor:end;fill:#0000ff;fill-opacity:1;stroke-width:0.26458332px"
            y="218.5643"
            x="87.955338"
@@ -2558,7 +2555,7 @@
            x="123.65447"
            y="205.8568"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:20%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
-           id="tspan16631">Absorb 12k</tspan></text>
+           id="tspan16631">Absorb 13k</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:5%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3224,7 +3221,7 @@
          x="102.32063"
          y="288.0123"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:40%;font-family:Calibri;-inkscape-font-specification:Calibri;text-align:center;text-anchor:middle;fill:#505050;fill-opacity:1;stroke-width:0.26458332px"
-         id="tspan1240">Heal/Damage numbers based on my 247 gear without augs or utils.  Range is 30m / self, unless noted.</tspan></text>
+         id="tspan1240">Heal/Damage numbers based on my 248 gear without stim or utils.  Range is 30m or self unless noted.</tspan></text>
     <text
        inkscape:label="+5% Crit passive"
        id="text1124-9"

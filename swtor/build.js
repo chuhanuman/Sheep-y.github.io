@@ -26,7 +26,7 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
 
 /* Turn text into id */
 function idify ( text ) {
-   return text.replace( /\([^)]+\)/, '' ).trim().toLowerCase().replace( /\W+/g, '_' );
+   return text.replace( /\([^)]+\)/, "" ).trim().toLowerCase().replace( /\W+/g, '_' );
 }
 
 /* Sort string by length, longest first */
@@ -39,31 +39,50 @@ function revLenSort (a,b) {
 /* Removes whitespaces and comments, and convert list to details block */
 function normalise ( data ) {
    // Remove inkscape props
-   data = data.replace( /(inkscape|sodipodi):\w+=\"[^"]*\"/g, '' );
-   // Fix svg links
-   data = data.replace( /xlink:href/g, 'href' );
+   if ( data.startsWith( "<?xml " ) ) {
+      data = data.replace( /(inkscape|sodipodi):[^= "]+=\"[^"]*\"/g, "" ); // Remove inkscape propterties
+      data = data.replace( /-inkscape-[^;"]+;/g, "" ); // Custom inkscape CSS
+      data = data.replace( / xmlns:(inkscape|sodipodi)="[^"]+"/g, "" ); // Remove xml namespaces
+      // Find and remove unused ids
+      const ids = data.match( /\(#[^)]+\)"/g ).map( id => id.slice( 2, -2 ) ).sort();
+      const regxId = new RegExp( ` id="(?!${ids.join("|")})[^"]+"`, "g" );
+      data = data.replace( regxId, "" );
+      // Fix svg links
+      data = data.replace( /xlink:href/g, 'href' );
+   }
 
    // Turns to one line
-   data = data.replace( /\s*[\r\n]+\s*/g, ' ' );
+   data = data.replace( /\s*[\r\n]+\s*/g, " " );
    // Drop comments
-   data = data.replace( /\/\*.*?\*\//g, '' ).replace( /<!--.*?-->/g, '' );
+   data = data.replace( /\/\*.*?\*\//g, "" ).replace( /<!--.*?-->/g, "" );
    // Drop spaces between and within tags
    data = data.replace( />\s+</g, '><' ).replace( / \/>/g, '/>' );
    // Minor trims
-   data = data.replace( /  +>/g, ' ' );
+   data = data.replace( /  +>/g, " " );
 
    // Set build time
    data = data.replace( /\$DATE_BUILD/g, new Date().toISOString().split( /T/ )[0] );
-   if ( ! data.includes( '<p>' ) ) return data.replace( /font-(stretch|style|variant|weight):normal;/g, '' );
+   if ( ! data.includes( '<p>' ) ) {
+      data = data.replace( /font-(stretch|style|variant|weight):normal;/g, "" );
+      data = data.replace( /<sodipodi:namedview\b.*?<\/sodipodi:namedview>/g, "" );
+      data = data.replace( /<metadata\b.*?<\/metadata>/g, "" );
+      return data;
+   }
 
    // Fix multiline sentences
-   data = data.replace( /\.(?=[A-Z])/g, '. ' );
+   data = data.replace( /\.(?=[A-Z])/g, ". " );
 
    // Convert list to <details>
-   data = data.replace( /(<[ou]l class="desc)/g, '<details open="open"><summary>Description</summary>$1' );
+   data = data.replace( /(<[ou]l class="desc)/g, '<details open="open" class="desc"><summary>Description</summary>$1' );
    data = data.replace( /(<[ou]l class="key)/g, '<details open="open"><summary>Basics</summary>$1' );
    data = data.replace( /(<[ou]l class="use)/g, '<details open="open"><summary>Usages</summary>$1' );
    data = data.replace( /(<[ou]l class="note)/g, '<details open="open"><summary>Notes</summary>$1' );
+   
+   data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open"><summary class="vgood">Recommended</summary>$1' );
+   data = data.replace( /(<[ou]l class="good)/g,  '<details open="open"><summary class="good">Good</summary>$1' );
+   data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open"><summary class="maybe">Situational</summary>$1' );
+   data = data.replace( /(<[ou]l class="bad)/g,   '<details open="open"><summary class="bad">Bad</summary>$1' );
+   
    data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open"><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
@@ -118,7 +137,7 @@ function build ( data ) {
       } else if ( lv < level ) {
          while ( level-- > lv ) current = hstack.pop();
       }
-      if ( prop ) prop = prop.replace( / ?id=['"][^'"]*['"]/, '' );
+      if ( prop ) prop = prop.replace( / ?id=['"][^'"]*['"]/, "" );
       current.push( { h: `<a href="#${id}"${prop}>${title}</a>`, lv: lv, subs: null } );
       level = lv;
    }
@@ -135,7 +154,7 @@ function build ( data ) {
       } else
          return `<li>${item.h}</li>`;
    }
-   const toc = "<ul>" + current.map( buildToC ).join('') + "</ul>";
+   const toc = "<ul>" + current.map( buildToC ).join("") + "</ul>";
 
    // ToC replace
    data = data.replace( '<p class="TOC"></p>', toc );
@@ -151,14 +170,14 @@ function build ( data ) {
 
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
-   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, '' );
+   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, "" );
    return data;
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
-   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, '' );
-   let result = '', pos = 0;
+   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, "" );
+   let result = "", pos = 0;
    while ( true ) {
       const match = data.slice( pos ).match( /<(\w+) class="imp"/ );
       let end = match ? pos + match.index : data.length;
@@ -206,7 +225,7 @@ function buildMap () {
          "Commando", "Mercenary",
    );
 
-   // Sage - Balance
+   // Sage / Sorcerer
    map.push(
       // Attacks
       "Telekinetic Throw", "Force Lightning",      "Vanquish", "Demolish",
@@ -245,6 +264,11 @@ function buildMap () {
       "Ethereal Entity", "Shifting Silhouette",    "Impeding Slash", "Enfeebling Strike",
       // Short names
       "skittles", "lightnings" );
+
+   // Vanguard / Powertech
+   map.push(
+      "Transpose", "Translocate"
+      );
 
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {

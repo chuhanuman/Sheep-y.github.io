@@ -48,8 +48,8 @@
       console.warn( "Cannot load open/close state.", err );
    }
 
-   // Link to abilities, utilities, and glossaries
    try {
+      // Link to abilities, utilities, and glossaries
       const links = [];
       for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
          const id = e.id,  sprite = e.dataset.sprite,  title = find( e, "summary" ).textContent.trim().replace( /\)/g, '' ).replace( /\s*\(/g, '|' );
@@ -59,7 +59,7 @@
          e.id = idify( e.textContent );
          let pattern = e.dataset.regexp || e.textContent.trim();
          if ( pattern.match( /^[A-Z][a-z]+$/ ) ) pattern = "[" + pattern[0] + pattern[0].toLowerCase() + "]" + pattern.slice( 1 );
-         links.push( [ e.id, pattern, `<a class="glossary" href="#${e.id}">` ] );
+         links.push( [ e.id, pattern, `<a class="auto glossary" href="#${e.id}">` ] );
       }
       links.sort( (a,b) => {
          const al = a[0].length, bl = b[0].length;
@@ -79,6 +79,61 @@
          }
          e.innerHTML = html;
       }
+
+      // Add click handler
+      document.body.insertAdjacentHTML( "beforeend", "<aside id='lookup'></aside>" );
+      const lookupPopup = find( "#lookup" ), popStyle = lookupPopup.style;
+      document.body.addEventListener( "click", ( evt ) => {
+         // Hide lookup and stop if we shouldn't continue
+         const { target, detail, button, ctrlKey } = evt;
+         if ( button !== 0 || ! target || target.tagName !== "A" || ! target.classList.contains( "auto" ) ) {
+            popStyle.display = "none";
+            lookupPopup.innerHTML = "";
+            return;
+         }
+         if ( detail >= 2 || ctrlKey )
+            return;
+
+         // Load target and conditionally reset lookup states
+         const href = target.getAttribute( "href" ), id = href.substr( 1 ), e = find( href ), rect = target.getBoundingClientRect();
+         if ( ! e ) return console.warn( `Cannot find ${href}` );
+         evt.preventDefault();
+         if ( target.closest( "#lookup" ) == null ) {
+            lookupPopup.innerHTML = "";
+            popStyle.display = "block";
+            popStyle.top = scrollY + rect.bottom + "px";
+            popStyle.left = minMax( 0, scrollX + rect.left, innerWidth - lookupPopup.clientWidth ) + "px";
+         }
+         let curr = find( lookup, ".active" ), body;
+         if ( curr )
+            curr.classList.remove( "active" );
+         if ( curr = find( lookup, `[data-id=${id}]` ) ) {
+            curr.classList.add( "active" );
+            curr.scrollIntoView({ block: "nearest", inline: "nearest" });
+            return;
+         }
+
+         // Add new lookup to popup
+         if ( e.tagName === "DT" ) {
+            body = e.nextElementSibling.innerHTML;
+         } else {
+            let desc = find( e, ".desc > * > li" );
+            body = desc ? desc.innerHTML : "(Missing Description.)";
+         }
+         lookupPopup.innerHTML += `<p class="active" data-id="${id}"><button>x</button><b><a href="${href}">${target.textContent}</a></b><br>${body}</p>`;
+         find( lookupPopup, "p:last-child" ).scrollIntoView({ block: "nearest", inline: "nearest" });
+      } );
+      // Delete lookup from popup
+      lookupPopup.addEventListener( "click", ( evt ) => {
+         const { target } = evt, { tagName, parentNode } = target || {};
+         if ( ! target || tagName !== "BUTTON" )
+            return;
+         parentNode.remove();
+         if ( lookupPopup.textContent == "" )
+            popStyle.display = "none";
+         evt.preventDefault();
+      } );
+
    } catch ( err ) {
       console.warn( "Cannot create intra-links.", err );
    }
@@ -95,7 +150,7 @@
             if ( section.dataset.sprite.startsWith( baseClassAbbr ) )
                [ mirror, mirrorText ] = [ baseClassMirrorAbbr, baseClassMirror ];
             const link = `<a href="${specMirror}.html#${id}" data-sprite="${mirror}${section.dataset.sprite.slice(mirror.length)}">`;
-            section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li>${mirrorText} counterpart: ${link}${mirrorName}</a></li>` );
+            section.lastChild.lastChild.insertAdjacentHTML( 'beforeend', `<li class="inline_icon">${mirrorText} counterpart: ${link}${mirrorName}</a></li>` );
          } );
       } );
    } catch ( err ) {
@@ -103,6 +158,10 @@
    }
 
    find( 'body' ).classList.add( 'js' ); // Mark document as supporting js
+
+   function minMax ( min, val, max ) {
+      return Math.max( min, Math.min( val, max ) );
+   }
 
    function norm ( text ) {
       return text.replace( /\([^)]+\)/, '' ).trim();
