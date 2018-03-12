@@ -72,6 +72,15 @@ function normalise ( data ) {
    // Fix multiline sentences
    data = data.replace( /\.(?=[A-Z])/g, ". " );
 
+   // Convert number range to ruby
+   data = data.replace( /<data value="(\d+)">[^<]+<\/data>/g, ( match, v ) => {
+      return `<span title="${v}">${+((+v).toPrecision(3))}</span>`;
+   } );
+   data = data.replace( /<data value="(\d+)-(\d+)">[^<]+<\/data>/g, ( match, a, b ) => {
+      const min = +a, max = +b, avg = ( min + max ) / 2, deviation = Math.min( avg-min, max-avg );
+      return `<span title="${min} – ${max}">${+(avg.toPrecision(3))}<small> ±${+(deviation.toPrecision(2))}</small></span>`;
+   } );
+
    // Convert list to <details>
    data = data.replace( /(<[ou]l class="desc)/g, '<details open="open" class="desc"><summary>Description</summary>$1' );
    data = data.replace( /(<[ou]l class="key)/g, '<details open="open"><summary>Basics</summary>$1' );

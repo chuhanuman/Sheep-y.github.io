@@ -60,6 +60,10 @@ dt {
       padding-left: 2em;
       }
 
+rt {
+   ruby-align: center;
+   }
+
 /* Generic ToC styles */
 #toc ul {
    list-style-type: none;
