@@ -255,6 +255,8 @@ function buildMap () {
       "Force Potency", "Recklessness",             "Force Empowerment", "Unlimited Power",
       "Vindicate", "Consuming Darkness",           "Force of Will", "Unbreakable Will",
       "Rescue", "Extrication",
+      // Passives
+      "Rippling Force", "Lightning Burns",
       // Skillful
       "Psychic Suffusion", "Force Suffusion",      "Jedi Resistance", "Sith Defiance",
       "Tectonic Master", "Tempest Mastery",        "Pain Bearer", "Empty Body",

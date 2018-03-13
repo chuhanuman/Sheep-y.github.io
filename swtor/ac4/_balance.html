@@ -4,7 +4,7 @@
 <link href="../res/sprite.css?$DATE_BUILD" rel="stylesheet" />
 </head><body><article>
 
-<blockquote class="pub"> There is serenity in balance, and no one knows this better than the Balance Sage. Able to assail multiple targets at once while at the same time absorbing their vitality, the Balance Sage is a formidable presence in long-range engagements. </blockquote>
+<blockquote class="pub"> There is serenity in balance, and no one knows this better than the Balance Sage.<br/>Able to assail multiple targets at once while at the same time absorbing their vitality,<br/>the Balance Sage is a formidable presence in long-range engagements. </blockquote>
 <blockquote class="imp"> Delving ever deeper into the dark side of the Force can lead to madness, but it can also lead to immense power. Attacking multiple enemies simultaneously and instilling terror in their hearts, all while sapping their very life essence from afar, the Madness Sorcerer is a dark threat unlike any other. </blockquote>
 
 <h1 id="top"> Balance Sage PvE Guide 5.7a </h1>
@@ -148,7 +148,13 @@
 <ul class="desc">
    <li> Level 2: Deals <data value="9176">9k</data> kinetic damage and regain 12 Force over 2.1 sec. channel. During channel it immobilizes weak and standard target, otherwise slows target's movement speed by 50% instead. </li>
    <li> 2.1 sec. channel (four ticks), no cooldown, range 30m, regen 28 Force. </li>
-   <li> 4-pieces Force-Master set bonus: Reduces Force cost of Telekinetic Throw ticks by 2 (regen 36) and reduces the cooldown of Polarity Shift or Mental Alacrity by 15 seconds. </li>
+   <li> 4-pieces Force-Master set bonus: Reduces Force cost of Telekinetic Throw ticks by 2. </li>
+   <li> Level 24 passive: When Telekinetic Throw deals damage 4 times, your next Disturbance, Mind Crush, or Vanquish activates instantly, costs 50% less Force, and deals 25% more damage, for up to 15 sec. </li>
+   <li> Level 40 passive: Each Telekinetic Throw damage has a 20% chance to triggers Rippling Force, dealing <data value="1197">1k</data> kinetic damage to the target and restore 2 Force. </li>
+   <li> Level 64 passive: Telekinetic Throw hits increase your periodic damages by 2%, stack up to 4 times and last 10 sec. </li>
+   <li> (Merged) Level 12 passive: Telekinetic Throw now has no cooldown. </li>
+   <li> (Merged) Level 16 passive: Eliminate Telekinetic Throw pushback, and recover 2% Force (12) when it deals damage. </li>
+   <li> (Merged) Level 56 passive: Telekinetic Throw ticks 33% faster (from 3s to 2.1s) but deals 25% less damage. </li>
 </ul>
 <ul class="key">
    <li> Zero-cooldown basic attack, good damage and give us force, but can't use on move. </li>
@@ -162,15 +168,19 @@
 <ul class="note">
    <li> Ticks immediately and then twice per second, 4 ticks total. </li>
    <li> Hits does not need to be continuous for the buffs; can run, hit twice, run, hit twice. </li>
-   <li> A Force Potency is consumed on cast, and apply to all four ticks. One of the best uses of Force Potency on single target. Note that Force in Balance and Force Serenity deals internal damage, resulting in higher actual damage than Telekinetic Throw. </li>
-   <li> At level 40, each tick has 20% chance to trigger Rippling Force which immediately deals around half tick damage and can crit. </li><!-- TODO: damage number? -->
+   <li> A Force Potency is consumed on cast, and apply to all four ticks. One of the best uses of Force Potency on single target. Note that Force in Balance and Force Serenity deals internal damage, typically yielding higher damage than Telekinetic Throw. </li>
+   <li> Originally cost 36 Force per channel, or 9 per tick. We recover 12 per hit, for a net balance of 3 Force per tick. Natural Force regen also adds 16 over the channel. </li>
+   <li> Rippling Force adds around 2% damage. </li>
 </ul>
 
 <h4 data-sprite="sage-29"> Vanquish (Mind Crush) </h4>
 <ul class="desc">
-   <li> Level 58: Casts and deals <data value="5258-5558">5k</data> kinetic damage, plus <data value="16654">16k</data> kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. The target is Vulnerable for 45 seconds, taking 5% more damage from Force attacks. Replaces Mind Crush. </li>
-   <li> Level 14 Mind Crush: Casts and deals XXX kinetic damage, plus XXX kinetic damage over 9 sec. and redistribute 10% of the damage to heal you. </li>
+   <li> Level 58: Casts and deals <data value="5258-5558">5k</data> kinetic damage, plus <data value="16654">16k</data> kinetic damage over 9 sec. and redistributes 10% of the damage to heal you. The target is Vulnerable for 45 seconds, taking 5% more damage from Force attacks. Replaces Mind Crush. </li>
+   <li> Level 14 Mind Crush: Casts and deals XXX kinetic damage, plus XXX kinetic damage over 9 sec. and redistributes 10% of the damage to heal you. </li>
    <li> 2s casted, 15s cooldown, range 30m, 27 Force. </li>
+   <li> Level 36 passive: Increase periodic damage by 10%. </li>
+   <li> Level 48 passive: Increase periodic damage by 15% on targets below 30% max health. </li>
+   <li> (Merged) Level 44 passive: Mind Crush and Vanquish lasts 3 sec longer (from 6 to 9). </li>
 </ul>
 <ul class="key">
    <li> Our biggest attack, good upfront (burst) damage, heaviest and quickest tick. (tick per 1s) </li>
@@ -188,8 +198,11 @@
 
 <h4 data-sprite="sage-27"> Sever Force </h4>
 <ul class="desc">
-   <li> Level 26: Immobilizes the target for 2 sec. (once per 9 sec.), plus deals <data value="11264">11k</data> internal damage over 18 sec. and redistribute 10% of the damage to heal you. </li>
+   <li> Level 26: Immobilizes the target for 2 sec. (once per 9 sec.), plus deals <data value="11264">11k</data> internal damage over 18 sec. and redistributes 10% of the damage to heal you. </li>
    <li> Instant, no cooldown, range 30m, 18 Force. </li>
+   <li> Level 36 passive: Increase periodic damage by 10%. </li>
+   <li> Level 48 passive: Increase periodic damage by 15% on targets below 30% max health. </li>
+   <li> (Merged) Level 52 passive: Sever Force redistributes 10% of the damage to heal you. </li>
 </ul>
 <ul class="key">
    <li> Long lasting DoT, spreadable by Force in Balance. </li>
@@ -211,9 +224,12 @@
 
 <h4 data-sprite="sage-7"> Weaken Mind </h4>
 <ul class="desc">
-   <li> Level 16: Deals <data value="10581">10k</data> internal damage over 18 sec., and redistribute 10% of the damage to heal you. </li>
+   <li> Level 16: Deals <data value="10581">10k</data> internal damage over 18 sec., and redistributes 10% of the damage to heal you. </li>
    <li> Instant, no cooldown, range 30m, 32 Force. </li>
    <li class="inline_icon"> Utility: Confound </li>
+   <li> Level 36 passive: Increase periodic damage by 10%. </li>
+   <li> Level 48 passive: Increase periodic damage by 15% on targets below 30% max health. </li>
+   <li> (Merged) Level 52 passive: Weaken Mind redistributes 10% of the damage to heal you. </li>
 </ul>
 <ul class="key">
    <li> Long lasting DoT, spreadable by Force in Balance. </li>
@@ -224,7 +240,6 @@
    <li> Whenever the target is not going to fall in a few seconds or so. </li>
    <li> DoT spreading by Force in Balance or manually. </li>
    <li> To start a fight when all foes are melee, so that they zerg us as a group for easy DoT spread. </li>
-   <li> Before Force Serenity, when target would not be near death after Serenity. </li>
 </ol>
 <ul class="note">
    <li> Ticks immediately and once per 3 seconds for 18 seconds, 7 ticks total. </li>
@@ -238,6 +253,12 @@
 <ul class="desc">
    <li> Level 10: Deals <data value="7341-7642">7k</data> internal damage to up to 8 targets in a 5m radius AoE, and redistribute 20% of the total damage to heal you. </li>
    <li> Instant (0.2 sec delay), 15 sec. cooldown, range 30m, 45 Force. </li>
+   <li> Level 20 passive: Force in Balance increase the damage the target takes from your next 15 periodic damage for up to 30 sec. </li>
+   <li> Level 28 passive: Force in Balance spread your Weaken Mind and Sever Force to damanged targets, if any damaged target is already affected by your Weaken Mind and Sever Force. </li>
+   <li> Level 28 passive: Force in Balance cause targets to take 10% more damage from area attacks for 45 sec. </li>
+   <li> Level 60 passive: Each time Force in Balance increases your periodic damage, you regain 2 Force. </li>
+   <li> Level 68 passive: Targets hit by Force in Balance has 50% chance to emite a Resounding Pulse, dealing <data value="749">750</data> internal damage to itself and up to 7 targets within 5m. </li>
+   <li> (Merged) Level 52 passive: Increase Force in Balance's health redistribution from 10% to 20%. </li>
 </ul>
 <ul class="key">
    <li> Biggest and instant AoE. Spread Sever Force and Weaken Mind. </li>
@@ -256,8 +277,8 @@
    <li> Has time delay between activation and effect, around 0.2 seconds, must manually aim and adjust for enemies' movements. </li>
    <li> Consumes multiple Force Potency when used on multiple targets. Not optimal but acceptable. </li>
    <li> Deals internal (yellow) damage, which bypass many defences. </li>
-   <li> At level 68, Resonant Pulse has 50% proc on <i>each</i> target, damaging itself and <i>all</i> enemies in its 5 meters. </li><!-- TODO: damage number? -->
-   <li> The pulse will not hit Force Lift and other mez, but the main attack will. </li>
+   <li> Resonant Pulse will not hit Force Lift and other mez, but the main attack will. </li>
+   <li> Many targets = many Resonant Pulse; on average, 4 targets will <i>each</i> take 2 pulses (8 total), 6 targets 3 pulses (18 total), 8 targets 4 pulses (32). </li>
 </ul>
 
 
@@ -267,6 +288,12 @@
    <li> 1.5 sec. cast, 12 sec. cooldown, range 30m, 45 Force. </li>
    <li> 2-pieces Force-Master set bonus: Force Serenity increase damage dealt by 2% for 15 seconds. Cannot occur more than once every 30 seconds. </li>
    <li class="inline_icon"> Utility: Force Mobility </li>
+   <li> Level 16 passive: Reduce Force Serenity pushback by 75%. </li>
+   <li> Level 32 passive: Force Serenity critical chance +5%. </li>
+   <li> Level 40 passive: Force Serenity has a 60% chance to triggers Rippling Force, dealing <data value="1197">1k</data> kinetic damage to the target and restores 2 Force. </li>
+   <li> Level 48 passive: Force Serenity restores 15 Force when used on target affected by Force in Balance's periodic damage bonus. </li>
+   <li> Level 60 passive: Force Serenity deals 30% more damage on target affected by your Weaken Mind. </li>
+   <li> (Merged) Level 52 passive: Increase Force Serenity's health redistribution from 50% to 100%. </li>
 </ul>
 <ul class="key">
    <li> Biggest burst attack, also our main self-heal. </li>
@@ -315,6 +342,7 @@
 <ul class="desc">
    <li> Level 1: Casts and deals <data value="6144-6445">6k</data> kinetic damage. </li>
    <li> 1.5 sec. cast, no cooldown, range 30m, 36 Force. </li>
+   <li> Level 32 passive: Disturbance critical chance +5%. </li>
 </ul>
 <ul class="key">
    <li> Situational rotation filler. Primed by Telekinetic Throw like Vanquish. </li>
@@ -324,9 +352,6 @@
    <li> When Disturbance is primed, and Vanquish is on cooldown longer than 3 seconds, and we can Telekinetic Throw in time to prime and Vanquish, and we have nothing else to do like self Bubble or self Rejuvenate. </li>
    <li> In all other cases, just Telekinetic Throw. </li>
 </ol>
-<ul class="note">
-   <li> At level 40, has 60% chance to trigger Rippling Force which immediately deals around ⅕ damage. </li>
-</ul>
 
 
 <h4 data-sprite="jc-3"> Project </h4>
@@ -581,15 +606,16 @@
 
 <h4 data-sprite="sage-4"> Rejuvenate </h4>
 <ul class="desc">
-   <li> Level 12: Immediately heals a target for <data value="4001-4810">4k</data> health, plus <data value="3374">3k</data> health over 9 sec. </li>
+   <li> Level 12: Immediately heals a target for <data value="4001-4810">4k</data> health, plus <data value="3374">3k</data> health over 9 sec. Increase armor rating by 30% for the duration. </li>
    <li> Instant, 6 sec. cooldown, range 30m, 45 Force. </li>
    <li class="inline_icon"> Utility: Pain Bearer </li>
+   <li> (Merged) Level 12 passive: Rejuvenate increase your armor rating by 30% while it heals you. </li>
 </ul>
 <ul class="key">
    <li> Our basic heal, low cooldown and cost efficient. </li>
    <li> Heals about 5% over 9s, slightly above half a bubble. </li>
    <li> Our only instant heal that can be used on friends. </li>
-   <li> We enjoy 10% defence bonus when rejuvenating, around 5% damage reduction at ir248. </li>
+   <li> We enjoy 30% armor bonus when rejuvenating, around 5% damage reduction at ir248. </li>
 </ul>
 <ol class="use">
    <li> When attack can't be made and bubble is not an option, such as kiting. </li>
@@ -641,8 +667,8 @@
    <li class="pvp"> Threat does not exist in PvP, no need to dump threat. </li>
 </ul>
 <ol class="use">
-   <li> Should be used as part of rotation, <i>before</i> we draw many fires. Make it a habit. </li>
-   <li> When there is a tank nearby, give the tank a chance to take back control before dumping threat. </li>
+   <li> Use as part of rotation, <i>before</i> we draw many fires. Make it a habit. </li>
+   <li> When a tank is working, give him a chance to take back control before dumping threat. </li>
    <li> Use after big hitters and heals for best result. </li>
    <li> Only useful when there is a teammate or companion to take the heat. </li>
 </ol>
@@ -853,7 +879,7 @@
 <ul class="desc">
    <li> Level 28: Grants 20% alacrity and immunity to interrupts for 10 sec. </li>
    <li> Instant (Off-GCD), 2 min. fixed cooldown, self only, no Force cost. </li>
-   <li> 4-pieces Force-Master set bonus: Reduces the cooldown of Polarity Shift or Mental Alacrity by 15 seconds and the cost of Telekinetic Throw by 2. </li>
+   <li> 4-pieces Force-Master set bonus: Reduces the cooldown of Polarity Shift or Mental Alacrity by 15 seconds. </li>
    <li class="inline_icon"> Utility: Metaphysical Alacrity </li>
 </ul>
 <ul class="key">
@@ -919,12 +945,13 @@
 
 <h4 data-sprite="sage-9"> Vindicate </h4>
 <ul class="desc">
-   <li> Level 20: Immediately restors 40 Force, but reduces Force regeneration rate by 2 for 10 seconds. </li>
-   <li> Instant, no cooldown, self only, net gain 20 Force. </li>
+   <li> Level 20: Immediately restors 40 Force, but reduces Force regeneration rate by 2 for 10 seconds, stack up to 4 times. </li>
+   <li> Instant, no cooldown, self only. </li>
 </ul>
 <ul class="key">
    <li> Spend a GCD to sacrifice force regen for instant force. </li>
    <li> Telekinetic Throw is almost always a better choice. </li>
+   <li> 1<sup>st</sup> use net gain 20 Force, 2<sup>nd</sup> 17, 3<sup>nd</sup> 14, 4<sup>th</sup> 11, 5<sup>th</sup> and up net gain 28 Force. </li>
 </ul>
 <ol class="use">
    <li> When and only when we are hiding or running and have no one to attack and nothing else to do. </li>
@@ -932,10 +959,10 @@
    <li> If often run out of force, revise rotation habit; Balance Sage depends on synergies to save Force. </li>
 </ol>
 <ul class="note">
-   <li> Each use has a net gain of 20 Force, but we are wasting that GCD. </li>
-   <li> A full Telekinetic Throw regens 28+ Force (36+ with 4-set bonus), while dealing damage and priming Vanquish/Disturbance. </li>
+   <li> First use has a net gain of 20 Force, but we are wasting that GCD. </li>
+   <li> A full Telekinetic Throw grants us 28 Force (36 with 4-set bonus), while dealing damage and priming Vanquish/Disturbance. </li>
    <li> The debuff reduces our base Force regen rate before Alacrity multiplication; at 4 stacks it reduce our regen to zero and so Alacrity bonus also drops to zero. </li>
-   <li> After 4 stacks we can keep using Vindicate, for a net gain of around 30 Force. </li>
+   <li> Vindicate's efficiency drops with each use because it refresh the regen debuff time, until 5<sup>th</sup> and up where the stack has hit its cap. </li>
    <li> Vindicate is the main Force regen ability of Seers. When we respec we need it on the bar and easy to click. </li>
 </ul>
 
