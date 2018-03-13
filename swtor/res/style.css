@@ -38,6 +38,7 @@ blockquote {
    margin: 0 1em;
    font-size: smaller;
    font-style: italic;
+   text-align: center;
    }
 
 h1 {
@@ -60,20 +61,24 @@ dt {
       padding-left: 2em;
       }
 
+rt {
+   ruby-align: center;
+   }
+
 /* Generic ToC styles */
 #toc ul {
    list-style-type: none;
    padding-left: 48px;
    }
-#toc > ul {
-   padding-left: 36px;
-   }
-   #toc ol, #toc ul {
-      margin: 0;
-      }
-   #toc details {
+   #toc details { /* Use margin to counter padding */
       padding: 0;
       margin-left: -26px;
+      }
+   #toc > ul { /* First level, no need to indent so much */
+      padding-left: 36px;
+      }
+   #toc ol, #toc ul {
+      margin: 0;
       }
 
 /* Header styles */
