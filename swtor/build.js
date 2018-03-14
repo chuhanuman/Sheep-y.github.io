@@ -257,6 +257,7 @@ function buildMap () {
       "Rescue", "Extrication",
       // Passives
       "Rippling Force", "Lightning Burns",
+      "Resonant Pulse", "Dark Echo",
       // Skillful
       "Psychic Suffusion", "Force Suffusion",      "Jedi Resistance", "Sith Defiance",
       "Tectonic Master", "Tempest Mastery",        "Pain Bearer", "Empty Body",
@@ -284,8 +285,8 @@ function buildMap () {
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
       const p = map[i], e = map[i+1], pid = '#'+idify(p), eid = '#'+idify(e);
-      dict.set( p  , [ new RegExp( `\\b${p}\\b`  , 'g' ), e   ] );
-      dict.set( pid, [ new RegExp( `\\b${pid}\\b`, 'g' ), eid ] );
+      dict.set( p  , [ new RegExp( `\\b${p}(?!</a>)\\b`  , 'g' ), e   ] );
+      dict.set( pid, [ new RegExp( `${pid}\\b`, 'g' ), eid ] );
       list.push( p, pid );
    }
    list.sort( revLenSort );
