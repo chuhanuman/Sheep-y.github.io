@@ -34,6 +34,11 @@
    <li> Use bubble to "off-heal" in combat, but keep it minimal. Handle <a href="#restoration">cleanse</a> ourself. Use in-combat <a href="#revival">revive</a> if necessary. </li>
    <li> Suggested utilities: Pain Bearer, Tectonic Master, Telekinetic Defense, Valiance, Egress, Mental Defense, Metaphysical Alacrity, Valorous Spirit. </li>
 </ul>
+<ul summary="Known bugs">
+   <li> Resonant Pulse hit only the target itself, not each target. </li>
+   <li> Force Quake does not benefit from Force cost reduction of level 15 passive. </li>
+   <li> Not exactly a bug, but Phase Walk will disengage if we use it while  </li>
+</ul>
 <ul class="note">
    <li> Excels at kiting and long fights, arguably the hardest Sage discipline. </li>
    <li> Stable rotation, zero proc dependency, very reliable relic proc. </li>
@@ -257,7 +262,7 @@
    <li> Level 28 passive: Force in Balance spread your Weaken Mind and Sever Force to damanged targets, if any damaged target is already affected by your Weaken Mind and Sever Force. </li>
    <li> Level 28 passive: Force in Balance cause targets to take 10% more damage from area attacks for 45 sec. </li>
    <li> Level 60 passive: Each time Force in Balance increases your periodic damage, you regain 2 Force. </li>
-   <li> Level 68 passive: Targets hit by Force in Balance has 50% chance to emite a Resounding Pulse, dealing <data value="749">750</data> internal damage to itself and up to 7 targets within 5m. </li>
+   <li> Level 68 passive: Targets hit by Force in Balance has 50% chance to emits a Resonant Pulse, dealing <data value="749">750</data> internal damage to itself and up to 7 targets within 5m. </li>
    <li> (Merged) Level 52 passive: Increase Force in Balance's health redistribution from 10% to 20%. </li>
 </ul>
 <ul class="key">
@@ -277,8 +282,8 @@
    <li> Has a 0.2 sec delay between activation and effect, must manually aim and adjust for enemies' movements. </li>
    <li> Consumes multiple Force Potency when used on multiple targets. Not optimal but acceptable. </li>
    <li> Deals internal (yellow) damage, which bypass many defences. </li>
-   <li> Resonant Pulse will not hit Force Lift and other mez, but the main attack will. </li>
-   <li> Many targets = many Resonant Pulse; on average, 4 targets will <i>each</i> take 2 pulses (8 total), 6 targets 3 pulses (18 total), 8 targets 4 pulses (32). </li>
+   <li> Currently Resonant Pulse only hits the triggering target, instead of bounding to other enemies, in effect a flat 5% damage bonus. </li>
+   <!--<li> Many targets = many Resonant Pulse; on average, 4 targets will <i>each</i> take 2 pulses (8 total), 6 targets 3 pulses (18 total), 8 targets 4 pulses (32). </li>-->
 </ul>
 
 
@@ -332,9 +337,9 @@
 </ol>
 <ul class="note">
    <li> 3 seconds channel, ticks once per second. </li>
-   <li> Force cost is not reduced by the 10% Force cost reduction because it is channeled. </li><!-- TODO find name of passive -->
+   <li> Force cost is not reduced by the level 15 passive which reduce Force cost by 10%. This should be <a href="http://www.swtor.com/community/showthread.php?t=945742">a bug</a>, since Telekinetic Throw cost is reduced. </li>
    <li> Roughly equals to saber striking every target, at a high Force cost. </li>
-   <li> A Force Potency is consumed on first cast, and apply to all damages over the whole channel. Very big damage potential here. </li><!-- TODO Is it consumed on miss? -->
+   <li> A Force Potency is spent on cast, and apply to all damages over the whole channel (even if it hits no one). Huge damage potential here. </li>
 </ul>
 
 
@@ -378,7 +383,7 @@
    <li> Instant, no cooldown, range 4m, no force cost. </li>
    <li class="inline_icon"> Utility: Impeding Slash </li>
 </ul>
-<ul class="key"><!-- TODO Test Force Potency -->
+<ul class="key">
    <li> Our first and only melee attack, we have outgrown it as a DPS. </li>
    <li> For combat purpose, just forget Saber Strike ever exists. </li>
    <li> Saber Strike has greatest damage variation, but balanced by even crit chance caused by spliting the damage. </li>
@@ -386,6 +391,7 @@
 <ul class="use">
    <li> When you a low damage attack to wear down some props, like the iso-5 cans in Toborro’s Courtyard. </li>
    <li> Don't use when run out of Force. Use Telekinetic Throw to recover Force. </li>
+   <li> Since saber strike is not a Force attack, it does not spend Force Potency. </li>
 </ul>
 
 
