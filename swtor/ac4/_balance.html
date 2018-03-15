@@ -7,7 +7,7 @@
 <blockquote class="pub"> There is serenity in balance, and no one knows this better than the Balance Sage.<br/>Able to assail multiple targets at once while at the same time absorbing their vitality,<br/>the Balance Sage is a formidable presence in long-range engagements. </blockquote>
 <blockquote class="imp"> Delving ever deeper into the dark side of the Force can lead to madness, but it can also lead to immense power. Attacking multiple enemies simultaneously and instilling terror in their hearts, all while sapping their very life essence from afar, the Madness Sorcerer is a dark threat unlike any other. </blockquote>
 
-<h1 id="top"> Balance Sage PvE Guide 5.7a </h1>
+<h1 id="top"> Balance Sage PvE Guide 5.7 </h1>
 <p class="subtitle"> A class guide for Star Wars: Knights of the Old Re<span>pub</span>lic. Updated <a href="https://github.com/Sheep-y/Sheep-y.github.io/commits/master/swtor/ac4"><time>$DATE_BUILD</time></a>. </p>
 <!--/*--><h1 style="color:red">This is a template, NOT the published guide; <br/> Here are the live <a href="http://sheep-y.github.io/swtor/ac4/balance.html">pub guide</a> / <a href="http://sheep-y.github.io/swtor/ac4/madness.html">imp guide</a>.</h1><!--*/-->
 
@@ -27,18 +27,23 @@
    <li> Cons: Few defences, lack of burst. </li>
 </ul>
 <ul summary="Quick Tips">
-   <li> Stay in middle of group.  Don't go first.  Stay back and close to cover once combat starts. </li>
+   <li> Stay in middle or back of group. Stay back and close to cover once combat starts. </li>
    <li> Trash fights: start with Sever Force and/or Weaken Mind on a foe that don't die fast, then spread them with Force in Balance. </li>
-   <li> Keep Weaken Mind on.  Use Force in Balance and Force Serenity on cooldown.  Vanquish should be used on cooldown too, and needs to be primed by spamming Telekinetic Throw. </li>
-   <li> Maintain self bubble, spend Force Mend when need heal. Force Speed and flee when hp drops fast. Binds Force Barrier to a easy key for desperate time. </li>
-   <li> Use bubble to "off-heal" in live combat, but keep it minimal.  We should cleanse ourself.  Use in-combat revive if necessary. </li>
-   <li> Suggested utilities: Pain Bearer, Tectonic Master, Telekinetic Defense, Valiance, Egress, Mental Defense, Metaphysical Alacrity, Valorous Spirit. </li>
+   <li> Keep Weaken Mind on.  Use Force in Balance and Force Serenity on cooldown. Spam Telekinetic Throw so that we can use Vanquish on cooldown too. </li>
+   <li> Maintain self Bubble, spend Force Mend when need heal. Force Speed and flee when hp drops fast. Binds Force Barrier to a easy key for desperate time. </li>
+   <li> Use bubble to "off-heal" in combat, but keep it minimal. Handle <a href="#restoration">cleanse</a> ourself. Use in-combat <a href="#revival">revive</a> if necessary. </li>
+   <li> Suggested <a href="#utilities">utilities</a>: Pain Bearer, Tectonic Master, Telekinetic Defense, Valiance, Egress, Mental Defense, Force Mobility, Life Ward. </li>
+</ul>
+<ul summary="Known bugs">
+   <li> Resonant Pulse (lv 68) passive hits only the triggering target itself, not each target. </li>
+   <li> Force Quake does not benefit from Force cost reduction of level 15 passive. </li>
+   <li> Not exactly a bug, but Phase Walk will disengage if we use it while we are hindered. </li>
 </ul>
 <ul class="note">
    <li> Excels at kiting and long fights, arguably the hardest Sage discipline. </li>
    <li> Stable rotation, zero proc dependency, very reliable relic proc. </li>
    <li> Self-heals give great stamina in long fights, often the last one standing in a full wipe, but few ways to survive burst damage. </li>
-   <li> Telekinetic is Sage's burst DPS spec, highly proc based, very fast action in burst window. Perfect for leveling. </li>
+   <li> Telekinetic is Sage's burst DPS spec, highly proc based, very mobile, crazy action in burst window. Perfect for leveling. </li>
    <li> Seer is Sage's heal spec, very versatile and efficient, the most mobile heal spec. </li>
    <li class="pub"> Balance has the most subtle animations of all classes and disciplines. No saber dance, no arms up in the air, no fire rain from heaven, no rockets. If you prefer a low profile, there is no better class. </li>
    <li class="pub"> Imperial counterpart: <a href="madness.html">Madness Sorcerer</a>. </li>
@@ -99,6 +104,10 @@
 </ul>
 
 <h3 id="rotation_aoe"> AoE Rotation </h3>
+<p>
+   <object class="pub" type="image/svg+xml" data="../img/jc/sage/balance_rotation_aoe.svg?$DATE_BUILD"></object>
+   <object class="imp" type="image/svg+xml" data="../img/si/sorc/madness_rotation_aoe.svg?$DATE_BUILD"></object>
+</p>
 <ol class="key">
    <li> Sever Force or Weaken Mind </li>
    <li> Weaken Mind or Sever Force </li>
@@ -115,9 +124,9 @@
    <li> Against weak trashes, skipping the second DoT may finish them off faster. </li>
    <li> Force in Balance is our heaviest AoE, equals a full Force Quake at one DoT, slightly above at two, and refund Force on DoT ticks. </li>
    <li> Each Force Potency last through the whole Quake on all targets, a big difference when there are lots of targets. </li>
-   <li> The rotation is shorter than cooldown by one sec because I have difficulty with my high ping. Add a clipped Telekinetic Throw at the end if your ping is good. </li>
+   <li> The rotation is shorter than cooldown by one second because I have difficulty chaining Force Quake with my high ping. Add a clipped Telekinetic Throw at the end if your ping is good. </li>
    <li> Rotation is Force negative. In very long fights replace Vanquish with Telekinetic Throw to stop the bleeding. </li>
-   <li> If the situation allows, use Force Push to push opponents together for Force in Balance. </li>
+   <li> Sometimes it's best to open with Force Push to push opponents together, before running into them so that they stay close for AoE. </li>
 </ul>
 
 <!--
@@ -158,19 +167,22 @@
 </ul>
 <ul class="key">
    <li> Zero-cooldown basic attack, good damage and give us force, but can't use on move. </li>
-   <li> 4 hits (a full channel) make next Vanquish and Disturbance instant cast and do higher damage at less force (last 15s). </li>
+   <li> 4 hits (a full channel) make next Vanquish and Disturbance instant cast and do higher damage at less Force. </li>
    <li> Each hits also buff DoT crit chance by 2% (max 8%, last 10s). </li>
 </ul>
 <ol class="use">
    <li> Whenever we can stay still and big powers are on CD; priming Vanquish is very important. </li>
+   <li> Slow a moving foe, for example one that is chasing the tank, not necessary a melee NPC coming towards us. </li>
    <li> Finish off near death trash mobs and adds. </li>
 </ol>
 <ul class="note">
    <li> Ticks immediately and then twice per second, 4 ticks total. </li>
    <li> Hits does not need to be continuous for the buffs; can run, hit twice, run, hit twice. </li>
-   <li> A Force Potency is consumed on cast, and apply to all four ticks. One of the best uses of Force Potency on single target. Note that Force in Balance and Force Serenity deals internal damage, typically yielding higher damage than Telekinetic Throw. </li>
-   <li> Originally cost 36 Force per channel, or 9 per tick. We recover 12 per hit, for a net balance of 3 Force per tick. Natural Force regen also adds 16 over the channel. </li>
-   <li> Rippling Force adds around 2% damage. </li>
+   <li> We don't get buffs if we fail to deal damage, such as because of accuracy or immunity. </li>
+   <li> One Force Potency is consumed on each cast, applying to all four ticks. A decent use of Force Potency on single target. </li>
+   <li> Although Telekinetic Throw deals high damage on paper, Force in Balance and Force Serenity deals internal damage and normally yields higher number, and are better Force Potency candidates. </li>
+   <li> Originally cost 36 Force per channel, or 9 per tick. We recover 12 per hit, for a net balance of 3 Force per tick. Natural Force regen also adds 16 over the channel, while set bonus adds 8. </li>
+   <li> Rippling Force adds around 10% damage. </li>
 </ul>
 
 <h4 data-sprite="sage-29"> Vanquish (Mind Crush) </h4>
@@ -183,9 +195,9 @@
    <li> (Merged) Level 44 passive: Mind Crush and Vanquish lasts 3 sec longer (from 6 to 9). </li>
 </ul>
 <ul class="key">
-   <li> Our biggest attack, good upfront (burst) damage, heaviest and quickest tick. (tick per 1s) </li>
+   <li> Our biggest attack, fair upfront (burst) damage, heaviest and quickest tick. (tick per 1s) </li>
    <li> Always use after primed by Throw. 25% damage on our biggest attack. </li>
-   <li> Make target vulnerable 5% to Force damage. </li>
+   <li> Make target vulnerable 5% to Force damage, which is virtually all our attacks. </li><!-- TODO is this applied first or after damage? -->
 </ul>
 <ol class="use">
    <li> Hardcast to start a combat. This is an exception to no hardcast rule. </li>
@@ -194,6 +206,7 @@
 <ul class="note">
    <li> Ticks once per seconds for 9 seconds, 9 ticks total after upfront damage. </li>
    <li> Upfront damage is not DoT tick and does not enjoy DoT buffs. </li>
+   <li> In-game hint is bugged and does not take into account level 44 passives's bonus duration. </li>
 </ul>
 
 <h4 data-sprite="sage-27"> Sever Force </h4>
@@ -257,7 +270,7 @@
    <li> Level 28 passive: Force in Balance spread your Weaken Mind and Sever Force to damanged targets, if any damaged target is already affected by your Weaken Mind and Sever Force. </li>
    <li> Level 28 passive: Force in Balance cause targets to take 10% more damage from area attacks for 45 sec. </li>
    <li> Level 60 passive: Each time Force in Balance increases your periodic damage, you regain 2 Force. </li>
-   <li> Level 68 passive: Targets hit by Force in Balance has 50% chance to emite a Resounding Pulse, dealing <data value="749">750</data> internal damage to itself and up to 7 targets within 5m. </li>
+   <li> Level 68 passive: Targets hit by Force in Balance has 50% chance to emits a Resonant Pulse, dealing <data value="749">750</data> internal damage to itself and up to 7 targets within 5m. </li>
    <li> (Merged) Level 52 passive: Increase Force in Balance's health redistribution from 10% to 20%. </li>
 </ul>
 <ul class="key">
@@ -274,11 +287,12 @@
 <ul class="note">
    <li> Newly spread DoTs will have full duration, but existing DoTs won't be refreshed. </li>
    <li> Newly spread DoTs will immediately tick, adding to burst damage. </li>
-   <li> Has time delay between activation and effect, around 0.2 seconds, must manually aim and adjust for enemies' movements. </li>
+   <li> Has a 0.2 sec delay between activation and effect, must manually aim and adjust for enemies' movements. </li>
    <li> Consumes multiple Force Potency when used on multiple targets. Not optimal but acceptable. </li>
    <li> Deals internal (yellow) damage, which bypass many defences. </li>
-   <li> Resonant Pulse will not hit Force Lift and other mez, but the main attack will. </li>
-   <li> Many targets = many Resonant Pulse; on average, 4 targets will <i>each</i> take 2 pulses (8 total), 6 targets 3 pulses (18 total), 8 targets 4 pulses (32). </li>
+   <li> Currently Resonant Pulse only hits the triggering target, instead of bounding to other enemies, in effect a flat 5% damage bonus. </li>
+   <li> Resonant Pulse also redistribute 10% of its damage to heal us, and I don't know whether it's part of Force in Balance's original 10% life drain or it is regarded as a DoT. </li>
+   <!--<li> Many targets = many Resonant Pulse; on average, 4 targets will <i>each</i> take 2 pulses (8 total), 6 targets 3 pulses (18 total), 8 targets 4 pulses (32). </li>-->
 </ul>
 
 
@@ -332,9 +346,9 @@
 </ol>
 <ul class="note">
    <li> 3 seconds channel, ticks once per second. </li>
-   <li> Force cost is not reduced by the 10% Force cost reduction because it is channeled. </li><!-- TODO find name of passive -->
+   <li> Force cost is not reduced by the level 15 passive which reduce Force cost by 10%. This should be <a href="http://www.swtor.com/community/showthread.php?t=945742">a bug</a>, since Telekinetic Throw cost is reduced. </li>
    <li> Roughly equals to saber striking every target, at a high Force cost. </li>
-   <li> A Force Potency is consumed on first cast, and apply to all damages over the whole channel. Very big damage potential here. </li><!-- TODO Is it consumed on miss? -->
+   <li> A Force Potency is spent on cast, and apply to all damages over the whole channel (even if it hits no one). Huge damage potential here. </li>
 </ul>
 
 
@@ -378,7 +392,7 @@
    <li> Instant, no cooldown, range 4m, no force cost. </li>
    <li class="inline_icon"> Utility: Impeding Slash </li>
 </ul>
-<ul class="key"><!-- TODO Test Force Potency -->
+<ul class="key">
    <li> Our first and only melee attack, we have outgrown it as a DPS. </li>
    <li> For combat purpose, just forget Saber Strike ever exists. </li>
    <li> Saber Strike has greatest damage variation, but balanced by even crit chance caused by spliting the damage. </li>
@@ -386,6 +400,7 @@
 <ul class="use">
    <li> When you a low damage attack to wear down some props, like the iso-5 cans in Toborro’s Courtyard. </li>
    <li> Don't use when run out of Force. Use Telekinetic Throw to recover Force. </li>
+   <li> Since saber strike is not a Force attack, it does not spend Force Potency. </li>
 </ul>
 
 
@@ -419,7 +434,6 @@
 <ul class="note">
    <li class="pvp"> Last 8 seconds in PvP. </li>
    <li> Starred NPCs (strong or above) recovers hp when lifted, but totally worth it. </li>
-   <li> Kite the other enemies away (5 meter+) to avoid Resonant Pulse hitting the target(s). </li>
    <li> After we lift the furthest foe a few times, smart teammates will learn to expect it and leave them alone. </li>
    <li> All op bosses, most fp bosses, and many ch bosses are immune. </li>
 </ul>
@@ -664,7 +678,7 @@
 <ul class="key">
    <li> Threat dump. Lower our threat and hopefully divert NPC's attention to our teammates. </li>
    <li> Useful even when solo. Let our companion share the burden! </li>
-   <li class="pvp"> Threat does not exist in PvP, no need to dump threat. </li>
+   <li class="pvp"> Threat does not exist in PvP, no need to dump threat, but we definitely need Blockout for DCD! </li>
 </ul>
 <ol class="use">
    <li> Use as part of rotation, <i>before</i> we draw many fires. Make it a habit. </li>
@@ -1313,7 +1327,7 @@
 <ul class="key">
    <li> Typhon (Prologue): Don't buy any gear. Just do class quest and equip the best loots. </li>
    <li> Fleet: Go to left hand side of Supplies section and buy a set of moddable (orangw) gear. </li>
-   <li> PvE stats: 110% accuracy, then Crit &gt; Power &gt; Mastery &gt; Endurance. Leave alacrity until endgame. </li>
+   <li> PvE stats: 110% accuracy, then Crit &gt; Mastery &gt; Power &gt; Endurance. Leave Alacrity until endgame. </li>
    <li> Modifications: Versatile hilt/armoring, Lethal Mod (unlettered), Initiative Enhancements. No augments until endgame. </li>
    <li> Upgrade main hand hilt, off hand armoring, chest armoring, and legs armoring at level X. They have biggest impact on attack and defence. </li>
    <li> Upgrade the rest whenever you like. I upgrade every two steps (8 to 10 levels). </li>
@@ -1330,35 +1344,37 @@
 </ul>
 
 <h3 id="gearing_endgame"> Endgame Gearing </h3>
-<ul summary="Galatic Command">
-   <li> Endgame armors has set bonus, which further boost our dps in addition to stat increase. </li>
-   <li> At level 70, we earn cxp, instead of xp, to rank up Galatic Command, split into 4 tiers. </li>
+<ul summary="Galactic Command">
+   <li> Endgame armours has set bonus, which further boost our dps in addition to stat increase. </li>
+   <li> At level 70, we earn cxp, instead of xp, to rank up Galactic Command, split into 4 tiers. </li>
    <li> Each rank up awards a command crate. Open them and they will "drop" endgame gears plus other stuffs. </li>
    <li> Each crate grants Command Tokens (CT), legacy wide and can be used to purchase Tier 1 (ir230) equipments on the fleet's Tier 1 equipment vendor. </li>
    <li> Disintegrate unwanted gear to get unassembled components (UC). PvP and GSF are the main UC sources. </li>
    <li> We can turn ir230, ir236, and ir242 gears into unassembled pieces by paying UC. i.e. Turns an ir230 helm to get Tier 2 unassembled helm. </li>
-   <li> We also get unassembled pieces from operations.  Take the pieces to Tier 2-4 vendor to turn them into gear. i.e. Tier 2 unassembled helm can be turned into any ir236 helm. </li>
-   <li> Only ir230, ir236, and ir242 gears can be upgraded.  Keep them as an option, as drop rate of <i>useful</i> ir248 is very low. </li>
-   <li> When getting a gold armor/saber/focus that we already have, check whether its mod and enhancement can upgrade other gears. </li>
-   <li> Focus's armoring can be placed on other armors, but that armor <i>will</i> lost its set bonus. </li>
+   <li> Keep these gears as an upgrade option, as drop rate of <i>useful</i> ir248 is very low. </li>
+   <li> We also get unassembled pieces from operations. Take the pieces to Tier 2-4 vendor to turn them into gear. i.e. Tier 2 unassembled helm can be turned into any ir236 helm. </li>
+   <li> When getting a gold armour/saber/focus that we already have, check whether its mod and enhancement can be used upgrade other gears. </li>
+   <li> Focus's armouring can be placed on other armours, but that armour <i>will</i> lost its set bonus. </li>
 </ul>
-<ul class="key">
-   <li> Gold gears start dropping at Tier 2, and are good candidates to be augmented. </li>
+<ul summary="Optimal Stats">
    <li> Power &amp; mastery proc relics (Serendipitous Assault &amp; Focused Retribution) are considered the best relics. </li>
-   <li> 737 Accuracy gives us 110% hit rate after companion bonus (see notes). 2x Initiative Enhancement/Implant/Earpiece and 3x Accuracy Augment gives us 750 to 756. </li>
-   <li> Alacrity should be a bit above 703 or 1860.  1x Quick Savant E/I/E and 5x Alacrity Augment gives us 711 to 721, next best is same with Accuracy. </li>
-   <li> 1860 Alacrity yields higher dps on dummy, but not necessary in live combat. 6x E/I/E plus 5x Augment gives 1866 to 1878. </li>
+   <li> Gold gears start dropping at Tier 2, and are good candidates to be augmented. </li>
+   <li> 228 purple augments are the baseline augments. The material drops in Flashpoints and are in abundant supply. </li>
+   <li> 230 purple augments drops in few places but is a pretty good step up from 228 because of additional Power. </li>
+   <li> 236 gold augments is a little step up from 230 but requires rare materials that mainly drops from group ranked pvp. </li>
+   <li> Aim for 110% accuracy, 40% crit, and 7.15% alacrity first. Optimal arrangement takes some effort to meet. </li>
+   <li> 737 Accuracy gets us 110% (after companion bonus). 2x ir248 Initiative Enhancement/Implant/Earpiece and 3x ir228+ Accuracy Augments lands us at 750+. </li>
+   <li> Alacrity should be just above 703 or 1860. 1x Quick Savant E/I/E + 5x Alacrity Augments gives us 711+, next best is same with Accuracy. </li>
+   <li> 1860 Alacrity yields higher dps on dummy than 703, but not necessary in live combat. Use 6x E/I/E + 5x Augments to get 1866+. </li>
 </ul>
 <ul class="note">
    <li> It is strongly advised to unlock all four class buffs and all five companion bonus first. </li>
    <li> If we learn Biochem and train it to 600, we can craft (or buy) and use reusable consumables. </li>
    <li> Opening command crates at top of tier 1 to 3 (close to but before rank 80, 190, and 299) will give better drop rate. </li>
    <li> At full 14x ir248 gear with 228 to 236 augments, we have 3654 to 3682 stat budget for Accuracy, Critical, and Alacrity, plus 214 Critical from Relics and Crystals, plus 339 with accuracy/critical stim. </li>
-   <li> Note that 228 augments are almost the same as 230 and 236 when it comes to Accu/Crit/Alac. They give a tiny amount of power, typically not worth the high cost. Just take it easy. </li>
-   <li> Aim for 110% accuracy, 40% crit, and 7.15% alacrity first. Optimal arrangement takes some effort to meet. </li>
    <li> Accuracy/crit stim is a easy way to fill the stat budget, but I prefer mastery/power stim since I won't be dependent on it. </li>
    <li> Sever Force and Weaken Mind last a little bit longer than the <a href="#rotation">rotation</a> at all alacrity cutoff points, but the difference of clipping it, waiting it, or get higher alacrity for it is around 1%. I prefer to keep it simple. </li>
-   <li> I haven't had time to test it, but <a href="https://www.reddit.com/r/swtor/comments/7upvqu/calculations_for_the_point_of_diminishing_returns/">some says</a> Critical's diminishing return is <a href="https://www.reddit.com/r/swtor/comments/7z945a/lightning_spec_gearing_alacrity_crit_and_power/duorlx6/">around 2250</a> for us. Note that exact point varies from toon to toon. </li>
+   <li> I haven't had time to test it, but <a href="https://www.reddit.com/r/swtor/comments/7upvqu/calculations_for_the_point_of_diminishing_returns/">some says</a> Critical's diminishing return is <a href="https://www.reddit.com/r/swtor/comments/7z945a/lightning_spec_gearing_alacrity_crit_and_power/duorlx6/">around 2250</a> for us. Exact point depends on mastery/power. </li>
    <li> Set bonus does not meaningfully affect practical rotation. They are more like passives that boost our dps when we keep our rotation going. </li>
    <li class="pvp"> PvP needs only 105% accuracy. Some players leave it at 101%. I don't play pvp well enough to comment either and I now don't gear for pvp. </li>
 </ul>
