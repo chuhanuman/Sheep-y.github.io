@@ -5,6 +5,9 @@
       text-decoration: none;
       color: #00F;
       }
+      a.auto {
+         white-space: nowrap;
+         }
       a:hover {
          text-decoration: underline;
          }
@@ -34,6 +37,13 @@ body {
             padding: 0 10px;
             }
 
+li {
+   font-size: 20px;
+   }
+   #rotation ol > li {
+      font-size: 24px;
+      }
+
 blockquote {
    margin: 0 1em;
    font-size: smaller;
@@ -49,16 +59,17 @@ h1 {
 ol, ul {
    margin: 1ex 0;
    }
-   .note li {
-      font-size: 20px;
+   main li {
+      margin-bottom: 0.5rem;
       }
+
 dt {
    font-weight: bold;
    margin-top: 1ex;
    }
    dd {
       margin-left: 0;
-      padding-left: 2em;
+      padding-left: 2rem;
       }
 
 rt {
@@ -70,6 +81,9 @@ rt {
    list-style-type: none;
    padding-left: 48px;
    }
+   #toc li {
+      font-size: 24px;
+      }
    #toc details { /* Use margin to counter padding */
       padding: 0;
       margin-left: -26px;
