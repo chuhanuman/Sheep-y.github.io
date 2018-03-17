@@ -27,11 +27,11 @@ a[data-sprite^="si-"]::before    , details[data-sprite^="si-"]     > summary::be
 a[data-sprite^="sorc-"]::before  , details[data-sprite^="sorc-"]   > summary::before { background-image: url( "../img/si/sorc/abilities.jpg" ); }
 a[data-sprite^="sorc-u-"]::before, details[data-sprite^="sorc-u-"] > summary::before { background-image: url( "../img/si/sorc/utilities.jpg" ); }
 
-a[data-sprite].auto::before { 
-   display: none;
+.noicon a[data-sprite]::before { 
+   display: none; /* Hide icons if asked to */
    }
-   #rotation a[data-sprite].auto::before {
-      display: inline-block;
+   .noicon #rotation a[data-sprite]::before {
+      display: inline-block; /* Except on ToC */
       }
 
 a[data-sprite$="-0" ]::before, details[data-sprite$="-0" ] > summary::before { background-position: 0 0; }
