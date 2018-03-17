@@ -30,8 +30,9 @@ body {
       }
       article img,
       article object {
-         width: 80%;
+         display: block;
          margin: 0 auto;
+         width: 80%;
          }
          details {
             padding: 0 10px;

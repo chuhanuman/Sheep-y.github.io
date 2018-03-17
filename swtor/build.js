@@ -180,13 +180,13 @@ function build ( data ) {
 
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
-   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, "" );
+   data = data.replace( /<(\w+) class="imp"[^>]*(>.*?<\/\1>|\/>)/g, "" );
    return data;
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
-   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, "" );
+   data = data.replace( /<(\w+) class="pub"[^>]*(>.*?<\/\1>|\/>)/g, "" );
    let result = "", pos = 0;
    while ( true ) {
       const match = data.slice( pos ).match( /<(\w+) class="imp"/ );
