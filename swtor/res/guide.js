@@ -49,6 +49,18 @@
    }
 
    try {
+      // When clicking link in ToC, auto-expand details to show clicked section
+      find( '#toc' ).addEventListener( "click", ({ target, button, ctrlKey })  => {
+         if ( button !== 0 || target.tagName !== 'A' || ctrlKey ) return;
+         const href = target.getAttribute( "href" ), destination = find( href );
+         while ( target = destination.closest( "details:not([open])" ) )
+            target.open = true;
+      } );
+   } catch ( err ) {
+      console.warn( "Cannot setup ToC click handler.", err );
+   }
+
+   try {
       // Link to abilities, utilities, and glossaries
       const links = [];
       for ( const e of iterElem( "#abilities details[h=h4], #utilities details[h=h4]" ) ) {
@@ -164,7 +176,8 @@
       }
       throw "No matching group found";
    }
-   
+
+   /* Find text in list and replace with automatically generated links */
    function replaceLinks ( links, replaceOnce ) {
       links.sort( (a,b) => {
          const al = a[0].length, bl = b[0].length;

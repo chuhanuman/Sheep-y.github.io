@@ -113,12 +113,16 @@ details[h] > summary {
 
 summary.vgood, summary.good,
 b.vgood, b.good {
-   color: #080;
+   color: #060;
    }
-   summary.bad,
-   b.bad {
-      color: #008;
-      }
+summary.maybe,
+b.maybe {
+   color: #008;
+   }
+summary.bad,
+b.bad {
+   color: #800;
+   }
 
 /* Highlight hash target */
 details:target {
