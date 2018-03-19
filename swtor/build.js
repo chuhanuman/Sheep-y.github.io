@@ -83,17 +83,17 @@ function normalise ( data ) {
    } );
 
    // Convert list to <details>
-   data = data.replace( /(<[ou]l class="desc)/g, '<details open="open" class="desc"><summary>Description</summary>$1' );
-   data = data.replace( /(<[ou]l class="key)/g, '<details open="open"><summary>Basics</summary>$1' );
-   data = data.replace( /(<[ou]l class="use)/g, '<details open="open"><summary>Usages</summary>$1' );
-   data = data.replace( /(<[ou]l class="note)/g, '<details open="open"><summary>Notes</summary>$1' );
+   data = data.replace( /(<[ou]l class="desc)/g , '<details open="open" class="leaf"><summary>Description</summary>$1' );
+   data = data.replace( /(<[ou]l class="key)/g  , '<details open="open" class="leaf"><summary>Basics</summary>$1' );
+   data = data.replace( /(<[ou]l class="use)/g  , '<details open="open" class="leaf"><summary>Usages</summary>$1' );
+   data = data.replace( /(<[ou]l class="note)/g , '<details open="open" class="leaf"><summary>Notes</summary>$1' );
    
-   data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open"><summary class="vgood">Recommended</summary>$1' );
-   data = data.replace( /(<[ou]l class="good)/g,  '<details open="open"><summary class="good">Good</summary>$1' );
-   data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open"><summary class="maybe">Situational</summary>$1' );
-   data = data.replace( /(<[ou]l class="bad)/g,   '<details open="open"><summary class="bad">Bad</summary>$1' );
+   data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open" class="leaf"><summary class="vgood">Recommended</summary>$1' );
+   data = data.replace( /(<[ou]l class="good)/g , '<details open="open" class="leaf"><summary class="good">Good</summary>$1' );
+   data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open" class="leaf"><summary class="maybe">Situational</summary>$1' );
+   data = data.replace( /(<[ou]l class="bad)/g  , '<details open="open" class="leaf"><summary class="bad">Bad</summary>$1' );
    
-   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open"><summary>$2</summary>$1' );
+   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open" class="leaf"><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
 
