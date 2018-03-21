@@ -6,7 +6,7 @@
    // Restore open/close state and save state on change
    try {
       // Make sure all details has an id
-      const dMap = new Map();
+      const dMap = new Map(), tabSet = new Set();
       for ( const e of iterElem( "#toc ~ details, #toc ~ * details" ) ) {
          if ( ! e.id ) {
             const new_id = e.closest( "[id]" ).id + "-" + idify( find( e, "summary" ).textContent );
@@ -16,28 +16,35 @@
             }
             e.id = new_id;
          }
+         if ( isLeaf( e ) )
+            tabSet.add( e.parentElement );
          dMap.set( e.id, e );
       }
       // Load state
       let state = {}, saveKey = `sheepy.${spec}.openCloseState`, saved = localStorage.getItem( saveKey );
       if ( saved ) {
-         state = JSON.parse( saved );
+         state = JSON.parse( saved ); // Has state; remove invalid ids and apply the rest
          for ( const id in state )
             if ( ! dMap.has( id ) ) 
                delete state[ id ];
-         for ( const [ id, e ] of dMap.entries() )
-            e.open = !( id in state );
+            else
+               dMap.get( id ).open = !( id in state );
       } else {
-         for ( const [ id, e ] of dMap.entries() )
+         for ( const [ id, e ] of dMap.entries() ) // No state; Save tabs that are closed by default 
             if ( ! e.open )
                state[ id ] = 0;
       }
+      for ( const tab of tabSet )
+         if ( tab.tagName === 'DETAILS' )
+            updateTabs( tab );
       // Save state on change
       let saveTimer = 0;
       document.body.addEventListener( "toggle", ( evt ) => {
          const target = evt.target, id = target.id;
          if ( target.open ) delete state[ id ];
          else state[ id ] = 0;
+         if ( target.classList.contains( "leaf" ) )
+            updateTabs( target.parentElement );
          if ( saveTimer ) return;
          saveTimer = setTimeout( () => {
             localStorage.setItem( saveKey, JSON.stringify( state ) );
@@ -46,6 +53,18 @@
       }, { capture: true, passive: true } );
    } catch ( err ) {
       console.warn( "Cannot load open/close state.", err );
+   }
+
+   try {
+      // When clicking link in ToC, auto-expand details to show clicked section
+      find( '#toc' ).addEventListener( "click", ({ target, button, ctrlKey })  => {
+         if ( button !== 0 || target.tagName !== 'A' || ctrlKey ) return;
+         const href = target.getAttribute( "href" ), destination = find( href );
+         while ( target = destination.closest( "details:not([open])" ) )
+            target.open = true;
+      } );
+   } catch ( err ) {
+      console.warn( "Cannot setup ToC click handler.", err );
    }
 
    try {
@@ -124,7 +143,7 @@
       console.warn( "Cannot create intra-links.", err );
    }
 
-   // Build counterparts
+   // Build ability counterparts
    try {
       xhr( specMirror + ".html", { responseType: "document" } ).then( ( req ) => {
          const advClassMirrorAbbr = advClassMirror.substr( 0, 4 ).toLowerCase();
@@ -141,6 +160,15 @@
       } );
    } catch ( err ) {
       console.warn( "Cannot read counterparts.", err );
+   }
+
+   try {
+      // Check duplicate ids
+      for ( const e of findAll( "[id]" ) )
+         if ( findAll( `#${e.id}` ).length > 1 )
+            console.warn( `Duplicate id: #${e.id}` );
+   } catch ( err ) {
+      console.warn( "Cannot validate document.", err );
    }
 
    find( 'body' ).classList.add( 'js' ); // Mark document as supporting js
@@ -164,7 +192,12 @@
       }
       throw "No matching group found";
    }
-   
+
+   function isLeaf ( e ) {
+      return e.classList.contains( "leaf" );
+   }
+
+   /* Find text in list and replace with automatically generated links */
    function replaceLinks ( links, replaceOnce ) {
       links.sort( (a,b) => {
          const al = a[0].length, bl = b[0].length;
@@ -185,6 +218,28 @@
          }
          e.innerHTML = html;
       }
+   }
+
+   function updateTabs ( parent ) {
+      const siblings = Array.from( parent.children ).filter( e => e.tagName === "DETAILS" );
+      for ( const tab of siblings )
+         updateTabState( tab, siblings );
+   }
+
+   function updateTabState ( e, siblings ) {
+      if ( ! isLeaf( e ) ) return;
+      let tabCount = 1, index = siblings.indexOf( e );
+      for ( let i = index - 1 ; i >= 0 ; i-- ) {
+         if ( siblings[i].open || ! isLeaf( e ) ) break;
+         ++tabCount;
+      }
+      if ( ! e.open )
+         for ( let i = index + 1 ; i < siblings.length ; i++ ) {
+            if ( ! isLeaf( e ) ) break;
+            ++tabCount;
+            if ( siblings[i].open ) break;
+         }
+      e.dataset.tabs = tabCount;
    }
 
 })();

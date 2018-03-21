@@ -26,12 +26,12 @@ body {
    article {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 10px;
       }
       article img,
       article object {
-         width: 80%;
+         display: block;
          margin: 0 auto;
+         width: 80%;
          }
          details {
             padding: 0 10px;
@@ -57,7 +57,8 @@ h1 {
    }
 
 ol, ul {
-   margin: 1ex 0;
+   margin: 0;
+   padding: 1ex 0 1ex 36px;
    }
    main li {
       margin-bottom: 0.5rem;
@@ -98,7 +99,7 @@ rt {
 /* Header styles */
 details[h] > summary {
    font-weight: bold;
-   margin: 1em 0 1ex;
+   margin: 1.6em 0 1ex;
    }
    details[h=h2] > summary {
       font-size: 40px;
@@ -112,12 +113,16 @@ details[h] > summary {
 
 summary.vgood, summary.good,
 b.vgood, b.good {
-   color: #080;
+   color: #060;
    }
-   summary.bad,
-   b.bad {
-      color: #008;
-      }
+summary.maybe,
+b.maybe {
+   color: #008;
+   }
+summary.bad,
+b.bad {
+   color: #800;
+   }
 
 /* Highlight hash target */
 details:target {
@@ -152,6 +157,66 @@ dt:target, dt:target + dd {
          background: rgba( 255, 255, 0, 0.3 );
          }
 
+/* Tab open/close, depends on "data-tabs" attribute which is added by JavaScript */
+
+.js details.leaf {
+   --tab-height: 2rem;
+   position: relative;
+   width: 100%;
+   }
+   details.leaf:not( open ) > summary {
+      z-index: 100;
+      }
+   details.leaf > summary {
+      --tab-size: calc( 100% - 20px );
+      border: 1px solid #888;
+      height: var(--tab-height);
+      overflow: hidden;
+      padding-left: 10px;
+      position: absolute;
+      text-overflow: ellipsis;
+      text-overflow: fade; /* Experimental; fallback to ellipsis */
+      white-space: nowrap;
+      width: var(--tab-size);
+      }
+      details.leaf[open] > summary {
+         border-bottom: 0 none transparent;
+         }
+   details.leaf > summary + * {
+      padding-top: calc( var(--tab-height) + 10px );
+      border: 1px solid #888;
+      border-top: 0 none transparent;
+      }
+
+details[data-tabs="2"] > summary {
+   --tab-size: calc( ( 100% - 20px ) / 2 );
+   }
+   details:not([open]) + details[data-tabs="2"] > summary {
+      margin-left: var(--tab-size);
+      }
+
+details[data-tabs="3"] > summary {
+   --tab-size: calc( ( 100% - 20px ) / 3 );
+   }
+   details:not([open]) + details[data-tabs="3"] > summary {
+      margin-left: var(--tab-size);
+      }
+   details:not([open]) + details:not([open]) + details[data-tabs="3"] > summary {
+      margin-left: calc( 2 * var(--tab-size) );
+      }
+
+details[data-tabs="4"] > summary {
+   --tab-size: calc( ( 100% - 20px ) / 4 );
+   }
+   details:not([open]) + details[data-tabs="4"] > summary {
+      margin-left: var(--tab-size);
+      }
+   details:not([open]) + details:not([open]) + details[data-tabs="4"] > summary {
+      margin-left: calc( 2 * var(--tab-size) );
+      }
+   details:not([open]) + details:not([open]) + details:not([open]) + details[data-tabs="4"] > summary {
+      margin-left: calc( 3 * var(--tab-size) );
+      }
 
 /* Put ToC on left side on desktop */
 @media (min-width: 1340px) {

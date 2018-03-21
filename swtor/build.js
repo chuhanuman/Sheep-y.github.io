@@ -14,13 +14,15 @@ for ( let i = 0, len = flist.length ; i < len ; i += 3 ) {
    fs.readFile( flist[i], 'utf8', ( err, data ) => {
       if ( err ) throw err;
       data = normalise( data );
-      fs.writeFile ( flist[i+1], build( convertToPub( data ) ), ( err ) => {
+      const [ pub, pubinfo ] = convertToPub( data );
+      fs.writeFile ( flist[i+1], build( pub ), ( err ) => {
          if ( err ) throw err;
-         console.log( `Built: ${flist[i+1]}` );
+         console.log( `[R] Built: ${flist[i+1]} ${pubinfo}` );
       } );
-      fs.writeFile ( flist[i+2], build( convertToImp( data ) ), ( err ) => {
+      const [ imp, impinfo ] = convertToImp( data );
+      fs.writeFile ( flist[i+2], build( imp ), ( err ) => {
          if ( err ) throw err;
-         console.log( `Built: ${flist[i+2]}` );
+         console.log( `[I] Built: ${flist[i+2]} ${impinfo}` );
       } );
    } );
 }
@@ -83,17 +85,17 @@ function normalise ( data ) {
    } );
 
    // Convert list to <details>
-   data = data.replace( /(<[ou]l class="desc)/g, '<details open="open" class="desc"><summary>Description</summary>$1' );
-   data = data.replace( /(<[ou]l class="key)/g, '<details open="open"><summary>Basics</summary>$1' );
-   data = data.replace( /(<[ou]l class="use)/g, '<details open="open"><summary>Usages</summary>$1' );
-   data = data.replace( /(<[ou]l class="note)/g, '<details open="open"><summary>Notes</summary>$1' );
+   data = data.replace( /(<[ou]l class="desc)/g , '<details open="open" class="leaf"><summary>Description</summary>$1' );
+   data = data.replace( /(<[ou]l class="key)/g  , '<details open="open" class="leaf"><summary>Basics</summary>$1' );
+   data = data.replace( /(<[ou]l class="use)/g  , '<details open="open" class="leaf"><summary>Usages</summary>$1' );
+   data = data.replace( /(<[ou]l class="note)/g , '<details open="open" class="leaf"><summary>Notes</summary>$1' );
    
-   data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open"><summary class="vgood">Recommended</summary>$1' );
-   data = data.replace( /(<[ou]l class="good)/g,  '<details open="open"><summary class="good">Good</summary>$1' );
-   data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open"><summary class="maybe">Situational</summary>$1' );
-   data = data.replace( /(<[ou]l class="bad)/g,   '<details open="open"><summary class="bad">Bad</summary>$1' );
+   data = data.replace( /(<[ou]l class="vgood)/g, '<details open="open" class="leaf"><summary class="vgood">Recommended</summary>$1' );
+   data = data.replace( /(<[ou]l class="good)/g , '<details open="open" class="leaf"><summary class="good">Good</summary>$1' );
+   data = data.replace( /(<[ou]l class="maybe)/g, '<details open="open" class="leaf"><summary class="maybe">Situational</summary>$1' );
+   data = data.replace( /(<[ou]l class="bad)/g  , '<details open="open" class="leaf"><summary class="bad">Bad</summary>$1' );
    
-   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open"><summary>$2</summary>$1' );
+   data = data.replace( /(<[ou]l summary="([^"]+)")/g, '<details open="open" class="leaf"><summary>$2</summary>$1' );
    data = data.replace( /<\/ul>/g, '</ul></details>' );
    data = data.replace( /<\/ol>/g, '</ol></details>' );
 
@@ -180,17 +182,18 @@ function build ( data ) {
 
 /* Turns pub side template into final form */
 function convertToPub ( data ) {
-   data = data.replace( /<(\w+) class="imp"[^>]*>.*?<\/\1>/g, "" );
-   return data;
+   data = data.replace( /<(\w+) class="imp"[^>]*(\/>|>.*?<\/\1>)/g, "" );
+   return [ data, `(${Number(data.length).toLocaleString()} bytes)` ];
 }
 
 /* Turns pub side template into imp form */
 function convertToImp ( data ) {
-   data = data.replace( /<(\w+) class="pub"[^>]*>.*?<\/\1>/g, "" );
-   let result = "", pos = 0;
+   data = data.replace( /<(\w+) class="pub"[^>]*(\/>|>.*?<\/\1>)/g, "" );
+   let result = "", pos = 0, sectionCount = 0;
    while ( true ) {
       const match = data.slice( pos ).match( /<(\w+) class="imp"/ );
       let end = match ? pos + match.index : data.length;
+      //console.log( `[${pos},${end}]: ${data.slice(pos,end)}` );
       // Translate non-imp part
       let part = data.slice( pos, end );
       for ( const e of termList ) {
@@ -198,16 +201,17 @@ function convertToImp ( data ) {
          part = part.replace( from, to );
       }
       result += part;
+      ++sectionCount;
       if ( end >= data.length ) break;
       // Copy imp part
       pos = end;
-      end = data.slice( pos ).indexOf( '</' + match[1] );
-      end = end > 0 ? end + pos : data.length;
+      end = data.slice( pos ).match( new RegExp( `^[^>]*/>|</${match[1]} ?>` ) );
+      end = end ? pos + end.index + end[0].length : data.length;
       result += data.slice( pos, end );
       // Move forward
       pos = end;
    }
-   return result;
+   return [ result, `(${Number(result.length).toLocaleString()} bytes, ${sectionCount} sections)` ];
 }
 
 /* Build translation map and list */
@@ -242,7 +246,7 @@ function buildMap () {
       "Sever Force", "Creeping Terror",            "Weaken Mind", "Affliction",
       "Force in Balance", "Death Field",           "Force Serenity", "Force Leach",
       "Disturbance", "Lightning Strike",           "Project", "Shock",
-      "Force Quake", "Force Storm",
+      "Force Quake", "Force Storm",                "Mind Crush", "Crushing Darkness",
       // Controls
       "Force Lift", "Whirlwind",                   "Force Stun", "Electrocute",
       "Force Wave", "Overload",                    "Mind Snap", "Jolt",
@@ -286,7 +290,7 @@ function buildMap () {
    const dict = new Map(), list = [];
    for ( let i = 0, len = map.length ; i < len ; i += 2 ) {
       const p = map[i], e = map[i+1], pid = '#'+idify(p), eid = '#'+idify(e);
-      dict.set( p  , [ new RegExp( `\\b${p}(?!</a>)\\b`  , 'g' ), e   ] );
+      dict.set( p  , [ new RegExp( `\\b${p}(?!</a>)\\b`  , 'g' ), e ] );
       dict.set( pid, [ new RegExp( `${pid}\\b`, 'g' ), eid ] );
       list.push( p, pid );
    }
