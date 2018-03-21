@@ -175,6 +175,7 @@ dt:target, dt:target + dd {
       padding-left: 10px;
       position: absolute;
       text-overflow: ellipsis;
+      text-overflow: fade; /* Experimental; fallback to ellipsis */
       white-space: nowrap;
       width: var(--tab-size);
       }
