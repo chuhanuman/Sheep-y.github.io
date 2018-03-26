@@ -239,30 +239,31 @@ function buildMap () {
          "Commando", "Mercenary",
    );
 
+   // Jedi Consular
+   map.push(
+      "Force Lift", "Whirlwind",                   "Force Potency", "Recklessness",
+      "Force Stun", "Electrocute",                 "Force Valor", "Mark of Power",
+      "Force Wave", "Overload",                    "Force of Will", "Unbreakable Will",
+      "Meditation", "Seethe",                      "Mind Snap", "Jolt",
+      "Project", "Shock",
+      );
    // Sage / Sorcerer
    map.push(
       // Attacks
       "Telekinetic Throw", "Force Lightning",      "Vanquish", "Demolish",
       "Sever Force", "Creeping Terror",            "Weaken Mind", "Affliction",
       "Force in Balance", "Death Field",           "Force Serenity", "Force Leach",
-      "Disturbance", "Lightning Strike",           "Project", "Shock",
-      "Force Quake", "Force Storm",                "Mind Crush", "Crushing Darkness",
-      // Controls
-      "Force Lift", "Whirlwind",                   "Force Stun", "Electrocute",
-      "Force Wave", "Overload",                    "Mind Snap", "Jolt",
+      "Disturbance", "Lightning Strike",           "Force Quake", "Force Storm",
+      "Mind Crush", "Crushing Darkness",
       // Heals
       "Force Armor", "Static Barrier",             "Force Mend", "Unnatural Preservation",
       "Rejuvenate", "Resurgense",                  "Benevolence", "Dark Heal",
       "Restoration", "Expunge",                    "Revival", "Reanimation",
-      "Meditation", "Seethe",
       // Buff & Utils
-      "Force Valor", "Mark of Power",              "Mental Alacrity", "Polarity Shift",
-      "Force Potency", "Recklessness",             "Force Empowerment", "Unlimited Power",
-      "Vindicate", "Consuming Darkness",           "Force of Will", "Unbreakable Will",
-      "Rescue", "Extrication",
+      "Mental Alacrity", "Polarity Shift",         "Force Empowerment", "Unlimited Power",
+      "Vindicate", "Consuming Darkness",           "Rescue", "Extrication",
       // Passives
-      "Rippling Force", "Lightning Burns",
-      "Resonant Pulse", "Dark Echo",
+      "Rippling Force", "Lightning Burns",         "Resonant Pulse", "Dark Echo",
       // Skillful
       "Psychic Suffusion", "Force Suffusion",      "Jedi Resistance", "Sith Defiance",
       "Tectonic Master", "Tempest Mastery",        "Pain Bearer", "Empty Body",
@@ -279,8 +280,7 @@ function buildMap () {
                                                    "Swift Rejuvenation", "Galvanizing Cleanse",
       "Life Ward", "Corrupted Barrier",            "Valorous Spirit", "Unnatural Vigor",
       "Ethereal Entity", "Shifting Silhouette",    "Impeding Slash", "Enfeebling Strike",
-      // Short names
-      "skittles", "lightnings" );
+      );
 
    // Vanguard / Powertech
    map.push(
