@@ -1,0 +1,105 @@
+import { log, loopJson, BR, ucfirst, unique, join, sorter } from './bt_utils.mjs';
+
+let stars = [], inhabited = [], shops = [];
+
+/* Given a Map of id => gear, create a "Shops" property on all sold items that is an array of shops. */
+export function loadShops( gears ) {
+   return  () => loopJson( "starsystem", ( e ) => stars.push( e )
+
+   ).then( () => loopJson( "shops", ( e ) => shops.push( e )
+
+   ) ).then( () => {
+
+      stars.sort( sorter( "Description.Id" ) );
+      inhabited = stars.filter( e => ! e.Tags.items.some( e => e === "planet_other_empty" || e === "planet_pop_none" ) );
+      shops.sort( sorter( "ID" ) ).forEach( ( e ) => {
+
+         /* Load shop list, find their stars, and set items */
+         const { RequirementTags: white, ExclusionTags: black } = e;
+         e.Stars = stars.filter( e => { const tags = e.Tags.items;
+            return white.items.every( e => tags.includes( e ) ) 
+              && ! black.items.find( e => tags.includes( e ) )
+         } );
+
+         for ( let id of e.Inventory.concat( e.Specials ).map( e => e.ID ) ) {
+            const item = gears.get( id );
+            if ( ! item ) return console.warn( `${id} not found` );
+            if ( ! item.Shops ) item.Shops = [];
+            item.Shops.push( e );
+         }
+      } );
+
+   } );
+}
+
+const sortLen = sorter( "length", "" );
+
+export function getShops( item ) {
+   if ( ! item.Shops ) return "None";
+   const shopStars = new Set();
+   for ( const shop of item.Shops )
+      for ( const star of shop.Stars )
+         shopStars.add( star );
+   if ( shopStars.size >= inhabited.length ) return "Any stars.";
+   return unique( item.Shops.map( e => {
+      let { RequirementTags: { items: white }, ExclusionTags: { items: black } } = e;
+      const trail = `.`; // `. (${e.ID})`; // `. (${e.Stars.length} stars`;
+      [ white, black ] = [ keyword( white ), keyword( black ) ];
+      let simpleStars = "";
+      if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
+      if ( black.includes( "Starter Planet" ) ) { white.push( "Non-Starter" ); black = black.filter( e => e !== "Starter Planet" ); }
+      if ( black.includes( "Campaign Planet" ) ) { white.push( "Non-Post-Campaign" ); black = black.filter( e => e !== "Campaign Planet" ); }
+      if ( black.includes( "Post-Campaign Planet" ) ) { white.push( "Non-Campaign" ); black = black.filter( e => e !== "Post-Campaign Planet" ); }
+      if ( ! black.length ) simpleStars = "Planets";
+      if ( white.length && simpleStars )
+         return white.join( ", " ) + " " + simpleStars + trail;
+      else if ( white.length && black.length )
+         return "Stars that are " + join( white, "and" ) + " but not " + join( black, "or" ) + trail;
+      else if ( white.length )
+         return "Stars that are " + join( white, "and" ) + trail;
+      else if ( black.length )
+         return "Stars that are not " + join( black, "or" ) + trail;
+      else
+         return "Any stars.";
+   } ) ).map( e => e.replace( /\) Planets.*$/, ')' ) ).sort( sortLen ).join( BR );
+   //const stars = item.Shops.reduce( ( v, e ) => v.concat( e.Stars ), [] ).map( e => e.Description.Name );
+   //return unique( stars ).join( ", " );
+   function keyword( list ) {
+      return list.map( e => {
+         if ( e.endsWith( "_flipped" ) ) return ucfirst( e.slice( 12, -8 ) ) + " (Restoration)";
+         else if ( e.endsWith( "_contested" ) ) return ucfirst( e.slice( 12, -10 ) ) + " (Directorate)";
+         e = e.replace( /^planet_(civ|faction|industry|other)_/, '' );
+         switch ( e ) {
+            case "planet_progress_1": return "Starter Planet";
+            case "planet_progress_2": return "Campaign Planet";
+            case "planet_progress_3": return "Post-Campaign Planet";
+            case "innersphere": return "Inner Sphere";
+            case "starleague": return "Former Star League";
+            case "planet_pop_none": 
+            case "empty": return "Uninhabited";
+            default: return ucfirst( e );
+         }
+      } ).sort();
+   }
+}
+
+export function starNotes () {
+   function has( e, tags ) { return e.Tags.items.some( e => tags.includes( e ) ); }
+   function all( e, tags ) { return tags.every( tag => e.Tags.items.includes( tag ) ); }
+   const p1 = inhabited.filter( e => has( e, [ "planet_progress_1" ] ) ).map( starsName ).sort(),
+         p2 = inhabited.filter( e => has( e, [ "planet_progress_2", "planet_progress_2a" ] ) ).map( starsName ).sort(),
+         p3 = inhabited.filter( e => has( e, [ "planet_progress_3" ] ) ).map( starsName ).sort(),
+         pX = inhabited.filter( e => all( e, [ "planet_industry_manufacturing", "planet_civ_innersphere", "planet_industry_rich", "planet_industry_research", "planet_other_starleague" ] ) ).map( starsName ).sort();
+   log( `: * Start Planets: ` + join( p1, "and" ) );
+   log( `: * Inhabited Campaign Planets (${p2.length}): ` + join( p2, "and" ) );
+   log( `: * Inhabited Post-Campaign Planets: (${p3.length}): ` + join( p3, "and" ) );
+   log( `: * Former Star League, Inner Sphere, Manufacturing, Research, Rich Planets: ` + join( pX, "and" ) );
+   /*log( "* Other Planets: " + stars.filter( e => ! e.Tags.items.some( e => e.startsWith( "planet_progress_" ) ) ).length + " other planets." );*/
+}
+
+export function starsName ( e ) {
+   const desc = e.Description, id = desc.Id, tags = e.Tags.items;
+   if ( id && id.endsWith( "_Flipped" ) ) return desc.Name + " (Restoration)";
+   else if ( id && id.endsWith( "_Contested" ) ) return desc.Name + " (Directorate)";
+   return desc.Name;
+}
