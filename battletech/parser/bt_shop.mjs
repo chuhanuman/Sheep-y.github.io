@@ -17,7 +17,7 @@ export function loadShops( gears ) {
          /* Load shop list, find their stars, and set items */
          const { RequirementTags: white, ExclusionTags: black } = e;
          e.Stars = stars.filter( e => { const tags = e.Tags.items;
-            return white.items.every( e => tags.includes( e ) ) 
+            return white.items.every( e => tags.includes( e ) )
               && ! black.items.find( e => tags.includes( e ) )
          } );
 
@@ -36,17 +36,31 @@ const sortLen = sorter( "length", "" );
 
 export function getShops( item ) {
    if ( ! item.Shops ) return "None";
-   const shopStars = new Set();
+   // Multiple shops may end up in all stars
+   let itemShops = new Set();
    for ( const shop of item.Shops )
       for ( const star of shop.Stars )
-         shopStars.add( star );
-   if ( shopStars.size >= inhabited.length ) return "Any stars.";
-   return unique( item.Shops.map( e => {
+         itemShops.add( star );
+   if ( itemShops.size >= inhabited.length ) return "Any stars.";
+   // Consolidate shops by removing more narrow ones
+   itemShops = item.Shops;
+   for ( let i = itemShops.length-1 ; i >= 1 ; i-- )
+      for ( let j = i-1 ; j >= 0 ; j-- ) {
+         // Check whether shop a is wholely included by shop b
+         const a = itemShops[i].Stars, b = itemShops[j].Stars;
+         if ( b.length < a.length ) continue;
+         if ( a.some( e => ! b.includes( e ) ) ) continue; // Abort if any a stars is not in b
+         // Remove a and break out of inner loop
+         itemShops.splice( i, 1 );
+         j = -1;
+      }
+   return unique( itemShops.map( e => {
       let { RequirementTags: { items: white }, ExclusionTags: { items: black } } = e;
       const trail = `.`; // `. (${e.ID})`; // `. (${e.Stars.length} stars`;
       [ white, black ] = [ keyword( white ), keyword( black ) ];
       let simpleStars = "";
       if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
+      if ( black.length === 2 && black.includes( "Post-Campaign Planet" ) && black.includes( "Campaign Planet" ) ) { white.push( "Starter" ); black = []; }
       if ( black.includes( "Starter Planet" ) ) { white.push( "Non-Starter" ); black = black.filter( e => e !== "Starter Planet" ); }
       if ( black.includes( "Campaign Planet" ) ) { white.push( "Non-Post-Campaign" ); black = black.filter( e => e !== "Campaign Planet" ); }
       if ( black.includes( "Post-Campaign Planet" ) ) { white.push( "Non-Campaign" ); black = black.filter( e => e !== "Post-Campaign Planet" ); }
@@ -75,7 +89,7 @@ export function getShops( item ) {
             case "planet_progress_3": return "Post-Campaign Planet";
             case "innersphere": return "Inner Sphere";
             case "starleague": return "Former Star League";
-            case "planet_pop_none": 
+            case "planet_pop_none":
             case "empty": return "Uninhabited";
             default: return ucfirst( e );
          }

@@ -1,7 +1,7 @@
 /* Run with "node --experimental-modules bt.mjs" */
 
 import { loopJson, log, newRow, td, tdr, tdh } from './bt_utils.mjs';
-import { kilo, d1, plus, note, fixName, sorter } from './bt_utils.mjs';
+import { kilo, d1, plus, iff, note, fixName, sorter } from './bt_utils.mjs';
 import { getShops, starNotes } from './bt_shop.mjs';
 
 let weapons = [], equipments = [], gears;
@@ -11,20 +11,21 @@ export function loadGears( gearMap ) {
    return  () => loadGearDir( "ammunitionBox", null )(
 
    ).then( loadGearDir( "heatsinks", e => [ e.BonusValueA || "Heat -${e.DissipationCapacity}", e.BonusValueB ] )
-      
+
    ).then( loadGearDir( "jumpjets", null )
-      
+
    ).then( loadGearDir( "upgrades/actuators", e => [ e.BonusValueA, e.BonusValueB ] )
-      
+
    ).then( loadGearDir( "upgrades/cockpitMods", e => [ e.BonusValueA, e.BonusValueB ] )
-      
+
    ).then( loadGearDir( "upgrades/gyros", e => [ e.BonusValueA, e.BonusValueB ] )
-      
+
    ).then( loadGearDir( "upgrades/targetTrackingSystem", e => [ e.BonusValueA, e.BonusValueB ] )
-      
+
    ).then( () => loopJson( "weapon", ( e ) => {
       // Load weapon data
-      let { AccuracyModifier: acc, CriticalChanceMultiplier: crit } = e;
+      let { AccuracyModifier: acc, CriticalChanceMultiplier: crit, Description: desc } = e;
+      if ( desc.Manufacturer === undefined ) return; // AI weapons for dummies
       classify( e );
       e.Name = fixName( e );
       e.Note = [];
@@ -39,7 +40,11 @@ export function loadGears( gearMap ) {
    //   if ( crit !== 1 ) e.Note.push( `Crit ${plus(crit * 100 - 100)}%` );
    //   if ( e.IndirectFireCapable ) e.Note.push( "Indirect" );
       if ( e.AOECapable ) e.Note.push( "AoE" );
-      if ( e.AmmoCategory !== "NotSet" ) {
+      if ( e.AmmoCategory === "Flamer" ) {
+         e.Shots = gears.get( `Ammo_AmmunitionBox_Generic_${e.AmmoCategory}` ).Capacity;
+         e.DamagePer12ShotTon = e.DamagePer30ShotTon = "-";
+
+      } else if ( e.AmmoCategory !== "NotSet" ) {
          e.Shots = gears.get( `Ammo_AmmunitionBox_Generic_${e.AmmoCategory}` ).Capacity;
          const perBox = e.Shots / e.ShotsWhenFired, box12 = Math.ceil( 12 / perBox ), box30 = Math.ceil( 30 / perBox );
          e.DamagePer12ShotTon = ( e.Damage * e.ShotsWhenFired ) / ( e.Tonnage + box12 );
@@ -49,26 +54,28 @@ export function loadGears( gearMap ) {
          e.DamagePerTon = ( e.Damage * e.ShotsWhenFired ) / ( e.Tonnage || NaN );
       }
 
-      gears.set( e.Description.Id, e );
+      gears.set( desc.Id, e );
       weapons.push( e );
 
    } ) ).then( () => {
 
       // Sort by type, weight, name, rarity, and manufacturer
-      weapons.sort( sorter( "{ B:0, E:1, M:2, S:3 }[e.Category[0]]", "Tonnage", "Name", "Description.Rarity", "Description.Manufacturer" ) );
-      equipments.sort( sorter( "e.ComponentType", "Tonnage", "Name", "Description.Rarity", "Description.Manufacturer" ) );
+      weapons.sort( sorter( "{ B:0, E:1, M:2, S:3 }[e.Category[0]]", "e.class==='los'", "e.Name.startsWith('ER ')", "Tonnage", "Name", "Description.Rarity", "Description.Manufacturer" ) );
+      equipments.sort( sorter( "e.ComponentType", "Name.replace(/\\++/g,'')", "e.Note[0]?e.Note[0].replace(/\\d+/g,''):''", "Tonnage", "Name" ) );
 
    } );
 }
 
 function loadGearDir( path, note ) {
    return () => loopJson( path, ( e ) => {
-      /* Load weapon data */
+      /* Load gear data */
+      let { Description: desc } = e;
+      if ( desc.Manufacturer === undefined ) return; // Templates
+      classify( e );
       e.Name = fixName( e );
       e.Note = note ? note( e ) : [];
-      gears.set( e.Description.Id, e );
-      classify( e );
       if ( e.class === "los" ) e.Note.push( "LosTech" );
+      gears.set( desc.Id, e );
       equipments.push( e );
    } );
 }
@@ -100,7 +107,7 @@ function listStockWeapons ( title, list ) {
    for ( const e of list ) {
       td( e.Category, 9 );
       td( e.Name, 7 );
-      tdr( kilo( e.Description.Cost), 4 );
+      tdr( kilo( e.Description.Cost ), 4 );
       tdr( e.Tonnage, 3 );
       dmg( e.Damage, e.ShotsWhenFired, 'multi' );
       dmg( e.Instability || e.HeatDamage, e.ShotsWhenFired, 'multi', e.HeatDamage ? " (H)" : "" );
@@ -188,10 +195,6 @@ function listGears ( title, list, rare ) {
       newRow();
    }
    if ( rare ) starNotes();
-}
-
-function iff( val ) {
-   return val === 0 ? "-" : val;
 }
 
 function dmg( val, shot, multi = false, postfix = "" ) {

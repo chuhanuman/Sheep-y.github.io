@@ -57,13 +57,15 @@ export function kilo( val ) { return Math.round( val / 1000 )  + "K"; } // Forma
 export function mil( val ) { return d2( val / 1000000 ) + "M"; }     // Format to mil
 
 // One decimal
-export function d1( val ) { 
+export function d1( val ) {
+   if ( isNaN( +val ) ) return val;
    let rounded = Math.round( val * 10 ) / 10;
    return ~~rounded === rounded ? `${rounded}.0` : String( rounded );
 }
 
 // Two decimals
 export function d2( val ) {
+   if ( isNaN( +val ) ) return val;
    let rounded = Math.round( val * 100 ) / 100;
    if ( ~~rounded === rounded ) return `${rounded}.00`;
    if ( ~~(rounded*10) === rounded*10 ) return `${rounded}0`;
@@ -73,7 +75,10 @@ export function d2( val ) {
 // Add a plus sign if 0 or +ve
 export function plus( val ) { return val >= 0 ? `+${val}` : val; }
 
-// Turns "Laser + + " into "Laser++", e.g. 
+// Return "-" if 0
+export function iff( val ) { return val === 0 ? "-" : val; }
+
+// Turns "Laser + + " into "Laser++", e.g.
 export function note( val ) { return val.replace( /\s*([+-])\s*/g, "$1" ).replace( /\.$/, "" ); }
 
 // Uppercase first character
@@ -116,7 +121,7 @@ export function sum( list, map ) { return list.reduce( ( v, e ) => v + map( e ),
 export function unique( list ) { return Array.from( new Set( list ) ); }
 
 // Return a Map of item => count
-export function count( list ) { 
+export function count( list ) {
    return list.reduce( ( v, e ) => v.set( e, v.has( e ) ? v.get( e ) + 1 : 1 ), new Map() );
 }
 
@@ -124,6 +129,6 @@ export function count( list ) {
 export function join( val, word ) {
    if ( val.length > 1 )
       return val.slice( 0, -1 ).join( ", " ) + `, ${word} ` + val.slice( -1 );
-   return val.join( ", " ); 
+   return val.join( ", " );
 }
 

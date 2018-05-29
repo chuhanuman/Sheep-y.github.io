@@ -1,10 +1,10 @@
 /* Run with "node --experimental-modules bt.mjs" */
 
 import { loopJson, log, DAG, DDAG, BR, newRow, td, tdr, tdv, tdh } from './bt_utils.mjs';
-import { kilo, mil, plus, sorter, sum, count } from './bt_utils.mjs';
+import { kilo, mil, plus, iff, sorter, sum, count } from './bt_utils.mjs';
 import { getShops, starNotes } from './bt_shop.mjs';
 
-const chassis = new Map(), mechs = new Map(), vehicles = new Map(), movements = new Map();
+const chassis = new Map(), mechs = new Map(), vehicles = new Map(), turrets = new Map(), movements = new Map();
 let sorted;
 
 export function loadMechs( gears ) {
@@ -23,6 +23,11 @@ export function loadMechs( gears ) {
       const id = e.Description.Id;
       if ( ! id ) return;
       e.Speed = movements.get( e.MovementCapDefID );
+      chassis.set( id, e );
+
+   } ) ).then( () => loopJson( "turretChassis", ( e ) => {
+      const id = e.Description.Id;
+      if ( ! id ) return;
       chassis.set( id, e );
 
    } ) ).then( () => loopJson( "mech", ( data ) => {
@@ -54,7 +59,7 @@ export function loadMechs( gears ) {
       gears.set( desc.Id, result )
 
    } ) ).then( () => loopJson( "vehicle", ( data ) => {
-      /* Load mech loadout and associate with chassis */
+
       let c = chassis.get( data.ChassisID ), loc = c.Locations;
       if ( ! c ) return console.warn( `Chassis not found: ${data.ChassisID}` );
       let desc = c.Description = Object.assign( c.Description, data.Description );
@@ -65,19 +70,30 @@ export function loadMechs( gears ) {
       c = Object.assign( data, c );
       vehicles.set( desc.Id, c );
 
+   } ) ).then( () => loopJson( "turrets", ( data ) => {
+
+      let c = chassis.get( data.ChassisID ), loc = c.Locations;
+      if ( ! c ) return console.warn( `Chassis not found: ${data.ChassisID}` );
+      let desc = c.Description = Object.assign( c.Description, data.Description );
+      c.Name = desc.Name;
+      c.Internal = c.MaxInternalStructure;
+      c.StockArmour = data.AssignedArmor;
+      c.Gears = data.inventory.map( e => gears.get( e.ComponentDefID ) ).filter( e => e );
+      c = Object.assign( data, c );
+      turrets.set( desc.Id, c );
+
    } ) ).then( () => {
 
-      sorted = Array.from( mechs.values() ).sort( sorter( "Tonnage", "Description.UIName" ) );
+      sorted = Array.from( mechs.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "MaxArmour", "Payload", "Description.UIName" ) );
 
    } );
-
 }
-
 
 export function showMechs() {
    listMechs();
    listMechCost();
    listVehicles();
+   listTurrets();
 }
 
 function listMechs() {
@@ -116,7 +132,7 @@ function listMechs() {
 
 export function listMechCost() {
    log();log( "Mech Cost" );
-   log( `|*-2 Mech|*-2 Model|*-3 Campaign${BR}Price|*+3 PvP Cost||*-2 Stock Config|*+2 Damage|*-2 Heat${BR}Gen` );
+   log( `|*-2 Mech|*-2 Model|*-2 Campaign${BR}Price|*+3 PvP Cost|*-2 Stock Config|*+2 Damage|*-2 Alpha${BR}Strike${BR}Heat|` );
    log( `|* Base|* Optimal${BR}Armour|* Cost per${BR}payload ton|* 270m|* 450m|` );
    for ( const e of sorted ) {
       const weapons = e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox', 'JumpJet' ].includes( e.ComponentType ) );
@@ -132,8 +148,8 @@ export function listMechCost() {
          tdr( kilo( e.Cost.Base / e.Payload ), 5 );
       }
       td ( getWeapons( e ), 48 );
-      tdr( sum( closeRange, e => e.ShotsWhenFired * e.Damage ), 3 );
-      tdr( sum(  longRange, e => e.ShotsWhenFired * e.Damage ), 3 );
+      tdr( sumWeapons( e, 'close' ), 3 );
+      tdr( sumWeapons( e,  'long' ), 3 );
       tdr( plus( sum( weapons, e => e.HeatGenerated ) - e.Dissipation ), 4 );
       newRow();
       tdh( getShops( e ), 110, 7 );
@@ -144,9 +160,9 @@ export function listMechCost() {
 
 function listVehicles() {
    log();log( "Vehicles" );
-   log( "|*-2 Vehicle|*-2 Ton|*+2 Speed|*-2 Weapons|*+4 HP/Armor |" );
-   log( "|* Walk|* Sprint|* Front|* Side|* Read|* Turret|" );
-   for ( const e of Array.from( vehicles.values() ).sort( sorter( "Tonnage", "Description.Name" ) ) ) {
+   log( "|*-2 Vehicle|*-2 Ton|*+2 Speed|*-2 Weapons|*+2 Damage|*+4 HP/Armor |" );
+   log( "|* Walk|* Sprint|* 270m|* 450m|* Front|* Side|* Read|* Turret|" );
+   for ( const e of Array.from( vehicles.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "Description.Name" ) ) ) {
       const F = e.Locations.find( e => e.Location === 'Front' ), S = e.Locations.find( e => e.Location === 'Left'   ),
             R = e.Locations.find( e => e.Location === 'Rear'  ), T = e.Locations.find( e => e.Location === 'Turret' );
       td ( e.Name, 20 );
@@ -154,12 +170,27 @@ function listVehicles() {
       tdr( e.Speed.MaxWalkDistance, 3 );
       tdr( e.Speed.MaxSprintDistance, 3 );
       td ( getWeapons( e ), 25 );
+      tdr( sumWeapons( e, 'close' ), 3 );
+      tdr( sumWeapons( e,  'long' ), 3 );
       td ( F ? F.InternalStructure + '/' + F.MaxArmor : '-', 7 );
       td ( S ? S.InternalStructure + '/' + S.MaxArmor : '-', 7 );
       td ( R ? R.InternalStructure + '/' + R.MaxArmor : '-', 7 );
       td ( T ? T.InternalStructure + '/' + T.MaxArmor : '-', 7 );
-      //tdr( e.Internal, 3 );
-      //tdr( e.StockArmour, 4 );
+      newRow();
+   }
+}
+
+function listTurrets() {
+   log();log( "Turrets" );
+   log( "|*-2 Turrets|*-2 Weapons|*+2 Damage|*-2 HP|*-2 Armor |" );
+   log( "|* 270m|* 450m|" );
+   for ( const e of Array.from( turrets.values() ).sort( sorter( "StockArmour", "Description.Name" ) ) ) {
+      td ( e.Name, 24 );
+      td ( getWeapons( e ), 30 );
+      tdr( sumWeapons( e, 'close' ), 3 );
+      tdr( sumWeapons( e,  'long' ), 3 );
+      td ( e.Internal, 3 );
+      td ( e.StockArmour, 4 );
       newRow();
    }
 }
@@ -186,4 +217,13 @@ const weaponSorter = sorter( "e[0].includes('Jump Jet')", -1, 0 ); // Jumpjet go
 function getWeapons( e ) {
    const config = count( e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox' ].includes( e.ComponentType ) ).map( e => e.Name ) );
    return Array.from( config.entries() ).sort( weaponSorter ).map( e => e[1] > 1 ? `${e[1]}x ${e[0]}` : e[0] ).join( ", " );
+}
+
+function sumWeapons( e, range ) {
+   let weapons = e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox', 'JumpJet' ].includes( e.ComponentType ) );
+   if ( range === 'close' )
+      weapons = weapons.filter( e => e.MaxRange > 90 && e.MaxRange <= 360 );
+   else
+      weapons = weapons.filter( e => e.MaxRange > 360 );
+   return iff( sum( weapons, e => e.ShotsWhenFired * e.Damage ) )
 }
