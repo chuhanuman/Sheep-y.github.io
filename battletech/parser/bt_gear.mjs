@@ -31,7 +31,7 @@ export function loadGears( gearMap ) {
       e.Note = [];
       if ( e.Category === "AntiPersonnel" ) e.Category = "Support";
    //   if ( e.RefireModifier ) e.Note.push( `Recoil ${e.RefireModifier}` );
-      if ( e.class === "los" ) e.Note.push( "LosTech" );
+      if ( e.class === "los" ) e.Note.push( "Lostech" );
       if ( e.BonusValueA ) e.Note.push( note( e.BonusValueA ) );
       if ( e.BonusValueB ) e.Note.push( note( e.BonusValueB ) );
    //   if ( e.Category === "Energy" ) ++acc;
@@ -74,7 +74,7 @@ function loadGearDir( path, note ) {
       classify( e );
       e.Name = fixName( e );
       e.Note = note ? note( e ) : [];
-      if ( e.class === "los" ) e.Note.push( "LosTech" );
+      if ( e.class === "los" ) e.Note.push( "Lostech" );
       gears.set( desc.Id, e );
       equipments.push( e );
    } );

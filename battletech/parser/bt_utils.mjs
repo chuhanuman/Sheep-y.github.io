@@ -124,11 +124,3 @@ export function unique( list ) { return Array.from( new Set( list ) ); }
 export function count( list ) {
    return list.reduce( ( v, e ) => v.set( e, v.has( e ) ? v.get( e ) + 1 : 1 ), new Map() );
 }
-
-// join( [1,2,3], "and" ) => "1, 2, and 3"
-export function join( val, word ) {
-   if ( val.length > 1 )
-      return val.slice( 0, -1 ).join( ", " ) + `, ${word} ` + val.slice( -1 );
-   return val.join( ", " );
-}
-

@@ -1,4 +1,4 @@
-import { log, loopJson, BR, ucfirst, unique, join, sorter } from './bt_utils.mjs';
+import { log, loopJson, BR, ucfirst, unique, sorter } from './bt_utils.mjs';
 
 let stars = [], inhabited = [], shops = [];
 
@@ -59,16 +59,22 @@ export function getShops( item ) {
       const trail = `.`; // `. (${e.ID})`; // `. (${e.Stars.length} stars`;
       [ white, black ] = [ keyword( white ), keyword( black ) ];
       let simpleStars = "";
-      if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
-      if ( black.length === 2 && black.includes( "Post-Campaign Planet" ) && black.includes( "Campaign Planet" ) ) { white.push( "Starter" ); black = []; }
-      if ( black.includes( "Starter Planet" ) ) { white.push( "Non-Starter" ); black = black.filter( e => e !== "Starter Planet" ); }
-      if ( black.includes( "Campaign Planet" ) ) { white.push( "Non-Post-Campaign" ); black = black.filter( e => e !== "Campaign Planet" ); }
-      if ( black.includes( "Post-Campaign Planet" ) ) { white.push( "Non-Campaign" ); black = black.filter( e => e !== "Post-Campaign Planet" ); }
+      if ( black.length ) {
+         if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
+         if ( black.length === 2 && black.includes( "Post-Campaign Planet" ) && black.includes( "Campaign Planet" ) ) { 
+            if ( ! white.includes( "Starter Planet" ) ) 
+               white.push( "Starter Planet" ); 
+            black = [];
+         }
+         if ( black.includes( "Starter Planet" ) ) { white.push( "Non-Starter" ); black = black.filter( e => e !== "Starter Planet" ); }
+         if ( black.includes( "Campaign Planet" ) ) { white.push( "Non-Post-Campaign" ); black = black.filter( e => e !== "Campaign Planet" ); }
+         if ( black.includes( "Post-Campaign Planet" ) ) { white.push( "Non-Campaign" ); black = black.filter( e => e !== "Post-Campaign Planet" ); }
+      }
       if ( ! black.length ) simpleStars = "Planets";
       if ( white.length && simpleStars )
          return white.join( ", " ) + " " + simpleStars + trail;
       else if ( white.length && black.length )
-         return "Stars that are " + join( white, "and" ) + " but not " + join( black, "or" ) + trail;
+         return "Stars that are " + join( white, "and" ) + ", but not " + join( black, "or" ) + trail;
       else if ( white.length )
          return "Stars that are " + join( white, "and" ) + trail;
       else if ( black.length )
@@ -87,8 +93,14 @@ export function getShops( item ) {
             case "planet_progress_1": return "Starter Planet";
             case "planet_progress_2": return "Campaign Planet";
             case "planet_progress_3": return "Post-Campaign Planet";
+            case "davion" : return "Fed.Sun";
+            case "kurita" : return "Draconis";
+            case "liao"   : return "Capellan";
+            case "marik"  : return "F.W.League";
+            case "steiner": return "Lyran";
             case "innersphere": return "Inner Sphere";
             case "starleague": return "Former Star League";
+            case "blackmarket": return "Black Market";
             case "planet_pop_none":
             case "empty": return "Uninhabited";
             default: return ucfirst( e );
@@ -116,4 +128,13 @@ export function starsName ( e ) {
    if ( id && id.endsWith( "_Flipped" ) ) return desc.Name + " (Restoration)";
    else if ( id && id.endsWith( "_Contested" ) ) return desc.Name + " (Directorate)";
    return desc.Name;
+}
+
+// join( [1,2,3], "and" ) => "1, 2 and 3"
+export function join( val, word ) {
+   if ( val.length > 2 )
+      return val.slice( 0, -1 ).join( ", " ) + `, ${word} ` + val.slice( -1 );
+   if ( val.length > 1 )
+      return `${val[0]} ${word} ${val[1]}`;
+   return val.join( ", " );
 }
