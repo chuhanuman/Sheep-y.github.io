@@ -161,7 +161,7 @@ export function listMechCost() {
 function listVehicles() {
    log();log( "Vehicles" );
    log( "|*-2 Vehicle|*-2 Ton|*+2 Speed|*-2 Weapons|*+2 Damage|*+4 HP/Armor |" );
-   log( "|* Walk|* Sprint|* 270m|* 450m|* Front|* Side|* Read|* Turret|" );
+   log( "|* Walk|* Sprint|* 270m|* 450m|* Front|* Side|* Rear|* Turret|" );
    for ( const e of Array.from( vehicles.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "Description.Name" ) ) ) {
       const F = e.Locations.find( e => e.Location === 'Front' ), S = e.Locations.find( e => e.Location === 'Left'   ),
             R = e.Locations.find( e => e.Location === 'Rear'  ), T = e.Locations.find( e => e.Location === 'Turret' );
