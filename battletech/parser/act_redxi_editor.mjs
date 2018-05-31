@@ -1,4 +1,4 @@
-/* Run with "node --experimental-modules bt_redix_editor.mjs" */
+/* Run with "node --experimental-modules act_redix_editor.mjs" */
 
 import { setDir, log as out } from './bt_utils.mjs';
 import { loadMechs, showMechs } from './bt_mech.mjs';

@@ -124,3 +124,15 @@ export function unique( list ) { return Array.from( new Set( list ) ); }
 export function count( list ) {
    return list.reduce( ( v, e ) => v.set( e, v.has( e ) ? v.get( e ) + 1 : 1 ), new Map() );
 }
+
+// https://stackoverflow.com/a/28458409/893578
+export function escHtml( text ) {
+   return String(text).replace( /[&<"']/g, function(m) {
+      switch (m) {
+         case '&': return '&amp;';
+         case '<': return '&lt;';
+         case '"': return '&quot;';
+         default:  return '&#039;';
+      }
+   } );
+}

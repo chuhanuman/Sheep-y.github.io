@@ -21,11 +21,13 @@ export function loadShops( gears ) {
               && ! black.items.find( e => tags.includes( e ) )
          } );
 
-         for ( let id of e.Inventory.concat( e.Specials ).map( e => e.ID ) ) {
-            const item = gears.get( id );
-            if ( ! item ) return console.warn( `${id} not found` );
-            if ( ! item.Shops ) item.Shops = [];
-            item.Shops.push( e );
+         if ( gears ) {
+            for ( let id of e.Inventory.concat( e.Specials ).map( e => e.ID ) ) {
+               const item = gears.get( id );
+               if ( ! item ) return console.warn( `${id} not found` );
+               if ( ! item.Shops ) item.Shops = [];
+               item.Shops.push( e );
+            }
          }
       } );
 
@@ -33,6 +35,16 @@ export function loadShops( gears ) {
 }
 
 const sortLen = sorter( "length", "" );
+
+export function listShops( callback ) {
+   if ( ! callback ) return console.warn( "listShops must be used with callback" );
+   callback( shops );
+}
+
+export function listStars( callback ) {
+   if ( ! callback ) return console.warn( "listStars must be used with callback" );
+   callback( stars );
+}
 
 export function getShops( item ) {
    if ( ! item.Shops ) return "None";
@@ -57,7 +69,7 @@ export function getShops( item ) {
    return unique( itemShops.map( e => {
       let { RequirementTags: { items: white }, ExclusionTags: { items: black } } = e;
       const trail = `.`; // `. (${e.ID})`; // `. (${e.Stars.length} stars`;
-      [ white, black ] = [ keyword( white ), keyword( black ) ];
+      [ white, black ] = [ planet_keyword( white ), planet_keyword( black ) ];
       let simpleStars = "";
       if ( black.length ) {
          if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
@@ -84,29 +96,34 @@ export function getShops( item ) {
    } ) ).map( e => e.replace( /\) Planets.*$/, ')' ) ).sort( sortLen ).join( BR );
    //const stars = item.Shops.reduce( ( v, e ) => v.concat( e.Stars ), [] ).map( e => e.Description.Name );
    //return unique( stars ).join( ", " );
-   function keyword( list ) {
-      return list.map( e => {
-         if ( e.endsWith( "_flipped" ) ) return ucfirst( e.slice( 12, -8 ) ) + " (Restoration)";
-         else if ( e.endsWith( "_contested" ) ) return ucfirst( e.slice( 12, -10 ) ) + " (Directorate)";
-         e = e.replace( /^planet_(civ|faction|industry|other)_/, '' );
-         switch ( e ) {
-            case "planet_progress_1": return "Starter Planet";
-            case "planet_progress_2": return "Campaign Planet";
-            case "planet_progress_3": return "Post-Campaign Planet";
-            case "davion" : return "Fed.Sun";
-            case "kurita" : return "Draconis";
-            case "liao"   : return "Capellan";
-            case "marik"  : return "F.W.League";
-            case "steiner": return "Lyran";
-            case "innersphere": return "Inner Sphere";
-            case "starleague": return "Former Star League";
-            case "blackmarket": return "Black Market";
-            case "planet_pop_none":
-            case "empty": return "Uninhabited";
-            default: return ucfirst( e );
-         }
-      } ).sort();
-   }
+}
+
+function ucword( words ) {
+   return words.split( / +/g ).map( ucfirst ).join( ' ' );
+}
+
+export function planet_keyword ( list ) {
+   return list.map( e => {
+      if ( e.endsWith( "_flipped" ) ) return ucword( e.slice( 12, -8 ) ) + " (Restoration)";
+      else if ( e.endsWith( "_contested" ) ) return ucword( e.slice( 12, -10 ) ) + " (Directorate)";
+      e = e.replace( /^planet_(civ|climate|faction|industry|other)_/, '' );
+      switch ( e ) {
+         case "planet_progress_1": return "Starter Planet";
+         case "planet_progress_2": return "Campaign Planet";
+         case "planet_progress_3": return "Post-Campaign Planet";
+         case "davion" : return "Fed.Sun";
+         case "kurita" : return "Draconis";
+         case "liao"   : return "Capellan";
+         case "marik"  : return "F.W.League";
+         case "steiner": return "Lyran";
+         case "innersphere": return "Inner Sphere";
+         case "starleague": return "Former Star League";
+         case "blackmarket": return "Black Market";
+         case "planet_pop_none":
+         case "empty": return "Uninhabited";
+         default: return ucword( e );
+      }
+   } ).sort();
 }
 
 export function starNotes () {

@@ -1,4 +1,4 @@
-/* Run with "node --experimental-modules bt.mjs" */
+/* Run with "node --experimental-modules act_data_tables.mjs" */
 
 import { setDir } from './bt_utils.mjs';
 import { loadShops, getShops } from './bt_shop.mjs';
