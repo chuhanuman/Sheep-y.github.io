@@ -11,11 +11,10 @@ Promise.resolve(
 
    listStars( ( shops ) => {
       for ( const { Description: desc, Tags: { items } } of shops ) {
-         const id = desc.Id.replace( /^starsystemdef_/,'town_' ), name = escHtml(desc.Name), details = escHtml(desc.Details),
-               climate = planet_keyword( items.filter( e => e.startsWith( 'planet_climate_' ) ) ).join( ', ' ),
-               tags    = planet_keyword( items.filter( e => e.startsWith( 'planet_other_'   ) ) ).join( ', ' ),
-               faction = planet_keyword( items.filter( e => e.startsWith( 'planet_faction_' ) ) ).join( ', ' );
-         out( `var ${id} = L.marker(map.unproject[,], map.getMaxZoom()).bindPopup(\`<h1>${name}</h1><p>${details}<p>Climate: ${climate}<p>Tags: ${tags}<p>Authority: ${faction}\`);` );
+         const id = desc.Id.replace( /^starsystemdef_/,'town_' ), name = escHtml(desc.Name), details = escHtml(desc.Details), tags = {};
+         for ( const type of ['climate', 'other', 'industry', 'faction' ] )
+            tags[ type ] = planet_keyword( items.filter( e => e.startsWith( `planet_${type}_` ) ) ).join( ', ' );
+         out( `var ${id} = L.marker(map.unproject[,], map.getMaxZoom()).bindPopup(\`<h1>${name}</h1><p>${details}<p>Climate: ${tags['climate']}<p>Industries: ${tags['industry']}<p>Tags: ${tags['other']}<p>Authority: ${tags['faction']}\`);` );
       }
    } );
 
