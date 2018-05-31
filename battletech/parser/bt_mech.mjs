@@ -5,7 +5,7 @@ import { kilo, mil, plus, iff, sorter, sum, count } from './bt_utils.mjs';
 import { getShops, starNotes } from './bt_shop.mjs';
 
 const chassis = new Map(), mechs = new Map(), vehicles = new Map(), turrets = new Map(), movements = new Map();
-let sorted;
+let sortedMechs, sortedVehicles, sortedTurrets;
 
 export function loadMechs( gears ) {
 
@@ -42,6 +42,8 @@ export function loadMechs( gears ) {
       c.ArmsHardpoints = loc.filter( e => e.Location.endsWith( "Arm" ) ).reduce( getHardpoints, getHardpoints() );
       const canHalfTon = c.Tonnage < 60 /* Jump Jet (S) */ || c.Hardpoints['A'] /* S Laser */;
       c.Internal = sum( loc, e => e.InternalStructure );
+      c.Parts = c.Locations.reduce( ( v, e ) => { v[ e.Location ] = e; return v; }, {} );
+      for ( const location of data.Locations ) c.Parts[ location.Location ] = Object.assign( location, c.Parts[ location.Location ] );
       c.StockArmour = sum( data.Locations, e => e.AssignedArmor + Math.max( 0, e.AssignedRearArmor ) );
       c.MaxArmour = sum( loc, e => e.MaxArmor + Math.max( 0, e.MaxRearArmor ) );
       c.Payload = c.Tonnage - c.InitialTonnage;
@@ -84,12 +86,15 @@ export function loadMechs( gears ) {
 
    } ) ).then( () => {
 
-      sorted = Array.from( mechs.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "MaxArmour", "Payload", "Description.UIName" ) );
+      sortedMechs = Array.from( mechs.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "MaxArmour", "Payload", "Description.UIName" ) );
+      sortedVehicles = Array.from( vehicles.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "Description.Name" ) );
+      sortedTurrets = Array.from( turrets.values() ).sort( sorter( "StockArmour", "Description.Name" ) );
 
    } );
 }
 
-export function showMechs() {
+export function showMechs( callback ) {
+   if ( callback ) return callback( sortedMechs, sortedVehicles, sortedTurrets );
    listMechs();
    listMechCost();
    listVehicles();
@@ -100,7 +105,7 @@ function listMechs() {
    log();log( "Mech Stats" );
    log( "|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Hardpoints (Arms+Other) |*-2 Melee|*-2 DFA|" );
    log( `|* Walk|* Sprint|* ${BR}Stock|* Max${BR}Optimal|* ${BR}Max|* ${BR}Total|* After Max${BR}Optimal|* Bal|* Ene|* Mis|* Sup|` );
-   for ( const e of sorted ) {
+   for ( const e of sortedMechs ) {
       td ( e.Name, 12 );
       td ( e.VariantName, 9 );
       tdr( e.Tonnage, 3 );
@@ -134,7 +139,7 @@ export function listMechCost() {
    log();log( "Mech Cost" );
    log( `|*-2 Mech|*-2 Model|*-2 Campaign${BR}Price|*+3 PvP Cost|*-2 Stock Config|*+2 Damage|*-2 Alpha${BR}Strike${BR}Heat|` );
    log( `|* Base|* Optimal${BR}Armour|* Cost per${BR}payload ton|* 270m|* 450m|` );
-   for ( const e of sorted ) {
+   for ( const e of sortedMechs ) {
       const weapons = e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox', 'JumpJet' ].includes( e.ComponentType ) );
       const closeRange = weapons.filter( e => e.MaxRange > 90 && e.MaxRange <= 360 ), longRange = weapons.filter( e => e.MaxRange > 360 );
       tdv( e.Name, 12 );
@@ -162,7 +167,7 @@ function listVehicles() {
    log();log( "Vehicles" );
    log( "|*-2 Vehicle|*-2 Ton|*+2 Speed|*-2 Weapons|*+2 Damage|*+4 HP/Armor |" );
    log( "|* Walk|* Sprint|* 270m|* 450m|* Front|* Side|* Rear|* Turret|" );
-   for ( const e of Array.from( vehicles.values() ).sort( sorter( "Tonnage", "-Speed.MaxWalkDistance", "Description.Name" ) ) ) {
+   for ( const e of sortedVehicles ) {
       const F = e.Locations.find( e => e.Location === 'Front' ), S = e.Locations.find( e => e.Location === 'Left'   ),
             R = e.Locations.find( e => e.Location === 'Rear'  ), T = e.Locations.find( e => e.Location === 'Turret' );
       td ( e.Name, 20 );
@@ -184,7 +189,7 @@ function listTurrets() {
    log();log( "Turrets" );
    log( "|*-2 Turrets|*-2 Weapons|*+2 Damage|*-2 HP|*-2 Armor |" );
    log( "|* 270m|* 450m|" );
-   for ( const e of Array.from( turrets.values() ).sort( sorter( "StockArmour", "Description.Name" ) ) ) {
+   for ( const e of sortedTurrets ) {
       td ( e.Name, 24 );
       td ( getWeapons( e ), 30 );
       tdr( sumWeapons( e, 'close' ), 3 );
