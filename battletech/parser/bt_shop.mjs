@@ -16,6 +16,7 @@ export function loadShops( gears ) {
 
          /* Load shop list, find their stars, and set items */
          const { RequirementTags: white, ExclusionTags: black } = e;
+         if ( white.items.includes( "debug" ) ) return;
          e.Stars = stars.filter( e => { const tags = e.Tags.items;
             return white.items.every( e => tags.includes( e ) )
               && ! black.items.find( e => tags.includes( e ) )
@@ -74,7 +75,7 @@ export function getShops( item ) {
       if ( black.length ) {
          if ( black.includes( "Uninhabited" ) ) { black = black.filter( e => e !== "Uninhabited" ); } /* Uninhabited planets has no stores */
          if ( black.length === 2 && black.includes( "Post-Campaign Planet" ) && black.includes( "Campaign Planet" ) ) { 
-            if ( ! white.includes( "Starter Planet" ) ) 
+            if ( ! white.includes( "Starter Planet" ) )
                white.push( "Starter Planet" ); 
             black = [];
          }
@@ -84,7 +85,7 @@ export function getShops( item ) {
       }
       if ( ! black.length ) simpleStars = "Planets";
       if ( white.length && simpleStars )
-         return white.join( ", " ) + " " + simpleStars + trail;
+         return ( white.join( ", " ) + " " + simpleStars + trail ).replace( /Planets? Planets?/g, 'Planets' );
       else if ( white.length && black.length )
          return "Stars that are " + join( white, "and" ) + ", but not " + join( black, "or" ) + trail;
       else if ( white.length )
