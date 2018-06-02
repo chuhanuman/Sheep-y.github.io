@@ -116,8 +116,9 @@ export function planet_keyword ( list ) {
          case "liao"   : return "Capellan";
          case "marik"  : return "F.W.League";
          case "steiner": return "Lyran";
+         case "magistracy" : return "Canopus";
          case "innersphere": return "Inner Sphere";
-         case "starleague": return "Former Star League";
+         case "starleague" : return "Former Star League";
          case "blackmarket": return "Black Market";
          case "planet_pop_none":
          case "empty": return "Uninhabited";
@@ -129,12 +130,14 @@ export function planet_keyword ( list ) {
 export function starNotes () {
    function has( e, tags ) { return e.Tags.items.some( e => tags.includes( e ) ); }
    function all( e, tags ) { return tags.every( tag => e.Tags.items.includes( tag ) ); }
-   const p1 = inhabited.filter( e => has( e, [ "planet_progress_1" ] ) ).map( starsName ).sort(),
-         p2 = inhabited.filter( e => has( e, [ "planet_progress_2", "planet_progress_2a" ] ) ).map( starsName ).sort(),
-         p3 = inhabited.filter( e => has( e, [ "planet_progress_3" ] ) ).map( starsName ).sort(),
-         pX = inhabited.filter( e => all( e, [ "planet_industry_manufacturing", "planet_civ_innersphere", "planet_industry_rich", "planet_industry_research", "planet_other_starleague" ] ) ).map( starsName ).sort();
+   const p1  = inhabited.filter( e => has( e, [ "planet_progress_1"  ] ) ).map( starsName ).sort(),
+         p2  = inhabited.filter( e => has( e, [ "planet_progress_2"  ] ) ).map( starsName ).sort(),
+         p2a = inhabited.filter( e => has( e, [ "planet_progress_2a" ] ) ).map( starsName ).sort(),
+         p3  = inhabited.filter( e => has( e, [ "planet_progress_3"  ] ) ).map( starsName ).sort(),
+         pX  = inhabited.filter( e => all( e, [ "planet_industry_manufacturing", "planet_civ_innersphere", "planet_industry_rich", "planet_industry_research", "planet_other_starleague" ] ) ).map( starsName ).sort();
    log( `: * Start Planets: ` + join( p1, "and" ) );
    log( `: * Inhabited Campaign Planets (${p2.length}): ` + join( p2, "and" ) );
+   log( `: * Inhabited Taurian Planets: (${p2a.length}): ` + join( p2a, "and" ) );
    log( `: * Inhabited Post-Campaign Planets: (${p3.length}): ` + join( p3, "and" ) );
    log( `: * Former Star League, Inner Sphere, Manufacturing, Research, Rich Planets: ` + join( pX, "and" ) );
    /*log( "* Other Planets: " + stars.filter( e => ! e.Tags.items.some( e => e.startsWith( "planet_progress_" ) ) ).length + " other planets." );*/
