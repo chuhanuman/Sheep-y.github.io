@@ -107,13 +107,12 @@ export function planet_keyword ( list ) {
    return list.map( e => {
       if ( e.endsWith( "_flipped" ) ) return ucword( e.slice( 12, -8 ) ) + " (Restoration)";
       else if ( e.endsWith( "_contested" ) ) return ucword( e.slice( 12, -10 ) ) + " (Directorate)";
-      e = e.replace( /^planet_(civ|climate|faction|industry|other)_/, '' );
       return keyword_translate( e );
    } );
 }
 
-export function keyword_translate ( e ) {
-   e = e.toLowerCase();
+export function planet_tag ( e ) {
+   e = e.replace( /^planet_(civ|climate|faction|industry|other)_/, '' ).toLowerCase();
    switch ( e ) {
       case "planet_progress_1": return "Starter Planet";
       case "planet_progress_2": return "Campaign Planet";

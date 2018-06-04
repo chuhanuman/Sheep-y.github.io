@@ -8,7 +8,7 @@ import { loadEvents, showEvents } from './bt_event.mjs';
 
 const gears = new Map();
 
-setDir( 'C:/Program Files (x86)/Steam/steamapps/common/BATTLETECH/BattleTech_Data/StreamingAssets/data/' )
+setDir( 'C:/Program Files (x86)/Steam/steamapps/common/BATTLETECH/BattleTech_Data/StreamingAssets/data/' );
 
 Promise.resolve(
 ).then( loadGears( gears )
