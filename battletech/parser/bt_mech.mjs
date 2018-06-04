@@ -1,6 +1,6 @@
 /* Run with "node --experimental-modules bt.mjs" */
 
-import { loopJson, log, DAG, DDAG, BR, newRow, td, tdr, tdv, tdh } from './bt_utils.mjs';
+import { loopJson, log, warn, DAG, DDAG, BR, newRow, td, tdr, tdv, tdh } from './bt_utils.mjs';
 import { kilo, mil, plus, iff, sorter, sum, count } from './bt_utils.mjs';
 import { getShops, starNotes } from './bt_shop.mjs';
 
@@ -33,7 +33,7 @@ export function loadMechs( gears ) {
    } ) ).then( () => loopJson( "mech", ( data ) => {
       /* Load mech loadout and associate with chassis */
       const c = chassis.get( data.ChassisID ), loc = c.Locations;
-      if ( ! c ) return console.warn( `Chassis not found: ${data.ChassisID}` );
+      if ( ! c ) return warn( `Chassis not found: ${data.ChassisID}` );
       if ( data.MechTags.items.includes( "BLACKLISTED" ) && ! [ "HGN-732B", "AS7-D-HT" ].includes( c.VariantName ) ) return;
       const desc = c.Description = Object.assign( c.Description, data.Description );
       c.Name = desc.Name;
@@ -63,7 +63,7 @@ export function loadMechs( gears ) {
    } ) ).then( () => loopJson( "vehicle", ( data ) => {
 
       let c = chassis.get( data.ChassisID ), loc = c.Locations;
-      if ( ! c ) return console.warn( `Chassis not found: ${data.ChassisID}` );
+      if ( ! c ) return warn( `Chassis not found: ${data.ChassisID}` );
       let desc = c.Description = Object.assign( c.Description, data.Description );
       c.Name = desc.Name;
       c.Internal = sum( loc, e => e.InternalStructure );
@@ -75,7 +75,7 @@ export function loadMechs( gears ) {
    } ) ).then( () => loopJson( "turrets", ( data ) => {
 
       let c = chassis.get( data.ChassisID ), loc = c.Locations;
-      if ( ! c ) return console.warn( `Chassis not found: ${data.ChassisID}` );
+      if ( ! c ) return warn( `Chassis not found: ${data.ChassisID}` );
       let desc = c.Description = Object.assign( c.Description, data.Description );
       c.Name = desc.Name;
       c.Internal = c.MaxInternalStructure;

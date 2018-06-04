@@ -1,4 +1,4 @@
-import { log, loopJson, BR, ucfirst, unique, sorter } from './bt_utils.mjs';
+import { log, warn, loopJson, BR, ucfirst, unique, sorter } from './bt_utils.mjs';
 
 let stars = [], inhabited = [], shops = [];
 
@@ -25,7 +25,7 @@ export function loadShops( gears ) {
          if ( gears ) {
             for ( let id of e.Inventory.concat( e.Specials ).map( e => e.ID ) ) {
                const item = gears.get( id );
-               if ( ! item ) return console.warn( `${id} not found` );
+               if ( ! item ) return warn( `${id} not found` );
                if ( ! item.Shops ) item.Shops = [];
                item.Shops.push( e );
             }
@@ -38,12 +38,12 @@ export function loadShops( gears ) {
 const sortLen = sorter( "length", "" );
 
 export function listShops( callback ) {
-   if ( ! callback ) return console.warn( "listShops must be used with callback" );
+   if ( ! callback ) return warn( "listShops must be used with callback" );
    callback( shops );
 }
 
 export function listStars( callback ) {
-   if ( ! callback ) return console.warn( "listStars must be used with callback" );
+   if ( ! callback ) return warn( "listStars must be used with callback" );
    callback( stars );
 }
 

@@ -3,7 +3,7 @@ import fs from 'fs';
 let dir = '';
 let str = "";
 
-export const DAG = "^", DDAG = "*", BR = "<br>", log = console.log;
+export const DAG = "^", DDAG = "*", BR = "<br>", log = console.log, warn = console.warn;
 
 export function setDir( path ) { dir = path; }
 
