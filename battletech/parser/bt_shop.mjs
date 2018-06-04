@@ -1,4 +1,4 @@
-import { log, warn, loopJson, BR, ucfirst, unique, sorter } from './bt_utils.mjs';
+import { log, warn, loopJson, BR, ucfirst, sorter, join, unique } from './bt_utils.mjs';
 
 let stars = [], inhabited = [], shops = [];
 
@@ -108,24 +108,29 @@ export function planet_keyword ( list ) {
       if ( e.endsWith( "_flipped" ) ) return ucword( e.slice( 12, -8 ) ) + " (Restoration)";
       else if ( e.endsWith( "_contested" ) ) return ucword( e.slice( 12, -10 ) ) + " (Directorate)";
       e = e.replace( /^planet_(civ|climate|faction|industry|other)_/, '' );
-      switch ( e ) {
-         case "planet_progress_1": return "Starter Planet";
-         case "planet_progress_2": return "Campaign Planet";
-         case "planet_progress_3": return "Post-Campaign Planet";
-         case "davion" : return "Fed.Sun";
-         case "kurita" : return "Draconis";
-         case "liao"   : return "Capellan";
-         case "marik"  : return "F.W.League";
-         case "steiner": return "Lyran";
-         case "magistracy" : return "Canopus";
-         case "innersphere": return "Inner Sphere";
-         case "starleague" : return "Former Star League";
-         case "blackmarket": return "Black Market";
-         case "planet_pop_none":
-         case "empty": return "Uninhabited";
-         default: return ucword( e );
-      }
-   } ).sort();
+      return keyword_translate( e );
+   } );
+}
+
+export function keyword_translate ( e ) {
+   e = e.toLowerCase();
+   switch ( e ) {
+      case "planet_progress_1": return "Starter Planet";
+      case "planet_progress_2": return "Campaign Planet";
+      case "planet_progress_3": return "Post-Campaign Planet";
+      case "davion" : return "Fed.Sun";
+      case "kurita" : return "Draconis";
+      case "liao"   : return "Capellan";
+      case "marik"  : return "F.W.League";
+      case "steiner": return "Lyran";
+      case "magistracy" : return "Canopus";
+      case "innersphere": return "Inner Sphere";
+      case "starleague" : return "Former Star League";
+      case "blackmarket": return "Black Market";
+      case "planet_pop_none":
+      case "empty": return "Uninhabited";
+      default: return ucword( e );
+   }
 }
 
 export function starNotes () {
@@ -149,13 +154,4 @@ export function starsName ( e ) {
    if ( id && id.endsWith( "_Flipped" ) ) return desc.Name + " (Restoration)";
    else if ( id && id.endsWith( "_Contested" ) ) return desc.Name + " (Directorate)";
    return desc.Name;
-}
-
-// join( [1,2,3], "and" ) => "1, 2 and 3"
-export function join( val, word ) {
-   if ( val.length > 2 )
-      return val.slice( 0, -1 ).join( ", " ) + `, ${word} ` + val.slice( -1 );
-   if ( val.length > 1 )
-      return `${val[0]} ${word} ${val[1]}`;
-   return val.join( ", " );
 }

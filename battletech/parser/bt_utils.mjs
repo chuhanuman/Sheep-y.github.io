@@ -117,6 +117,22 @@ export function sorter() {
 // Sum up a list with given map function, starting from 0
 export function sum( list, map ) { return list.reduce( ( v, e ) => v + map( e ), 0 ); }
 
+// join( [1,2,3], "and" ) => "1, 2, and 3"; join( [1,2], "or" ) => "1 or 2"
+export function join( val, word ) {
+   if ( val.length > 2 )
+      return val.slice( 0, -1 ).join( ", " ) + `, ${word} ` + val.slice( -1 );
+   if ( val.length > 1 )
+      return `${val[0]} ${word} ${val[1]}`;
+   return val.join( ", " );
+}
+
+// joinComma( [1,2,3], "and" ) => "1, 2, and 3"; joinComma( [1,2], "or" ) => "1, or 2"
+export function joinComma( val, word ) {
+   if ( val.length === 2 )
+      return `${val[0]}, ${word} ${val[1]}`;
+   return join( val, word );
+}
+
 // Return a new list without duplicates
 export function unique( list ) { return Array.from( new Set( list ) ); }
 
