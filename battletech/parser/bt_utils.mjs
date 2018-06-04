@@ -84,6 +84,9 @@ export function note( val ) { return val.replace( /\s*([+-])\s*/g, "$1" ).replac
 // Uppercase first character
 export function ucfirst( val ) { return val ? val[0].toUpperCase() + val.slice( 1 ) : val; }
 
+// Uppercase every words
+export function ucword( words ) { return words.split( / +/g ).map( ucfirst ).join( ' ' ); }
+
 // Return either note( Description.UIName ) or Description,Name
 export function fixName( { Description: desc } ) { return desc.UIName ? note( desc.UIName ) : desc.Name; }
 

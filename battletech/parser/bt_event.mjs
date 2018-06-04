@@ -1,4 +1,4 @@
-import { loopJson, log, warn, kilo, sorter, joinComma } from './bt_utils.mjs';
+import { loopJson, log, warn, kilo, ucfirst, ucword, sorter, joinComma } from './bt_utils.mjs';
 import { planet_tag } from './bt_shop.mjs';
 
 const events = [], tagMap = new Map();
@@ -14,10 +14,13 @@ export function loadEvents( gearMap ) {
 
    } ).then( () => loopJson( "events", ( e ) => {
 
-      const { Requirements: r1, AdditionalRequirements: r2 } = e;
-      let reqList = [];
-      for ( const r of [r1].concat( r2 ) ) {
-         const { RequirementTags: { items: white }, ExclusionTags: { items: black } } = r;
+      const { Requirements: r1, AdditionalRequirements: r2, AdditionalObjects: r3 } = e;
+      let reqList = [], objects = [], mwCount = 0;
+      const req = [r1].concat( r2 ).concat( r3 ).filter( e => e );
+
+      for ( const r of req ) {
+         const white = r.RequirementTags ? r.RequirementTags.items : null,
+               black = r.ExclusionTags   ? r.ExclusionTags.items : null;
          switch ( r.Scope ) {
             case "Company":
                whitelist( "Company", white, reqList );
@@ -34,23 +37,52 @@ export function loadEvents( gearMap ) {
                   reqList.push( parseMechWarrior( "Commander", comp, e ) );
                break;
 
-            case "MechWarrior":
-               break;
-
             case "StarSystem":
                whitelist( "Star", white, reqList );
                blacklist( "Star", black, reqList );
                if ( r.RequirementComparisons.length ) warn( "Planet comparison unimplemented." );
                break;
 
+            case "MechWarrior":
+               mechwarrior( 'mw1', r, objects, e );
+               break;
+
+            case "SecondaryMechWarrior":
+               mechwarrior( 'mw2', r, objects, e );
+               break;
+
+            case "TertiaryMechWarrior":
+               mechwarrior( 'mw3', r, objects, e );
+               break;
+
+            case "SecondaryMech":
+               if ( ! objects.mech2 ) objects.mech2 = [];
+               //log( r );
+               break;
+
             default:
                console.warn( "Unknown scope: " + r.Scope );
          }
       }
-      e.TextualRequirements = reqList.filter( e => e );
+      reqList = reqList.filter( e => e )
+      e.TextualRequirements = reqList.length ? reqList : null;
+      e.Objects = objects;
       events.push( e );
    } ) );
 }
+
+function mechwarrior( key, r, objects, e ) {
+   const white = r.RequirementTags ? r.RequirementTags.items : null,
+         black = r.ExclusionTags   ? r.ExclusionTags.items : null;
+   if ( ! objects[key] ) objects[key] = [];
+   if ( white ) whitelist( "MechWarrior", white, objects[key] );
+   if ( black ) blacklist( "MechWarrior", black, objects[key] );
+   if ( r.RequirementComparisons )
+      for ( const comp of r.RequirementComparisons )
+         objects[key].push( parseMechWarrior( "", comp, e ) );
+   if ( ! objects[key].length ) objects[key].push( "Anyone" );
+}
+
 
 function whitelist( who, list, reqList ) {
    if ( ! list || ! list.length ) return;
@@ -61,6 +93,9 @@ function whitelist( who, list, reqList ) {
          break;
       case "Commander":
          for ( const e of text ) reqList.push( "Commander is " + e );
+         break;
+      case "MechWarrior":
+         for ( const e of text ) reqList.push( "Is " + e );
          break;
       case "Star":
          for ( const e of text ) reqList.push( "Planet is " + e );
@@ -79,6 +114,9 @@ function blacklist( who, list, reqList ) {
          break;
       case "Commander":
          for ( const e of text ) reqList.push( "Commander is not " + e );
+         break;
+      case "MechWarrior":
+         for ( const e of text ) reqList.push( "Is not " + e );
          break;
       case "Star":
          for ( const e of text ) reqList.push( "Planet is not " + e );
@@ -118,9 +156,18 @@ function parseCompany( comp, e ) {
 }
 
 function parseMechWarrior( who, comp, e ) {
-   const { obj, op, val } = comp;
+   const { obj, op, val } = comp, your = who ? `${who}'s ` : '';
    switch ( obj ) {
-      case "Injuries" : return empty( op, val ) ? who+" is uninjured" : parseCompareCond( who +" injuries", comp );
+      case "Injuries" :
+         if ( who )
+            return empty( op, val ) ? who + " is uninjured" : parseCompareCond( who +" injuries", comp );
+         else
+            return empty( op, val ) ? "Is uninjured" : parseCompareCond( "Injuries", comp );
+      case "Gunnery"  : return parseCompareCond( your+"Gunnery", comp );
+      case "Piloting" : return parseCompareCond( your+"Piloting", comp );
+      case "Gut"      : return parseCompareCond( your+"Gut", comp );
+      case "Tactic"   : return parseCompareCond( your+"Tactic", comp );
+      case "ExperienceSpent" : return parseCompareCond( ucfirst( your+"spent experience" ), comp );
    }
    warn( `Unknown mechwarrior condition: ${obj} (${e.Description.Id})` );
    return obj;
@@ -167,14 +214,55 @@ function translateTag( tag ) {
    if ( tag === 'commander_youth_merchantGuard' ) return "guard background";
    if ( tag.startsWith( 'commander_' ) ) return tag.replace( /^([^_]+_){2}/, '' ) + " background";
    if ( tag.startsWith( 'planet_' ) ) return planet_tag( tag );
+   if ( tag.startsWith( 'pilot_' ) ) return ucword( tag.substr( 6 ).replace( /_+/g, ' ' ) );
    return `tag [${tag}]`;
 }
 
 export function showEvents() {
    for ( const e of events.sort( sorter( 'Description.Name', 'Description.Id' ) ) ) {
       const { Description: desc } = e;
-      if ( e.TextualRequirements.length ) log( desc.Id + ": " + joinComma( e.TextualRequirements, "and" ) );
-      //log();
-      //log( `'''${desc.Name}''' (${desc.Id})` );
+      log();
+      log( `'''${desc.Name}'''` );
+      log( "Requirements: " + ( e.TextualRequirements ? joinComma( e.TextualRequirements, "and" ) + "." : "None" ) );
+      if ( e.Objects.mw1 ) {
+         const str = e.Objects.mw2 ? "MechWarrior [John]" : "MechWarrior";
+         log( "Random " + str + ": " + joinComma( e.Objects.mw1, "and" ) + "." );
+      }
+      if ( e.Objects.mw2 )
+         log( "Random MechWarrior [Jane]: " + joinComma( e.Objects.mw2, "and" ) + "." );
+      if ( e.Objects.mw3 )
+         log( "Random MechWarrior [Legion]: " + joinComma( e.Objects.mw3, "and" ) + "." );
+      if ( e.Objects.mech2 )
+         log( "Random Mech [Metal]: " + joinComma( e.Objects.mech2, "and" ) + "." );
+      log( "Event ID: " + desc.Id );
+      log( "First paragraph: " + render( desc.Details.split( /\n/ )[0] ) );
    }
+}
+
+function render ( text ) {
+   text = text.replace( /<\/?\w+>/g, '' );
+
+   text = text.replace( /\{TGT_SYSTEM.Name\}/g, "[This Star System]" );
+
+   text = text.replace( /\{COMMANDER.FirstName\}/, "Commander" );
+
+   text = text.replace( /\[\[TGT_MW,\{TGT_MW.Callsign\}\]\]/ig, '[John]' );
+   text = text.replace( /\{TGT_MW\.(Firstname|Callsign)\}/ig, '[John]' );
+   text = text.replace( /\{TGT_MW\.DET\}/ig, 'his' );
+   text = text.replace( /\{TGT_MW\.OBJ\}/ig, 'him' );
+   text = text.replace( /\{TGT_MW\.SUBJ\}/ig, 'he' );
+   text = text.replace( /\{TGT_MW\.SUBJ_C\}/ig, 'He' );
+   text = text.replace( /\{TGT_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$1" );
+   text = text.replace( /\{TGT_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+
+   text = text.replace( /\[\[SCN_MW,\{SCN_MW.Callsign\}\]\]/ig, '[Jane]' );
+   text = text.replace( /\{SCN_MW\.(Firstname|Callsign)\}/ig, '[Jane]' );
+   text = text.replace( /\{SCN_MW\.DET\}/ig, 'her' );
+   text = text.replace( /\{SCN_MW\.OBJ\}/ig, 'her' );
+   text = text.replace( /\{SCN_MW\.SUBJ\}/ig, 'She' );
+   text = text.replace( /\{SCN_MW\.SUBJ_C\}/ig, 'She' );
+   text = text.replace( /\{SCN_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$2" );
+   text = text.replace( /\{SCN_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+
+   return text;
 }

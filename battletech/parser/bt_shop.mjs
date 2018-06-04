@@ -1,4 +1,4 @@
-import { log, warn, loopJson, BR, ucfirst, sorter, join, unique } from './bt_utils.mjs';
+import { log, warn, loopJson, BR, ucfirst, ucword, sorter, join, unique } from './bt_utils.mjs';
 
 let stars = [], inhabited = [], shops = [];
 
@@ -97,10 +97,6 @@ export function getShops( item ) {
    } ) ).map( e => e.replace( /\) Planets.*$/, ')' ) ).sort( sortLen ).join( BR );
    //const stars = item.Shops.reduce( ( v, e ) => v.concat( e.Stars ), [] ).map( e => e.Description.Name );
    //return unique( stars ).join( ", " );
-}
-
-function ucword( words ) {
-   return words.split( / +/g ).map( ucfirst ).join( ' ' );
 }
 
 export function planet_keyword ( list ) {
