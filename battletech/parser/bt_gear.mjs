@@ -93,18 +93,18 @@ function classify ( e ) {
 //SRM6 = 3t, bin = 100, 12 shots = 1 bin, 24 = 2 bin dpt = 48dmg over 4t / 48dmg over 5t
 
 export function showWeapons() {
-   listStockWeapons( "Stock Weapons", weapons.filter( e => e.class === "stock" ) );
-   listRareWeapons( "Ballistic Weapons", weapons.filter( e => e.Category[0] === "B" ), "ammo" );
-   listRareWeapons( "Energy Weapons" , weapons.filter( e => e.Category[0] === "E" ) );
-   listRareWeapons( "Missile Weapons", weapons.filter( e => e.Category[0] === "M" ), "all" );
-   listRareWeapons( "Support Weapons", weapons.filter( e => e.Category[0] === "S" ) );
+   listStockWeapons( "Stock Weapons" );
+   listRareWeapons( "Ballistic Weapons", "B" );
+   listRareWeapons( "Energy Weapons" , "E" );
+   listRareWeapons( "Missile Weapons", "M" );
+   listRareWeapons( "Support Weapons", "S" );
 }
 
-function listStockWeapons ( title, list ) {
+function listStockWeapons ( title ) {
    log();log( title );
    log( "|*-2 Type|*-2 Weapon|*-2 Price|*-2 Ton|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*+2 Damage/Ton|" );
    log( "|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 12x|* 30x|" );
-   for ( const e of list ) {
+   for ( const e of weapons.filter( e => e.class === "stock" ) ) {
       td( e.Category, 9 );
       td( e.Name, 7 );
       tdr( kilo( e.Description.Cost ), 4 );
@@ -125,21 +125,22 @@ function listStockWeapons ( title, list ) {
    }
 }
 
-function listRareWeapons ( title, list, option ) {
-   const hasAll = option === "all", hasAmmo = hasAll || option === "ammo", multishot = hasAll || option === "multi";
+function listRareWeapons ( title, type ) {
+   const ammo = type === "M" || type === "B", multishot = type === "M", recoil = type === "B";
 
    log();log( title );
-   switch ( option ) {
-      case "all":
+   switch ( type ) {
+      case "B":
+         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*-2 Recoil|* Damage/Ton|" );
+         log( "|* Raw|* Stability|* Min|* Long|* Max|* 30x|" ); break;
+      case "M":
          log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|* Damage/Ton|" );
          log( "|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 30x|" ); break;
-      case "ammo":
-         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Ammo|*-2 Heat|* Damage/Ton|" );
-         log( "|* Raw|* Stability|* Min|* Long|* Max|* 30x|" ); break;
       default:
          log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Heat|*-2 Damage/Ton|" );
          log( "|* Raw|* Stability|* Min|* Long|* Max|" ); break;
    }
+   const list = weapons.filter( e => e.Category[0] === type );
    for ( const e of list ) {
       const { Description: desc } = e;
       td( e.Name, 11 );
@@ -153,8 +154,9 @@ function listRareWeapons ( title, list, option ) {
       tdr( e.MinRange, 3 );
       tdr( e.RangeSplit[0], 3 );
       tdr( e.MaxRange, 3 );
-      if ( hasAmmo ) tdr( iff( e.Shots ), 3 );
+      if ( ammo ) tdr( iff( e.Shots ), 3 );
       tdr( e.HeatGenerated, 2 );
+      if ( recoil ) tdr( iff( e.AttackRecoil * -5, "%" ), 3 );
       tdr( d1( e.DamagePer30ShotTon || e.DamagePerTon ), 4 );
       newRow();
    }

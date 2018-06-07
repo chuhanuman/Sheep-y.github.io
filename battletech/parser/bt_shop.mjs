@@ -103,7 +103,7 @@ export function planet_keyword ( list ) {
    return list.map( e => {
       if ( e.endsWith( "_flipped" ) ) return ucword( e.slice( 12, -8 ) ) + " (Restoration)";
       else if ( e.endsWith( "_contested" ) ) return ucword( e.slice( 12, -10 ) ) + " (Directorate)";
-      return keyword_translate( e );
+      return planet_tag( e );
    } );
 }
 

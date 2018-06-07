@@ -235,7 +235,7 @@ function buildMap () {
          "Gunslinger", "Sniper",
          "Scoundrel", "Operative",
       "Trooper", "Bounty Hunter",
-         "Vanguard", "Power Tech",
+         "Vanguard", "Powertech",
          "Commando", "Mercenary",
    );
 
@@ -246,6 +246,38 @@ function buildMap () {
       "Force Wave", "Overload",                    "Force of Will", "Unbreakable Will",
       "Meditation", "Seethe",                      "Mind Snap", "Jolt",
       "Project", "Shock",
+      );
+   // Shadow / Assassin
+   map.push(
+      // Attacks
+      "Clairvoyant Strike", "Voltaic Slash",
+      "Force Breach", "Discharge",
+      "Pschokinetic Blast", "Ball Lightning",
+      "Shadow Strike", "Maul",
+      "Spinning Kick",
+      "Spinning Strike", "Assassinate",
+      "Vaulting Slash", "Reaping Strike",
+      "Whirling Blow", "Lacerate",
+
+      // Defense & Tanking
+      "Battle Readiness",
+      "Mass Mind Control",
+      "Mind Control",
+      "Resilience",
+
+      // Buff & Utils
+      "Force Synergy",
+      "Mind Maze",
+      "Shadow Stride", "Phantom Stride",
+      
+      // Passives
+      "Breaching Shadow", "Static Charge",
+      "Shadow Technique", "Surging Charge",
+
+      // Skillful
+      // Masterful
+      // Heroic
+      // Legendary
       );
    // Sage / Sorcerer
    map.push(

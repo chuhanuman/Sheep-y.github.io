@@ -76,7 +76,7 @@ export function d2( val ) {
 export function plus( val ) { return val >= 0 ? `+${val}` : val; }
 
 // Return "-" if 0
-export function iff( val ) { return val === 0 ? "-" : val; }
+export function iff( val, postfix = "" ) { return val === 0 ? "-" : ( val + postfix ); }
 
 // Turns "Laser + + " into "Laser++", e.g.
 export function note( val ) { return val.replace( /\s*([+-])\s*/g, "$1" ).replace( /\.$/, "" ); }
