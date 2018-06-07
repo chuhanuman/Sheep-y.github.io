@@ -4,6 +4,7 @@ import { setDir } from './bt_utils.mjs';
 import { loadShops } from './bt_shop.mjs';
 import { loadMechs, showMechs } from './bt_mech.mjs';
 import { loadGears, showWeapons, showGears } from './bt_gear.mjs';
+import { loadMissions, showMissions } from './bt_mission.mjs';
 import { loadEvents, showEvents } from './bt_event.mjs';
 
 const gears = new Map();
@@ -14,12 +15,14 @@ Promise.resolve(
 ).then( loadGears( gears )
 ).then( loadMechs( gears )
 ).then( loadShops( gears )
+).then( loadMissions()
 ).then( loadEvents( gears )
 ).then( () => {
 
    //showMechs();
    //showWeapons();
    //showGears();
-   showEvents();
+   //showEvents();
+   showMissions();
 
 } ).catch( console.error );

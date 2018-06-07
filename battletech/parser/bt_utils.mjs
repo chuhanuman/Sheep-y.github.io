@@ -7,44 +7,70 @@ export const DAG = "^", DDAG = "*", BR = "<br>", log = console.log, warn = conso
 
 export function setDir( path ) { dir = path; }
 
-export function loopJson( folder, task ) {
-   function run( data ) {
-      if ( ! data ) throw new Error( "Data is empty" );
-      let desc = data.Description;
-      if ( ! desc || desc.Name ) task( data );
-   }
+export function loopFolder( folder, task ) {
    return new Promise( ( done, fail ) => {
-      fs.readdir( dir + folder + "/", ( err, files ) => {
+      fs.readdir( `${dir}${folder}/`, ( err, files ) => {
+         if ( err ) fail( err );
+         Promise.all( files.map( ( f ) => new Promise( ( done, fail ) => {
+            fs.lstat( `${dir}${folder}/${f}`, ( err, stats ) => {
+               if ( err ) fail( err );
+               done( stats.isDirectory() ? f : null );
+            } );
+         } ) ) )
+         .then( list => Promise.all( list.filter( e => e ).map( e => { try {
+            return task( e );
+         } catch ( err ) {
+            console.error( `Cannot load ${e}: ${err.stack}` );
+            return Promise.resolve();
+         } } ) ) )
+         .then( done ).catch( fail );
+      } );
+   } );
+}
+
+export function loopJson( folder, task ) {
+   return new Promise( ( done, fail ) => {
+      fs.readdir( `${dir}${folder}/`, ( err, files ) => {
          if ( err ) fail( err );
          const tasks = files.filter( ( f ) => f.endsWith( '.json' ) ).map( ( f ) => new Promise( ( done ) => {
-            let json, err;
-            fs.readFile( dir + folder + "/" + f, { encoding: 'utf-8' }, ( err, data ) => {
+            fs.readFile( `${dir}${folder}/${f}`, { encoding: 'utf-8' }, ( err, data ) => {
                try {
                   if ( err ) throw err;
-                  run( JSON.parse( data ) );
-               } catch ( ex ) {
-                  if ( ex instanceof SyntaxError ) try {
-                     run( new Function( "return " + data + ";" )() );
-                  } catch ( ex2 ) {
-                     if ( ex2 instanceof SyntaxError ) try {
-                        // Fix minor json syntax errors
-                        data = data.replace( /"\r?\n\s*"/g, '","' ).replace( /\}\r?\n\s*\{/g, '},{' );
-                        run( JSON.parse( data ) );
-                     } catch ( ex3 ) {
-                        err = ex3 instanceof SyntaxError ? ex : ex3;
-                     } else
-                        err = ex2;
-                  } else
-                     err = ex;
+                  const json = parseJSON( data );
+                  if ( ! json ) throw new Error( "Data is empty" );
+                  const desc = json.Description;
+                  if ( ! desc || desc.Name ) task( json ); // Skip templates which do not have names
+               } catch ( err ) {
+                  console.error( `Cannot parse ${f}: ${err.stack}` );
                }
-               if ( err )
-                  return done( console.error( `Cannot parse ${f}: ${err.stack}` ) );
                done();
             } );
          } ) );
          Promise.all( tasks ).then( done ).catch( fail );
       } );
    } );
+}
+
+function parseJSON ( data ) {
+   try {
+      // Try simple parse
+      return JSON.parse( data );
+   } catch ( ex ) {
+      // Try append semi-colon
+      if ( ex instanceof SyntaxError ) try {
+         return new Function( "return " + data + ";" )();
+      } catch ( ex2 ) {
+         if ( ex2 instanceof SyntaxError ) try {
+            // Fix minor json syntax errors: missing comma
+            data = data.replace( /"\r?\n\s*"/g, '","' ).replace( /\}\r?\n\s*\{/g, '},{' );
+            return JSON.parse( data );
+         } catch ( ex3 ) {
+            throw ex3 instanceof SyntaxError ? ex : ex3;
+         }
+         throw ex2;
+      }
+      throw ex;
+   }
 }
 
 export function td  ( val, size ) { str += "| "    + String( val ).padEnd( size ); } // Append space padded cell
