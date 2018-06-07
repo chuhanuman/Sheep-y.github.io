@@ -26,7 +26,7 @@ export function loadEvents( gearMap ) {
                whitelist( "Company", white, reqList );
                blacklist( "Company", black, reqList );
                for ( const comp of r.RequirementComparisons )
-                  reqList.push( parseCompany( comp, e ) );
+                  reqList.push( parseCompany( comp ) );
                break;
 
             case "Commander":
@@ -34,30 +34,35 @@ export function loadEvents( gearMap ) {
                whitelist( "Commander", white, reqList );
                blacklist( "Commander", black, reqList );
                for ( const comp of r.RequirementComparisons )
-                  reqList.push( parseMechWarrior( "Commander", comp, e ) );
+                  reqList.push( parseMechWarrior( "Commander", comp ) );
                break;
 
             case "StarSystem":
                whitelist( "Star", white, reqList );
                blacklist( "Star", black, reqList );
-               if ( r.RequirementComparisons.length ) warn( "Planet comparison unimplemented." );
+               if ( r.RequirementComparisons && r.RequirementComparisons.length )
+                  warn( "Planet comparison unimplemented." );
                break;
 
             case "MechWarrior":
-               mechwarrior( 'mw1', r, objects, e );
+               mechwarrior( 'mw1', r, objects );
                break;
 
             case "SecondaryMechWarrior":
-               mechwarrior( 'mw2', r, objects, e );
+               mechwarrior( 'mw2', r, objects );
                break;
 
             case "TertiaryMechWarrior":
-               mechwarrior( 'mw3', r, objects, e );
+               mechwarrior( 'mw3', r, objects );
                break;
 
             case "SecondaryMech":
                if ( ! objects.mech2 ) objects.mech2 = [];
-               //log( r );
+               if ( white ) warn( "Mech whitelist not implemented" );
+               if ( black ) warn( "Mech blacklist not implemented" );
+               if ( r.RequirementComparisons && r.RequirementComparisons.length )
+                  warn( "Mech comparison unimplemented." );
+               objects.mech2.push( "Any mech" );
                break;
 
             default:
@@ -71,7 +76,7 @@ export function loadEvents( gearMap ) {
    } ) );
 }
 
-function mechwarrior( key, r, objects, e ) {
+function mechwarrior( key, r, objects ) {
    const white = r.RequirementTags ? r.RequirementTags.items : null,
          black = r.ExclusionTags   ? r.ExclusionTags.items : null;
    if ( ! objects[key] ) objects[key] = [];
@@ -79,12 +84,12 @@ function mechwarrior( key, r, objects, e ) {
    if ( black ) blacklist( "MechWarrior", black, objects[key] );
    if ( r.RequirementComparisons )
       for ( const comp of r.RequirementComparisons )
-         objects[key].push( parseMechWarrior( "", comp, e ) );
-   if ( ! objects[key].length ) objects[key].push( "Anyone" );
+         objects[key].push( parseMechWarrior( "", comp ) );
+   if ( ! objects[key].length ) objects[key].push( "Any body" );
 }
 
 
-function whitelist( who, list, reqList ) {
+function whitelist( who, list, reqList = [] ) {
    if ( ! list || ! list.length ) return;
    const text = list.map( translateTag ).filter( e => e );
    switch ( who ) {
@@ -97,15 +102,19 @@ function whitelist( who, list, reqList ) {
       case "MechWarrior":
          for ( const e of text ) reqList.push( "Is " + e );
          break;
+      case "Gain":
+         for ( const e of text ) reqList.push( "+" + e );
+         break;
       case "Star":
          for ( const e of text ) reqList.push( "Planet is " + e );
          break;
       default:
          warn( "Unknown list subject: " + who );
    }
+   return reqList;
 }
 
-function blacklist( who, list, reqList ) {
+function blacklist( who, list, reqList = [] ) {
    if ( ! list || ! list.length ) return;
    const text = list.map( translateTag ).filter( e => e );
    switch ( who ) {
@@ -118,21 +127,25 @@ function blacklist( who, list, reqList ) {
       case "MechWarrior":
          for ( const e of text ) reqList.push( "Is not " + e );
          break;
+      case "Lost":
+         for ( const e of text ) reqList.push( "-" + e );
+         break;
       case "Star":
          for ( const e of text ) reqList.push( "Planet is not " + e );
          break;
       default:
          warn( "Unknown list subject: " + who );
    }
+   return reqList;
 }
 
-function parseCompany( comp, e ) {
+function parseCompany( comp ) {
    const { obj, op, val } = comp;
    switch ( obj ) {
-      case "MedTechSkill" : return parseCompareCond( "Med Level", comp );
-      case "MechTechSkill": return parseCompareCond( "Tech Level", comp );
-      case "ExpenseLevel" : return parseCompareCond( "Expense Level", comp );
-      case "Funds" : return parseCompareCond( "C-Bills", comp, e => '$'+kilo( e ) );
+      case "MedTechSkill" : return parseCompareCond( "Medical", comp );
+      case "MechTechSkill": return parseCompareCond( "MechTech", comp );
+      case "ExpenseLevel" : return parseCompareCond( "Expense Level", comp ); // Spartan, Restrictive, Normal, Generous, Extravagant
+      case "Funds" : return parseCompareCond( "Funds", comp, e => '$'+kilo( e ) );
       case "Morale": return parseCompareCond( "Morale", comp );
       case "Travel": return empty( op, val ) ? "Company is in orbit" : "Company is travelling";
       case "TaskDuration" : return nonEmpty( op, val ) ? "MechBay queue is not empty" : parseCompareCond( "MechBay queue", comp, "days" );
@@ -151,11 +164,11 @@ function parseCompany( comp, e ) {
          return parseCompareCond( gear.Name, comp );
    }
 
-   warn( `Unknown company condition: ${obj} (${e.Description.Id})` );
+   warn( `Unknown company condition: ${obj}` );
    return obj;
 }
 
-function parseMechWarrior( who, comp, e ) {
+function parseMechWarrior( who, comp ) {
    const { obj, op, val } = comp, your = who ? `${who}'s ` : '';
    switch ( obj ) {
       case "Injuries" :
@@ -169,7 +182,7 @@ function parseMechWarrior( who, comp, e ) {
       case "Tactic"   : return parseCompareCond( your+"Tactic", comp );
       case "ExperienceSpent" : return parseCompareCond( ucfirst( your+"spent experience" ), comp );
    }
-   warn( `Unknown mechwarrior condition: ${obj} (${e.Description.Id})` );
+   warn( `Unknown mechwarrior condition: ${obj}` );
    return obj;
 }
 
@@ -207,6 +220,43 @@ function parseCompareCond( name, comp, unit ) {
    return name;
 }
 
+function parseResult( input ) {
+   const results = [];
+   input.forEach( e => {
+      let result = [];
+      switch ( e.Scope ) {
+         case "Company":
+         case "Commander":
+         case "StarSystem":
+            break;
+         case "MechWarrior":
+            if ( e.AddedTags.items   ) result.push( ...whitelist( "Gain", e.AddedTags.items   ).map( e => "John " + e ) );
+            if ( e.RemovedTags.items ) result.push( ...blacklist( "Lost", e.RemovedTags.items ).map( e => "John " + e ) );
+            break;
+         case "SecondaryMechWarrior":
+            if ( e.AddedTags.items   ) result.push( ...whitelist( "Gain", e.AddedTags.items   ).map( e => "Jane " + e ) );
+            if ( e.RemovedTags.items ) result.push( ...blacklist( "Lost", e.RemovedTags.items ).map( e => "Jane " + e ) );
+            break;
+         case "TertiaryMechWarrior":
+            if ( e.AddedTags.items   ) result.push( ...whitelist( "Gain", e.AddedTags.items   ).map( e => "Legion " + e ) );
+            if ( e.RemovedTags.items ) result.push( ...blacklist( "Lost", e.RemovedTags.items ).map( e => "Legion " + e ) );
+            break;
+            //return parseMechWarrior( "{Legion}",  );
+         case "SecondaryMech":
+            break;
+         default:
+            warn( "Unknown result scope " + e.Scope );
+            return result.push( e.Scope + " ???" );
+      }
+      if ( e.TemporaryResult ) result = result.map( txt => txt + ` (${e.ResultDuration} days)` );
+      //if ( e.Stats ) warn( JSON.stringify( e.Stats ) );
+      //if ( e.Actions ) warn( JSON.stringify( e.Actions ) );
+      //if ( e.ForceEvents ) warn( JSON.stringify( e.ForceEvents ) );
+      results.push( ...result );
+   } );
+   return results;
+}
+
 function translateTag( tag ) {
    if ( tag === 'MODIFIED_STAT_MechTechSkill' ) return "temporary Tech Level modifier";
    if ( tag === 'MODIFIED_STAT_MedTechSkill' ) return "temporary Med Level modifier";
@@ -219,50 +269,88 @@ function translateTag( tag ) {
 }
 
 export function showEvents() {
+   log( ";format:gf-markup" );
    for ( const e of events.sort( sorter( 'Description.Name', 'Description.Id' ) ) ) {
       const { Description: desc } = e;
       log();
-      log( `'''${desc.Name}'''` );
-      log( "Requirements: " + ( e.TextualRequirements ? joinComma( e.TextualRequirements, "and" ) + "." : "None" ) );
-      if ( e.Objects.mw1 ) {
-         const str = e.Objects.mw2 ? "MechWarrior [John]" : "MechWarrior";
-         log( "Random " + str + ": " + joinComma( e.Objects.mw1, "and" ) + "." );
-      }
+      log();
+      line( `''${render(desc.Name)}''` );
+      line( "Requirements: " + ( e.TextualRequirements ? joinComma( e.TextualRequirements, "and" ) + "." : "None" ) );
+      if ( e.Objects.mw1 )
+         line( "MechWarrior [John]: " + joinComma( e.Objects.mw1, "and" ) + "." );
       if ( e.Objects.mw2 )
-         log( "Random MechWarrior [Jane]: " + joinComma( e.Objects.mw2, "and" ) + "." );
+         line( "MechWarrior [Jane]: " + joinComma( e.Objects.mw2, "and" ) + "." );
       if ( e.Objects.mw3 )
-         log( "Random MechWarrior [Legion]: " + joinComma( e.Objects.mw3, "and" ) + "." );
+         line( "MechWarrior [Legion]: " + joinComma( e.Objects.mw3, "and" ) + "." );
       if ( e.Objects.mech2 )
-         log( "Random Mech [Metal]: " + joinComma( e.Objects.mech2, "and" ) + "." );
-      log( "Event ID: " + desc.Id );
-      log( "First paragraph: " + render( desc.Details.split( /\n/ )[0] ) );
+         line( "Mech [Metal]: " + joinComma( e.Objects.mech2, "and" ) + "." );
+      line( "Event ID: " + desc.Id );
+      line( render( desc.Details.split( /[\r\n]+/ ).slice( 0, 2 ).join( " " ) ) );
+      e.Options.forEach( ( opt, i ) => {
+         log( ":" + (i+1) + ". " + render( opt.Description.Name ) );
+         for ( const result of opt.ResultSets ) {
+            log( "::" + result.Weight + "% " + joinComma( parseResult( result.Results ), "and" ) );
+         }
+      } );
    }
 }
 
+function line( text ) {
+   log( text + "<br>" );
+}
+
 function render ( text ) {
-   text = text.replace( /<\/?\w+>/g, '' );
+   if ( text.includes( "<" ) )
+      text = text.replace( /<\/?\w+>/g, '' );
+   if ( text.includes( "[[" ) )
+      text = text.replace( /\[\[[^,]+,(.*?)\]\]/g, '$1' );
+   if ( text.includes( "DM.WeaponDefs" ) )
+      text = text.replace( /\{DM\.WeaponDefs\[Weapon_[^_]+_(.*?)\]\.Description\.Name\}/g, '{$1}' );
 
-   text = text.replace( /\{TGT_SYSTEM.Name\}/g, "[This Star System]" );
+   text = text.replace( /\{TGT_SYSTEM.Name\}/g, "{This Star}" );
 
-   text = text.replace( /\{COMMANDER.FirstName\}/, "Commander" );
+   if ( text.includes( "COMMANDER" ) ) {
+      text = text.replace( /\{COMMANDER.(FirstName|Callsign)\}/, "{Commander}" );
+      text = text.replace( /\{COMMANDER.Obj\}/, "{Commander}" );
+   }
 
-   text = text.replace( /\[\[TGT_MW,\{TGT_MW.Callsign\}\]\]/ig, '[John]' );
-   text = text.replace( /\{TGT_MW\.(Firstname|Callsign)\}/ig, '[John]' );
-   text = text.replace( /\{TGT_MW\.DET\}/ig, 'his' );
-   text = text.replace( /\{TGT_MW\.OBJ\}/ig, 'him' );
-   text = text.replace( /\{TGT_MW\.SUBJ\}/ig, 'he' );
-   text = text.replace( /\{TGT_MW\.SUBJ_C\}/ig, 'He' );
-   text = text.replace( /\{TGT_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$1" );
-   text = text.replace( /\{TGT_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+   if ( text.includes( "TGT_MW" ) ) {
+      text = text.replace( /\{TGT_MW\.(Firstname|Callsign)\}/ig, '{John}' );
+      text = text.replace( /\{TGT_MW\.DET\}/ig, 'his' );
+      text = text.replace( /\{TGT_MW\.OBJ\}/ig, 'him' );
+      text = text.replace( /\{TGT_MW\.REFL\}/ig, 'himself' );
+      text = text.replace( /\{TGT_MW\.SUBJ\}/ig, 'he' );
+      text = text.replace( /\{TGT_MW\.SUBJ_C\}/ig, 'He' );
+      text = text.replace( /\{TGT_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$1" );
+      text = text.replace( /\{TGT_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+   }
 
-   text = text.replace( /\[\[SCN_MW,\{SCN_MW.Callsign\}\]\]/ig, '[Jane]' );
-   text = text.replace( /\{SCN_MW\.(Firstname|Callsign)\}/ig, '[Jane]' );
-   text = text.replace( /\{SCN_MW\.DET\}/ig, 'her' );
-   text = text.replace( /\{SCN_MW\.OBJ\}/ig, 'her' );
-   text = text.replace( /\{SCN_MW\.SUBJ\}/ig, 'She' );
-   text = text.replace( /\{SCN_MW\.SUBJ_C\}/ig, 'She' );
-   text = text.replace( /\{SCN_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$2" );
-   text = text.replace( /\{SCN_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+   if ( text.includes( "SCN_MW" ) ) {
+      text = text.replace( /\{SCN_MW\.(Firstname|Callsign)\}/ig, '{Jane}' );
+      text = text.replace( /\{SCN_MW\.DET\}/ig, 'her' );
+      text = text.replace( /\{SCN_MW\.OBJ\}/ig, 'her' );
+      text = text.replace( /\{SCN_MW\.REFL\}/ig, 'herself' );
+      text = text.replace( /\{SCN_MW\.SUBJ\}/ig, 'She' );
+      text = text.replace( /\{SCN_MW\.SUBJ_C\}/ig, 'She' );
+      text = text.replace( /\{SCN_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$2" );
+      text = text.replace( /\{SCN_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$2" );
+   }
+
+   if ( text.includes( "TRT_MW" ) ) {
+      text = text.replace( /\{TRT_MW\.(Firstname|Callsign)\}/ig, '{Legion}' );
+      text = text.replace( /\{TRT_MW\.DET\}/ig, 'their' );
+      text = text.replace( /\{TRT_MW\.OBJ\}/ig, 'their' );
+      text = text.replace( /\{TRT_MW\.REFL\}/ig, 'themselves' );
+      text = text.replace( /\{TRT_MW\.SUBJ\}/ig, 'them' );
+      text = text.replace( /\{TRT_MW\.SUBJ_C\}/ig, 'Them' );
+      text = text.replace( /\{TRT_MW.Gender\?Male:(.*?)\|Female:(.*?)\|NonBinary:(.*?)\}/g, "$3" );
+      text = text.replace( /\{TRT_MW.Gender\?NonBinary:(.*?)\|Default:(.*?)\}/g, "$1" );
+   }
+
+   if ( text.includes( "SCN_UNIT" ) ) {
+      text = text.replace( /\{SCN_UNIT.Name\}/g, "{Metal}" );
+   }
+
 
    return text;
 }
