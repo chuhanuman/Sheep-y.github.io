@@ -4,6 +4,7 @@ import { td, tdr, tdh, newRow, d2, sum, log } from './bt_utils.mjs';
 
 const rollList = [ 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 17, 15, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2.4, 2, 1, 0 ];
 const modified = rollList.reduce( ( v, e ) => { v[ e ] = reverse_correction( e ); return v; }, {} );
+const bonusList = [];
 
 function reverse_correction( target ) {
    // Solving r for corected = ((1.6r-0.8)^3+0.5+r)/2 where r = RNG roll
@@ -32,8 +33,10 @@ function perc( val ) {
 }
 
 function recur( levelLeft, accuracy, stack ) { 'use strict'; // Make sure tail call can be optimised
-   if ( levelLeft <= 0 )
+   if ( levelLeft <= 0 ) {
+      bonusList.length = 0;
       return sum( stack, ( e ) => sum( e, ( e, i ) => e * i ) / stack[0][0] );
+   }
    const hit = modified[accuracy], miss = 1 - hit;
    if ( ! stack ) stack = [ [ levelLeft, hit ], [ miss ] ]; // no bonus: no 0 hit, hit% 1 hit. Bonus 1: miss% 0 hit
    else {
@@ -41,7 +44,8 @@ function recur( levelLeft, accuracy, stack ) { 'use strict'; // Make sure tail c
       for ( let bonus = 0 ; bonus < stack.length ; bonus++ ) {
          const hitTable = stack[ bonus ];
          if ( ! hitTable ) continue;
-         const bonusAcc = accuracy + 5 * bonus;
+         if ( ! bonusList[ bonus ] ) bonusList[ bonus ] = accuracy + ( accuracy - 50 ) * bonus / 5;
+         const bonusAcc = bonusList[ bonus ];
          if ( bonusAcc < 100 && ! modified[ bonusAcc ] ) modified[ bonusAcc ] = reverse_correction( bonusAcc );
          const bonusHit = bonusAcc > 100 ? 1 : modified[ bonusAcc ], bonusMiss = 1 - bonusHit;
          for ( let hitCount = 0 ; hitCount < hitTable.length ; hitCount++ ) {
@@ -59,7 +63,6 @@ function recur( levelLeft, accuracy, stack ) { 'use strict'; // Make sure tail c
    }
    return recur( levelLeft-1, accuracy, stack );
 }
-
 
 
 
