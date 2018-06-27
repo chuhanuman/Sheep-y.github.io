@@ -85,7 +85,9 @@ export function getShops( item ) {
       }
       if ( ! black.length ) simpleStars = "Planets";
       if ( white.length && simpleStars )
-         return ( white.join( ", " ) + " " + simpleStars + trail ).replace( /Planets? Planets?/g, 'Planets' );
+         return ( white.join( ", " ) + " " + simpleStars + trail )
+               .replace( /Planets? Planets?/g, 'Planets' )
+               .replace( /^Manufacturing, ([^,]+) Planets/, '$1 Manufacturing Planets' );
       else if ( white.length && black.length )
          return "Stars that are " + join( white, "and" ) + ", but not " + join( black, "or" ) + trail;
       else if ( white.length )

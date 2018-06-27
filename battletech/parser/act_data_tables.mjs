@@ -1,6 +1,6 @@
 /* Run with "node --experimental-modules act_data_tables.mjs" */
 
-import { setDir } from './bt_utils.mjs';
+import { setDir, log } from './bt_utils.mjs';
 import { loadShops } from './bt_shop.mjs';
 import { loadMechs, showMechs } from './bt_mech.mjs';
 import { loadGears, showWeapons, showGears } from './bt_gear.mjs';
@@ -19,10 +19,11 @@ Promise.resolve(
 ).then( loadEvents( gears )
 ).then( () => {
 
-   //showMechs();
-   //showWeapons();
-   //showGears();
+   log( ";format:gf-markup\n" );
+   showMechs();
+   showWeapons();
+   showGears();
    //showEvents();
-   showMissions();
+   //showMissions();
 
 } ).catch( console.error );

@@ -53,6 +53,7 @@ export function loadGears( gearMap ) {
          e.Shots = 0;
          e.DamagePerTon = ( e.Damage * e.ShotsWhenFired ) / ( e.Tonnage || NaN );
       }
+      e.DamagePerHeat = ( e.Damage * e.ShotsWhenFired ) / ( e.HeatGenerated || NaN );
 
       gears.set( desc.Id, e );
       weapons.push( e );
@@ -60,7 +61,7 @@ export function loadGears( gearMap ) {
    } ) ).then( () => {
 
       // Sort by type, weight, name, rarity, and manufacturer
-      weapons.sort( sorter( "{ B:0, E:1, M:2, S:3 }[e.Category[0]]", "e.class==='los'", "e.Name.startsWith('ER ')", "Tonnage", "Name", "Description.Rarity", "Description.Manufacturer" ) );
+      weapons.sort( sorter( "{ B:0, E:1, M:2, S:3 }[e.Category[0]]", "e.class==='los'", "e.Name.startsWith('ER ')", "e.Name.startsWith('LRM')", "Tonnage", "Name", "Description.Rarity", "Description.Manufacturer" ) );
       equipments.sort( sorter( "e.ComponentType", "Name.replace(/\\++/g,'')", "e.Note[0]?e.Note[0].replace(/\\d+/g,''):''", "Tonnage", "Name" ) );
 
    } );
@@ -102,7 +103,7 @@ export function showWeapons() {
 
 function listStockWeapons ( title ) {
    log();log( title );
-   log( "|*-2 Type|*-2 Weapon|*-2 Price|*-2 Ton|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*+2 Damage/Ton|" );
+   log( "|*-2 Type|*-2 Weapon|*-2 Price|*-2 Ton|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*+2 Damage/Ton|*-2 Dmg/<br>Heat|" );
    log( "|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 12x|* 30x|" );
    for ( const e of weapons.filter( e => e.class === "stock" ) ) {
       td( e.Category, 9 );
@@ -121,6 +122,7 @@ function listStockWeapons ( title ) {
          tdr( d1( e.DamagePer30ShotTon ), 4 );
       } else
          tdh( d1( e.DamagePerTon ), 10 );
+      tdr( d1( e.DamagePerHeat ), 4 );
       newRow();
    }
 }
@@ -131,13 +133,13 @@ function listRareWeapons ( title, type ) {
    log();log( title );
    switch ( type ) {
       case "B":
-         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*-2 Recoil|* Damage/Ton|" );
+         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*-2 Recoil|* Dmge/Ton|*-2 Dmg/<br>Heat|" );
          log( "|* Raw|* Stability|* Min|* Long|* Max|* 30x|" ); break;
       case "M":
-         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|* Damage/Ton|" );
+         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|* Dmg/<br>Ton|*-2 Dmg/<br>Heat|" );
          log( "|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 30x|" ); break;
       default:
-         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Heat|*-2 Damage/Ton|" );
+         log( "|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Heat|*-2 Dmg/<br>Ton|*-2 Dmg/<br>Heat|" );
          log( "|* Raw|* Stability|* Min|* Long|* Max|" ); break;
    }
    const list = weapons.filter( e => e.Category[0] === type );
@@ -158,6 +160,7 @@ function listRareWeapons ( title, type ) {
       tdr( e.HeatGenerated, 2 );
       if ( recoil ) tdr( iff( e.AttackRecoil * -5, "%" ), 3 );
       tdr( d1( e.DamagePer30ShotTon || e.DamagePerTon ), 4 );
+      tdr( d1( e.DamagePerHeat ), 4 );
       newRow();
    }
    showWeaponsShops( title, list );

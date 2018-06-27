@@ -95,17 +95,24 @@ export function loadMechs( gears ) {
 
 export function showMechs( callback ) {
    if ( callback ) return callback( sortedMechs, sortedVehicles, sortedTurrets );
-   listMechs();
-   listMechCost();
+   listMechs( "Light"  , sortedMechs.filter( e => e.Tonnage < 40 ) );
+   listMechs( "Medium" , sortedMechs.filter( e => e.Tonnage >= 40 && e.Tonnage < 60 ) );
+   listMechs( "Heavy"  , sortedMechs.filter( e => e.Tonnage >= 60 && e.Tonnage < 80 ) );
+   listMechs( "Assault", sortedMechs.filter( e => e.Tonnage >= 80 ) );
+   listMechCost( "Light"  , sortedMechs.filter( e => e.Tonnage < 40 ) );
+   listMechCost( "Medium" , sortedMechs.filter( e => e.Tonnage >= 40 && e.Tonnage < 60 ) );
+   listMechCost( "Heavy"  , sortedMechs.filter( e => e.Tonnage >= 60 && e.Tonnage < 80 ) );
+   listMechCost( "Assault", sortedMechs.filter( e => e.Tonnage >= 80 ) );
+   starNotes();
    listVehicles();
    listTurrets();
 }
 
-function listMechs() {
-   log();log( "Mech Stats" );
-   log( "|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Hardpoints (Arms+Other) |*-2 Melee|*-2 DFA|" );
-   log( `|* Walk|* Sprint|* ${BR}Stock|* Max${BR}Optimal|* ${BR}Max|* ${BR}Total|* After Max${BR}Optimal|* Bal|* Ene|* Mis|* Sup|` );
-   for ( const e of sortedMechs ) {
+function listMechs( cls, list ) {
+   log();log( cls + " Stats" );
+   log( "|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Slots (Arms+Other) |*-2 Melee|*-2 DFA|" );
+   log( `|* Walk|* Sprint|* Stock|* Top|* Max|* Total|* -Top|* Bal|* Ene|* Mis|* Sup|` );
+   for ( const e of list ) {
       td ( e.Name, 12 );
       td ( e.VariantName, 9 );
       tdr( e.Tonnage, 3 );
@@ -135,11 +142,11 @@ function listMechs() {
    log( `: ${DDAG}${conflict} and another hardpoint.` );
 }
 
-export function listMechCost() {
-   log();log( "Mech Cost" );
-   log( `|*-2 Mech|*-2 Model|*-2 Campaign${BR}Price|*+3 PvP Cost|*-2 Stock Config|*+2 Damage|*-2 Alpha${BR}Strike${BR}Heat|` );
-   log( `|* Base|* Optimal${BR}Armour|* Cost per${BR}payload ton|* 270m|* 450m|` );
-   for ( const e of sortedMechs ) {
+export function listMechCost( cls, list ) {
+   log();log( cls + " Cost" );
+   log( `|*-2 Mech|*-2 Model|*-2 Campaign${BR}Price|*+3 PvP Cost|*+4 Config, Damage, and Alpha Heat|` );
+   log( `|* Base|* Armored |* $/ton |* Stock |* 270m|* 450m|* Heat |` );
+   for ( const e of list ) {
       const weapons = e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox', 'JumpJet' ].includes( e.ComponentType ) );
       const closeRange = weapons.filter( e => e.MaxRange > 90 && e.MaxRange <= 360 ), longRange = weapons.filter( e => e.MaxRange > 360 );
       tdv( e.Name, 12 );
@@ -152,15 +159,14 @@ export function listMechCost() {
          tdr( mil( e.Cost.Base + e.Cost.BestArmour ), 6 );
          tdr( kilo( e.Cost.Base / e.Payload ), 5 );
       }
-      td ( getWeapons( e ), 48 );
+      tdh( getWeapons( e ), 48, 4 );
+      newRow();
+      tdh( getShops( e ), 110, 5 );
       tdr( sumWeapons( e, 'close' ), 3 );
       tdr( sumWeapons( e,  'long' ), 3 );
       tdr( plus( sum( weapons, e => e.HeatGenerated ) - e.Dissipation ), 4 );
       newRow();
-      tdh( getShops( e ), 110, 7 );
-      newRow();
    }
-   starNotes();
 }
 
 function listVehicles() {
@@ -221,7 +227,8 @@ const weaponSorter = sorter( "e[0].includes('Jump Jet')", -1, 0 ); // Jumpjet go
 
 function getWeapons( e ) {
    const config = count( e.Gears.filter( e => ! [ 'HeatSink', 'AmmunitionBox' ].includes( e.ComponentType ) ).map( e => e.Name ) );
-   return Array.from( config.entries() ).sort( weaponSorter ).map( e => e[1] > 1 ? `${e[1]}x ${e[0]}` : e[0] ).join( ", " );
+   const txt = Array.from( config.entries() ).sort( weaponSorter ).map( e => e[1] > 1 ? `${e[1]}x ${e[0]}` : e[0] ).join( ", " );
+   return txt.replace( /Jump Jet \([SHA]\)/, " Jets" );
 }
 
 function sumWeapons( e, range ) {
