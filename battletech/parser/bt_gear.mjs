@@ -40,12 +40,12 @@ export function loadGears( gearMap ) {
    //   if ( crit !== 1 ) e.Note.push( `Crit ${plus(crit * 100 - 100)}%` );
    //   if ( e.IndirectFireCapable ) e.Note.push( "Indirect" );
       if ( e.AOECapable ) e.Note.push( "AoE" );
-      if ( e.AmmoCategory === "Flamer" ) {
-         e.Shots = gears.get( `Ammo_AmmunitionBox_Generic_${e.AmmoCategory}` ).Capacity;
+      if ( e.ammoCategoryID === "Flamer" ) {
+         e.Shots = e.StartingAmmoCapacity;
          e.DamagePer12ShotTon = e.DamagePer30ShotTon = "-";
 
-      } else if ( e.AmmoCategory !== "NotSet" ) {
-         e.Shots = gears.get( `Ammo_AmmunitionBox_Generic_${e.AmmoCategory}` ).Capacity;
+      } else if ( e.ammoCategoryID !== "NotSet" ) {
+         e.Shots = gears.get( `Ammo_AmmunitionBox_Generic_${e.ammoCategoryID}` ).Capacity;
          const perBox = e.Shots / e.ShotsWhenFired, box12 = Math.ceil( 12 / perBox ), box30 = Math.ceil( 30 / perBox );
          e.DamagePer12ShotTon = ( e.Damage * e.ShotsWhenFired ) / ( e.Tonnage + box12 );
          e.DamagePer30ShotTon = ( e.Damage * e.ShotsWhenFired ) / ( e.Tonnage + box30 );
