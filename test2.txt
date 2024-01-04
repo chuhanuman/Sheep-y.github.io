@@ -1,0 +1,1113 @@
+;format:gf-markup
+
+==Intro==
+
+Results of running https://github.com/Sheep-y/Sheep-y.github.io/tree/dev/battletech/parser. Besides the pull request on there, the parser was also modified to display blacklisted mechs.
+
+==Base Game Results (with improved flamers)==
+
+Light Stats
+|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Slots (Arms+Other) |*-2 Melee|*-2 DFA|
+|* Walk|* Sprint|* Stock|* Top|* Max|* Total|* -Top|* Bal|* Ene|* Mis|* Sup|
+| Locust      | LCT-1E   |r 20 |r 210|r 350|r 8|r 166|r 320 |r 400 |r 425 |r 7   |r 2   | -       | ''4''+0 | -       | ''2''+0 |r 15 |r 50 |
+| Locust      | LCT-1M   |r 20 |r 210|r 350|r 8|r 166|r 80  |r 400 |r 425 |r 7   |r 2   | -       | 0+2     | ''2''+0 | 0+2     |r 15 |r 50 |
+| Locust      | LCT-1S   |r 20 |r 210|r 350|r 8|r 166|r 240 |r 400 |r 425 |r 7   |r 2   | -       | 0+1     | ''4''+0 | 0+1     |r 15 |r 50 |
+| Locust      | LCT-1V   |r 20 |r 210|r 350|r 8|r 166|r 320 |r 400 |r 425 |r 7   |r 2   | ''2''+0 | 0+1     | -       | ''2''+1 |r 15 |r 50 |
+| Flea        | FLE-15   |r 20 |r 165|r 275|r 6|r 166|r 240 |r 400 |r 425 |r 9   |r 4   | ''2''+0 | ''2''+0 | -       | ''2''+3 |r 15 |r 50 |
+| Flea        | FLE-4    |r 20 |r 165|r 275|r 6|r 166|r 160 |r 400 |r 425 |r 9   |r 4   | -       | ''2''+0 | -       | ''2''+1 |r 15 |r 50 |
+| Commando    | COM-1B   |r 25 |r 165|r 275|r 6|r 216|r 320 |r 520 |r 545 |r 12  |r 5.5 | -       | ''3''+0 | 0+1     | ''2''+0 |r 35 |r 60 |
+| Commando    | COM-2D   |r 25 |r 165|r 275|r 6|r 216|r 320 |r 520 |r 545 |r 12  |r 5.5 | -       | ''1''+0 | ''2''+1 | ''1''+0 |r 35 |r 60 |
+| Spider      | SDR-5K   |r 30 |r 210|r 350|r 8|r 256|r 280 |r 640 |r 645 |r 9.5 |r 1.5 | ''2''+0 | 0+1     | -       | ''4''+0 |r 30 |r 80 |
+| Spider      | SDR-5V   |r 30 |r 210|r 350|r 8|r 256|r 280 |r 640 |r 645 |r 9.5 |r 1.5 | -       | 0+2     | -       | 0+2     |r 30 |r 80 |
+| Javelin     | JVN-10F  |r 30 |r 165|r 275|r 6|r 256|r 480 |r 640 |r 645 |r 15  |r 7   | -       | 0+4     | -       | 0+2     |r 40 |r 80 |
+| Javelin     | JVN-10A  |r 30 |r 165|r 275|r 6|r 256|r 320 |r 640 |r 645 |r 15  |r 7   | -       | ''2''+0 | 0+2     | 0+2     |r 40 |r 80 |
+| Javelin     | JVN-10N  |r 30 |r 165|r 275|r 6|r 256|r 320 |r 640 |r 645 |r 15  |r 7   | -       | -       | 0+4     | 0+2     |r 40 |r 80 |
+| UrbanMech   | UM-R90   |r 30 |r 120|r 200|r 4|r 256|r 480 |r 640 |r 645 |r 20  |r 12  | -       | ''2''+2 | -       | ''3''+0 |r 40 |r 80 |
+| UrbanMech   | UM-R60   |r 30 |r 95 |r 165|r 3|r 256|r 480 |r 640 |r 645 |r 21.5|r 13.5| ''4''+0 | ''2''+0 | -       | ''2''+0 |r 40 |r 80 |
+| Test Dummy**| UM-R60   |r 30 |r 95 |r 165|r 3|r 256|r 11  |r 640 |r 645 |r 21.5|r 13.5| ''4''+0 | ''2''+0 | -       | ''2''+0 |r 40 |r 80 |
+| UrbanMech   | UM-R60L  |r 30 |r 95 |r 165|r 3|r 256|r 320 |r 640 |r 645 |r 21.5|r 13.5| ''2''+0 | ''4''+0 | -       | ''2''+0 |r 40 |r 80 |
+| Jenner      | JR7-D    |r 35 |r 190|r 315|r 7|r 291|r 320 |r 720 |r 730 |r 13.5|r 4.5 | -       | ''4''+0 | 0+2     | -       |r 35 |r 90 |
+| Jenner**    | JR7-D    |r 35 |r 190|r 315|r 7|r 291|r 320 |r 720 |r 730 |r 13.5|r 4.5 | -       | ''4''+0 | 0+2     | -       |r 35 |r 90 |
+| Firestarter | FS9-H    |r 35 |r 165|r 275|r 6|r 291|r 440 |r 720 |r 730 |r 16.5|r 7.5 | 0+2     | ''4''+2 | -       | ''2''+4 |r 45 |r 90 |
+| Raven       | RVN-1X   |r 35 |r 140|r 240|r 5|r 291|r 320 |r 720 |r 730 |r 19.5|r 10.5| -       | ''2''+2 | 0+1     | ''2''+2 |r 25 |r 90 |
+| Raven**     | RVN-3X   |r 35 |r 140|r 240|r 5|r 291|r 320 |r 720 |r 730 |r 19.5|r 10.5| -       | ''2''+1 | ''1''+1 | 0+2     |r 55 |r 90 |
+| Panther     | PNT-9R   |r 35 |r 120|r 200|r 4|r 291|r 520 |r 720 |r 730 |r 21.5|r 12.5| -       | ''4''+0 | 0+1     | -       |r 50 |r 90 |
+| Panther**   | PNT-9R   |r 35 |r 120|r 200|r 4|r 291|r 520 |r 720 |r 730 |r 21.5|r 12.5| -       | ''4''+0 | 0+1     | -       |r 50 |r 90 |
+| Target Dummy**| PNT-9R   |r 35 |r 120|r 200|r 4|r 291|r 11  |r 840 |r 865 |r 21.5|r 11  | -       | ''1''+0 | 0+1     | -       |r 50 |r 90 |
+
+: ^ One of the hardpoint(s) is on the head, conflicting with cockpit modules.
+: * One of the hardpoint(s) is on the head, conflicting with cockpit modules and another hardpoint.
+: ** Mech has the BLACKLISTED tag
+
+Medium Stats
+|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Slots (Arms+Other) |*-2 Melee|*-2 DFA|
+|* Walk|* Sprint|* Stock|* Top|* Max|* Total|* -Top|* Bal|* Ene|* Mis|* Sup|
+| Cicada      | CDA-2A   |r 40 |r 210|r 350|r 8|r 336|r 320 |r 520 |r 845 |r 6.5 |r 0   | -       | 0+6     | -       | 0+2     |r 25 |r 100|
+| Assassin    | ASN-101  |r 40 |r 190|r 315|r 7|r 336|r 320 |r 840 |r 845 |r 14  |r 3.5 | -       | ''1''+0 | 0+2     | 0+3^    |r 50 |r 100|
+| Assassin    | ASN-21   |r 40 |r 190|r 315|r 7|r 336|r 360 |r 840 |r 845 |r 14  |r 3.5 | -       | ''1''+0 | 0+4     | ''1''+0 |r 50 |r 100|
+| Cicada      | CDA-3C   |r 40 |r 190|r 315|r 7|r 336|r 320 |r 840 |r 845 |r 14  |r 3.5 | 0+4     | 0+1     | -       | 0+4     |r 25 |r 100|
+| Vulcan      | VL-2T    |r 40 |r 165|r 275|r 6|r 336|r 400 |r 840 |r 845 |r 18.5|r 8   | 0+1     | 0+1     | -       | ''2''+2 |r 50 |r 100|
+| Vulcan      | VL-5T    |r 40 |r 165|r 275|r 6|r 336|r 560 |r 840 |r 845 |r 18.5|r 8   | -       | 0+4     | -       | ''2''+0 |r 50 |r 100|
+| Phoenix Hawk| PXH-1    |r 45 |r 165|r 275|r 6|r 376|r 640 |r 920 |r 945 |r 20  |r 8.5 | ''1''+0 | ''3''+0 | -       | ''2''+0 |r 55 |r 110|
+| Phoenix Hawk| PXH-1K   |r 45 |r 165|r 275|r 6|r 376|r 680 |r 920 |r 945 |r 20  |r 8.5 | -       | ''5''+0 | -       | 0+2     |r 55 |r 110|
+| Phoenix Hawk**| PXH-1B   |r 45 |r 165|r 275|r 6|r 376|r 640 |r 920 |r 945 |r 29  |r 17.5| -       | ''4''+1 | -       | ''2''+2 |r 60 |r 110|
+| Vindicator  | VND-1AA  |r 45 |r 140|r 240|r 5|r 376|r 360 |r 920 |r 945 |r 24.5|r 13  | -       | ''3''+1*| 0+1     | ''1''+1*|r 55 |r 110|
+| Blackjack** | BJ-1     |r 45 |r 120|r 200|r 4|r 376|r 680 |r 920 |r 945 |r 28.5|r 17  | ''2''+0 | ''2''+2 | -       | 0+2     |r 40 |r 110|
+| Blackjack   | BJ-1     |r 45 |r 120|r 200|r 4|r 376|r 680 |r 920 |r 945 |r 28.5|r 17  | ''2''+0 | ''2''+2 | -       | 0+2     |r 40 |r 110|
+| Blackjack   | BJ-1DB   |r 45 |r 120|r 200|r 4|r 376|r 600 |r 920 |r 945 |r 28.5|r 17  | -       | ''4''+2 | -       | 0+2     |r 40 |r 110|
+| Hatchetman  | HCT-3F   |r 45 |r 120|r 200|r 4|r 376|r 520 |r 920 |r 945 |r 28.5|r 17  | 0+1     | ''3''+1 | -       | 0+2     |r 40 |r 110|
+| Hatchetman  | HCT-3X   |r 45 |r 120|r 200|r 4|r 376|r 760 |r 920 |r 945 |r 28.5|r 17  | -       | ''2''+0 | 0+2     | 0+4     |r 40 |r 110|
+| Vindicator  | VND-1R   |r 45 |r 120|r 200|r 4|r 376|r 720 |r 920 |r 945 |r 28.5|r 17  | -       | ''4''+1*| 0+1     | ''1''+1*|r 55 |r 110|
+| BIG STEEL CLAW**| BSC-20   |r 50 |r 140|r 240|r 5|r 416|r 760 |r 1040|r 1045|r 26.5|r 13.5| ''1''+0 | ''2''+1^| -       | 0+2     |r 50 |r 130|
+| BIG STEEL CLAW**| BSC-20   |r 50 |r 140|r 240|r 5|r 416|r 760 |r 1040|r 1045|r 26.5|r 13.5| ''1''+0 | ''2''+1^| -       | 0+2     |r 50 |r 130|
+| Crab        | CRB-20   |r 50 |r 140|r 240|r 5|r 416|r 720 |r 1040|r 1045|r 26.5|r 13.5| -       | ''2''+3*| -       | 0+2*    |r 50 |r 130|
+| Crab**      | CRB-27B  |r 50 |r 140|r 240|r 5|r 416|r 720 |r 1040|r 1045|r 26.5|r 13.5| -       | ''4''+2 | 0+2     | 0+3^    |r 50 |r 130|
+| Trebuchet   | TBT-5N   |r 50 |r 140|r 240|r 5|r 416|r 600 |r 1040|r 1045|r 26.5|r 13.5| -       | ''4''+0 | ''1''+1 | -       |r 65 |r 130|
+| Trebuchet   | TBT-7K   |r 50 |r 140|r 240|r 5|r 416|r 600 |r 1040|r 1045|r 26.5|r 13.5| 0+2     | 0+2     | ''2''+0 | ''2''+0 |r 65 |r 130|
+| Centurion   | CN9-AL   |r 50 |r 120|r 200|r 4|r 416|r 880 |r 1040|r 1045|r 31.5|r 18.5| -       | ''2''+2 | 0+2     | ''1''+2 |r 70 |r 130|
+| Enforcer    | ENF-4R   |r 50 |r 120|r 200|r 4|r 416|r 720 |r 1040|r 1045|r 31.5|r 18.5| ''1''+0 | ''3''+2 | -       | 0+1     |r 65 |r 130|
+| Enforcer**  | ENF-4R   |r 50 |r 120|r 200|r 4|r 416|r 840 |r 1040|r 1045|r 31.5|r 18.5| ''1''+0 | ''3''+2 | -       | 0+1     |r 65 |r 130|
+| Hunchback   | HBK-4G   |r 50 |r 120|r 200|r 4|r 416|r 800 |r 1040|r 1045|r 31.5|r 18.5| 0+3     | ''2''+0 | -       | 0+1^    |r 80 |r 130|
+| Hunchback   | HBK-4P   |r 50 |r 120|r 200|r 4|r 416|r 800 |r 1040|r 1045|r 31.5|r 18.5| -       | ''2''+6 | -       | ''2''+1^|r 80 |r 130|
+| Centurion   | CN9-A    |r 50 |r 120|r 200|r 4|r 416|r 680 |r 1040|r 1045|r 31.5|r 18.5| ''1''+0 | 0+2     | 0+3     | ''1''+0 |r 70 |r 130|
+| Centurion** | CN9-A    |r 50 |r 120|r 200|r 4|r 416|r 680 |r 1040|r 1045|r 31.5|r 18.5| ''1''+0 | 0+2     | 0+3     | ''1''+0 |r 70 |r 130|
+| Rhythm Nation**| CN9-A    |r 50 |r 120|r 200|r 4|r 416|r 680 |r 1040|r 1045|r 31.5|r 18.5| ''1''+0 | 0+2     | 0+3     | ''1''+0 |r 70 |r 130|
+| Target Dummy**| CN9-A    |r 50 |r 120|r 200|r 4|r 416|r 89  |r 1160|r 1185|r 31.5|r 17  | ''1''+0 | 0+2     | 0+1     | -       |r 70 |r 130|
+| Koschei**   | GRF-1N   |r 55 |r 140|r 240|r 5|r 456|r 920 |r 1120|r 1145|r 28  |r 14  | -       | ''3''+0 | 0+3     | ''1''+0 |r 70 |r 140|
+| Griffin     | GRF-1N   |r 55 |r 140|r 240|r 5|r 456|r 760 |r 1120|r 1145|r 28  |r 14  | -       | ''3''+0 | 0+3     | ''1''+0 |r 70 |r 140|
+| Griffin     | GRF-1S   |r 55 |r 140|r 240|r 5|r 456|r 760 |r 1120|r 1145|r 28  |r 14  | -       | ''4''+0 | 0+2     | ''2''+0 |r 70 |r 140|
+| Kintaro     | KTO-18   |r 55 |r 140|r 240|r 5|r 456|r 880 |r 1120|r 1145|r 28  |r 14  | -       | ''2''+0 | ''2''+3 | -       |r 70 |r 140|
+| Shadow Hawk | SHD-2D   |r 55 |r 140|r 240|r 5|r 456|r 360 |r 1120|r 1145|r 28  |r 14  | 0+1     | ''3''+0 | 0+3^    | ''2''+0 |r 85 |r 140|
+| Shadow Hawk**| SHD-2H   |r 55 |r 140|r 240|r 5|r 456|r 360 |r 1120|r 1145|r 28  |r 14  | 0+3     | ''1''+0 | 0+3^    | ''1''+0 |r 85 |r 140|
+| Shadow Hawk | SHD-2H   |r 55 |r 140|r 240|r 5|r 456|r 760 |r 1120|r 1145|r 28  |r 14  | 0+3     | ''1''+0 | 0+3^    | ''1''+0 |r 85 |r 140|
+| Wolverine   | WVR-6K   |r 55 |r 140|r 240|r 5|r 456|r 920 |r 1120|r 1145|r 28  |r 14  | -       | ''4''+1*| 0+1     | ''1''+1*|r 70 |r 140|
+| Wolverine   | WVR-6R   |r 55 |r 140|r 240|r 5|r 456|r 760 |r 1120|r 1145|r 28  |r 14  | ''2''+0 | 0+1*    | 0+3     | 0+1*    |r 70 |r 140|
+| Griffin**   | GRF-2N   |r 55 |r 140|r 240|r 5|r 456|r 920 |r 1120|r 1145|r 33  |r 19  | -       | ''2''+0 | 0+4     | ''2''+0 |r 70 |r 140|
+| Griffin**   | GRF-2N   |r 55 |r 140|r 240|r 5|r 456|r 920 |r 1120|r 1145|r 33  |r 19  | -       | ''2''+0 | 0+4     | ''2''+0 |r 70 |r 140|
+
+: ^ One of the hardpoint(s) is on the head, conflicting with cockpit modules.
+: * One of the hardpoint(s) is on the head, conflicting with cockpit modules and another hardpoint.
+: ** Mech has the BLACKLISTED tag
+
+Heavy Stats
+|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Slots (Arms+Other) |*-2 Melee|*-2 DFA|
+|* Walk|* Sprint|* Stock|* Top|* Max|* Total|* -Top|* Bal|* Ene|* Mis|* Sup|
+| Awesome Dragon**| DRG-1N   |r 60 |r 140|r 240|r 5|r 496|r 800 |r 1240|r 1245|r 29  |r 13.5| ''2''+0 | ''1''+1 | 0+2     | ''1''+1 |r 90 |r 150|
+| Dragon      | DRG-1N   |r 60 |r 140|r 240|r 5|r 496|r 800 |r 1240|r 1245|r 29  |r 13.5| ''2''+0 | ''1''+1 | 0+2     | ''1''+1 |r 90 |r 150|
+| Grand Dragon**| DRG-1G   |r 60 |r 140|r 240|r 5|r 496|r 800 |r 1240|r 1245|r 29  |r 13.5| -       | ''3''+2 | 0+2     | ''1''+0 |r 90 |r 150|
+| Quickdraw   | QKD-4G   |r 60 |r 140|r 240|r 5|r 496|r 640 |r 1200|r 1245|r 29  |r 14  | -       | ''2''+2 | 0+2     | -       |r 55 |r 150|
+| Quickdraw   | QKD-5A   |r 60 |r 140|r 240|r 5|r 496|r 640 |r 1240|r 1245|r 29  |r 13.5| -       | ''2''+4 | 0+1     | 0+2     |r 55 |r 150|
+| Rifleman    | RFL-3C   |r 60 |r 120|r 200|r 4|r 496|r 680 |r 1240|r 1245|r 36.5|r 21  | ''4''+0 | 0+4     | -       | -       |r 55 |r 150|
+| Rifleman    | RFL-3N   |r 60 |r 120|r 200|r 4|r 496|r 600 |r 1240|r 1245|r 36.5|r 21  | ''2''+0 | ''2''+2 | -       | 0+2     |r 55 |r 150|
+| Rifleman    | RFL-4D   |r 60 |r 120|r 200|r 4|r 496|r 600 |r 1240|r 1245|r 36.5|r 21  | -       | ''4''+4 | -       | 0+2     |r 55 |r 150|
+| Rifleman**  | RFL-RIP  |r 60 |r 120|r 200|r 4|r 496|r 600 |r 1240|r 1245|r 36.5|r 21  | ''2''+0 | ''2''+2 | -       | 0+2     |r 55 |r 150|
+| Catapult    | CPLT-C4  |r 65 |r 120|r 200|r 4|r 521|r 800 |r 1280|r 1310|r 39  |r 23  | -       | 0+2     | ''4''+0 | 0+2     |r 60 |r 160|
+| Catapult    | CPLT-K2  |r 65 |r 120|r 200|r 4|r 521|r 880 |r 1280|r 1310|r 39  |r 23  | 0+2     | ''2''+2 | -       | 0+4     |r 60 |r 160|
+| JagerMech   | JM6-S    |r 65 |r 120|r 200|r 4|r 521|r 480 |r 1280|r 1310|r 39  |r 23  | ''4''+0 | 0+4     | -       | 0+4     |r 60 |r 160|
+| Custom JagerMech**| JM6-S    |r 65 |r 120|r 200|r 4|r 521|r 560 |r 1280|r 1310|r 39  |r 23  | ''4''+0 | 0+4     | -       | 0+4     |r 60 |r 160|
+| JagerMech   | JM6-A    |r 65 |r 120|r 200|r 4|r 521|r 640 |r 1280|r 1310|r 39  |r 23  | ''2''+0 | 0+2     | ''4''+0 | 0+2     |r 60 |r 160|
+| Catapult    | CPLT-C1  |r 65 |r 120|r 200|r 4|r 521|r 800 |r 1280|r 1310|r 39  |r 23  | -       | 0+4     | ''2''+0 | 0+2     |r 60 |r 160|
+| Occam's Missile**| CPLT-C1  |r 65 |r 120|r 200|r 4|r 521|r 720 |r 1280|r 1310|r 39  |r 23  | -       | 0+4     | ''2''+0 | 0+2     |r 60 |r 160|
+| Thunderbolt | TDR-5S   |r 65 |r 120|r 200|r 4|r 521|r 1040|r 1280|r 1310|r 39  |r 23  | ''2''+0 | ''1''+3 | 0+2     | ''2''+0 |r 80 |r 160|
+| Custom Thunderbolt**| TDR-5SE  |r 65 |r 120|r 200|r 4|r 521|r 1240|r 1280|r 1310|r 39  |r 23  | -       | ''2''+3 | 0+2     | 0+3     |r 80 |r 160|
+| Thunderbolt | TDR-5SE  |r 65 |r 120|r 200|r 4|r 521|r 1040|r 1280|r 1310|r 39  |r 23  | -       | ''2''+3 | 0+2     | 0+3     |r 80 |r 160|
+| Thunderbolt | TDR-5SS  |r 65 |r 120|r 200|r 4|r 521|r 1040|r 1280|r 1310|r 39  |r 23  | -       | ''2''+5 | 0+1     | 0+2     |r 80 |r 160|
+| Archer      | ARC-2R   |r 70 |r 120|r 200|r 4|r 536|r 1040|r 1320|r 1345|r 41  |r 24.5| -       | ''2''+2 | 0+2     | ''2''+0 |r 100|r 180|
+| Archer      | ARC-2S   |r 70 |r 120|r 200|r 4|r 536|r 1040|r 1280|r 1345|r 41  |r 25  | -       | ''2''+2 | 0+4     | -       |r 100|r 180|
+| Archer**    | ARC-LS   |r 70 |r 120|r 200|r 4|r 536|r 1040|r 1280|r 1345|r 41  |r 25  | -       | ''2''+2 | 0+4     | -       |r 100|r 180|
+| Archer**    | ARC-XO   |r 70 |r 120|r 200|r 4|r 536|r 1040|r 1320|r 1345|r 41  |r 24.5| -       | ''2''+2 | 0+2     | ''2''+0 |r 100|r 180|
+| Black Widow**| WHM-BW   |r 70 |r 120|r 200|r 4|r 536|r 960 |r 1320|r 1345|r 41  |r 24.5| 0+1     | ''2''+2 | 0+1     | 0+4     |r 100|r 180|
+| Cataphract  | CTF-0X   |r 70 |r 120|r 200|r 4|r 536|r 920 |r 1320|r 1345|r 41  |r 24.5| 0+1     | ''3''+0 | -       | ''1''+1 |r 90 |r 180|
+| Cataphract  | CTF-1X   |r 70 |r 120|r 200|r 4|r 536|r 880 |r 1320|r 1345|r 41  |r 24.5| 0+1     | ''3''+2 | -       | ''1''+1 |r 90 |r 180|
+| Grasshopper | GHR-5H   |r 70 |r 120|r 200|r 4|r 536|r 1040|r 1320|r 1345|r 41  |r 24.5| -       | ''2''+5 | 0+1^    | ''2''+4 |r 90 |r 180|
+| Warhammer   | WHM-6D   |r 70 |r 120|r 200|r 4|r 536|r 1120|r 1320|r 1345|r 41  |r 24.5| -       | ''4''+2 | -       | 0+2     |r 100|r 180|
+| Warhammer   | WHM-6R   |r 70 |r 120|r 200|r 4|r 536|r 800 |r 1320|r 1345|r 41  |r 24.5| 0+1     | ''2''+2 | 0+1     | 0+4     |r 100|r 180|
+| Warhammer** | WHM-7A   |r 70 |r 120|r 200|r 4|r 536|r 1080|r 1320|r 1345|r 44.5|r 28  | -       | ''4''+4^| 0+2     | 0+2     |r 100|r 180|
+| Black Knight| BL-6-KNT |r 75 |r 120|r 200|r 4|r 571|r 880 |r 1400|r 1430|r 42.5|r 25  | -       | ''3''+5*| -       | 0+3*    |r 95 |r 190|
+| Marauder**  | MAD-2R   |r 75 |r 120|r 200|r 4|r 571|r 920 |r 1400|r 1430|r 42.5|r 25  | 0+1     | ''6''+0 | -       | 0+1^    |r 95 |r 190|
+| Marauder    | MAD-3D   |r 75 |r 120|r 200|r 4|r 571|r 920 |r 1400|r 1430|r 42.5|r 25  | -       | ''4''+1 | -       | ''2''+0 |r 95 |r 190|
+| Marauder    | MAD-3R   |r 75 |r 120|r 200|r 4|r 571|r 920 |r 1400|r 1430|r 42.5|r 25  | 0+3     | ''4''+0 | -       | ''2''+0 |r 95 |r 190|
+| Marauder**  | MAD-BH   |r 75 |r 120|r 200|r 4|r 571|r 1080|r 1400|r 1430|r 42.5|r 25  | 0+3     | ''4''+0 | -       | ''4''+0 |r 95 |r 190|
+| Marauder**  | MAD-CM   |r 75 |r 120|r 200|r 4|r 571|r 1000|r 1400|r 1430|r 42.5|r 25  | 0+3     | ''4''+0 | -       | ''4''+0 |r 95 |r 190|
+| Orion       | ON1-K    |r 75 |r 120|r 200|r 4|r 571|r 1160|r 1400|r 1430|r 42.5|r 25  | 0+1     | ''4''+0 | 0+2     | -       |r 95 |r 190|
+| Orion**     | ON1-K    |r 75 |r 120|r 200|r 4|r 571|r 1160|r 1400|r 1430|r 42.5|r 25  | 0+1     | ''4''+0 | 0+2     | -       |r 95 |r 190|
+| Orion       | ON1-V    |r 75 |r 120|r 200|r 4|r 571|r 920 |r 1400|r 1430|r 42.5|r 25  | 0+2     | ''2''+0 | ''2''+1 | -       |r 95 |r 190|
+| Black Knight**| BL-6B-KNT|r 75 |r 120|r 200|r 4|r 571|r 1080|r 1400|r 1430|r 48  |r 30.5| -       | ''4''+5*| -       | ''4''+1*|r 95 |r 190|
+
+: ^ One of the hardpoint(s) is on the head, conflicting with cockpit modules.
+: * One of the hardpoint(s) is on the head, conflicting with cockpit modules and another hardpoint.
+: ** Mech has the BLACKLISTED tag
+
+Assault Stats
+|*-2 Mech|*-2 Model|*-2 Ton|*+2 Speed|*-2 Jets|*-2 HP|*+3 Armor|*+2 Payload (Ton)|*+4 Slots (Arms+Other) |*-2 Melee|*-2 DFA|
+|* Walk|* Sprint|* Stock|* Top|* Max|* Total|* -Top|* Bal|* Ene|* Mis|* Sup|
+| Victor      | VTR-9B   |r 80 |r 120|r 200|r 4|r 611|r 920 |r 1520|r 1530|r 42.5|r 23.5| ''3''+0 | ''2''+0 | 0+2     | ''1''+0 |r 100|r 200|
+| Victor      | VTR-9S   |r 80 |r 120|r 200|r 4|r 611|r 840 |r 1520|r 1530|r 42.5|r 23.5| ''2''+0 | ''2''+0 | 0+3     | ''1''+0 |r 100|r 200|
+| Zeus**      | ZEU-5T   |r 80 |r 120|r 200|r 4|r 611|r 1000|r 1520|r 1530|r 42.5|r 23.5| -       | ''3''+3 | ''3''+0 | 0+1     |r 110|r 200|
+| Zeus        | ZEU-6S   |r 80 |r 120|r 200|r 4|r 611|r 920 |r 1520|r 1530|r 42.5|r 23.5| ''2''+0 | 0+4     | ''1''+0 | 0+1     |r 110|r 200|
+| Zeus        | ZEU-6T   |r 80 |r 120|r 200|r 4|r 611|r 920 |r 1520|r 1530|r 42.5|r 23.5| -       | ''1''+3 | ''3''+0 | 0+1     |r 110|r 200|
+| Awesome     | AWS-8Q   |r 80 |r 95 |r 165|r 3|r 611|r 1200|r 1520|r 1530|r 54.5|r 35.5| -       | ''2''+5*| -       | 0+1*    |r 120|r 200|
+| Awesome     | AWS-8T   |r 80 |r 95 |r 165|r 3|r 611|r 1200|r 1520|r 1530|r 54.5|r 35.5| -       | ''4''+1*| 0+2     | ''2''+1*|r 120|r 200|
+| Battlemaster| BLR-1G   |r 85 |r 120|r 200|r 4|r 651|r 1160|r 1600|r 1630|r 42.5|r 22.5| ''2''+0 | ''1''+6 | 0+1     | ''2''+0 |r 115|r 210|
+| Battlemaster**| BLR-1G   |r 85 |r 120|r 200|r 4|r 651|r 1160|r 1600|r 1630|r 42.5|r 22.5| ''2''+0 | ''1''+6 | 0+1     | ''2''+0 |r 115|r 210|
+| Battlemaster| BLR-1S   |r 85 |r 120|r 200|r 4|r 651|r 1160|r 1560|r 1630|r 42.5|r 23  | -       | 0+4     | ''2''+3 | -       |r 115|r 210|
+| Battlemaster**| BLR-1GB  |r 85 |r 120|r 200|r 4|r 651|r 1160|r 1600|r 1630|r 46.5|r 26.5| -       | ''3''+5 | 0+2     | 0+1     |r 115|r 210|
+| Stalker**   | STK-3F   |r 85 |r 95 |r 165|r 3|r 651|r 1237|r 1560|r 1630|r 57.5|r 38  | -       | ''4''+2 | ''2''+2 | -       |r 80 |r 210|
+| Stalker     | STK-3F   |r 85 |r 95 |r 165|r 3|r 651|r 1080|r 1560|r 1630|r 57.5|r 38  | -       | ''4''+2 | ''2''+2 | -       |r 80 |r 210|
+| Cyclops     | CP-10-HQ |r 90 |r 120|r 200|r 4|r 691|r 1440|r 1680|r 1730|r 41  |r 20  | -       | ''6''+0 | 0+4     | -       |r 115|r 230|
+| Cyclops     | CP-10-Q  |r 90 |r 120|r 200|r 4|r 691|r 1360|r 1720|r 1730|r 41  |r 19.5| -       | ''2''+1 | 0+7     | 0+1     |r 115|r 230|
+| Cyclops     | CP-10-Z  |r 90 |r 120|r 200|r 4|r 691|r 800 |r 1680|r 1730|r 41  |r 20  | 0+1     | ''6''+0 | 0+2     | -       |r 115|r 230|
+| Highlander  | HGN-733  |r 90 |r 95 |r 165|r 3|r 691|r 1400|r 1720|r 1730|r 60.5|r 39  | ''1''+0 | 0+2     | ''2''+2 | 0+1     |r 115|r 230|
+| Highlander  | HGN-733P |r 90 |r 95 |r 165|r 3|r 691|r 1400|r 1720|r 1730|r 60.5|r 39  | -       | ''2''+2 | ''1''+2 | ''1''+2 |r 115|r 230|
+| Highlander**| HGN-732B |r 90 |r 95 |r 165|r 3|r 691|r 1400|r 1720|r 1730|r 65.5|r 44  | ''2''+0 | 0+3     | ''1''+1 | 0+3     |r 115|r 230|
+| Banshee     | BNC-3E   |r 95 |r 120|r 200|r 4|r 726|r 1200|r 1800|r 1815|r 37.5|r 15  | 0+1     | 0+2*    | -       | 0+4*    |r 130|r 240|
+| Banshee     | BNC-3M   |r 95 |r 120|r 200|r 4|r 726|r 1200|r 1800|r 1815|r 37.5|r 15  | -       | 0+8*    | -       | 0+6*    |r 130|r 240|
+| Banshee     | BNC-3S   |r 95 |r 95 |r 165|r 3|r 726|r 1200|r 1800|r 1815|r 63  |r 40.5| 0+1     | ''1''+5 | 0+1     | 0+2^    |r 130|r 240|
+| Bull Shark  | BSK-M3   |r 95 |r 95 |r 165|r 3|r 726|r 1480|r 1800|r 1815|r 75.5|r 53  | ''4''+0 | 0+4     | 0+4     | -       |r 130|r 240|
+| Bull Shark**| BSK-MAZ  |r 95 |r 95 |r 165|r 3|r 726|r 1240|r 1800|r 1815|r 75.5|r 53  | ''4''+0 | 0+4     | 0+2     | -       |r 130|r 240|
+| Atlas       | AS7-D    |r 100|r 95 |r 165|r 3|r 761|r 1520|r 1880|r 1900|r 65  |r 41.5| 0+2     | ''2''+2 | 0+2     | ''2''+0 |r 140|r 250|
+| Atlas**     | AS7-GG   |r 100|r 95 |r 165|r 3|r 761|r 1520|r 1880|r 1900|r 65  |r 41.5| 0+2     | ''2''+2 | 0+2     | ''2''+0 |r 140|r 250|
+| King Crab   | KGC-0000 |r 100|r 95 |r 165|r 3|r 761|r 1360|r 1880|r 1900|r 65  |r 41.5| ''2''+0 | 0+4     | 0+4     | ''4''+0 |r 125|r 250|
+| Kingcrab**  | KGC-0000 |r 100|r 95 |r 165|r 3|r 761|r 1760|r 1880|r 1900|r 65  |r 41.5| ''2''+0 | 0+4     | 0+4     | ''4''+0 |r 125|r 250|
+| Annihilator | ANH-1A   |r 100|r 95 |r 165|r 2|r 761|r 1000|r 1880|r 1900|r 76.5|r 53  | ''2''+3 | ''3''+2 | -       | 0+2     |r 125|r 250|
+| Annihilator**| ANH-JH   |r 100|r 95 |r 165|r 2|r 761|r 1155|r 1880|r 1900|r 76.5|r 53  | ''2''+3 | ''3''+2 | -       | 0+2     |r 125|r 250|
+| Atlas II**  | AS7-D-HT |r 100|r 95 |r 165|r 3|r 761|r 1520|r 1880|r 1900|r 78  |r 54.5| 0+2     | ''4''+2 | 0+2     | ''2''+2 |r 140|r 250|
+
+: ^ One of the hardpoint(s) is on the head, conflicting with cockpit modules.
+: * One of the hardpoint(s) is on the head, conflicting with cockpit modules and another hardpoint.
+: ** Mech has the BLACKLISTED tag
+
+Light Cost
+|*-2 Mech|*-2 Model|*-2 Campaign<br>Price|*+3 PvP Cost|*+4 Config, Damage, and Alpha Heat|
+|* Base|* Armored |* $/ton |* Stock |* 270m|* 450m|* Heat |
+|-2 Locust      |-2 LCT-1E   |r 220K  |r 1.80M |r 2.05M |r 257K |+4 2x M Laser, 2x S Laser                          |
+|+5 None                                                                                                          |r 50 |r -  |r +6  |
+|-2 Locust      |-2 LCT-1M   |r 200K  |r 1.70M |r 1.95M |r 243K |+4 2x LRM5, M Laser                                |
+|+5 Battlefield Planets.<br>Manufacturing Planets.<br>Mining, Non-Starter Planets.                                |r 25 |r 40 |r -6  |
+|-2 Locust      |-2 LCT-1S   |r 210K  |r 1.80M |r 2.05M |r 257K |+4 2x SRM2, M Laser                                |
+|+5 Battlefield Planets.<br>Manufacturing Planets.<br>Mining, Non-Starter Planets.                                |r 57 |r -  |r -10 |
+|-2 Locust      |-2 LCT-1V   |r 190K  |r 1.60M |r 1.85M |r 229K |+4 2x MG, M Laser                                  |
+|+5 Starter Planets.<br>Battlefield Planets.<br>Manufacturing Planets.<br>Mining, Non-Starter Planets.            |r 25 |r -  |r -18 |
+|-2 Flea        |-2 FLE-15   |r 190K  |r 1.50M |r 1.75M |r 167K |+4 2x M Laser, 2x MG, 2x S Laser, Flamer           |
+|+5 None                                                                                                          |r 50 |r -  |r +6  |
+|-2 Flea        |-2 FLE-4    |r 170K  |r 1.40M |r 1.65M |r 156K |+4 2x S Laser, Flamer, L Laser                     |
+|+5 None                                                                                                          |r -  |r 40 |r +0  |
+|-2 Commando    |-2 COM-1B   |r 250K  |r 2.10M |r 2.42M |r 175K |+4 L Laser, M Laser, SRM2                          |
+|+5 Non-Starter Manufacturing Planets.                                                                            |r 41 |r 40 |r +4  |
+|-2 Commando    |-2 COM-2D   |r 250K  |r 2.10M |r 2.42M |r 175K |+4 M Laser, SRM4, SRM6                             |
+|+5 Non-Starter Manufacturing Planets.                                                                            |r 105|r -  |r +2  |
+|-2 Spider      |-2 SDR-5K   |r 310K  |r 2.61M |r 3.01M |r 274K |+4 2x MG, M Laser, 6x  Jets                        |
+|+5 None                                                                                                          |r 25 |r -  |r -18 |
+|-2 Spider      |-2 SDR-5V   |r 310K  |r 2.61M |r 3.01M |r 274K |+4 2x M Laser, 8x  Jets                            |
+|+5 Starter Planets.<br>Battlefield Planets.<br>Manufacturing Planets.                                            |r 50 |r -  |r -6  |
+|-2 Javelin     |-2 JVN-10F  |r 248K  |r 1.70M |r 2.10M |r 113K |+4 4x M Laser, 6x  Jets                            |
+|+5 None                                                                                                          |r 100|r -  |r +12 |
+|-2 Javelin     |-2 JVN-10A  |r 310K  |r 2.50M |r 2.90M |r 167K |+4 LRM15, 6x  Jets                                 |
+|+5 None                                                                                                          |r -  |r 60 |r -16 |
+|-2 Javelin     |-2 JVN-10N  |r 310K  |r 1.90M |r 2.30M |r 127K |+4 2x SRM6, 6x  Jets                               |
+|+5 None                                                                                                          |r 96 |r -  |r -6  |
+|-2 UrbanMech   |-2 UM-R90   |r 270K  |r 1.88M |r 2.28M |r 94K  |+4 2x M Laser, PPC, S Laser, 3x  Jets              |
+|+5 None                                                                                                          |r 50 |r 50 |r +26 |
+|-2 UrbanMech   |-2 UM-R60   |r 250K  |r 1.90M |r 2.30M |r 88K  |+4 AC/10, S Laser, 2x  Jets                        |
+|+5 Battlefield Planets.<br>Manufacturing Planets.<br>Mining, Non-Starter Planets.                                |r -  |r 60 |r -15 |
+|-2 Test Dummy**|-2 UM-R60   |r -     |r -     |r -     |r -    |+4                                                 |
+|+5 None                                                                                                          |r -  |r -  |r -30 |
+|-2 UrbanMech   |-2 UM-R60L  |r 250K  |r 1.95M |r 2.35M |r 91K  |+4 AC/20, S Laser, 2x  Jets                        |
+|+5 None                                                                                                          |r 100|r -  |r -3  |
+|-2 Jenner      |-2 JR7-D    |r 400K  |r 3.30M |r 3.75M |r 244K |+4 4x M Laser, SRM4, 5x  Jets                      |
+|+5 Non-Starter Manufacturing Planets.                                                                            |r 132|r -  |r +26 |
+|-2 Jenner**    |-2 JR7-D    |r -     |r -     |r -     |r -    |+4 4x M Laser+, SRM4, 5x  Jets                     |
+|+5 None                                                                                                          |r 152|r -  |r +26 |
+|-2 Firestarter |-2 FS9-H    |r 410K  |r 3.41M |r 3.86M |r 206K |+4 4x Flamer, 2x M Laser, 2x MG, 6x  Jets          |
+|+5 Non-Starter Manufacturing Planets.                                                                            |r 50 |r -  |r -6  |
+|-2 Raven       |-2 RVN-1X   |r 500K  |r 4.48M |r 4.93M |r 230K |+4 2x M Laser, SRM6                                |
+|+5 None                                                                                                          |r 98 |r -  |r +0  |
+|-2 Raven**     |-2 RVN-3X   |r -     |r -     |r -     |r -    |+4 2x M Laser, SRM6                                |
+|+5 None                                                                                                          |r 98 |r -  |r +0  |
+|-2 Panther     |-2 PNT-9R   |r 360K  |r 2.81M |r 3.26M |r 130K |+4 PPC, SRM4, 4x  Jets                             |
+|+5 Starter Planets.<br>Non-Starter Manufacturing Planets.                                                        |r 32 |r 50 |r +4  |
+|-2 Panther**   |-2 PNT-9R   |r -     |r -     |r -     |r -    |+4 L Laser, SRM4                                   |
+|+5 None                                                                                                          |r 32 |r 40 |r -13 |
+|-2 Target Dummy**|-2 PNT-9R   |r -     |r -     |r -     |r -    |+4                                                 |
+|+5 None                                                                                                          |r -  |r -  |r -30 |
+
+: ** Mech has the BLACKLISTED tag
+
+Medium Cost
+|*-2 Mech|*-2 Model|*-2 Campaign<br>Price|*+3 PvP Cost|*+4 Config, Damage, and Alpha Heat|
+|* Base|* Armored |* $/ton |* Stock |* 270m|* 450m|* Heat |
+|-2 Cicada      |-2 CDA-2A   |r 330K  |r 3.00M |r 3.33M |r 462K |+4 2x M Laser, S Laser                             |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 50 |r -  |r +0  |
+|-2 Assassin    |-2 ASN-101  |r 420K  |r 3.60M |r 4.13M |r 257K |+4 3x S Laser, LRM5, M Laser, SRM2, 5x  Jets       |
+|+5 None                                                                                                          |r 41 |r 20 |r +10 |
+|-2 Assassin    |-2 ASN-21   |r 440K  |r 3.81M |r 4.33M |r 272K |+4 LRM5, M Laser, SRM2, 7x  Jets                   |
+|+5 None                                                                                                          |r 41 |r 20 |r -8  |
+|-2 Cicada      |-2 CDA-3C   |r 380K  |r 3.40M |r 3.93M |r 243K |+4 2x MG, PPC                                      |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r -  |r 50 |r +2  |
+|-2 Vulcan      |-2 VL-2T    |r 390K  |r 3.30M |r 3.83M |r 178K |+4 AC/2, Flamer, M Laser, MG, 6x  Jets             |
+|+5 None                                                                                                          |r 25 |r 25 |r -14 |
+|-2 Vulcan      |-2 VL-5T    |r 450K  |r 3.60M |r 4.13M |r 195K |+4 4x M Laser, Flamer, MG, 6x  Jets                |
+|+5 None                                                                                                          |r 100|r -  |r +12 |
+|-2 Phoenix Hawk|-2 PXH-1    |r 490K  |r 4.10M |r 4.68M |r 205K |+4 2x M Laser, 2x MG, L Laser, 4x  Jets            |
+|+5 None                                                                                                          |r 50 |r 40 |r +12 |
+|-2 Phoenix Hawk|-2 PXH-1K   |r 500K  |r 4.21M |r 4.78M |r 210K |+4 2x M Laser, L Laser, S Laser                    |
+|+5 None                                                                                                          |r 50 |r 40 |r +9  |
+|-2 Phoenix Hawk**|-2 PXH-1B   |r -     |r -     |r -     |r -    |+4 2x M Laser, 2x MG, ER L Laser, ER PPC, 4x  Jets |
+|+5 None                                                                                                          |r 50 |r 105|r +64 |
+|-2 Vindicator  |-2 VND-1AA  |r 460K  |r 3.58M |r 4.15M |r 146K |+4 LRM5, PPC, S Laser, 5x  Jets                    |
+|+5 None                                                                                                          |r -  |r 70 |r -4  |
+|-2 Blackjack** |-2 BJ-1     |r -     |r -     |r -     |r -    |+4 4x M Laser, 2x AC/2                             |
+|+5 None                                                                                                          |r 100|r 50 |r +23 |
+|-2 Blackjack   |-2 BJ-1     |r 440K  |r 3.51M |r 4.08M |r 123K |+4 4x M Laser, 2x AC/2, 4x  Jets                   |
+|+5 Battlefield Planets.<br>Fed.Sun Manufacturing Planets.<br>Capellan Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 100|r 50 |r +23 |
+|-2 Blackjack   |-2 BJ-1DB   |r 430K  |r 3.21M |r 3.78M |r 112K |+4 2x L Laser, 2x M Laser, 4x  Jets                |
+|+5 None                                                                                                          |r 50 |r 80 |r +9  |
+|-2 Hatchetman  |-2 HCT-3F   |r 440K  |r 3.51M |r 4.08M |r 123K |+4 2x M Laser, AC/10, 4x  Jets                     |
+|+5 None                                                                                                          |r 50 |r 60 |r +3  |
+|-2 Hatchetman  |-2 HCT-3X   |r 460K  |r 3.61M |r 4.18M |r 126K |+4 4x MG, 2x M Laser, 2x SRM6, 4x  Jets            |
+|+5 None                                                                                                          |r 146|r -  |r +15 |
+|-2 Vindicator  |-2 VND-1R   |r 490K  |r 3.80M |r 4.38M |r 133K |+4 LRM5, M Laser, PPC, S Laser, 4x  Jets           |
+|+5 Battlefield Planets.<br>Capellan Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.          |r 25 |r 70 |r +11 |
+|-2 BIG STEEL CLAW**|-2 BSC-20   |r -     |r -     |r -     |r -    |+4 2x Flamer++, 2x M Laser+, AC/5+, Arm Mod        |
+|+5 None                                                                                                          |r 50 |r 50 |r NaN |
+|-2 BIG STEEL CLAW**|-2 BSC-20   |r -     |r -     |r -     |r -    |+4 2x Flamer++, 2x M Laser+, AC/5+, Arm Mod        |
+|+5 None                                                                                                          |r 50 |r 50 |r NaN |
+|-2 Crab        |-2 CRB-20   |r 510K  |r 4.40M |r 5.05M |r 166K |+4 2x L Laser, M Laser, S Laser                    |
+|+5 None                                                                                                          |r 25 |r 80 |r +6  |
+|-2 Crab**      |-2 CRB-27B  |r -     |r -     |r -     |r -    |+4 2x ER L Laser, ER M Laser, ER S Laser           |
+|+5 None                                                                                                          |r 65 |r 90 |r +14 |
+|-2 Trebuchet   |-2 TBT-5N   |r 560K  |r 4.61M |r 5.26M |r 174K |+4 3x M Laser, 2x LRM15                            |
+|+5 Battlefield Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.        |r 75 |r 120|r +34 |
+|-2 Trebuchet   |-2 TBT-7K   |r 520K  |r 4.51M |r 5.16M |r 170K |+4 AC/5, PPC, SRM2                                 |
+|+5 None                                                                                                          |r 16 |r 95 |r +14 |
+|-2 Centurion   |-2 CN9-AL   |r 550K  |r 4.30M |r 4.95M |r 137K |+4 2x M Laser, L Laser, LRM10, S Laser             |
+|+5 Battlefield Planets.<br>Fed.Sun Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 50 |r 80 |r +10 |
+|-2 Enforcer    |-2 ENF-4R   |r 520K  |r 4.20M |r 4.85M |r 133K |+4 AC/10, L Laser, S Laser, 4x  Jets               |
+|+5 Battlefield Planets.<br>Fed.Sun Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.           |r -  |r 100|r +0  |
+|-2 Enforcer**  |-2 ENF-4R   |r -     |r -     |r -     |r -    |+4 4x ER M Laser, PPC+, 4x  Jets                   |
+|+5 None                                                                                                          |r 140|r 50 |r +67 |
+|-2 Hunchback   |-2 HBK-4G   |r 510K  |r 4.10M |r 4.75M |r 130K |+4 2x M Laser, AC/20, S Laser                      |
+|+5 Battlefield Planets.<br>Capellan Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 150|r -  |r +15 |
+|-2 Hunchback   |-2 HBK-4P   |r 610K  |r 4.70M |r 5.35M |r 149K |+4 8x M Laser, S Laser                             |
+|+5 Battlefield Planets.<br>Capellan Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 200|r -  |r +33 |
+|-2 Centurion   |-2 CN9-A    |r 510K  |r 4.21M |r 4.86M |r 133K |+4 2x M Laser, AC/10, LRM10                        |
+|+5 Battlefield Planets.<br>Fed.Sun Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 50 |r 100|r +16 |
+|-2 Centurion** |-2 CN9-A    |r -     |r -     |r -     |r -    |+4 M Laser                                         |
+|+5 None                                                                                                          |r 25 |r -  |r -18 |
+|-2 Rhythm Nation**|-2 CN9-A    |r -     |r -     |r -     |r -    |+4 2x M Laser, AC/10++, LRM10+                     |
+|+5 None                                                                                                          |r 50 |r 100|r +16 |
+|-2 Target Dummy**|-2 CN9-A    |r -     |r -     |r -     |r -    |+4                                                 |
+|+5 None                                                                                                          |r -  |r -  |r -30 |
+|-2 Koschei**   |-2 GRF-1N   |r -     |r -     |r -     |r -    |+4 2x M Laser, Arm Mod+, L Laser+, LRM5++, 5x  Jets|
+|+5 None                                                                                                          |r 50 |r 65 |r NaN |
+|-2 Griffin     |-2 GRF-1N   |r 630K  |r 5.21M |r 5.91M |r 186K |+4 LRM10, PPC, 5x  Jets                            |
+|+5 Battlefield Planets.<br>Mining, Non-Starter Planets.<br>Manufacturing, Rich, Non-Starter Planets.             |r -  |r 90 |r +9  |
+|-2 Griffin     |-2 GRF-1S   |r 640K  |r 5.21M |r 5.91M |r 186K |+4 2x M Laser, L Laser, LRM5, 5x  Jets             |
+|+5 Battlefield Planets.<br>Mining, Non-Starter Planets.<br>Manufacturing, Rich, Non-Starter Planets.             |r 50 |r 60 |r +0  |
+|-2 Kintaro     |-2 KTO-18   |r 630K  |r 5.20M |r 5.90M |r 186K |+4 3x SRM6, 2x M Laser, LRM5                       |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 194|r 20 |r +36 |
+|-2 Shadow Hawk |-2 SHD-2D   |r 620K  |r 5.41M |r 6.11M |r 193K |+4 2x M Laser, 2x SRM2, AC/5, LRM5, 3x  Jets       |
+|+5 Canopus Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 82 |r 65 |r +4  |
+|-2 Shadow Hawk**|-2 SHD-2H   |r -     |r -     |r -     |r -    |+4 2x M Laser, 2x SRM2, AC/5, LRM5                 |
+|+5 None                                                                                                          |r 82 |r 65 |r +4  |
+|-2 Shadow Hawk |-2 SHD-2H   |r 610K  |r 5.21M |r 5.91M |r 186K |+4 AC/5, LRM5, M Laser, SRM2, 3x  Jets             |
+|+5 Canopus Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Rich, Non-Starter Planets.|r 41 |r 65 |r -6  |
+|-2 Wolverine   |-2 WVR-6K   |r 630K  |r 5.21M |r 5.91M |r 186K |+4 2x M Laser, L Laser, S Laser, SRM6              |
+|+5 Manufacturing, Rich, Non-Starter Planets.                                                                     |r 98 |r 40 |r +18 |
+|-2 Wolverine   |-2 WVR-6R   |r 600K  |r 5.01M |r 5.71M |r 179K |+4 AC/5, M Laser, SRM6, 5x  Jets                   |
+|+5 Battlefield Planets.<br>Mining, Non-Starter Planets.<br>Manufacturing, Rich, Non-Starter Planets.             |r 73 |r 45 |r -4  |
+|-2 Griffin**   |-2 GRF-2N   |r -     |r -     |r -     |r -    |+4 2x SRM6, ER PPC, 5x  Jets                       |
+|+5 None                                                                                                          |r 96 |r 60 |r +15 |
+|-2 Griffin**   |-2 GRF-2N   |r -     |r -     |r -     |r -    |+4 2x SRM6, ER PPC, 5x  Jets                       |
+|+5 None                                                                                                          |r 96 |r 60 |r +15 |
+
+: ** Mech has the BLACKLISTED tag
+
+Heavy Cost
+|*-2 Mech|*-2 Model|*-2 Campaign<br>Price|*+3 PvP Cost|*+4 Config, Damage, and Alpha Heat|
+|* Base|* Armored |* $/ton |* Stock |* 270m|* 450m|* Heat |
+|-2 Awesome Dragon**|-2 DRG-1N   |r -     |r -     |r -     |r -    |+4 2x S Laser+, LRM10, M Laser, PPC++              |
+|+5 None                                                                                                          |r 25 |r 90 |r +33 |
+|-2 Dragon      |-2 DRG-1N   |r 690K  |r 5.90M |r 6.68M |r 203K |+4 2x M Laser, AC/5, LRM10                         |
+|+5 Manufacturing, Rich, Non-Starter Planets.                                                                     |r 50 |r 85 |r +12 |
+|-2 Grand Dragon**|-2 DRG-1G   |r -     |r -     |r -     |r -    |+4 3x M Laser, LRM10, PPC                          |
+|+5 None                                                                                                          |r 75 |r 90 |r +45 |
+|-2 Quickdraw   |-2 QKD-4G   |r 700K  |r 5.70M |r 6.45M |r 197K |+4 4x M Laser, LRM10, SRM4, 5x  Jets               |
+|+5 Manufacturing, Rich, Non-Starter Planets.                                                                     |r 132|r 40 |r +27 |
+|-2 Quickdraw   |-2 QKD-5A   |r 710K  |r 5.80M |r 6.58M |r 200K |+4 6x M Laser, SRM4, 5x  Jets                      |
+|+5 Manufacturing, Rich, Non-Starter Planets.                                                                     |r 182|r -  |r +29 |
+|-2 Rifleman    |-2 RFL-3C   |r 610K  |r 5.21M |r 5.98M |r 143K |+4 2x AC/10, 2x M Laser                            |
+|+5 None                                                                                                          |r 50 |r 120|r +18 |
+|-2 Rifleman    |-2 RFL-3N   |r 610K  |r 5.11M |r 5.88M |r 140K |+4 2x AC/5, 2x L Laser, 2x M Laser                 |
+|+5 None                                                                                                          |r 50 |r 170|r +46 |
+|-2 Rifleman    |-2 RFL-4D   |r 670K  |r 5.51M |r 6.28M |r 151K |+4 2x L Laser, 2x PPC                              |
+|+5 None                                                                                                          |r -  |r 180|r +61 |
+|-2 Rifleman**  |-2 RFL-RIP  |r -     |r -     |r -     |r -    |+4 2x L Laser++, 2x M Laser, 2x UAC/5+, Gyro++     |
+|+5 None                                                                                                          |r 50 |r 270|r NaN |
+|-2 Catapult    |-2 CPLT-C4  |r 650K  |r 5.10M |r 5.90M |r 131K |+4 2x LRM20, 2x S Laser, 4x  Jets                  |
+|+5 None                                                                                                          |r -  |r 160|r +18 |
+|-2 Catapult    |-2 CPLT-K2  |r 720K  |r 5.80M |r 6.60M |r 149K |+4 2x M Laser, 2x MG, 2x PPC                       |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 50 |r 100|r +34 |
+|-2 JagerMech   |-2 JM6-S    |r 670K  |r 5.90M |r 6.70M |r 151K |+4 2x AC/2, 2x AC/5, 2x M Laser                    |
+|+5 Capellan Manufacturing Planets.<br>Manufacturing, Inner Sphere, Rich, Non-Starter Planets.                    |r 50 |r 140|r +18 |
+|-2 Custom JagerMech**|-2 JM6-S    |r -     |r -     |r -     |r -    |+4 2x Gauss Rifle                                  |
+|+5 None                                                                                                          |r -  |r 150|r -20 |
+|-2 JagerMech   |-2 JM6-A    |r 700K  |r 5.90M |r 6.70M |r 151K |+4 2x AC/2, 2x LRM15, 2x M Laser                   |
+|+5 Fed.Sun Manufacturing Planets.                                                                                |r 50 |r 170|r +30 |
+|-2 Catapult    |-2 CPLT-C1  |r 740K  |r 5.80M |r 6.60M |r 149K |+4 4x M Laser, 2x LRM15, 4x  Jets                  |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 100|r 120|r +31 |
+|-2 Occam's Missile**|-2 CPLT-C1  |r -     |r -     |r -     |r -    |+4 4x M Laser, 2x LRM15+, TTS, 4x  Jets            |
+|+5 None                                                                                                          |r 100|r 120|r NaN |
+|-2 Thunderbolt |-2 TDR-5S   |r 760K  |r 6.20M |r 7.00M |r 159K |+4 3x M Laser, 2x MG, L Laser, LRM15, SRM2         |
+|+5 Taurian Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Inner Sphere, Rich, Non-Starter Planets.|r 91 |r 100|r +27 |
+|-2 Custom Thunderbolt**|-2 TDR-5SE  |r -     |r -     |r -     |r -    |+4 5x M Pulse, 3x ER S Laser, 4x  Jets             |
+|+5 None                                                                                                          |r 290|r -  |r +55 |
+|-2 Thunderbolt |-2 TDR-5SE  |r 780K  |r 6.20M |r 7.00M |r 159K |+4 3x M Laser, L Laser, LRM10, 4x  Jets            |
+|+5 Taurian Manufacturing Planets.<br>F.W.League Manufacturing Planets.                                           |r 75 |r 80 |r +13 |
+|-2 Thunderbolt |-2 TDR-5SS  |r 780K  |r 6.30M |r 7.10M |r 162K |+4 3x M Laser, Flamer, PPC, SRM6                   |
+|+5 Taurian Manufacturing Planets.<br>F.W.League Manufacturing Planets.                                           |r 123|r 50 |r +20 |
+|-2 Archer      |-2 ARC-2R   |r 840K  |r 6.80M |r 7.63M |r 166K |+4 4x M Laser, 2x LRM20                            |
+|+5 None                                                                                                          |r 100|r 160|r +54 |
+|-2 Archer      |-2 ARC-2S   |r 860K  |r 7.00M |r 7.80M |r 171K |+4 4x M Laser, 2x LRM15, 2x SRM4                   |
+|+5 None                                                                                                          |r 164|r 120|r +62 |
+|-2 Archer**    |-2 ARC-LS   |r -     |r -     |r -     |r -    |+4 2x Arm Mod, 2x Infernos+, 2x LRM15++, 2x M Laser, Gyro++, Rangefinder++|
+|+5 None                                                                                                          |r 58 |r 120|r NaN |
+|-2 Archer**    |-2 ARC-XO   |r -     |r -     |r -     |r -    |+4 2x ER M Laser+, 2x ER S Laser+, 2x LRM20++      |
+|+5 None                                                                                                          |r 150|r 240|r +66 |
+|-2 Black Widow**|-2 WHM-BW   |r -     |r -     |r -     |r -    |+4 4x MG, 2x M Laser++, 2x PPC++, Gyro++, SRM6++   |
+|+5 None                                                                                                          |r 130|r 100|r NaN |
+|-2 Cataphract  |-2 CTF-0X   |r 1160K |r 10.51M|r 11.33M|r 256K |+4 2x M Laser, AC/5, PPC                           |
+|+5 None                                                                                                          |r 50 |r 95 |r +25 |
+|-2 Cataphract  |-2 CTF-1X   |r 800K  |r 6.70M |r 7.53M |r 163K |+4 4x M Laser, AC/10, PPC                          |
+|+5 Capellan Manufacturing Planets.                                                                               |r 100|r 110|r +47 |
+|-2 Grasshopper |-2 GHR-5H   |r 880K  |r 7.10M |r 7.93M |r 173K |+4 4x M Laser, L Laser, LRM5, 4x  Jets             |
+|+5 Manufacturing, Inner Sphere, Rich, Non-Starter Planets.                                                       |r 100|r 60 |r +6  |
+|-2 Warhammer   |-2 WHM-6D   |r 840K  |r 6.90M |r 7.73M |r 168K |+4 2x M Laser, 2x PPC, 2x S Laser                  |
+|+5 None                                                                                                          |r 50 |r 100|r +46 |
+|-2 Warhammer   |-2 WHM-6R   |r 820K  |r 6.80M |r 7.63M |r 166K |+4 2x M Laser, 2x MG, 2x PPC, 2x S Laser, SRM6     |
+|+5 None                                                                                                          |r 98 |r 100|r +64 |
+|-2 Warhammer** |-2 WHM-7A   |r -     |r -     |r -     |r -    |+4 4x M Laser, 2x ER PPC, 2x S Pulse, SRM6, TTS    |
+|+5 None                                                                                                          |r 148|r 120|r NaN |
+|-2 Black Knight|-2 BL-6-KNT |r 940K  |r 7.80M |r 8.68M |r 184K |+4 4x M Laser, 2x L Laser, PPC, S Laser            |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 100|r 130|r +65 |
+|-2 Marauder**  |-2 MAD-2R   |r -     |r -     |r -     |r -    |+4 2x ER PPC, 2x M Laser, AC/5                     |
+|+5 None                                                                                                          |r 50 |r 165|r +56 |
+|-2 Marauder    |-2 MAD-3D   |r 890K  |r 7.41M |r 8.28M |r 174K |+4 2x M Laser, 2x PPC, L Laser                     |
+|+5 None                                                                                                          |r 50 |r 140|r +52 |
+|-2 Marauder    |-2 MAD-3R   |r 880K  |r 7.41M |r 8.28M |r 174K |+4 2x M Laser, 2x PPC, AC/5                        |
+|+5 None                                                                                                          |r 50 |r 145|r +54 |
+|-2 Marauder**  |-2 MAD-BH   |r -     |r -     |r -     |r -    |+4 2x ER S Laser++, 2x Snub PPC++, Gyro++, UAC/5++ |
+|+5 None                                                                                                          |r 230|r 90 |r NaN |
+|-2 Marauder**  |-2 MAD-CM   |r -     |r -     |r -     |r -    |+4 2x ER S Laser++, 2x PPC, Gyro++, UAC/5          |
+|+5 None                                                                                                          |r 80 |r 190|r NaN |
+|-2 Orion       |-2 ON1-K    |r 890K  |r 7.51M |r 8.38M |r 177K |+4 2x M Laser, AC/10, LRM15, SRM4                  |
+|+5 F.W.League Manufacturing Planets.<br>Manufacturing, Inner Sphere, Rich, Non-Starter Planets.                  |r 82 |r 120|r +28 |
+|-2 Orion**     |-2 ON1-K    |r -     |r -     |r -     |r -    |+4 2x PPC+, LRM10+                                 |
+|+5 None                                                                                                          |r -  |r 140|r +35 |
+|-2 Orion       |-2 ON1-V    |r 870K  |r 7.41M |r 8.28M |r 174K |+4 2x M Laser, 2x SRM4, AC/10, LRM15               |
+|+5 Manufacturing, Inner Sphere, Rich, Non-Starter Planets.                                                       |r 114|r 120|r +36 |
+|-2 Black Knight**|-2 BL-6B-KNT|r -     |r -     |r -     |r -    |+4 4x M Laser, 2x L Pulse, ER PPC, S Laser         |
+|+5 None                                                                                                          |r 100|r 170|r +75 |
+
+: ** Mech has the BLACKLISTED tag
+
+Assault Cost
+|*-2 Mech|*-2 Model|*-2 Campaign<br>Price|*+3 PvP Cost|*+4 Config, Damage, and Alpha Heat|
+|* Base|* Armored |* $/ton |* Stock |* 270m|* 450m|* Heat |
+|-2 Victor      |-2 VTR-9B   |r 960K  |r 8.11M |r 9.06M |r 191K |+4 2x M Laser, AC/20, SRM4, 4x  Jets               |
+|+5 Fed.Sun Manufacturing Planets.                                                                                |r 182|r -  |r +11 |
+|-2 Victor      |-2 VTR-9S   |r 950K  |r 8.11M |r 9.06M |r 191K |+4 2x M Laser, AC/20, SRM6, 4x  Jets               |
+|+5 Fed.Sun Manufacturing Planets.                                                                                |r 198|r -  |r +15 |
+|-2 Zeus**      |-2 ZEU-5T   |r -     |r -     |r -     |r -    |+4 2x M Laser, ER L Laser, ER PPC, LRM15, TTS      |
+|+5 None                                                                                                          |r 50 |r 165|r NaN |
+|-2 Zeus        |-2 ZEU-6S   |r 970K  |r 8.31M |r 9.26M |r 195K |+4 2x M Laser, AC/5, L Laser, LRM15                |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 50 |r 145|r +13 |
+|-2 Zeus        |-2 ZEU-6T   |r 990K  |r 8.40M |r 9.36M |r 198K |+4 2x M Laser, L Laser, LRM15, PPC                 |
+|+5 None                                                                                                          |r 50 |r 150|r +34 |
+|-2 Awesome     |-2 AWS-8Q   |r 970K  |r 7.80M |r 8.75M |r 143K |+4 3x PPC, S Laser                                 |
+|+5 Manufacturing, Inner Sphere, Rich, Non-Starter Planets.                                                       |r -  |r 150|r +27 |
+|-2 Awesome     |-2 AWS-8T   |r 970K  |r 7.80M |r 8.75M |r 143K |+4 2x L Laser, 2x LRM15, S Laser                   |
+|+5 F.W.League Manufacturing Planets.                                                                             |r -  |r 200|r +1  |
+|-2 Battlemaster|-2 BLR-1G   |r 1130K |r 9.61M |r 10.61M|r 226K |+4 6x M Laser, 2x MG, PPC, SRM6                    |
+|+5 Capellan Manufacturing Planets.<br>F.W.League Manufacturing Planets.<br>Manufacturing, Inner Sphere, Rich, Research, Non-Starter, Non-Post-Campaign Planets.|r 198|r 50 |r +65 |
+|-2 Battlemaster**|-2 BLR-1G   |r -     |r -     |r -     |r -    |+4 6x M Laser+, L Pulse, LRM15++                   |
+|+5 None                                                                                                          |r 180|r 145|r +62 |
+|-2 Battlemaster|-2 BLR-1S   |r 1100K |r 9.31M |r 10.28M|r 219K |+4 4x M Laser, 2x SRM2, LRM15, LRM5                |
+|+5 None                                                                                                          |r 132|r 80 |r +16 |
+|-2 Battlemaster**|-2 BLR-1GB  |r -     |r -     |r -     |r -    |+4 4x M Laser, 2x ER PPC, L Pulse                  |
+|+5 None                                                                                                          |r 100|r 175|r +96 |
+|-2 Stalker**   |-2 STK-3F   |r -     |r -     |r -     |r -    |+4 3x LRM20, 2x M Laser                            |
+|+5 None                                                                                                          |r 50 |r 240|r +24 |
+|-2 Stalker     |-2 STK-3F   |r 1040K |r 8.40M |r 9.38M |r 146K |+4 4x M Laser, 2x L Laser, 2x LRM10, 2x SRM6       |
+|+5 F.W.League Manufacturing Planets.<br>Manufacturing, Inner Sphere, Rich, Research, Non-Starter, Non-Post-Campaign Planets.|r 196|r 160|r +68 |
+|-2 Cyclops     |-2 CP-10-HQ |r 2740K |r 26.00M|r 27.05M|r 634K |+4 2x M Laser, LRM10, SRM4                         |
+|+5 None                                                                                                          |r 82 |r 40 |r +0  |
+|-2 Cyclops     |-2 CP-10-Q  |r 1080K |r 113.00M|r 114.08M|r 2756K|+4 3x M Laser, 2x LRM10, SRM4                      |
+|+5 None                                                                                                          |r 107|r 80 |r +22 |
+|-2 Cyclops     |-2 CP-10-Z  |r 1080K |r 113.34M|r 114.39M|r 2764K|+4 2x M Laser, AC/20, LRM10, SRM4                  |
+|+5 None                                                                                                          |r 182|r 40 |r +30 |
+|-2 Highlander  |-2 HGN-733  |r 1080K |r 8.81M |r 9.88M |r 146K |+4 2x M Laser, AC/10, LRM20, SRM6, 3x  Jets        |
+|+5 Capellan Manufacturing Planets.<br>Former Star League, Non-Starter Planets.                                   |r 98 |r 140|r +27 |
+|-2 Highlander  |-2 HGN-733P |r 1120K |r 9.01M |r 10.08M|r 149K |+4 2x M Laser, LRM20, PPC, SRM6, 3x  Jets          |
+|+5 Capellan Manufacturing Planets.<br>Former Star League, Non-Starter Planets.                                   |r 98 |r 130|r +29 |
+|-2 Highlander**|-2 HGN-732B |r -     |r -     |r -     |r -    |+4 3x M Laser, Gauss Rifle, LRM20++, SRM6++, 3x  Jets|
+|+5 None                                                                                                          |r 147|r 155|r +5  |
+|-2 Banshee     |-2 BNC-3E   |r 1170K |r 10.40M|r 11.53M|r 277K |+4 AC/5, PPC, S Laser                              |
+|+5 Manufacturing, Inner Sphere, Rich, Research, Non-Starter, Non-Post-Campaign Planets.                          |r -  |r 95 |r +1  |
+|-2 Banshee     |-2 BNC-3M   |r 1270K |r 11.30M|r 12.43M|r 301K |+4 2x M Laser, 2x PPC, S Laser                     |
+|+5 Manufacturing, Inner Sphere, Rich, Research, Non-Starter, Non-Post-Campaign Planets.                          |r 50 |r 100|r +52 |
+|-2 Banshee     |-2 BNC-3S   |r 1270K |r 10.71M|r 11.84M|r 170K |+4 4x M Laser, 2x PPC, 2x S Laser, AC/10, SRM6     |
+|+5 None                                                                                                          |r 148|r 160|r +91 |
+|-2 Bull Shark  |-2 BSK-M3   |r 3020K |r 28.11M|r 29.23M|r 372K |+4 4x LRM5, 4x M Laser, 2x AC/10, 2x AC/5          |
+|+5 None                                                                                                          |r 100|r 290|r +82 |
+|-2 Bull Shark**|-2 BSK-MAZ  |r -     |r -     |r -     |r -    |+4 4x ER M Laser++, 2x LB 10-X+, 2x UAC/5+         |
+|+5 None                                                                                                          |r 180|r 356|r +84 |
+|-2 Atlas       |-2 AS7-D    |r 1300K |r 10.80M|r 11.98M|r 166K |+4 4x M Laser, AC/20, LRM20, SRM6                  |
+|+5 Manufacturing, Inner Sphere, Rich, Research, Non-Starter, Non-Post-Campaign Planets.                          |r 248|r 80 |r +42 |
+|-2 Atlas**     |-2 AS7-GG   |r -     |r -     |r -     |r -    |+4 2x ER S Laser++, Infernos++, LRM20, Snub PPC++, UAC/20|
+|+5 None                                                                                                          |r 409|r 80 |r +52 |
+|-2 King Crab   |-2 KGC-0000 |r 1270K |r 10.90M|r 12.08M|r 168K |+4 2x AC/20, L Laser, LRM15                        |
+|+5 Former Star League, Non-Starter Planets.                                                                      |r 200|r 100|r +35 |
+|-2 Kingcrab**  |-2 KGC-0000 |r -     |r -     |r -     |r -    |+4 4x Flamer+++, 4x M Pulse, 2x AC/20+++           |
+|+5 None                                                                                                          |r 360|r -  |r +80 |
+|-2 Annihilator |-2 ANH-1A   |r 1130K |r 9.51M |r 10.68M|r 124K |+4 4x AC/10, 4x M Laser                            |
+|+5 None                                                                                                          |r 100|r 240|r +42 |
+|-2 Annihilator**|-2 ANH-JH   |r -     |r -     |r -     |r -    |+4 4x LB 10-X, 2x M Pulse, Gyro++                  |
+|+5 None                                                                                                          |r 80 |r 320|r NaN |
+|-2 Atlas II**  |-2 AS7-D-HT |r -     |r -     |r -     |r -    |+4 2x ER L Laser, 2x M Pulse, AC/20, LRM20, SRM6   |
+|+5 None                                                                                                          |r 228|r 170|r +60 |
+
+: ** Mech has the BLACKLISTED tag
+* Start Planets: Alloway, Alloway, Bellerophon, Bellerophon, Detroit, Detroit, ├Ür Cruinne, and ├Ür Cruinne
+* Inhabited Campaign Planets (55): Adrar, Aea (Restoration), Antias, Aquagea, Arn, Artru (Directorate), Artru (Restoration), Bonavista, Bringdam (Restoration), Cassilda, Cluff's Stand, Coromodir (Directorate), Coromodir (Restoration), Enkra (Restoration), Fronc, Gangtok (Restoration), Gaucin, Guldra (Directorate), Guldra (Restoration), Hastur, Heliat (Restoration), Herotitus, Hibuarius, Independence, Itrom (Directorate), Itrom (Restoration), Joppa, Katinka (Directorate), Katinka (Restoration), Kimi, Liu's Memory, Lyreton, Mandalas, Mangzhangdian (Restoration), Mantharaka, Mechdur (Restoration), Panzyr (Directorate), Panzyr (Restoration), Payia, Qalzi (Restoration), Regis Roost (Directorate), Regis Roost (Restoration), Rockwellawan, Ryans Fate (Restoration), Smithon (Directorate), Smithon (Restoration), Spencer, Tiverton, Tyrlon (Directorate), Tyrlon (Restoration), Umgard (Restoration), Weldry (Directorate), Weldry (Restoration), Zangul (Restoration), and Zathras
+* Inhabited Taurian Planets: (24): Argos, Atreus Prime, Brinton, Brisbane, Camadeirre, Flannagan's Nebulea, Flaum, Girondas, Hellespont, Illiushin, Ishtar, Jamestown, Jansen's Hold, Laconis, Landmark, MacLeod's Land, Mithron, New Ganymede, New Vallis, New Vandenburg, Pinard, Renfield, Samantha, and Taurus
+* Inhabited Post-Campaign Planets: (102): Addasar, Aea, Alamagordo, Andarmax, Artru, Balawat, Barras, Bellatrix, Borden, Bringdam, Brixtana, Brockway, Bromhead, Buenos Aires, Calseraigne, Carmichael, Cate's Hold, Cavalor, Claybrooke, Columbine, Corodiz, Coromodir, Dainmar Majoris, Decatur, Dicon, Diefenbaker, Drozan, Dunianshire, Early Dawn, Egress, Electra, Enkra, Fagerholm, Flintoft, Frazer, Gangtok, Glentworth, Granera, Guldra, Gunthar, Heliat, Horsham, Hurik, Ingonish, Itrom, Jacomarle, Jacson, Katinka, Kurvasa, Larsha, Leyda, Lindsay, Lopez, Lurgatan, Madras, Maia, Mangzhangdian, Mechdur, Mendham, Menke, Merope, Midale, Mitchel, Muridox, New Abilene, New Roland, Panzyr, Pilpala, Piriapolis, Pojos, Primus, Principia, Prix, Qalzi, Quimberton, Regis Roost, Renown, Repulse, Ridgebrook, Robsart, Rollis, Ryans Fate, Ryerson, Sadurni, Sax, Shaunavon, Shiba, Smithon, Thurrock, Turin, Tyrlon, Umgard, Vard, Victoria, Villanueva, Ward, Weldry, Wrentham, Xanthe III, Yuris, Zangul, and Zanzibar
+* Former Star League, Inner Sphere, Manufacturing, Research, Rich Planets: 
+
+Vehicles
+|*-2 Vehicle|*-2 Ton|*+2 Speed|*-2 Weapons|*+2 Damage|*+4 HP/Armor |
+|* Walk|* Sprint|* 270m|* 450m|* Front|* Side|* Rear|* Turret|
+| Wheeled APC         |r 10 |r 165|r 275| 2x MG                    |r -  |r -  | 5/60   | 5/50   | 5/50   | 5/30   |
+| Rotunda Recon Vehicle|r 20 |r 235|r 400| M Laser                  |r 25 |r -  | 10/110 | 10/110 | 10/110 | 10/110 |
+| Packrat Support Vehicle|r 25 |r 200|r 350| L Laser                  |r -  |r 40 | 15/127 | 15/127 | 15/127 | 15/127 |
+| Ammunition Transport|r 25 |r 165|r 275| M Laser                  |r 25 |r -  | 15/80  | 15/95  | 15/80  | 15/50  |
+| Mobile HQ           |r 25 |r 165|r 275| Battle Computer, M Laser |r 25 |r -  | 15/80  | 15/95  | 15/80  | 15/50  |
+| Armored Mobile HQ   |r 25 |r 165|r 275| M Laser                  |r 25 |r -  | 15/80  | 15/95  | 15/80  | 15/50  |
+| Scorpion            |r 25 |r 120|r 200| AC/5, MG                 |r -  |r 45 | 15/80  | 15/55  | 15/50  | 15/80  |
+| Scorpion Mk II      |r 25 |r 120|r 200| UAC/5                    |r -  |r 90 | 15/80  | 15/55  | 15/50  | 15/80  |
+| Target Dummy        |r 25 |r 120|r 200|                          |r -  |r -  | 15/80  | 15/55  | 15/50  | 15/80  |
+| Galleon             |r 30 |r 165|r 275| 2x S Laser, M Laser      |r 25 |r -  | 15/55  | 15/50  | 15/55  | 15/70  |
+| Galleon TAG         |r 30 |r 165|r 275| 2x S Laser, TAG          |r 1  |r -  | 15/55  | 15/50  | 15/55  | 15/70  |
+| Armored Swift Wind  |r 35 |r 260|r 400|                          |r -  |r -  | 2/12   | 2/12   | 2/12   | -      |
+| Swift Wind          |r 35 |r 260|r 400|                          |r -  |r -  | 2/12   | 2/12   | 2/12   | -      |
+| Striker             |r 35 |r 140|r 240| LRM10, SRM6              |r 48 |r 40 | 4/48   | 4/40   | 4/36   | 4/44   |
+| Striker Narc        |r 35 |r 140|r 240| LRM10, Narc Beacon++     |r 1  |r 40 | 4/48   | 4/40   | 4/36   | 4/44   |
+| Alsvin              |r 50 |r 165|r 275| 2x MG, M Laser, TAG      |r 26 |r -  | 25/120 | 25/100 | 25/100 | 25/120 |
+| Arvakr              |r 50 |r 165|r 275| 2x MG, M Laser, TAG      |r 26 |r -  | 35/280 | 35/280 | 35/280 | 35/280 |
+| Sleipnir            |r 50 |r 165|r 275| 2x M Laser, 2x MG        |r 50 |r -  | 25/120 | 25/100 | 25/100 | 25/120 |
+| Vargr               |r 50 |r 165|r 275| 2x M Laser, 2x MG        |r 50 |r -  | 35/280 | 35/280 | 35/280 | 35/280 |
+| SLDF Medium Drone   |r 60 |r 140|r 240| 2x M Laser, AC/5, SRM6   |r 98 |r 45 | 30/220 | 30/200 | 30/200 | 30/220 |
+| SLDF Medium Drone   |r 60 |r 140|r 240| 2x M Pulse, LRM10, SRM4  |r 112|r 40 | 30/220 | 30/200 | 30/200 | 30/220 |
+| Bulldog             |r 60 |r 120|r 200| 2x SRM4, L Laser         |r 64 |r 40 | 30/120 | 30/100 | 30/100 | 30/100 |
+| Manticore           |r 60 |r 120|r 200| LRM10, M Laser, PPC, SRM6|r 73 |r 90 | 12/84  | 12/66  | 12/52  | 12/84  |
+| Target Dummy        |r 60 |r 120|r 200|                          |r -  |r -  | 30/120 | 30/100 | 1/10   | 30/100 |
+| Inferno Carrier     |r 60 |r 95 |r 165| 6x Infernos              |r 24 |r -  | 30/60  | 30/60  | 30/60  | -      |
+| LRM Carrier         |r 60 |r 95 |r 165| 3x LRM20                 |r -  |r 240| 30/60  | 30/60  | 30/60  | -      |
+| SRM Carrier         |r 60 |r 95 |r 165| 10x SRM6                 |r 480|r -  | 30/60  | 30/60  | 30/60  | -      |
+| Gallant Urban Assault Vehicle|r 70 |r 120|r 200| 4x MG, AC/10++, LRM10++, SRM2++|r 16 |r 100| 35/285 | 35/285 | 35/285 | 35/285 |
+| SLDF Heavy Drone    |r 80 |r 120|r 200| L Pulse, LRM15           |r -  |r 115| 40/220 | 40/200 | 40/200 | 40/240 |
+| SLDF Heavy Drone    |r 80 |r 120|r 200| 2x PPC, LRM10            |r -  |r 140| 40/220 | 40/200 | 40/200 | 40/240 |
+| Demolisher          |r 80 |r 95 |r 165| 2x AC/20                 |r 200|r -  | 40/200 | 40/150 | 40/100 | 40/200 |
+| Demolisher LB-X     |r 80 |r 95 |r 165| 2x LB 10-X               |r -  |r 160| 40/200 | 40/150 | 40/100 | 40/200 |
+| Schrek PPC Carrier  |r 80 |r 95 |r 165| 3x PPC                   |r -  |r 150| 40/120 | 40/100 | 40/100 | 40/140 |
+| Schrek SPPC Carrier |r 80 |r 95 |r 165| 3x Snub PPC              |r 225|r -  | 40/120 | 40/100 | 40/100 | 40/140 |
+
+Turrets
+|*-2 Turrets|*-2 Weapons|*+2 Damage|*-2 HP|*-2 Armor |
+|* 270m|* 450m|
+| Light LRM Turret        | 2x LRM10, 2x MG               |r -  |r 80 | 10 | 120 |
+| Light Laser Turret      | 2x M Laser, 2x MG             |r 50 |r -  | 10 | 120 |
+| Light Shredder Turret   | 2x Flamer, 2x SRM6            |r 96 |r -  | 10 | 120 |
+| Light Sniper Turret     | 4x AC/2, 2x MG                |r -  |r 100| 10 | 120 |
+| Light Standard Turret   | 2x M Laser, 2x MG, L Laser    |r 50 |r 40 | 10 | 200 |
+| Standard LRM Turret     | 2x LRM15, 2x MG               |r -  |r 120| 10 | 200 |
+| Standard Shredder Turret| 3x Flamer, 2x SRM2, AC/20     |r 132|r -  | 10 | 200 |
+| Standard Sniper Turret  | 2x MG, 2x PPC                 |r -  |r 100| 10 | 200 |
+| Heavy LRM Turret        | 2x LRM10, 2x LRM15, 2x MG     |r -  |r 200| 10 | 300 |
+| Heavy Laser Turret      | 4x M Laser, 2x L Laser, 2x MG |r 100|r 80 | 10 | 300 |
+| Heavy Shredder Turret   | 4x Flamer, 2x SRM6, AC/20     |r 196|r -  | 10 | 300 |
+| Heavy Sniper Turret     | 4x AC/2, 2x MG, 2x PPC        |r -  |r 200| 10 | 300 |
+
+Stock Weapons
+|*-2 Type|*-2 Weapon|*-2 Price|*-2 Ton|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*+2 Damage/Ton|*-2 Dmg/<br>Heat|
+|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 12x|* 30x|
+| Ballistic| AC/10  |r 140K|r 12 |+2 60     |+2 20     |r 0  |r 300|r 450|r 8  |r 12|r 4.3 |r 3.8 |r 5.0 |
+| Ballistic| AC/2   |r 50K |r 6  |+2 25     |+2 5      |r 120|r 480|r 720|r 25 |r 4 |r 3.6 |r 3.1 |r 6.3 |
+| Ballistic| AC/20  |r 180K|r 14 |+2 100    |+2 40     |r 0  |r 180|r 270|r 5  |r 24|r 5.9 |r 5.0 |r 4.2 |
+| Ballistic| AC/5   |r 100K|r 8  |+2 45     |+2 10     |r 90 |r 360|r 540|r 15 |r 8 |r 5.0 |r 4.5 |r 5.6 |
+| Energy   | COIL-L |r 360K|r 4  |+2 35     |+2 -      |r 0  |r 300|r 450|r -  |r 70|+2 8.8       |r 0.5 |
+| Energy   | COIL-M |r 200K|r 3  |+2 25     |+2 -      |r 0  |r 180|r 270|r -  |r 50|+2 8.3       |r 0.5 |
+| Energy   | L Laser|r 140K|r 5  |+2 40     |+2 -      |r 0  |r 300|r 450|r -  |r 18|+2 8.0       |r 2.2 |
+| Energy   | M Laser|r 60K |r 1  |+2 25     |+2 -      |r 0  |r 180|r 270|r -  |r 12|+2 25.0      |r 2.1 |
+| Energy   | PPC    |r 180K|r 7  |+2 50     |+2 20     |r 90 |r 360|r 540|r -  |r 35|+2 7.1       |r 1.4 |
+| Missile  | LRM10  |r 150K|r 5  | 4x10| 40 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 6.7 |r 5.0 |r 4.0 |
+| Missile  | LRM15  |r 220K|r 7  | 4x15| 60 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 6.7 |r 5.5 |r 4.3 |
+| Missile  | LRM20  |r 290K|r 10 | 4x20| 80 | 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 6.7 |r 5.3 |r 4.4 |
+| Missile  | LRM5   |r 80K |r 2  | 4x5 | 20 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 6.7 |r 5.0 |r 3.3 |
+| Missile  | SRM2   |r 20K |r 1  | 8x2 | 16 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 8.0 |r 8.0 |r 4.0 |
+| Missile  | SRM4   |r 60K |r 2  | 8x4 | 32 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 10.7|r 8.0 |r 4.0 |
+| Missile  | SRM6   |r 90K |r 3  | 8x6 | 48 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 12.0|r 9.6 |r 4.0 |
+| Support  | COIL-S |r 150K|r 2  |+2 15     |+2 -      |r 0  |r 150|r 150|r -  |r 30|+2 7.5       |r 0.5 |
+| Support  | Flamer |r 20K |r 1  |+2 -      |+2 6 (H)  |r 0  |r 90 |r 90 |r 1000|r 0 |r -   |r -   |r NaN |
+| Support  | S Laser|r 20K |r 0.5|+2 20     |+2 -      |r 0  |r 90 |r 90 |r -  |r 6 |+2 40.0      |r 3.3 |
+| Support  | MG     |r 10K |r 0.5| 3x5 | 15 |+2 -      |r 0  |r 90 |r 90 |r 200|r 0 |r 10.0|r 10.0|r NaN |
+
+Ballistic Weapons
+|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Ammo|*-2 Heat|*-2 Recoil|* Dmge/Ton|*-2 Dmg/<br>Heat|
+|* Raw|* Stability|* Min|* Long|* Max|* 30x|
+| AC/10      | Western          |                       |r 140K  |r 12  |r +0% |r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10+     | Imperator        | +25% Crit             |r 150K  |r 12  |r +0% |r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10+     | Defiance         | +2 Acc                |r 230K  |r 12  |r +10%|r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10+     | Kali Yama        | +5 Dmg                |r 160K  |r 12  |r +0% |r 65  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 4.1 |r 5.4 |
+| AC/10+     | Mydron           | +10 Stb.Dmg           |r 160K  |r 12  |r +0% |r 60  |r 30  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10++    | Imperator        | +50% Crit             |r 160K  |r 12  |r +0% |r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10++    | Federated        | +25% Crit, +10 Stb.Dmg|r 170K  |r 12  |r +0% |r 60  |r 30  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10++    | Defiance         | +4 Acc                |r 310K  |r 12  |r +20%|r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10++    | Kali Yama        | +10 Dmg               |r 170K  |r 12  |r +0% |r 70  |r 20  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 4.4 |r 5.8 |
+| AC/10++    | Mydron           | +20 Stb.Dmg           |r 180K  |r 12  |r +0% |r 60  |r 40  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10+++   | Federated        | +50% Crit, +20 Stb.Dmg|r 190K  |r 12  |r +0% |r 60  |r 40  |r 0  |r 300|r 450|r 8  |r 12|r -15%|r 3.8 |r 5.0 |
+| AC/10      | Western          | Lostech               |r 140K  |r 1   |r +0% |r 30  |r 30  |r 0  |r 300|r 450|r -  |r 60|r -15%|r 30.0|r 0.5 |
+| AC/10      | Western          | Lostech               |r 3000K |r 12  |r +0% |r 30  |r 20  |r 0  |r 300|r 450|r -  |r 60|r -15%|r 2.5 |r 0.5 |
+| AC/2       | GM               |                       |r 50K   |r 6   |r +0% |r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2+      | Federated        | +25% Crit             |r 60K   |r 6   |r +0% |r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2+      | Defiance         | +2 Acc                |r 90K   |r 6   |r +10%|r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2+      | Kali Yama        | +5 Dmg                |r 70K   |r 6   |r +0% |r 30  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.8 |r 7.5 |
+| AC/2+      | Mydron           | +10 Stb.Dmg           |r 70K   |r 6   |r +0% |r 25  |r 15  |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2++     | Federated        | +50% Crit             |r 80K   |r 6   |r +0% |r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2++     | Imperator        | +2 Acc, +25% Crit     |r 100K  |r 6   |r +10%|r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2++     | Defiance         | +4 Acc                |r 130K  |r 6   |r +20%|r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2++     | Kali Yama        | +10 Dmg               |r 80K   |r 6   |r +0% |r 35  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 4.4 |r 8.8 |
+| AC/2++     | Mydron           | +20 Stb.Dmg           |r 90K   |r 6   |r +0% |r 25  |r 25  |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/2+++    | Imperator        | +4 Acc, +50% Crit     |r 150K  |r 6   |r +20%|r 25  |r 5   |r 120|r 480|r 720|r 25 |r 4 |r -5%|r 3.1 |r 6.3 |
+| AC/20      | Kali Yama        |                       |r 180K  |r 14  |r +0% |r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20+     | Federated        | +25% Crit             |r 180K  |r 14  |r +0% |r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20+     | Defiance         | +2 Acc                |r 270K  |r 14  |r +10%|r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20+     | Imperator        | +10 Dmg               |r 190K  |r 14  |r +0% |r 110 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.5 |r 4.6 |
+| AC/20+     | Mydron           | +10 Stb.Dmg           |r 190K  |r 14  |r +0% |r 100 |r 50  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20++    | Federated        | +50% Crit             |r 190K  |r 14  |r +0% |r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20++    | Kali Yama        | +10 Dmg, +10 Stb.Dmg  |r 200K  |r 14  |r +0% |r 110 |r 50  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.5 |r 4.6 |
+| AC/20++    | Defiance         | +4 Acc                |r 370K  |r 14  |r +20%|r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20++    | Imperator        | +20 Dmg               |r 210K  |r 14  |r +0% |r 120 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 6.0 |r 5.0 |
+| AC/20++    | Mydron           | +20 Stb.Dmg           |r 200K  |r 14  |r +0% |r 100 |r 60  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20+++   | Kali Yama        |                       |r 180K  |r 14  |r +0% |r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 5.0 |r 4.2 |
+| AC/20+++   | Kali Yama        | +20 Dmg, +20 Stb.Dmg  |r 230K  |r 14  |r +0% |r 120 |r 60  |r 0  |r 180|r 270|r 5  |r 24|r -20%|r 6.0 |r 5.0 |
+| AC/5       | GM               |                       |r 100K  |r 8   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5+      | Federated        | +25% Crit             |r 110K  |r 8   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5+      | Defiance         | +2 Acc                |r 170K  |r 8   |r +10%|r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5+      | Imperator        | +10 Stb.Dmg           |r 120K  |r 8   |r +0% |r 45  |r 20  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5+      | Kali Yama        | +5 Dmg                |r 120K  |r 8   |r +0% |r 50  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 5.0 |r 6.3 |
+| AC/5++     | Federated        | +50% Crit             |r 120K  |r 8   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5++     | Mydron           | +2 Acc, +10 Stb.Dmg   |r 190K  |r 8   |r +10%|r 45  |r 20  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5++     | Defiance         | +4 Acc                |r 240K  |r 8   |r +20%|r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5++     | Imperator        | +20 Stb.Dmg           |r 140K  |r 8   |r +0% |r 45  |r 30  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| AC/5++     | Kali Yama        | +10 Dmg               |r 130K  |r 8   |r +0% |r 55  |r 10  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 5.5 |r 6.9 |
+| AC/5+++    | Mydron           | +4 Acc, +20 Stb.Dmg   |r 270K  |r 8   |r +20%|r 45  |r 30  |r 90 |r 360|r 540|r 15 |r 8 |r -10%|r 4.5 |r 5.6 |
+| LB 10-X++  | Western          | Lostech, +2 Dmg, -1 Ton|r 270K  |r 10  |r +0% |r 12  |r 5   |r 0  |r 300|r 450|r 64 |r 10|r -15%|r 6.9 |r 9.6 |
+| LB 10-X+   | Western          | Lostech, +1 Dmg, -0.5 Ton|r 250K  |r 10.5|r +0% |r 11  |r 5   |r 0  |r 300|r 450|r 64 |r 10|r -15%|r 6.1 |r 8.8 |
+| LB 10-X    | Western          | Lostech               |r 230K  |r 11  |r +0% |r 10  |r 5   |r 0  |r 300|r 450|r 64 |r 10|r -15%|r 5.3 |r 8.0 |
+| LB 20-X++  | Shengli Arms     | Lostech, +4 Stb.Dmg, -2 Tons|r 260K  |r 12  |r +0% |r 20  |r 14  |r 0  |r 180|r 270|r 30 |r 20|r -20%|r 6.7 |r 6.0 |
+| LB 20-X+   | Shengli Arms     | Lostech, +2 Stb.Dmg, -1 Ton|r 250K  |r 13  |r +0% |r 20  |r 12  |r 0  |r 180|r 270|r 30 |r 20|r -20%|r 6.3 |r 6.0 |
+| LB 20-X    | Shengli Arms     | Lostech               |r 240K  |r 14  |r +0% |r 20  |r 10  |r 0  |r 180|r 270|r 30 |r 20|r -20%|r 6.0 |r 6.0 |
+| LB 2-X     | Defiance         | Lostech               |r 150K  |r 5   |r +0% |r 4   |r 1   |r 120|r 480|r 720|r 300|r 2 |r -5%|r 6.9 |r 24.0|
+| LB 2-X+    | Defiance         | Lostech, +1 Dmg, +25% Crit|r 190K  |r 5   |r +0% |r 5   |r 1   |r 120|r 480|r 720|r 300|r 2 |r -5%|r 8.6 |r 30.0|
+| LB 2-X++   | Defiance         | Lostech, +2 Dmg, +50% Crit|r 240K  |r 5   |r +0% |r 6   |r 1   |r 120|r 480|r 720|r 300|r 2 |r -5%|r 10.3|r 36.0|
+| LB 5-X++   | GM               | Lostech, +4 Stb.Dmg, -1 Ton|r 230K  |r 7   |r +0% |r 6   |r 6   |r 90 |r 360|r 540|r 150|r 6 |r -10%|r 6.7 |r 10.0|
+| LB 5-X+    | GM               | Lostech, +2 Stb.Dmg, -0.5 Ton|r 200K  |r 7.5 |r +0% |r 6   |r 4   |r 90 |r 360|r 540|r 150|r 6 |r -10%|r 6.3 |r 10.0|
+| LB 5-X     | GM               | Lostech               |r 170K  |r 8   |r +0% |r 6   |r 2   |r 90 |r 360|r 540|r 150|r 6 |r -10%|r 6.0 |r 10.0|
+| UAC/10++   | Federated        | Lostech, +10 Stb.Dmg, -3 Tons|r 520K  |r 10  |r +0% |r 60  |r 30  |r 0  |r 300|r 450|r 8  |r 24|r -15%|r 6.7 |r 5.0 |
+| UAC/10+    | Federated        | Lostech, +5 Stb.Dmg, -1.5 Tons|r 450K  |r 11.5|r +0% |r 60  |r 25  |r 0  |r 300|r 450|r 8  |r 24|r -15%|r 6.2 |r 5.0 |
+| UAC/10     | Federated        | Lostech               |r 320K  |r 13  |r +0% |r 60  |r 20  |r 0  |r 300|r 450|r 8  |r 24|r -15%|r 5.7 |r 5.0 |
+| UAC/2++    | Imperator        | Lostech, +10 Dmg, -2 Tons|r 390K  |r 5   |r +0% |r 35  |r 5   |r 120|r 480|r 720|r 25 |r 8 |r -5%|r 8.8 |r 8.8 |
+| UAC/2+     | Imperator        | Lostech, +5 Dmg, -1 Ton|r 310K  |r 6   |r +0% |r 30  |r 5   |r 120|r 480|r 720|r 25 |r 8 |r -5%|r 6.7 |r 7.5 |
+| UAC/2      | Imperator        | Lostech               |r 200K  |r 7   |r +0% |r 25  |r 5   |r 120|r 480|r 720|r 25 |r 8 |r -5%|r 5.0 |r 6.3 |
+| UAC/20++   | Kali Yama        | Lostech, +20 Dmg, -3 Tons|r 650K  |r 12  |r +0% |r 120 |r 40  |r 0  |r 180|r 270|r 5  |r 48|r -20%|r 10.0|r 5.0 |
+| UAC/20+    | Kali Yama        | Lostech, +10 Dmg, -1.5 Tons|r 540K  |r 13.5|r +0% |r 110 |r 40  |r 0  |r 180|r 270|r 5  |r 48|r -20%|r 8.6 |r 4.6 |
+| UAC/20     | Kali Yama        | Lostech               |r 370K  |r 15  |r +0% |r 100 |r 40  |r 0  |r 180|r 270|r 5  |r 48|r -20%|r 7.4 |r 4.2 |
+| UAC/5++    | Mydron           | Lostech, -2 Recoil, -2 Tons|r 380K  |r 7   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 16|r -10%|r 8.2 |r 5.6 |
+| UAC/5+     | Mydron           | Lostech, -1 Recoil, -1 Ton|r 320K  |r 8   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 16|r -10%|r 7.5 |r 5.6 |
+| UAC/5      | Mydron           | Lostech               |r 220K  |r 9   |r +0% |r 45  |r 10  |r 90 |r 360|r 540|r 15 |r 16|r -10%|r 6.9 |r 5.6 |
+| Gauss Rifle+| SCI              | Lostech, -2 Tons      |r 2960K |r 13  |r +5% |r 75  |r 40  |r 180|r 360|r 660|r 8  |r 5 |r -20%|r 4.4 |r 15.0|
+| Gauss Rifle++| SCI              | Lostech, -2 Tons, -1 Slot|r 4440K |r 13  |r +5% |r 75  |r 40  |r 180|r 360|r 660|r 8  |r 5 |r -20%|r 4.4 |r 15.0|
+| Gauss Rifle| SCI              | Lostech               |r 1480K |r 15  |r +5% |r 75  |r 40  |r 180|r 360|r 660|r 8  |r 5 |r -20%|r 3.9 |r 15.0|
+
+Ballistic Weapons
+|* Weapon|* Company|* Notes|* Shop|
+| AC/10      | Western          |                       | Manufacturing Planets.|
+| AC/10+     | Imperator        | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| AC/10+     | Defiance         | +2 Acc                | Stars that are not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/10+     | Kali Yama        | +5 Dmg                | Stars that are not Capellan or Lyran.|
+| AC/10+     | Mydron           | +10 Stb.Dmg           | Any stars.|
+| AC/10++    | Imperator        | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| AC/10++    | Federated        | +25% Crit, +10 Stb.Dmg| Stars that are not Draconis or Capellan.|
+| AC/10++    | Defiance         | +4 Acc                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.|
+| AC/10++    | Kali Yama        | +10 Dmg               | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| AC/10++    | Mydron           | +20 Stb.Dmg           | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| AC/10+++   | Federated        | +50% Crit, +20 Stb.Dmg| Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| AC/10      | Western          | Lostech               | None|
+| AC/10      | Western          | Lostech               | None|
+| AC/2       | GM               |                       | Any stars.|
+| AC/2+      | Federated        | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| AC/2+      | Defiance         | +2 Acc                | Stars that are not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/2+      | Kali Yama        | +5 Dmg                | Stars that are not Capellan or Lyran.|
+| AC/2+      | Mydron           | +10 Stb.Dmg           | Any stars.|
+| AC/2++     | Federated        | +50% Crit             | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| AC/2++     | Imperator        | +2 Acc, +25% Crit     | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| AC/2++     | Defiance         | +4 Acc                | Stars that are Manufacturing and Rich, but not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/2++     | Kali Yama        | +10 Dmg               | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| AC/2++     | Mydron           | +20 Stb.Dmg           | Stars that are Manufacturing and Rich, but not Draconis or Capellan.<br>Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| AC/2+++    | Imperator        | +4 Acc, +50% Crit     | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| AC/20      | Kali Yama        |                       | Manufacturing Planets.|
+| AC/20+     | Federated        | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| AC/20+     | Defiance         | +2 Acc                | Stars that are not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/20+     | Imperator        | +10 Dmg               | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| AC/20+     | Mydron           | +10 Stb.Dmg           | Any stars.|
+| AC/20++    | Federated        | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| AC/20++    | Kali Yama        | +10 Dmg, +10 Stb.Dmg  | Stars that are not Capellan or Lyran.|
+| AC/20++    | Defiance         | +4 Acc                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.|
+| AC/20++    | Imperator        | +20 Dmg               | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| AC/20++    | Mydron           | +20 Stb.Dmg           | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| AC/20+++   | Kali Yama        |                       | None|
+| AC/20+++   | Kali Yama        | +20 Dmg, +20 Stb.Dmg  | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| AC/5       | GM               |                       | Any stars.|
+| AC/5+      | Federated        | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| AC/5+      | Defiance         | +2 Acc                | Stars that are not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/5+      | Imperator        | +10 Stb.Dmg           | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| AC/5+      | Kali Yama        | +5 Dmg                | Stars that are not Capellan or Lyran.|
+| AC/5++     | Federated        | +50% Crit             | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| AC/5++     | Mydron           | +2 Acc, +10 Stb.Dmg   | Any stars.|
+| AC/5++     | Defiance         | +4 Acc                | Stars that are Manufacturing and Rich, but not Draconis, F.W.League, Capellan, or Taurian.|
+| AC/5++     | Imperator        | +20 Stb.Dmg           | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| AC/5++     | Kali Yama        | +10 Dmg               | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| AC/5+++    | Mydron           | +4 Acc, +20 Stb.Dmg   | Stars that are Manufacturing and Rich, but not Draconis or Capellan.<br>Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LB 10-X++  | Western          | Lostech, +2 Dmg, -1 Ton| None|
+| LB 10-X+   | Western          | Lostech, +1 Dmg, -0.5 Ton| None|
+| LB 10-X    | Western          | Lostech               | None|
+| LB 20-X++  | Shengli Arms     | Lostech, +4 Stb.Dmg, -2 Tons| None|
+| LB 20-X+   | Shengli Arms     | Lostech, +2 Stb.Dmg, -1 Ton| None|
+| LB 20-X    | Shengli Arms     | Lostech               | None|
+| LB 2-X     | Defiance         | Lostech               | None|
+| LB 2-X+    | Defiance         | Lostech, +1 Dmg, +25% Crit| None|
+| LB 2-X++   | Defiance         | Lostech, +2 Dmg, +50% Crit| None|
+| LB 5-X++   | GM               | Lostech, +4 Stb.Dmg, -1 Ton| None|
+| LB 5-X+    | GM               | Lostech, +2 Stb.Dmg, -0.5 Ton| None|
+| LB 5-X     | GM               | Lostech               | None|
+| UAC/10++   | Federated        | Lostech, +10 Stb.Dmg, -3 Tons| None|
+| UAC/10+    | Federated        | Lostech, +5 Stb.Dmg, -1.5 Tons| None|
+| UAC/10     | Federated        | Lostech               | None|
+| UAC/2++    | Imperator        | Lostech, +10 Dmg, -2 Tons| None|
+| UAC/2+     | Imperator        | Lostech, +5 Dmg, -1 Ton| None|
+| UAC/2      | Imperator        | Lostech               | None|
+| UAC/20++   | Kali Yama        | Lostech, +20 Dmg, -3 Tons| None|
+| UAC/20+    | Kali Yama        | Lostech, +10 Dmg, -1.5 Tons| None|
+| UAC/20     | Kali Yama        | Lostech               | None|
+| UAC/5++    | Mydron           | Lostech, -2 Recoil, -2 Tons| None|
+| UAC/5+     | Mydron           | Lostech, -1 Recoil, -1 Ton| None|
+| UAC/5      | Mydron           | Lostech               | None|
+| Gauss Rifle+| SCI              | Lostech, -2 Tons      | None|
+| Gauss Rifle++| SCI              | Lostech, -2 Tons, -1 Slot| None|
+| Gauss Rifle| SCI              | Lostech               | None|
+
+Energy Weapons
+|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Heat|*-2 Dmg/<br>Ton|*-2 Dmg/<br>Heat|
+|* Raw|* Stability|* Min|* Long|* Max|
+| COIL-L     | Herakleion       | Dmg. X Evasion        |r 360K  |r 4   |r +5% |r 35  |r -   |r 0  |r 300|r 450|r 70|r 8.8 |r 0.5 |
+| COIL-M     | Herakleion       | Dmg. X Evasion        |r 200K  |r 3   |r +5% |r 25  |r -   |r 0  |r 180|r 270|r 50|r 8.3 |r 0.5 |
+| L Laser    | Krupp            |                       |r 140K  |r 5   |r +5% |r 40  |r -   |r 0  |r 300|r 450|r 18|r 8.0 |r 2.2 |
+| L Laser+   | ExoStar          | +25% Crit             |r 150K  |r 5   |r +5% |r 40  |r -   |r 0  |r 300|r 450|r 18|r 8.0 |r 2.2 |
+| L Laser+   | Diverse Optics   | +1 Acc                |r 180K  |r 5   |r +10%|r 40  |r -   |r 0  |r 300|r 450|r 18|r 8.0 |r 2.2 |
+| L Laser+   | Intek            | +5 Dmg                |r 160K  |r 5   |r +5% |r 45  |r -   |r 0  |r 300|r 450|r 18|r 9.0 |r 2.5 |
+| L Laser++  | ExoStar          | +50% Crit             |r 160K  |r 5   |r +5% |r 40  |r -   |r 0  |r 300|r 450|r 18|r 8.0 |r 2.2 |
+| L Laser++  | Magna            | +5 Dmg, +1 Acc        |r 200K  |r 5   |r +10%|r 45  |r -   |r 0  |r 300|r 450|r 18|r 9.0 |r 2.5 |
+| L Laser++  | Diverse Optics   | +3 Acc                |r 250K  |r 5   |r +20%|r 40  |r -   |r 0  |r 300|r 450|r 18|r 8.0 |r 2.2 |
+| L Laser++  | Intek            | +10 Dmg               |r 180K  |r 5   |r +5% |r 50  |r -   |r 0  |r 300|r 450|r 18|r 10.0|r 2.8 |
+| L Laser+++ | Magna            | +10 Dmg, +3 Acc       |r 320K  |r 5   |r +20%|r 50  |r -   |r 0  |r 300|r 450|r 18|r 10.0|r 2.8 |
+| ER L Laser++| BlazeFire        | Lostech, +5 Dmg, -1 Ton|r 1830K |r 4   |r +5% |r 50  |r -   |r 0  |r 330|r 570|r 25|r 12.5|r 2.0 |
+| ER L Laser | SCI              | Lostech               |r 610K  |r 5   |r +5% |r 45  |r -   |r 0  |r 330|r 570|r 25|r 9.0 |r 1.8 |
+| ER L Laser+| Blankenburg 25   | Lostech, +5 Dmg       |r 1220K |r 5   |r +5% |r 50  |r -   |r 0  |r 330|r 570|r 25|r 10.0|r 2.0 |
+| L Pulse+   | Thunderbolt 12   | Lostech, +5 Dmg, -1 Ton|r 2000K |r 6   |r +10%|r 60  |r -   |r 0  |r 300|r 450|r 30|r 10.0|r 2.0 |
+| L Pulse++  | ExoStar          | Lostech, +10 Dmg, -1 Ton|r 2750K |r 6   |r +10%|r 65  |r -   |r 0  |r 300|r 450|r 30|r 10.8|r 2.2 |
+| L Pulse    | SCI              | Lostech               |r 990K  |r 7   |r +10%|r 55  |r -   |r 0  |r 300|r 450|r 30|r 7.9 |r 1.8 |
+| M Laser    | Hellion          |                       |r 60K   |r 1   |r +5% |r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser+   | ExoStar          | +25% Crit             |r 70K   |r 1   |r +5% |r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser+   | Intek            | +1 Acc                |r 80K   |r 1   |r +10%|r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser+   | Magna            | +5 Dmg                |r 70K   |r 1   |r +5% |r 30  |r -   |r 0  |r 180|r 270|r 12|r 30.0|r 2.5 |
+| M Laser++  | ExoStar          | +50% Crit             |r 70K   |r 1   |r +5% |r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser++  | Diverse Optics   | +1 Acc, +25% Crit     |r 80K   |r 1   |r +10%|r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser++  | Intek            | +3 Acc                |r 110K  |r 1   |r +20%|r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| M Laser++  | Magna            | +10 Dmg               |r 90K   |r 1   |r +5% |r 35  |r -   |r 0  |r 180|r 270|r 12|r 35.0|r 2.9 |
+| M Laser+++ | Diverse Optics   | +3 Acc, +50% Crit     |r 120K  |r 1   |r +20%|r 25  |r -   |r 0  |r 180|r 270|r 12|r 25.0|r 2.1 |
+| ER M Laser | SCI              | Lostech               |r 410K  |r 1   |r +5% |r 35  |r -   |r 0  |r 270|r 360|r 20|r 35.0|r 1.8 |
+| ER M Laser+| Magna VI         | Lostech, +5 Dmg       |r 820K  |r 1   |r +5% |r 40  |r -   |r 0  |r 270|r 360|r 20|r 40.0|r 2.0 |
+| ER M Laser++| BrightBloom      | Lostech, +10 Dmg      |r 1230K |r 1   |r +5% |r 45  |r -   |r 0  |r 270|r 360|r 20|r 45.0|r 2.3 |
+| M Pulse    | SCI              | Lostech               |r 500K  |r 2   |r +10%|r 40  |r -   |r 0  |r 180|r 270|r 20|r 20.0|r 2.0 |
+| M Pulse+   | Raker IV         | Lostech, -2 Heat      |r 1100K |r 2   |r +10%|r 45  |r -   |r 0  |r 180|r 270|r 18|r 22.5|r 2.5 |
+| M Pulse++  | Magna 400P       | Lostech, -4 Heat, +1 Acc|r 1750K |r 2   |r +15%|r 50  |r -   |r 0  |r 180|r 270|r 16|r 25.0|r 3.1 |
+| TAG        | Garret           | Lostech, +10% Dmg. Mark, * Energy, Ballistic|r 340K  |r 1   |r +0% |r 1   |r -   |r 0  |r 180|r 270|r 5 |r 1.0 |r 0.2 |
+| TAG+       | Garret           | Lostech, +15% Dmg. Mark, * Energy, Ballistic|r 340K  |r 1   |r +0% |r 1   |r -   |r 0  |r 180|r 270|r 5 |r 1.0 |r 0.2 |
+| TAG++      | Garret           | Lostech, +20% Dmg. Mark, * Energy, Ballistic|r 340K  |r 1   |r +0% |r 1   |r -   |r 0  |r 180|r 270|r 5 |r 1.0 |r 0.2 |
+| PPC        | Magna            |                       |r 180K  |r 7   |r +0% |r 50  |r 20  |r 90 |r 360|r 540|r 35|r 7.1 |r 1.4 |
+| PPC+       | Ceres Arms       | +15 Stb.Dmg           |r 200K  |r 7   |r +0% |r 50  |r 35  |r 90 |r 360|r 540|r 35|r 7.1 |r 1.4 |
+| PPC+       | Donal            | +5 Dmg                |r 190K  |r 7   |r +0% |r 55  |r 20  |r 90 |r 360|r 540|r 35|r 7.9 |r 1.6 |
+| PPC+       | Tiegart          | +2 Acc                |r 270K  |r 7   |r +10%|r 50  |r 20  |r 90 |r 360|r 540|r 35|r 7.1 |r 1.4 |
+| PPC++      | Ceres Arms       | +30 Stb.Dmg           |r 230K  |r 7   |r +0% |r 50  |r 50  |r 90 |r 360|r 540|r 35|r 7.1 |r 1.4 |
+| PPC++      | Donal            | +10 Dmg               |r 210K  |r 7   |r +0% |r 60  |r 20  |r 90 |r 360|r 540|r 35|r 8.6 |r 1.7 |
+| PPC++      | Tiegart          | +4 Acc                |r 360K  |r 7   |r +20%|r 50  |r 20  |r 90 |r 360|r 540|r 35|r 7.1 |r 1.4 |
+| ER PPC+    | Magna            | Lostech, +5 Dmg, -1 Ton|r 2600K |r 6   |r +0% |r 65  |r 20  |r 0  |r 510|r 690|r 45|r 10.8|r 1.4 |
+| ER PPC++   | Tiegart          | Lostech, +10 Dmg, -1 Ton|r 4000K |r 6   |r +0% |r 70  |r 20  |r 0  |r 510|r 690|r 45|r 11.7|r 1.6 |
+| ER PPC     | Kong Interstellar| Lostech               |r 1200K |r 7   |r +0% |r 60  |r 20  |r 0  |r 510|r 690|r 45|r 8.6 |r 1.3 |
+| Snub PPC   | Fusigon          | Lostech               |r 260K  |r 6   |r +0% |r 15  |r 5   |r 0  |r 270|r 360|r 35|r 12.5|r 2.1 |
+| Snub PPC+  | Ceres Arms       | Lostech, +5 Stb.Dmg   |r 300K  |r 6   |r +0% |r 15  |r 10  |r 0  |r 270|r 360|r 35|r 12.5|r 2.1 |
+| Snub PPC+  | Donal            | Lostech, +5 Dmg       |r 330K  |r 6   |r +0% |r 20  |r 5   |r 0  |r 270|r 360|r 35|r 16.7|r 2.9 |
+| Snub PPC+  | Magna            | Lostech, -5 Heat      |r 340K  |r 6   |r +0% |r 15  |r 5   |r 0  |r 270|r 360|r 30|r 12.5|r 2.5 |
+| Snub PPC++ | Ceres Arms       | Lostech, +10 Stb.Dmg  |r 340K  |r 6   |r +0% |r 15  |r 15  |r 0  |r 270|r 360|r 35|r 12.5|r 2.1 |
+| Snub PPC++ | Donal            | Lostech, +10 Dmg      |r 400K  |r 6   |r +0% |r 25  |r 5   |r 0  |r 270|r 360|r 35|r 20.8|r 3.6 |
+| Snub PPC++ | Magna            | Lostech, -10 Heat     |r 430K  |r 6   |r +0% |r 15  |r 5   |r 0  |r 270|r 360|r 25|r 12.5|r 3.0 |
+
+Energy Weapons
+|* Weapon|* Company|* Notes|* Shop|
+| COIL-L     | Herakleion       | Dmg. X Evasion        | None|
+| COIL-M     | Herakleion       | Dmg. X Evasion        | None|
+| L Laser    | Krupp            |                       | Manufacturing Planets.|
+| L Laser+   | ExoStar          | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| L Laser+   | Diverse Optics   | +1 Acc                | Any stars.|
+| L Laser+   | Intek            | +5 Dmg                | Stars that are not Draconis or Capellan.|
+| L Laser++  | ExoStar          | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| L Laser++  | Magna            | +5 Dmg, +1 Acc        | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| L Laser++  | Diverse Optics   | +3 Acc                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Fed.Sun or Lyran.|
+| L Laser++  | Intek            | +10 Dmg               | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| L Laser+++ | Magna            | +10 Dmg, +3 Acc       | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| ER L Laser++| BlazeFire        | Lostech, +5 Dmg, -1 Ton| None|
+| ER L Laser | SCI              | Lostech               | None|
+| ER L Laser+| Blankenburg 25   | Lostech, +5 Dmg       | None|
+| L Pulse+   | Thunderbolt 12   | Lostech, +5 Dmg, -1 Ton| None|
+| L Pulse++  | ExoStar          | Lostech, +10 Dmg, -1 Ton| None|
+| L Pulse    | SCI              | Lostech               | None|
+| M Laser    | Hellion          |                       | Any stars.|
+| M Laser+   | ExoStar          | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| M Laser+   | Intek            | +1 Acc                | Stars that are not Draconis or Capellan.|
+| M Laser+   | Magna            | +5 Dmg                | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| M Laser++  | ExoStar          | +50% Crit             | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| M Laser++  | Diverse Optics   | +1 Acc, +25% Crit     | Any stars.|
+| M Laser++  | Intek            | +3 Acc                | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| M Laser++  | Magna            | +10 Dmg               | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| M Laser+++ | Diverse Optics   | +3 Acc, +50% Crit     | None|
+| ER M Laser | SCI              | Lostech               | None|
+| ER M Laser+| Magna VI         | Lostech, +5 Dmg       | None|
+| ER M Laser++| BrightBloom      | Lostech, +10 Dmg      | None|
+| M Pulse    | SCI              | Lostech               | None|
+| M Pulse+   | Raker IV         | Lostech, -2 Heat      | None|
+| M Pulse++  | Magna 400P       | Lostech, -4 Heat, +1 Acc| None|
+| TAG        | Garret           | Lostech, +10% Dmg. Mark, * Energy, Ballistic| None|
+| TAG+       | Garret           | Lostech, +15% Dmg. Mark, * Energy, Ballistic| None|
+| TAG++      | Garret           | Lostech, +20% Dmg. Mark, * Energy, Ballistic| None|
+| PPC        | Magna            |                       | Manufacturing Planets.|
+| PPC+       | Ceres Arms       | +15 Stb.Dmg           | Stars that are not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| PPC+       | Donal            | +5 Dmg                | Black Market, Non-Starter Planets.<br>Stars that are not Canopus, Fed.Sun, Lyran, or Capellan.<br>Stars that are not Draconis, F.W.League, Capellan, or Taurian.|
+| PPC+       | Tiegart          | +2 Acc                | Any stars.|
+| PPC++      | Ceres Arms       | +30 Stb.Dmg           | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| PPC++      | Donal            | +10 Dmg               | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.|
+| PPC++      | Tiegart          | +4 Acc                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| ER PPC+    | Magna            | Lostech, +5 Dmg, -1 Ton| None|
+| ER PPC++   | Tiegart          | Lostech, +10 Dmg, -1 Ton| None|
+| ER PPC     | Kong Interstellar| Lostech               | None|
+| Snub PPC   | Fusigon          | Lostech               | None|
+| Snub PPC+  | Ceres Arms       | Lostech, +5 Stb.Dmg   | None|
+| Snub PPC+  | Donal            | Lostech, +5 Dmg       | None|
+| Snub PPC+  | Magna            | Lostech, -5 Heat      | None|
+| Snub PPC++ | Ceres Arms       | Lostech, +10 Stb.Dmg  | None|
+| Snub PPC++ | Donal            | Lostech, +10 Dmg      | None|
+| Snub PPC++ | Magna            | Lostech, -10 Heat     | None|
+
+Missile Weapons
+|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+4 Damage|*+3 Range|*-2 Ammo|*-2 Heat|* Dmg/<br>Ton|*-2 Dmg/<br>Heat|
+|*+2 Raw|*+2 Stability|* Min|* Long|* Max|* 30x|
+| LRM10      | Jackson          |                       |r 150K  |r 5   |r +0% | 4x10| 40 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10+     | LongFire         | +25% Crit             |r 160K  |r 5   |r +0% | 4x10| 40 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10+     | Delta            | +1 Stb.Dmg            |r 160K  |r 5   |r +0% | 4x10| 40 | 3x10| 30 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10+     | Telos            | +1 Dmg                |r 180K  |r 5   |r +0% | 5x10| 50 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 6.3 |r 5.0 |
+| LRM10++    | LongFire         | +50% Crit             |r 170K  |r 5   |r +0% | 4x10| 40 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10++    | Zeus             | +25% Crit, +1 Stb.Dmg |r 170K  |r 5   |r +0% | 4x10| 40 | 3x10| 30 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10++    | Delta            | +2 Stb.Dmg            |r 200K  |r 5   |r +0% | 4x10| 40 | 4x10| 40 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM10++    | Telos            | +2 Dmg                |r 200K  |r 5   |r +0% | 6x10| 60 | 2x10| 20 |r 180|r 420|r 630|r 120|r 10|r 7.5 |r 6.0 |
+| LRM10+++   | Zeus             | +50% Crit, +2 Stb.Dmg |r 200K  |r 5   |r +0% | 4x10| 40 | 4x10| 40 |r 180|r 420|r 630|r 120|r 10|r 5.0 |r 4.0 |
+| LRM15      | Irian            |                       |r 220K  |r 7   |r +0% | 4x15| 60 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15+     | LongFire         | +25% Crit             |r 230K  |r 7   |r +0% | 4x15| 60 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15+     | Delta            | +1 Stb.Dmg            |r 250K  |r 7   |r +0% | 4x15| 60 | 3x15| 45 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15+     | Telos            | +1 Dmg                |r 260K  |r 7   |r +0% | 5x15| 75 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 6.8 |r 5.4 |
+| LRM15++    | LongFire         | +50% Crit             |r 240K  |r 7   |r +0% | 4x15| 60 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15++    | Zeus             | +25% Crit, +1 Stb.Dmg |r 260K  |r 7   |r +0% | 4x15| 60 | 3x15| 45 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15++    | Delta            | +2 Stb.Dmg            |r 300K  |r 7   |r +0% | 4x15| 60 | 4x15| 60 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM15++    | Telos            | +2 Dmg                |r 310K  |r 7   |r +0% | 6x15| 90 | 2x15| 30 |r 180|r 420|r 630|r 120|r 14|r 8.2 |r 6.4 |
+| LRM15+++   | Zeus             | +50% Crit, +2 Stb.Dmg |r 290K  |r 7   |r +0% | 4x15| 60 | 4x15| 60 |r 180|r 420|r 630|r 120|r 14|r 5.5 |r 4.3 |
+| LRM20      | Jackson          |                       |r 290K  |r 10  |r +0% | 4x20| 80 | 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20+     | LongFire         | +25% Crit             |r 300K  |r 10  |r +0% | 4x20| 80 | 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20+     | Delta            | +1 Stb.Dmg            |r 320K  |r 10  |r +0% | 4x20| 80 | 3x20| 60 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20+     | Telos            | +1 Dmg                |r 340K  |r 10  |r +0% | 5x20| 100| 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 6.7 |r 5.6 |
+| LRM20++    | LongFire         | +50% Crit             |r 310K  |r 10  |r +0% | 4x20| 80 | 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20++    | Zeus             | +25% Crit, +1 Stb.Dmg |r 330K  |r 10  |r +0% | 4x20| 80 | 3x20| 60 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20++    | Delta            | +2 Stb.Dmg            |r 350K  |r 10  |r +0% | 4x20| 80 | 4x20| 80 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM20++    | Telos            | +2 Dmg                |r 400K  |r 10  |r +0% | 6x20| 120| 2x20| 40 |r 180|r 420|r 630|r 120|r 18|r 8.0 |r 6.7 |
+| LRM20+++   | Zeus             | +50% Crit, +2 Stb.Dmg |r 370K  |r 10  |r +0% | 4x20| 80 | 4x20| 80 |r 180|r 420|r 630|r 120|r 18|r 5.3 |r 4.4 |
+| LRM5       | Irian            |                       |r 80K   |r 2   |r +0% | 4x5 | 20 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5+      | LongFire         | +25% Crit             |r 90K   |r 2   |r +0% | 4x5 | 20 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5+      | Delta            | +1 Stb.Dmg            |r 80K   |r 2   |r +0% | 4x5 | 20 | 3x5 | 15 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5+      | Telos            | +1 Dmg                |r 90K   |r 2   |r +0% | 5x5 | 25 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 6.3 |r 4.2 |
+| LRM5++     | LongFire         | +50% Crit             |r 100K  |r 2   |r +0% | 4x5 | 20 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5++     | Zeus             | +25% Crit, +1 Stb.Dmg |r 100K  |r 2   |r +0% | 4x5 | 20 | 3x5 | 15 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5++     | Delta            | +2 Stb.Dmg            |r 100K  |r 2   |r +0% | 4x5 | 20 | 4x5 | 20 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| LRM5++     | Telos            | +2 Dmg                |r 110K  |r 2   |r +0% | 6x5 | 30 | 2x5 | 10 |r 180|r 420|r 630|r 120|r 6 |r 7.5 |r 5.0 |
+| LRM5+++    | Zeus             | +50% Crit, +2 Stb.Dmg |r 120K  |r 2   |r +0% | 4x5 | 20 | 4x5 | 20 |r 180|r 420|r 630|r 120|r 6 |r 5.0 |r 3.3 |
+| Narc Beacon| Irian            | Lostech, +25% Dmg. Mark, * Missile|r 310K  |r 3   |r +20%|+2 1      |+2 -      |r 0  |r 180|r 270|r 6  |r 0 |r 0.1 |r NaN |
+| Narc Beacon+| Irian            | Lostech, +50% Dmg. Mark, * Missile|r 440K  |r 3   |r +20%|+2 1      |+2 -      |r 0  |r 180|r 270|r 6  |r 0 |r 0.1 |r NaN |
+| Narc Beacon++| Irian            | Lostech, +75% Dmg. Mark, * Missile|r 700K  |r 3   |r +20%|+2 1      |+2 -      |r 0  |r 180|r 270|r 6  |r 0 |r 0.1 |r NaN |
+| SRM2       | Holly            |                       |r 20K   |r 1   |r +0% | 8x2 | 16 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 8.0 |r 4.0 |
+| SRM2+      | Irian            | +25% Crit             |r 30K   |r 1   |r +0% | 8x2 | 16 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 8.0 |r 4.0 |
+| SRM2+      | Holly            | +2 Dmg                |r 30K   |r 1   |r +0% | 10x2| 20 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 10.0|r 5.0 |
+| SRM2++     | Irian            | +50% Crit             |r 40K   |r 1   |r +0% | 8x2 | 16 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 8.0 |r 4.0 |
+| SRM2++     | Valiant          | +2 Dmg, +1 Stb.Dmg    |r 30K   |r 1   |r +0% | 10x2| 20 | 4x2 | 8  |r 0  |r 180|r 270|r 100|r 4 |r 10.0|r 5.0 |
+| SRM2++     | Holly            | +4 Dmg                |r 40K   |r 1   |r +0% | 12x2| 24 | 3x2 | 6  |r 0  |r 180|r 270|r 100|r 4 |r 12.0|r 6.0 |
+| SRM2+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    |r 40K   |r 1   |r +0% | 12x2| 24 | 5x2 | 10 |r 0  |r 180|r 270|r 100|r 4 |r 12.0|r 6.0 |
+| SRM4       | TharHes          |                       |r 60K   |r 2   |r +0% | 8x4 | 32 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 8.0 |r 4.0 |
+| SRM4+      | Irian            | +25% Crit             |r 60K   |r 2   |r +0% | 8x4 | 32 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 8.0 |r 4.0 |
+| SRM4+      | Holly            | +2 Dmg                |r 70K   |r 2   |r +0% | 10x4| 40 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 10.0|r 5.0 |
+| SRM4++     | Irian            | +50% Crit             |r 70K   |r 2   |r +0% | 8x4 | 32 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 8.0 |r 4.0 |
+| SRM4++     | Valiant          | +2 Dmg, +1 Stb.Dmg    |r 80K   |r 2   |r +0% | 10x4| 40 | 4x4 | 16 |r 0  |r 180|r 270|r 100|r 8 |r 10.0|r 5.0 |
+| SRM4++     | Holly            | +4 Dmg                |r 90K   |r 2   |r +0% | 12x4| 48 | 3x4 | 12 |r 0  |r 180|r 270|r 100|r 8 |r 12.0|r 6.0 |
+| SRM4+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    |r 90K   |r 2   |r +0% | 12x4| 48 | 5x4 | 20 |r 0  |r 180|r 270|r 100|r 8 |r 12.0|r 6.0 |
+| SRM6       | TharHes          |                       |r 90K   |r 3   |r +0% | 8x6 | 48 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 9.6 |r 4.0 |
+| SRM6+      | Irian            | +25% Crit             |r 100K  |r 3   |r +0% | 8x6 | 48 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 9.6 |r 4.0 |
+| SRM6+      | Holly            | +2 Dmg                |r 110K  |r 3   |r +0% | 10x6| 60 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 12.0|r 5.0 |
+| SRM6++     | Irian            | +50% Crit             |r 100K  |r 3   |r +0% | 8x6 | 48 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 9.6 |r 4.0 |
+| SRM6++     | Valiant          | +2 Dmg, +1 Stb.Dmg    |r 120K  |r 3   |r +0% | 10x6| 60 | 4x6 | 24 |r 0  |r 180|r 270|r 100|r 12|r 12.0|r 5.0 |
+| SRM6++     | Holly            | +4 Dmg                |r 130K  |r 3   |r +0% | 12x6| 72 | 3x6 | 18 |r 0  |r 180|r 270|r 100|r 12|r 14.4|r 6.0 |
+| SRM6+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    |r 140K  |r 3   |r +0% | 12x6| 72 | 5x6 | 30 |r 0  |r 180|r 270|r 100|r 12|r 14.4|r 6.0 |
+| Infernos   | Hovertec         | Lostech, * 8 Volleys  |r 110K  |r 3   |r +0% | 2x2 | 4  | 5 (H)x2| 10 (H)|r 0  |r 180|r 270|r 16 |r 3 |r 0.6 |r 1.3 |
+| Infernos+  | Hovertec         | Lostech, * 8 Volleys, +5 Dmg. (H)|r 250K  |r 3   |r +0% | 2x2 | 4  | 10 (H)x2| 20 (H)|r 0  |r 180|r 270|r 16 |r 3 |r 0.6 |r 1.3 |
+| Infernos++ | Hovertec         | Lostech, * 8 Volleys, +10 Dmg. (H)|r 440K  |r 3   |r +0% | 2x2 | 4  | 15 (H)x2| 30 (H)|r 0  |r 180|r 270|r 16 |r 3 |r 0.6 |r 1.3 |
+
+Missile Weapons
+|* Weapon|* Company|* Notes|* Shop|
+| LRM10      | Jackson          |                       | Any stars.|
+| LRM10+     | LongFire         | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM10+     | Delta            | +1 Stb.Dmg            | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| LRM10+     | Telos            | +1 Dmg                | Stars that are not Draconis or Capellan.|
+| LRM10++    | LongFire         | +50% Crit             | Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM10++    | Zeus             | +25% Crit, +1 Stb.Dmg | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| LRM10++    | Delta            | +2 Stb.Dmg            | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| LRM10++    | Telos            | +2 Dmg                | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| LRM10+++   | Zeus             | +50% Crit, +2 Stb.Dmg | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| LRM15      | Irian            |                       | Manufacturing Planets.|
+| LRM15+     | LongFire         | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM15+     | Delta            | +1 Stb.Dmg            | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| LRM15+     | Telos            | +1 Dmg                | Stars that are not Draconis or Capellan.|
+| LRM15++    | LongFire         | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM15++    | Zeus             | +25% Crit, +1 Stb.Dmg | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| LRM15++    | Delta            | +2 Stb.Dmg            | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| LRM15++    | Telos            | +2 Dmg                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| LRM15+++   | Zeus             | +50% Crit, +2 Stb.Dmg | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| LRM20      | Jackson          |                       | Manufacturing Planets.|
+| LRM20+     | LongFire         | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM20+     | Delta            | +1 Stb.Dmg            | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| LRM20+     | Telos            | +1 Dmg                | Stars that are not Draconis or Capellan.|
+| LRM20++    | LongFire         | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM20++    | Zeus             | +25% Crit, +1 Stb.Dmg | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| LRM20++    | Delta            | +2 Stb.Dmg            | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| LRM20++    | Telos            | +2 Dmg                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| LRM20+++   | Zeus             | +50% Crit, +2 Stb.Dmg | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| LRM5       | Irian            |                       | Any stars.|
+| LRM5+      | LongFire         | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM5+      | Delta            | +1 Stb.Dmg            | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| LRM5+      | Telos            | +1 Dmg                | Stars that are not Draconis or Capellan.|
+| LRM5++     | LongFire         | +50% Crit             | Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| LRM5++     | Zeus             | +25% Crit, +1 Stb.Dmg | Black Market, Non-Starter Planets.<br>Stars that are not Draconis or Capellan.|
+| LRM5++     | Delta            | +2 Stb.Dmg            | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| LRM5++     | Telos            | +2 Dmg                | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| LRM5+++    | Zeus             | +50% Crit, +2 Stb.Dmg | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| Narc Beacon| Irian            | Lostech, +25% Dmg. Mark, * Missile| None|
+| Narc Beacon+| Irian            | Lostech, +50% Dmg. Mark, * Missile| None|
+| Narc Beacon++| Irian            | Lostech, +75% Dmg. Mark, * Missile| None|
+| SRM2       | Holly            |                       | Any stars.|
+| SRM2+      | Irian            | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| SRM2+      | Holly            | +2 Dmg                | Any stars.|
+| SRM2++     | Irian            | +50% Crit             | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| SRM2++     | Valiant          | +2 Dmg, +1 Stb.Dmg    | Stars that are not Draconis or Capellan.|
+| SRM2++     | Holly            | +4 Dmg                | Stars that are Manufacturing and Rich, but not Draconis or Capellan.<br>Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| SRM2+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| SRM4       | TharHes          |                       | Any stars.|
+| SRM4+      | Irian            | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| SRM4+      | Holly            | +2 Dmg                | Any stars.|
+| SRM4++     | Irian            | +50% Crit             | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| SRM4++     | Valiant          | +2 Dmg, +1 Stb.Dmg    | Stars that are not Draconis or Capellan.|
+| SRM4++     | Holly            | +4 Dmg                | Stars that are Manufacturing and Rich, but not Draconis or Capellan.<br>Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| SRM4+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| SRM6       | TharHes          |                       | Manufacturing Planets.|
+| SRM6+      | Irian            | +25% Crit             | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| SRM6+      | Holly            | +2 Dmg                | Any stars.|
+| SRM6++     | Irian            | +50% Crit             | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Capellan or Lyran.|
+| SRM6++     | Valiant          | +2 Dmg, +1 Stb.Dmg    | Stars that are not Draconis or Capellan.|
+| SRM6++     | Holly            | +4 Dmg                | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| SRM6+++    | Valiant          | +4 Dmg, +2 Stb.Dmg    | Research, Non-Starter Planets.<br>Former Star League, Non-Starter Planets.<br>Stars that are Manufacturing, Rich, and Research, but not Draconis or Capellan.|
+| Infernos   | Hovertec         | Lostech, * 8 Volleys  | None|
+| Infernos+  | Hovertec         | Lostech, * 8 Volleys, +5 Dmg. (H)| None|
+| Infernos++ | Hovertec         | Lostech, * 8 Volleys, +10 Dmg. (H)| None|
+
+Support Weapons
+|*-2 Weapon|*-2 Company|*-2 Notes|*-2 Price|*-2 Ton|*-2 Acc|*+2 Damage|*+3 Range|*-2 Heat|*-2 Dmg/<br>Ton|*-2 Dmg/<br>Heat|
+|* Raw|* Stability|* Min|* Long|* Max|
+| COIL-S     | Herakleion       | Dmg. X Evasion        |r 150K  |r 2   |r +5% |r 15  |r -   |r 0  |r 150|r 150|r 30|r 7.5 |r 0.5 |
+| Flamer     | Skylight         | * 4 Ammo              |r 20K   |r 1   |r +0% |r -   |r 6 (H)|r 0  |r 90 |r 90 |r 0 |r -   |r NaN |
+| Flamer+    | Hotshot          | * 4 Ammo, +5 Dmg      |r 30K   |r 1   |r +0% |r 10  |r 6 (H)|r 0  |r 90 |r 90 |r 0 |r -   |r NaN |
+| Flamer++   | Olympus          | * 4 Ammo, +5 Dmg. (H) |r 30K   |r 1   |r +0% |r -   |r 10 (H)|r 0  |r 90 |r 90 |r 0 |r -   |r NaN |
+| Flamer+++  | Skylight         | * 40 Ammo             |r 20K   |r 1   |r +0% |r 5   |r 15 (H)|r 0  |r 90 |r 90 |r 0 |r -   |r NaN |
+| S Laser    | Martell          |                       |r 20K   |r 0.5 |r +5% |r 20  |r -   |r 0  |r 90 |r 90 |r 6 |r 40.0|r 3.3 |
+| S Laser+   | ExoStar          | +25% Crit             |r 20K   |r 0.5 |r +5% |r 20  |r -   |r 0  |r 90 |r 90 |r 6 |r 40.0|r 3.3 |
+| S Laser+   | Diverse Optics   | +1 Acc                |r 30K   |r 0.5 |r +10%|r 20  |r -   |r 0  |r 90 |r 90 |r 6 |r 40.0|r 3.3 |
+| S Laser+   | Magna            | +5 Dmg                |r 30K   |r 0.5 |r +5% |r 25  |r -   |r 0  |r 90 |r 90 |r 6 |r 50.0|r 4.2 |
+| S Laser++  | ExoStar          | +50% Crit             |r 30K   |r 0.5 |r +5% |r 20  |r -   |r 0  |r 90 |r 90 |r 6 |r 40.0|r 3.3 |
+| S Laser++  | Intek            | +5 Dmg, +25% Crit     |r 30K   |r 0.5 |r +5% |r 25  |r -   |r 0  |r 90 |r 90 |r 6 |r 50.0|r 4.2 |
+| S Laser++  | Diverse Optics   | +3 Acc                |r 40K   |r 0.5 |r +20%|r 20  |r -   |r 0  |r 90 |r 90 |r 6 |r 40.0|r 3.3 |
+| S Laser++  | Magna            | +10 Dmg               |r 40K   |r 0.5 |r +5% |r 30  |r -   |r 0  |r 90 |r 90 |r 6 |r 60.0|r 5.0 |
+| S Laser+++ | Intek            | +10 Dmg, +50% Crit    |r 40K   |r 0.5 |r +5% |r 30  |r -   |r 0  |r 90 |r 90 |r 6 |r 60.0|r 5.0 |
+| ER S Laser | SCI              | Lostech               |r 220K  |r 0.5 |r +5% |r 30  |r -   |r 0  |r 150|r 150|r 10|r 60.0|r 3.0 |
+| ER S Laser+| Diverse Optics   | Lostech, +5 Dmg       |r 440K  |r 0.5 |r +5% |r 35  |r -   |r 0  |r 150|r 150|r 10|r 70.0|r 3.5 |
+| ER S Laser++| BlazeFire        | Lostech, +10 Dmg      |r 660K  |r 0.5 |r +5% |r 40  |r -   |r 0  |r 150|r 150|r 10|r 80.0|r 4.0 |
+| S Pulse    | SCI              | Lostech               |r 200K  |r 1   |r +10%|r 35  |r -   |r 0  |r 90 |r 90 |r 12|r 35.0|r 2.9 |
+| S Pulse+   | Maxell Metals    | Lostech, +5 Dmg, -1 Heat|r 480K  |r 1   |r +10%|r 40  |r -   |r 0  |r 90 |r 90 |r 11|r 40.0|r 3.6 |
+| S Pulse++  | Firmir           | Lostech, +10 Dmg, -2 Heat|r 800K  |r 1   |r +10%|r 45  |r -   |r 0  |r 90 |r 90 |r 10|r 45.0|r 4.5 |
+| MG++       | Brigadier        | +5 Shots, -0.5 Ton    |r 50K   |r 0   |r +0% |r 3   |r -   |r 0  |r 90 |r 90 |r 0 |r 15.0|r NaN |
+| MG++       | VMI              | +50% Crit, -0.5 Ton   |r 30K   |r 0   |r +0% |r 3   |r -   |r 0  |r 90 |r 90 |r 0 |r 15.0|r NaN |
+| MG         | Sperry Browning  |                       |r 10K   |r 0.5 |r +0% |r 3   |r -   |r 0  |r 90 |r 90 |r 0 |r 10.0|r NaN |
+| MG+        | Brigadier        | +5 Shots              |r 20K   |r 0.5 |r +0% |r 3   |r -   |r 0  |r 90 |r 90 |r 0 |r 12.0|r NaN |
+| MG+        | VMI              | +25% Crit             |r 15K   |r 0.5 |r +0% |r 3   |r -   |r 0  |r 90 |r 90 |r 0 |r 10.0|r NaN |
+
+Support Weapons
+|* Weapon|* Company|* Notes|* Shop|
+| COIL-S     | Herakleion       | Dmg. X Evasion        | None|
+| Flamer     | Skylight         | * 4 Ammo              | Any stars.|
+| Flamer+    | Hotshot          | * 4 Ammo, +5 Dmg      | Black Market, Non-Starter Planets.<br>Stars that are not Canopus, Fed.Sun, Lyran, or Capellan.|
+| Flamer++   | Olympus          | * 4 Ammo, +5 Dmg. (H) | Stars that are Manufacturing and Rich, but not Capellan or Lyran.<br>Stars that are Manufacturing and Rich, but not F.W.League, Fed.Sun, Lyran, or Taurian.|
+| Flamer+++  | Skylight         | * 40 Ammo             | None|
+| S Laser    | Martell          |                       | Any stars.|
+| S Laser+   | ExoStar          | +25% Crit             | Stars that are not Draconis or Capellan.|
+| S Laser+   | Diverse Optics   | +1 Acc                | Any stars.|
+| S Laser+   | Magna            | +5 Dmg                | Black Market, Non-Starter Planets.<br>Stars that are not Capellan or Lyran.|
+| S Laser++  | ExoStar          | +50% Crit             | Stars that are Manufacturing and Rich, but not Draconis or Capellan.|
+| S Laser++  | Intek            | +5 Dmg, +25% Crit     | Stars that are not Draconis or Capellan.|
+| S Laser++  | Diverse Optics   | +3 Acc                | Stars that are Manufacturing and Rich, but not Fed.Sun or Lyran.|
+| S Laser++  | Magna            | +10 Dmg               | Stars that are Manufacturing and Rich, but not Capellan or Lyran.|
+| S Laser+++ | Intek            | +10 Dmg, +50% Crit    | None|
+| ER S Laser | SCI              | Lostech               | None|
+| ER S Laser+| Diverse Optics   | Lostech, +5 Dmg       | None|
+| ER S Laser++| BlazeFire        | Lostech, +10 Dmg      | None|
+| S Pulse    | SCI              | Lostech               | None|
+| S Pulse+   | Maxell Metals    | Lostech, +5 Dmg, -1 Heat| None|
+| S Pulse++  | Firmir           | Lostech, +10 Dmg, -2 Heat| None|
+| MG++       | Brigadier        | +5 Shots, -0.5 Ton    | None|
+| MG++       | VMI              | +50% Crit, -0.5 Ton   | None|
+| MG         | Sperry Browning  |                       | Any stars.|
+| MG+        | Brigadier        | +5 Shots              | None|
+| MG+        | VMI              | +25% Crit             | None|
+
+Stock gears
+|* Equipment|* Price|* Ton|* Effect|
+| AC/10 Ammo    |r 30K   |r 1   |                       |
+| AC/2 Ammo     |r 10K   |r 1   |                       |
+| AC/20 Ammo    |r 40K   |r 1   |                       |
+| AC/5 Ammo     |r 20K   |r 1   |                       |
+| LRM Ammo      |r 20K   |r 1   |                       |
+| MG Ammo       |r 10K   |r 1   |                       |
+| MG Ammo (Half)|r 10K   |r 0.5 |                       |
+| SRM Ammo      |r 10K   |r 1   |                       |
+| Heat Sink     |r 30K   |r 1   | -3 Heat / Turn        |
+| Jump Jet (A)  |r 70K   |r 2   |                       |
+| Jump Jet (H)  |r 60K   |r 1   |                       |
+| Jump Jet (S)  |r 30K   |r 0.5 |                       |
+
+Rare gears
+|* Equipment|* Company|* Price|* Ton|* Effect|* Shop|
+| Flamer        | Generic          |r 0K    |r 1   | Lostech               | None|
+| Gauss Ammo    | Generic          |r 50K   |r 1   | Lostech               | Manufacturing, Rich, Research Planets.|
+| Inferno Ammo  | Generic          |r 1000K |r 1   |                       | None|
+| LB 10-X Ammo  | Generic          |r 40K   |r 1   | Lostech               | None|
+| LB 2-X Ammo   | Generic          |r 20K   |r 1   | Lostech               | None|
+| LB 20-X Ammo  | Generic          |r 50K   |r 1   | Lostech               | None|
+| LB 5-X Ammo   | Generic          |r 30K   |r 1   | Lostech               | None|
+| Narc Ammo     | Generic          |r 30K   |r 1   | Lostech               | None|
+| Exchanger     | Generic          |r 360K  |r 2   | -10% Weapon Heat      | Manufacturing, Rich, Non-Starter Planets.|
+| Exchanger+    | Generic          |r 540K  |r 3   | -15% Weapon Heat      | Manufacturing, Inner Sphere, Rich, Research, Non-Starter Planets.|
+| Exchanger++   | Generic          |r 720K  |r 4   | -20% Weapon Heat      | Manufacturing, Inner Sphere, Rich, Research, Former Star League, Non-Starter Planets.|
+| Heat Bank     | Generic          |r 160K  |r 1   | +10 Max Heat, +5 Overheat Threshold| Manufacturing, Rich, Non-Starter Planets.|
+| Heat Bank+    | Generic          |r 320K  |r 1   | +20 Max Heat, +10 Overheat Threshold| Manufacturing, Inner Sphere, Rich, Research, Non-Starter Planets.|
+| Heat Bank++   | Generic          |r 470K  |r 1   | +30 Max Heat, +15 Overheat Threshold| Manufacturing, Inner Sphere, Rich, Research, Former Star League, Non-Starter Planets.|
+| Heat Sink (D) | Generic          |r 630K  |r 1   | -6 Heat / Turn, Lostech| None|
+| Vectored Thrust Kit| Generic          |r 0K    |r 0.5 |                       | None|
+| Arm Mod       | Coventry         |r 20K   |r 0   | +5 Melee Dmg          | Starter Planets.<br>Manufacturing Planets.|
+| Arm Mod       | Coventry         |r 40K   |r 0   | +10 Melee Dmg         | Manufacturing Planets.|
+| Arm Mod+      | Coventry         |r 80K   |r 1   | +20 Melee Dmg         | Manufacturing Planets.|
+| Arm Mod+      | Coventry         |r 60K   |r 1   | +15 Melee Dmg         | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Arm Mod+++    | Coventry         |r 480K  |r 1   | +60 Melee Dmg         | None|
+| Arm Mod++     | Coventry         |r 160K  |r 2   | +40 Melee Dmg         | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Arm Mod++     | Coventry         |r 240K  |r 3   | +60 Melee Dmg         | Manufacturing, Former Star League, Rich, Research Planets.|
+| Arm Mod       | Friedhof         |r 60K   |r 0   | +20 Melee Stb.Dmg     | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Arm Mod       | Friedhof         |r 30K   |r 0   | +10 Melee Stb.Dmg     | Manufacturing Planets.|
+| Arm Mod+      | Friedhof         |r 120K  |r 1   | +40 Melee Stb.Dmg     | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Arm Mod+      | Friedhof         |r 90K   |r 1   | +30 Melee Stb.Dmg     | Manufacturing, Rich, Research Planets.|
+| Arm Mod+++    | Friedhof         |r 360K  |r 1   | +60 Melee Stb.Dmg     | None|
+| Arm Mod++     | Friedhof         |r 150K  |r 2   | +50 Melee Stb.Dmg     | Manufacturing, Rich, Research Planets.|
+| Arm Mod++     | Friedhof         |r 180K  |r 3   | +60 Melee Stb.Dmg     | Manufacturing, Former Star League, Rich, Research Planets.|
+| Battle Computer| Tacticon         |r 940K  |r 0   | +1 Initiative for all Lance units, Lostech| None|
+| Cockpit Mod   | Ceres Metals     |r 110K  |r 0   | +1 Injury Resist      | Starter Planets.<br>Manufacturing Planets.|
+| Cockpit Mod+  | Ceres Metals     |r 210K  |r 0   | +2 Injury Resist      | Manufacturing Planets.|
+| Cockpit Mod++ | Ceres Metals     |r 320K  |r 0   | +3 Injury Resist      | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Comms System  | StarCorps        |r 160K  |r 0   | +1 Resolve Gain       | Manufacturing Planets.|
+| Comms System+ | StarCorps        |r 320K  |r 0   | +2 Resolve Gain       | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Comms System++| StarCorps        |r 470K  |r 0   | +3 Resolve Gain       | Manufacturing, Former Star League, Rich, Research Planets.|
+| Comms System+++| StarCorps        |r 940K  |r 0   | +4 Resolve Gain       | None|
+| Gyro          | Friedhof         |r 200K  |r 0   | +1 Hit Defense        | Starter Planets.<br>Manufacturing Planets.|
+| Gyro+         | Friedhof         |r 1200K |r 0   | +2 Hit Defense        | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Gyro++        | Friedhof         |r 2400K |r 0   | +3 Hit Defense        | Manufacturing, Rich, Research Planets.|
+| Gyro          | Coventry         |r 20K   |r 0   | +1 Melee Hit          | Starter Planets.<br>Manufacturing Planets.|
+| Gyro+         | Coventry         |r 160K  |r 0   | +2 Melee Hit          | Manufacturing Planets.|
+| Gyro++        | Coventry         |r 590K  |r 0   | +3 Melee Hit          | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Gyro          | Rawlings         |r 300K  |r 0   | -10% Stb.Dmg. Taken   | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Gyro+         | Rawlings         |r 800K  |r 0   | -20% Stb.Dmg. Taken   | Manufacturing, Rich, Research Planets.|
+| Gyro++        | Rawlings         |r 1500K |r 0   | -30% Stb.Dmg. Taken   | Manufacturing, Former Star League, Rich, Research Planets.|
+| Gyro+++       | Hermes           |r 3000K |r 0   | -35% Stb.Dmg. Taken   | None|
+| Hatchet       | Coventry         |r 480K  |r 3   | +70 Melee Dmg, Lostech| None|
+| Leg Mod       | Rawlings         |r 30K   |r 0   | +5 DFA Dmg            | Manufacturing Planets.|
+| Leg Mod+      | Rawlings         |r 60K   |r 0   | +10 DFA Dmg           | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Leg Mod++     | Rawlings         |r 90K   |r 0   | +15 DFA Dmg           | Manufacturing, Rich, Research Planets.|
+| Leg Mod       | Pitban           |r 20K   |r 0   | -10 DFA Self Dmg      | Starter Planets.<br>Manufacturing Planets.|
+| Leg Mod+      | Pitban           |r 30K   |r 1   | -20 DFA Self Dmg      | Manufacturing Planets.|
+| Leg Mod++     | Pitban           |r 50K   |r 2   | -30 DFA Self Dmg      | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Rangefinder   | Majesty M M      |r 70K   |r 0   | +25m View Dist        | Starter Planets.<br>Manufacturing Planets.|
+| Rangefinder+  | Majesty M M      |r 130K  |r 0   | +50m View Dist        | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| Rangefinder++ | Majesty M M      |r 260K  |r 0   | +100m View Dist       | Manufacturing, Former Star League, Rich, Research Planets.|
+| Rangefinder+++| Majesty M M      |r 520K  |r 0   | +120m View Dist       | None|
+| TTS           | Kallon           |r 530K  |r 1   | +1 Acc. (Ballistic)   | Manufacturing Planets.|
+| TTS+++        | Kallon           |r 3080K |r 1   | +3 Acc. (Ballistic)   | None|
+| TTS+          | Kallon           |r 1050K |r 2   | +2 Acc. (Ballistic)   | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| TTS++         | Kallon           |r 1540K |r 3   | +3 Acc. (Ballistic)   | Manufacturing, Rich, Research Planets.|
+| TTS           | RCA              |r 420K  |r 1   | +1 Acc. (Energy)      | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| TTS+++        | RCA              |r 2460K |r 1   | +3 Acc. (Energy)      | None|
+| TTS+          | RCA              |r 840K  |r 2   | +2 Acc. (Energy)      | Manufacturing, Rich, Research Planets.|
+| TTS++         | RCA              |r 1230K |r 3   | +3 Acc. (Energy)      | Manufacturing, Former Star League, Rich, Research Planets.|
+| TTS           | Hartford         |r 350K  |r 1   | +1 Acc. (Missile)     | Manufacturing Planets.|
+| TTS+++        | Hartford         |r 2060K |r 1   | +3 Acc. (Missile)     | None|
+| TTS+          | Hartford         |r 700K  |r 2   | +2 Acc. (Missile)     | Rich Manufacturing Planets.<br>Former Star League, Non-Starter Planets.|
+| TTS++         | Hartford         |r 1030K |r 3   | +3 Acc. (Missile)     | Manufacturing, Rich, Research Planets.|
+* Start Planets: Alloway, Alloway, Bellerophon, Bellerophon, Detroit, Detroit, ├Ür Cruinne, and ├Ür Cruinne
+* Inhabited Campaign Planets (55): Adrar, Aea (Restoration), Antias, Aquagea, Arn, Artru (Directorate), Artru (Restoration), Bonavista, Bringdam (Restoration), Cassilda, Cluff's Stand, Coromodir (Directorate), Coromodir (Restoration), Enkra (Restoration), Fronc, Gangtok (Restoration), Gaucin, Guldra (Directorate), Guldra (Restoration), Hastur, Heliat (Restoration), Herotitus, Hibuarius, Independence, Itrom (Directorate), Itrom (Restoration), Joppa, Katinka (Directorate), Katinka (Restoration), Kimi, Liu's Memory, Lyreton, Mandalas, Mangzhangdian (Restoration), Mantharaka, Mechdur (Restoration), Panzyr (Directorate), Panzyr (Restoration), Payia, Qalzi (Restoration), Regis Roost (Directorate), Regis Roost (Restoration), Rockwellawan, Ryans Fate (Restoration), Smithon (Directorate), Smithon (Restoration), Spencer, Tiverton, Tyrlon (Directorate), Tyrlon (Restoration), Umgard (Restoration), Weldry (Directorate), Weldry (Restoration), Zangul (Restoration), and Zathras
+* Inhabited Taurian Planets: (24): Argos, Atreus Prime, Brinton, Brisbane, Camadeirre, Flannagan's Nebulea, Flaum, Girondas, Hellespont, Illiushin, Ishtar, Jamestown, Jansen's Hold, Laconis, Landmark, MacLeod's Land, Mithron, New Ganymede, New Vallis, New Vandenburg, Pinard, Renfield, Samantha, and Taurus
+* Inhabited Post-Campaign Planets: (102): Addasar, Aea, Alamagordo, Andarmax, Artru, Balawat, Barras, Bellatrix, Borden, Bringdam, Brixtana, Brockway, Bromhead, Buenos Aires, Calseraigne, Carmichael, Cate's Hold, Cavalor, Claybrooke, Columbine, Corodiz, Coromodir, Dainmar Majoris, Decatur, Dicon, Diefenbaker, Drozan, Dunianshire, Early Dawn, Egress, Electra, Enkra, Fagerholm, Flintoft, Frazer, Gangtok, Glentworth, Granera, Guldra, Gunthar, Heliat, Horsham, Hurik, Ingonish, Itrom, Jacomarle, Jacson, Katinka, Kurvasa, Larsha, Leyda, Lindsay, Lopez, Lurgatan, Madras, Maia, Mangzhangdian, Mechdur, Mendham, Menke, Merope, Midale, Mitchel, Muridox, New Abilene, New Roland, Panzyr, Pilpala, Piriapolis, Pojos, Primus, Principia, Prix, Qalzi, Quimberton, Regis Roost, Renown, Repulse, Ridgebrook, Robsart, Rollis, Ryans Fate, Ryerson, Sadurni, Sax, Shaunavon, Shiba, Smithon, Thurrock, Turin, Tyrlon, Umgard, Vard, Victoria, Villanueva, Ward, Weldry, Wrentham, Xanthe III, Yuris, Zangul, and Zanzibar
+* Former Star League, Inner Sphere, Manufacturing, Research, Rich Planets: 
